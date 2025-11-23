@@ -1,0 +1,65 @@
+name: Deploy to AWS (Terraform + ECR + ECS)
+
+on:
+  workflow_dispatch:
+    inputs:
+      aws_region:
+        description: 'AWS Region'
+        required: true
+        default: 'us-east-1'
+      desired_count:
+        description: 'ECS desired count'
+        required: false
+        default: '1'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      TF_WORKING_DIR: terraform
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ github.event.inputs.aws_region }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.0
+
+      - name: Terraform Init
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform init
+
+      - name: Terraform Apply — create infra (ECR, VPC, ECS cluster, ALB)
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform apply -auto-approve -var "aws_region=${{ github.event.inputs.aws_region }}" -var "desired_count=${{ github.event.inputs.desired_count }}"
+
+      - name: Get ECR repo URL
+        id: ecr
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: |
+          echo "url=$(terraform output -raw ecr_repository_url)" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image to ECR
+        env:
+          ECR_URL: ${{ steps.ecr.outputs.url }}
+          IMAGE_TAG: ${{ github.sha }}
+          AWS_REGION: ${{ github.event.inputs.aws_region }}
+        run: |
+          # registry is everything before the last '/'
+          REGISTRY=${ECR_URL%/*}
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REGISTRY
+          docker build -t $ECR_URL:$IMAGE_TAG .
+          docker push $ECR_URL:$IMAGE_TAG
+
+      - name: Terraform Apply — update image tag and trigger new deployment
+        working-directory: ${{ env.TF_WORKING_DIR }}
+        run: terraform apply -auto-approve -var "aws_region=${{ github.event.inputs.aws_region }}" -var "docker_image_tag=${{ github.sha }}"

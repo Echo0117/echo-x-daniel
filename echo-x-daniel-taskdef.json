@@ -1,0 +1,49 @@
+{
+  "family": "echo-x-daniel-task",
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "memory": "1024",
+  "requiresCompatibilities": ["FARGATE"],
+  "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/echo-xd-task-role",
+  "containerDefinitions": [
+    {
+      "name": "web",
+      "image": "<ACCOUNT_ID>.dkr.ecr.eu-north-1.amazonaws.com/echo-x-daniel:latest",
+      "essential": true,
+      "portMappings": [ { "containerPort": 8080, "protocol": "tcp" } ],
+      "environment": [
+        { "name": "PORT", "value": "8080" },
+        { "name": "AWS_REGION", "value": "eu-north-1" },
+        { "name": "DDB_TABLE", "value": "echo_x_daniel_messages" },
+        { "name": "DDB_TABLE_POSTS", "value": "echo_x_daniel_posts" },
+        { "name": "AUTO_CREATE_TABLE", "value": "0" }
+        // If using Argon2 instead of plain:
+        // { "name": "VERIFY_ARGON2", "value": "1" }
+      ],
+      "secrets": [
+        { "name": "SECRET_KEY",    "valueFrom": "arn:aws:ssm:eu-north-1:<ACCOUNT_ID>:parameter/echo/app/SECRET_KEY" },
+        { "name": "AUTH_USERNAME", "valueFrom": "arn:aws:ssm:eu-north-1:<ACCOUNT_ID>:parameter/echo/app/AUTH_USERNAME" },
+        { "name": "AUTH_PASSWORD", "valueFrom": "arn:aws:ssm:eu-north-1:<ACCOUNT_ID>:parameter/echo/app/AUTH_PASSWORD" }
+        // Or swap to AUTH_PASSWORD_HASH if using Argon2
+        // { "name": "AUTH_PASSWORD_HASH", "valueFrom": "arn:aws:ssm:eu-north-1:<ACCOUNT_ID>:parameter/echo/app/AUTH_PASSWORD_HASH" }
+      ],
+      "healthCheck": {
+        "retries": 3,
+        "timeout": 5,
+        "interval": 30,
+        "startPeriod": 10,
+        "command": ["CMD-SHELL","curl -fsS http://localhost:8080/healthz || exit 1"]
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-region": "eu-north-1",
+          "awslogs-group": "/ecs/echo-x-daniel",
+          "awslogs-stream-prefix": "web"
+        }
+      }
+    }
+  ]
+}
+

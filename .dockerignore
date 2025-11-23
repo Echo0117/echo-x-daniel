@@ -1,0 +1,26 @@
+# Ignore VCS, caches, local env
+.git
+.gitignore
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+**/.venv/
+.venv/
+
+# OS files
+.DS_Store
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Node/build outputs if any
+node_modules/
+
+# Not needed in image
+*.md
+**/tests/
+terraform/
+*.ipynb

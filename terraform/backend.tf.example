@@ -1,0 +1,12 @@
+# Example S3 backend configuration for remote state. Create the S3 bucket and DynamoDB table first.
+# Save a copy as `backend.tf` and fill in your bucket, key and region.
+# For production/team usage you should enable encryption and locking.
+
+terraform {
+  backend "s3" {
+    bucket = "your-terraform-state-bucket"
+    key    = "echo-x-daniel/terraform.tfstate"
+    region = "us-east-1"
+    dynamodb_table = "your-terraform-lock-table"
+  }
+}

@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+/* hearts + sky */
+#heart-sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.heart{position:absolute;width:18px;height:18px;background:radial-gradient(circle at 30% 30%,#ffd1dc 0%,#ff7eb3 45%,#ff4d6d 100%);transform:rotate(45deg);animation:float 6s linear infinite;opacity:.9}
+.heart:before,.heart:after{content:"";position:absolute;width:18px;height:18px;background:inherit;border-radius:50%}
+.heart:before{left:-9px}.heart:after{top:-9px}
+@keyframes float{0%{transform:translateY(100vh) rotate(45deg)}100%{transform:translateY(-20vh) rotate(45deg)}}
+
+.sky{position:relative;height:240px;border-radius:18px;background:radial-gradient(1200px 400px at 20% -40%,#213150 0%,transparent 50%),linear-gradient(180deg,#0b1020,#040c1a)}
+.meteor{position:absolute;top:-10px;width:2px;height:120px;background:linear-gradient(180deg,#fff,transparent);filter:drop-shadow(0 0 6px #fff);opacity:.9;transform:rotate(45deg);animation:shoot 2.5s linear infinite}
+.meteor:nth-child(2){left:40%;animation-delay:.6s}
+.meteor:nth-child(3){left:70%;animation-delay:1.2s}
+.meteor:nth-child(4){left:85%;animation-delay:1.8s}
+@keyframes shoot{0%{transform:translate(-50vw,-30vh) rotate(45deg)}100%{transform:translate(20vw,40vh) rotate(45deg)}}
+
+/* layout */
+.p-nav{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px;position:relative;z-index:1}
+.p-nav .pill{cursor:pointer}
+.card p{opacity:1;font-size:16px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:12px}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px dashed #39406c;padding:6px 10px;border-radius:999px;margin-top:8px}
+.count{font-size:40px;font-weight:900}
+.section{display:none}
+.section.active{display:block}
+audio{width:100%}
+</style>
+
+<div id="heart-sky"></div>
+
+<div class="card" style="position:relative;z-index:1">
+  <h2>Happy {{ meeting_days }}<sup>th</sup> Day, {{ boyfriend }}! ✨</h2>
+  <p class="lead">From {{ yourname }} · Met on {{ meeting_date }}</p>
+  <div class="p-nav">
+    <a class="pill" data-tab="home">🏠 Home</a>
+    <a class="pill" data-tab="splash">💌 Open the Surprise</a>
+    <a class="pill" data-tab="moments">📸 Little Moments</a>
+    <a class="pill" data-tab="plan">📅 {{ date_night }} Plan</a>
+    <a class="pill" data-tab="wish">🌠 Make a Wish</a>
+    <a class="pill" data-tab="song">🎵 Our Song</a>
+  </div>
+</div>
+
+<!-- HOME -->
+<section id="home" class="section active">
+  <div class="card"><h2>Welcome, my favorite person ♡</h2><p>This is a tiny site I made for you. Ready to open the surprise?</p></div>
+</section>
+
+<!-- SPLASH -->
+<section id="splash" class="section">
+  <div class="grid">
+    <div class="card">
+      <div class="kicker">Since we met</div>
+      <div class="count">{{ meeting_days }} days</div>
+      <p>I still get butterflies every time I think of you.</p>
+      <div class="badge">💖 Met on {{ meeting_date }}</div>
+    </div>
+    <div class="card">
+      <h2>Three tiny reasons I adore you</h2>
+      <ul>
+        <li>Your laugh makes everything lighter.</li>
+        <li>You notice the little things.</li>
+        <li>You make ordinary moments feel like magic.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>A secret just for you</h2>
+      <p>On <b>{{ date_night }}</b>, meet me for dinner, then a ride on the ferris wheel, and finally—under the stars—to watch the Perseids together. 🌠</p>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENTS -->
+<section id="moments" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>Tap for a memory</h2>
+      <p>Every click reveals a little note.</p>
+      <div id="notes" style="display:flex;flex-direction:column;gap:8px"></div>
+      <button class="btn primary" id="reveal">Reveal one ✨</button>
+    </div>
+    <div class="card">
+      <h2>Our mini-timeline</h2>
+      <ul>
+        <li>Jun 23: We met at 12:01 — a lucky time.</li>
+        <li>Our inside joke: the ferris wheel wife/husband we still haven't ridden together 🎡</li>
+        <li>Today: this little website made for you.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>When you are in your mind, in your little world…</h2>
+      <p>…please leave the door open, so Echo can walk in, and stay with you there. We share the same drive ✨</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section id="plan" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>📅 The Plan for {{ date_night }}</h2>
+      <p>Dress comfy, bring a light jacket. I’ll handle everything else.</p>
+      <div class="grid">
+        <div class="card"><div class="kicker">Stop 1</div><h3>🍽️ {{ restaurant }}</h3><p>Cozy dinner to start the night. I booked us a table.</p></div>
+        <div class="card"><div class="kicker">Stop 2</div><h3>🎡 {{ ferris }}</h3><p>Finally take that ride we missed. One wish at the top.</p></div>
+        <div class="card"><div class="kicker">Stop 3</div><h3>🌊 {{ ocean }}</h3><p>Blanket, snacks, and a sky full of meteors — the Perseids.</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Bring list</h2>
+      <ul>
+        <li>Light jacket / hoodie</li>
+        <li>Comfy shoes</li>
+        <li>Warm blanket</li>
+        <li>A wish you’re ready to make</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WISH -->
+<section id="wish" class="section">
+  <div class="card">
+    <h2>Look up — make a wish together</h2>
+    <div class="sky">
+      <div class="meteor"></div><div class="meteor"></div><div class="meteor"></div><div class="meteor"></div>
+    </div>
+    <p>Close your eyes for three seconds and think of us. Then tell me your wish. 💫</p>
+    <button class="btn primary" id="wishBtn">I made my wish ✨</button>
+    <div id="wishOut" class="badge" style="display:none;margin-top:10px">Awww! Let's make it come true together. 💖</div>
+  </div>
+</section>
+
+<!-- SONG -->
+<section id="song" class="section">
+  <div class="card">
+    <h2>Now Playing</h2>
+    <audio controls preload="auto">
+      <source src="{{ audio_src }}" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+    <div class="footer">If it doesn’t start, <a href="{{ audio_src }}" target="_blank" rel="noopener">open the track</a>.</div>
+  </div>
+</section>
+
+<script>
+// floating hearts
+(function() {
+  const sky = document.getElementById('heart-sky');
+  for (let i=0;i<22;i++){
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.animationDelay = (Math.random()*3).toFixed(2) + 's';
+    const s = 12 + Math.random()*12;
+    h.style.width = s + 'px'; h.style.height = s + 'px';
+    sky.appendChild(h);
+  }
+})();
+
+// tabs
+const tabs = document.querySelectorAll('.p-nav .pill');
+const sections = document.querySelectorAll('.section');
+tabs.forEach(t => t.addEventListener('click', () => {
+  sections.forEach(s => s.classList.remove('active'));
+  document.getElementById(t.dataset.tab).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}));
+
+// notes reveal
+let idx = 0;
+document.getElementById('reveal')?.addEventListener('click', () => {
+  if (idx < notes.length) {
+    const div = document.createElement('div');
+    div.className = 'badge';
+    div.textContent = '💗 · ' + notes[idx++];
+    document.getElementById('notes').appendChild(div);
+  } else {
+    const div = document.createElement('div');
+    div.className = 'badge';
+    div.textContent = 'All notes revealed! 💞';
+    document.getElementById('notes').appendChild(div);
+  }
+});
+
+// wish popup
+document.getElementById('wishBtn')?.addEventListener('click', () => {
+  const w = document.getElementById('wishOut');
+  w.style.display = 'inline-flex';
+});
+</script>
+
+{% endblock %}

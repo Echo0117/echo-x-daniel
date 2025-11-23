@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Echo 💜 Daniel 留言板</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-violet-50 to-pink-50 p-6">
+  <div class="max-w-2xl mx-auto bg-white/70 backdrop-blur rounded-2xl shadow-xl p-6 md:p-8">
+    <div class="flex items-baseline gap-4">
+      <h1 class="text-3xl font-semibold text-gray-800">Echo 💜 Daniel 留言板</h1>
+      <a href="/messageboard" class="text-violet-700 hover:underline text-sm">Write a new note →</a>
+      <a href="/logout" class="text-gray-500 hover:underline text-sm ml-auto">Logout</a>
+    </div>
+    <p class="mt-2 text-sm text-gray-600">Recent notes between us.</p>
+
+    <div class="mt-6 grid gap-4">
+      {% for it in items %}
+        <div class="p-5 bg-white/80 rounded-2xl shadow">
+          <div class="flex items-baseline justify-between gap-4">
+            <div>
+              <div class="font-semibold text-gray-800">{{ it.author }}</div>
+              {% if it.title %}<div class="text-sm text-gray-500">{{ it.title }}</div>{% endif %}
+            </div>
+            <div class="text-xs text-gray-500">{{ it.created_at }}</div>
+          </div>
+          <div class="mt-3 whitespace-pre-wrap text-gray-800">{{ it.content }}</div>
+        </div>
+      {% else %}
+        <div class="text-sm text-gray-500">No notes yet. Be the first to write one ✨</div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

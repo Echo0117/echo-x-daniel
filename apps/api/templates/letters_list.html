@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="titlebar"><h2>📜 Love Letters</h2></div>
+  {% if not items %}
+    <div class="empty">No letters yet. Put .md files in <code>{{ letters_dir }}</code>.</div>
+  {% else %}
+    <div class="grid">
+      {% for it in items %}
+        <a class="env" href="/letters/open/{{ it.slug }}">
+          <div class="flap"></div>
+          <div class="stamp"></div>
+          <div class="title">{{ it.list_title }}</div>
+          <div class="date">Date: {{ it.date.strftime('%Y-%m-%d') if it.date else '—' }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,95 @@
+{% set s = step or 1 %}
+
+{% if context and context.title %}
+  <h3 style="margin-top:0">{{ context.title }}</h3>
+{% endif %}
+{% if context and context.html %}{{ context.html | safe }}{% endif %}
+{% if context and context.line %}
+  <p{% if context.style %} style="{{ context.style }}"{% endif %}>{{ context.line }}</p>
+{% endif %}
+{% if context and context.img %}
+  <div class="center" style="margin:10px 0">
+    <img src="{{ context.img }}" alt="surprise" style="max-width:100%;border-radius:12px">
+  </div>
+{% endif %}
+
+{% if s == 1 %}
+<form
+  hx-post="/two-weeks/v1"
+  hx-target="#v1flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>Your Name</legend>
+    <input type="hidden" name="step" value="1">
+    <input name="name" placeholder="Love" required>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Next →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% elif s == 2 %}
+<form
+  hx-post="/two-weeks/v1"
+  hx-target="#v1flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>Your Mood</legend>
+    <input type="hidden" name="step" value="2">
+    <select name="mood">
+      <option value="happy">😊 Happy</option>
+      <option value="sad">😔 Sad</option>
+      <option value="excited">🤩 Excited</option>
+    </select>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Next →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% elif s == 3 %}
+<form
+  hx-post="/two-weeks/v1"
+  hx-target="#v1flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>Ready for a surprise?</legend>
+    <input type="hidden" name="step" value="3">
+    <select name="cont">
+      <option value="yes">Yes</option>
+      <option value="no">Maybe later</option>
+    </select>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Next →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% elif s == 4 %}
+<form
+  hx-post="/two-weeks/v1"
+  hx-target="#v1flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>See more messages?</legend>
+    <input type="hidden" name="step" value="4">
+    <select name="more">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Finish →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% else %}
+<div class="center">
+  <p>All done — want to start again?</p>
+  <a class="btn" href="/two-weeks/v1">Restart →</a>
+</div>
+{% endif %}

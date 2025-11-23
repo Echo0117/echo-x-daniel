@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="letter-wrap">
+    <article class="paper-airmail">
+      <div class="letter-inner">
+        <div class="letterhead">Dear Daniel,</div>
+        <h1 class="ltitle">{{ title }}</h1>
+        <p class="ldate">Date: {{ date }}</p>
+        <div class="content serif" style="font-family:'Noto Serif SC', serif; font-size:18px; line-height:1.9">{{ body_html | safe }}</div>
+        <div class="btnbar">
+          <a class="pbtn" href="/letters">← Back</a>
+          <a class="pbtn" href="/">🏠 Home</a>
+        </div>
+      </div>
+    </article>
+  </div>
+{% endblock %}

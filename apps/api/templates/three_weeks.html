@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+
+<style>
+.invite-wrap{display:grid;grid-template-columns:1fr;place-items:center;gap:18px}
+.box-scene{width:320px;height:260px;perspective:1000px}
+.gift{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.lid,.base{position:absolute;left:0;right:0;margin:auto;width:220px;height:160px;border-radius:16px}
+.base{top:60px;background:linear-gradient(180deg,#ef5aa5,#c74383);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.lid{top:14px;background:linear-gradient(180deg,#ff82c0,#ef5aa5);transform-origin:50% 100%;transition:transform .8s ease}
+.ribbon{position:absolute;left:calc(50% - 8px);top:-6px;width:16px;height:180px;background:linear-gradient(180deg,#fff,#ffd6eb);border-radius:8px}
+.ribbon::after{content:"";position:absolute;top:120px;left:-70px;width:160px;height:16px;background:linear-gradient(90deg,#fff,#ffd6eb);border-radius:12px}
+.shadow{position:absolute;inset:auto 0 -8px; margin:auto;width:220px;height:14px;background:radial-gradient(closest-side,#0006,transparent 70%);filter:blur(3px)}
+
+.gift.open{transform:translateY(-8px)}
+.gift.open .lid{transform:rotateX(-62deg) translateZ(2px)}
+
+.invite{position:relative;width:620px;max-width:95vw;display:none}
+.invite.show{display:block;animation:fadeIn 1.2s ease forwards}
+@keyframes fadeIn{from{transform:translateY(30px) scale(.95);opacity:0}to{transform:none;opacity:1}}
+
+.card{
+  position:relative;padding:50px 60px;border-radius:22px;
+  background:linear-gradient(145deg,#fffdf8,#f9f4eb);
+  color:#2c2a28;font-family:"Playfair Display",serif;
+  border:2px solid #e0cfae;
+  box-shadow:0 30px 60px rgba(0,0,0,.25), inset 0 0 0 2px #ffffffcc;
+}
+.card::before{
+  content:"";position:absolute;inset:14px;border-radius:16px;
+  background:conic-gradient(from 0deg,#e2c49a,#d8a3b9,#9ac0f0,#e2c49a);
+  -webkit-mask:linear-gradient(#0000 0 0),linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#0000 0 0),linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;mask-composite: exclude;
+  padding:2px; border-radius:16px;
+}
+.calligraphy{
+  font-family:"Great Vibes",cursive;
+  font-size:48px;line-height:1.2;
+  color:#a36d4f;margin:0 0 16px;text-align:center;
+}
+.ctitle{
+  font-family:"Cinzel",serif;
+  font-size:28px;letter-spacing:1px;
+  margin:0 0 12px;text-align:center;
+  color:#4a3a2a;
+}
+.cmeta{
+  color:#6b6a68;margin:0 0 14px;
+  text-align:center;font-size:18px;font-style:italic;
+}
+.cbody{
+  font-size:19px;line-height:1.9;
+  text-align:center;margin-top:22px;
+}
+.cbtn{
+  margin-top:24px;display:inline-block;
+  padding:12px 18px;border-radius:14px;
+  border:1px solid #d6d0c6;background:#fff7ec;
+  color:#2c2a28;font-weight:700;text-decoration:none;
+  font-family:"Playfair Display",serif;
+  transition:all .3s ease;
+}
+.cbtn:hover{background:#f2e4d0}
+.center{text-align:center}
+</style>
+
+<div class="invite-wrap">
+  <div class="card center" style="max-width:720px">
+    <h2>🎁 Three Weeks Anniversary 🎁</h2>
+    <p class="lead">Tap the box to reveal your special invitation.</p>
+  </div>
+
+  <!-- 3D Box -->
+  <div class="box-scene">
+    <div class="gift" id="gift">
+      <div class="lid">
+        <div class="ribbon"></div>
+      </div>
+      <div class="base"></div>
+      <div class="shadow"></div>
+    </div>
+  </div>
+
+  <!-- Invitation -->
+  <div class="invite" id="invite">
+    <div class="card">
+      <p class="calligraphy">To my dearest Daniel,</p>
+      <h3 class="ctitle">🎭 The Setup Stand-Up Comedy Show 🎭</h3>
+      <p class="cmeta"><strong>When:</strong> Friday, July 18th, 2025 · 9:00 PM</p>
+      <p class="cmeta"><strong>Where:</strong> The Setup Comedy Club — 2 tickets at Will Call</p>
+      <div class="cbody">
+        A night of laughter awaits us, hand in hand.  
+        The doors open 30 minutes before showtime — our seats are saved.  
+        <br><br>
+        Let’s celebrate three wonderful weeks with joy, smiles, and love.  
+        <br><br>
+        Yours forever,<br>
+        <em>Echo</em>
+      </div>
+      <div class="center">
+        <a class="cbtn" href="https://www.google.com/maps/search/The+Setup+Comedy+Club" target="_blank">Get Directions →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const box = document.getElementById('gift');
+const inv = document.getElementById('invite');
+box.addEventListener('click', ()=>{
+  box.classList.add('open');
+  setTimeout(()=> inv.classList.add('show'), 500);
+});
+</script>
+
+{% endblock %}

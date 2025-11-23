@@ -1,0 +1,2 @@
+python -m app.main
+uvicorn app:app --reload --port 8005 --app-dir apps/api --env-file .env_local

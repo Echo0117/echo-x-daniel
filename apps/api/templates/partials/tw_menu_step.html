@@ -1,0 +1,78 @@
+{% set s = step or 1 %}
+
+{% if context and context.title %}
+  <h3 style="margin-top:0">{{ context.title }}</h3>
+{% endif %}
+{% if context and context.html %}{{ context.html | safe }}{% endif %}
+{% if context and context.line %}
+  <p{% if context.style %} style="{{ context.style }}"{% endif %}>{{ context.line }}</p>
+{% endif %}
+{% if context and context.img %}
+  <div class="center" style="margin:10px 0">
+    <img src="{{ context.img }}" alt="surprise" style="max-width:100%;border-radius:12px">
+  </div>
+{% endif %}
+
+{% if s == 1 %}
+<form
+  hx-post="/two-weeks/menu"
+  hx-target="#flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>Sweet Nickname</legend>
+    <input type="hidden" name="step" value="1">
+    <label>What sweet nickname do you call me?</label>
+    <input name="his_nick" placeholder="e.g., Honey, Love, ..." required>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Next →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% elif s == 2 %}
+<form
+  hx-post="/two-weeks/menu"
+  hx-target="#flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>How was your day?</legend>
+    <input type="hidden" name="step" value="2">
+    <select name="mood">
+      <option value="great">😊 Great!</option>
+      <option value="bad">😔 Not so good</option>
+      <option value="amazing">🤩 Amazing!</option>
+    </select>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Next →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% elif s == 3 %}
+<form
+  hx-post="/two-weeks/menu"
+  hx-target="#flow"
+  hx-swap="innerHTML"
+>
+  <fieldset>
+    <legend>Pick a Surprise</legend>
+    <input type="hidden" name="step" value="3">
+    <select name="sub">
+      <option value="photo">A cutie pie (photo)</option>
+      <option value="gif">A fun vibe (gif)</option>
+      <option value="message">A secret message</option>
+    </select>
+    <div style="margin-top:10px">
+      <button class="btn" type="submit">Reveal →</button>
+    </div>
+  </fieldset>
+</form>
+
+{% else %}
+<div class="center">
+  <p>That’s all for now — want to start over?</p>
+  <a class="btn" href="/two-weeks/menu">Restart →</a>
+</div>
+{% endif %}

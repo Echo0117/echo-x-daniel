@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="grid">
+    <a class="feature" href="#" onclick="openBox(1)">🎁 Box 1</a>
+    <a class="feature" href="#" onclick="openBox(2)">🎁 Box 2</a>
+    <a class="feature" href="#" onclick="openBox(3)">🎁 Box 3</a>
+  </div>
+  <div id="giftout" class="card" style="margin-top:16px"></div>
+  <script>
+    function openBox(n){
+      const out = document.getElementById('giftout');
+      if(n===1){ out.innerHTML = `<h2>Here’s a lovely photo of us! 📸</h2><img class="heroimg" src="/static/img/cartoon.jpg">`; }
+      if(n===2){ out.innerHTML = `<h2>I have a question for you</h2><p class="lead">“Мне ты очень, очень нравишься… Хочешь быть моим парнем?”</p>`; }
+      if(n===3){ out.innerHTML = `<h2>My secret message… 'love' 🤫</h2><p class="lead">“JCP LLJZ WFQC E NIOI MIOX, T KVR EC NUFSZDP WO”</p>`; }
+    }
+  </script>
+{% endblock %}

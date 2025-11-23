@@ -1,0 +1,5 @@
+Assumptions made by this scaffold:
+- App listens on HTTP port 5000 by default (variable `container_port`).
+- Image will be pushed to ECR named after `project_name`.
+- The terraform state is local by default. For team usage, configure an S3 backend with state locking (DynamoDB).
+- This is a simple public, internet-facing example for quick testing/demos.

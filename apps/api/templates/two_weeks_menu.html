@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HTMX (no build, just this script) -->
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+<style>
+.wrap{max-width:860px;margin:24px auto;padding:10px;background:transparent;border:0;box-shadow:none}
+fieldset{border:0;padding:0;margin:0 0 16px}
+h2{margin:0 0 12px}
+p.lead{color:#6b6a68;margin:0 0 16px}
+.btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #d6d0c6;background:#fff7ec;color:#2c2a28;font-weight:700;text-decoration:none;cursor:pointer}
+select,input{width:100%;padding:10px;border:1px solid #ddd;border-radius:10px;background:#fff}
+fieldset{border:1px solid #eee;border-radius:12px;padding:14px;margin:0}
+legend{padding:0 8px;color:#6b6a68}
+.result{margin-top:14px;padding:12px;border-radius:12px;background:#faf7f0;border:1px solid #eadfcd}
+.center{text-align:center}
+</style>
+
+<div class="wrap">
+  <h2>🍽️ Two Weeks — Flow</h2>
+  <p class="lead">Answer each step; new content will appear as you go.</p>
+
+    <div id="flow">
+    {% include 'partials/tw_menu_step.html' ignore missing %}
+    </div>
+
+  <hr style="margin:16px 0;border:0;border-top:1px solid #eee">
+  <div class="center">
+    <a class="btn" href="{{ request.url_for('two_weeks_v1') }}">Go to Plan V1 →</a>
+  </div>
+</div>
+{% endblock %}

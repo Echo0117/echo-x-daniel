@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Handwriting + serif fallback -->
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* soft, close-to-home pinks */
+  --bg1:#fff3f6;
+  --bg2:#fdebf2;
+  --ink:#2b1e1e;        /* main text color (dark cocoa) */
+  --ink-soft:#6e5050;   /* secondary text */
+  --accent:#b93160;     /* romantic burgundy-rose */
+  --paper:#fffdf8;      /* card bg */
+  --stroke:#eadfcd;     /* card border */
+  --soft-stroke:#f2d3cf;
+}
+
+body{
+  /* subtle pink, not too saturated */
+  background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+  font-family: 'Kalam', cursive;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card{
+  max-width: 900px;
+  margin: 36px auto;
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--paper);
+  border: 1.5px solid var(--stroke);
+  box-shadow: 0 14px 40px rgba(0,0,0,.12);
+}
+
+h2{
+  font-family: 'Kalam', cursive; /* handwritten heading */
+  font-weight: 700;
+  font-size: 42px;
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 22px;
+  letter-spacing: .5px;
+}
+
+.flex{ display:flex; gap:22px; align-items:flex-start; }
+.col{ flex:1 1 0; }
+.side{ width:260px; }
+
+.area{
+  width:100%;
+  min-height:150px;
+  border-radius:14px;
+  border:1px solid #d6c9c1;
+  padding:14px 14px 16px;
+  background:#fff;
+  font-family:'Kalam', cursive;  /* handwriting inside the box */
+  font-size:18px;
+  line-height:1.7;
+  color:var(--ink);              /* << dark text (visible) */
+  caret-color: var(--accent);
+}
+.area::placeholder{
+  color:#8c6e6e;                 /* darker placeholder for visibility */
+}
+.area:focus{
+  outline:none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(185,49,96,.15);
+}
+
+input[type="file"]{
+  font-family:'Kalam', cursive;
+  color: var(--ink);
+}
+
+.btn.primary{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:14px;
+  border:none;
+  background: linear-gradient(135deg, var(--accent), #f06292);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform .2s ease, box-shadow .25s ease;
+  font-size:16px;
+}
+.btn.primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(185,49,96,.35);
+}
+
+.gif {
+  /* remove background, border, radius, shadow */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+
+.gif img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* or cover, depending on how you want it to crop */
+  border-radius: 0;    /* remove rounded edges */
+}
+
+.badge{
+  display:inline-block;
+  background:#fff7f1;
+  border:1px solid var(--soft-stroke);
+  border-radius:999px;
+  padding:8px 14px;
+  margin-top:14px;
+  font-weight:700;
+  font-size:15px;
+  color:var(--accent);
+}
+
+.lead{
+  font-size:20px;
+  line-height:1.9;
+  margin-top:12px;
+  color:var(--ink);
+}
+
+.result{
+  margin-top:16px; padding:18px; border-radius:14px;
+  background:#fefaf6; border:1px solid var(--soft-stroke);
+  box-shadow: 0 4px 14px rgba(0,0,0,.05);
+}
+
+.preview{ margin-top:14px; text-align:center; }
+.preview img{
+  max-width:100%; border-radius:14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.small{ color:var(--ink-soft); font-size:14px; }
+@media (max-width: 860px){ .flex{ flex-direction:column; } .side{ width:100%; } }
+</style>
+
+<div class="card">
+  <h2>💘 First “I love you” Analyzer</h2>
+
+  <div class="flex">
+    <div class="col">
+      <form method="post" enctype="multipart/form-data">
+        <textarea class="area" name="text" placeholder="Write something romantic..." required></textarea>
+
+        <div style="margin-top:10px">
+          <label class="small">Optional: upload a memory (photo)</label>
+          <input type="file" name="upload" accept="image/*">
+        </div>
+
+        <button class="btn primary" type="submit" style="margin-top:14px">Reveal the Romance 💌</button>
+      </form>
+
+      {% if result %}
+      <div class="result">
+        <div class="badge">Theme: {{ result.theme }} · Confidence: {{ result.score }}</div>
+        <p class="lead">{{ result.compliment }}</p>
+        <p class="lead"><em>📖 {{ result.poem }}</em></p>
+      </div>
+      {% endif %}
+
+      {% if preview_img %}
+      <div class="preview">
+        <img src="{{ preview_img }}" alt="memory">
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="side">
+      <div class="gif">
+        <img id="kiss" src="{{ url_for('static', path='img/kiss.gif') }}" alt="kiss gif" onerror="this.style.display='none'; document.getElementById('kiss-fallback').style.display='block'">
+        <div id="kiss-fallback" style="display:none" class="small">Can’t load GIF. Place it at <code>static/img/kiss.gif</code>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

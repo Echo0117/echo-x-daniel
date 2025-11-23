@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="titlebar">
+    <h2>📝 Poetry</h2>
+    <div class="tabs">
+      <a class="tab {{ 'active' if kind=='mine' else '' }}" href="/poetry?kind=mine">By Echo</a>
+      <a class="tab {{ 'active' if kind=='found' else '' }}" href="/poetry?kind=found">Found Gems</a>
+    </div>
+  </div>
+  <div class="grid">
+    {% for it in items %}
+      <a class="env" href="/poetry/open/{{ kind }}/{{ it.slug }}">
+        <div class="flap"></div>
+        <div class="badge">{{ 'Echo' if kind=='mine' else (it.author or 'Author') }}</div>
+        <div class="title">{{ it.title }}</div>
+        <div class="meta">Date: {{ it.date.strftime('%Y-%m-%d') if it.date else '—' }}</div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

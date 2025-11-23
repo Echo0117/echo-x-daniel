@@ -13,10 +13,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /deps
 # Only copy the lock/requirements to maximize cache hits
 COPY requirements.txt ./
-# Use BuildKit cache for pip; install CPU-only PyTorch first to avoid pulling huge CUDA wheels
+# Use BuildKit cache for pip; AI dependencies (torch, transformers) are commented out
 RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install --upgrade pip && \
-    pip install --no-cache-dir --prefix=/install --index-url https://download.pytorch.org/whl/cpu "torch==2.4.*" && \
     pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 # ---------- Runtime stage ----------

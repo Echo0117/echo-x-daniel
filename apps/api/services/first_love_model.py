@@ -74,29 +74,34 @@ def _remote_infer(text: str):
     obj = json.loads(data)
     return obj.get("theme"), float(obj.get("score", 0.8))
 
+# AI model inference disabled to reduce dependencies
+# def _hf_infer(text: str):
+#     try:
+#         import os
+#         os.environ.setdefault("TOKENIZERS_PARALLELISM","false")
+#         import torch; torch.set_num_threads(1)
+#         from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+#         try:
+#             from peft import PeftModel, PeftConfig
+#             peft_cfg = PeftConfig.from_pretrained(ADAPTERID)
+#             base_id = peft_cfg.base_model_name_or_path or BASE_ID
+#         except Exception:
+#             base_id = BASE_ID
+#             PeftModel = None
+#         base = AutoModelForSequenceClassification.from_pretrained(base_id, num_labels=10)
+#         model = PeftModel.from_pretrained(base, ADAPTERID) if PeftModel else base
+#         tok = AutoTokenizer.from_pretrained(base_id)
+#         clf = pipeline("text-classification", model=model, tokenizer=tok, return_all_scores=False)
+#         out = clf(text)[0]  # {'label':'LABEL_3','score':0.87}
+#         import re
+#         label = re.sub(r"^LABEL_","", out["label"])
+#         return ROMANTIC.get(label, "Mystery"), float(out.get("score", 0.8))
+#     except Exception:
+#         return None, None
+
 def _hf_infer(text: str):
-    try:
-        import os
-        os.environ.setdefault("TOKENIZERS_PARALLELISM","false")
-        import torch; torch.set_num_threads(1)
-        from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-        try:
-            from peft import PeftModel, PeftConfig
-            peft_cfg = PeftConfig.from_pretrained(ADAPTERID)
-            base_id = peft_cfg.base_model_name_or_path or BASE_ID
-        except Exception:
-            base_id = BASE_ID
-            PeftModel = None
-        base = AutoModelForSequenceClassification.from_pretrained(base_id, num_labels=10)
-        model = PeftModel.from_pretrained(base, ADAPTERID) if PeftModel else base
-        tok = AutoTokenizer.from_pretrained(base_id)
-        clf = pipeline("text-classification", model=model, tokenizer=tok, return_all_scores=False)
-        out = clf(text)[0]  # {'label':'LABEL_3','score':0.87}
-        import re
-        label = re.sub(r"^LABEL_","", out["label"])
-        return ROMANTIC.get(label, "Mystery"), float(out.get("score", 0.8))
-    except Exception:
-        return None, None
+    # Disabled: use heuristic fallback instead
+    return None, None
 
 def predict(text: str) -> dict:
     text = (text or "").strip()

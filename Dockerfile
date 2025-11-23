@@ -23,7 +23,7 @@ FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PORT=8080 \
-    UVICORN_WORKERS=2
+    UVICORN_WORKERS=1
 
 # Only runtime deps
 RUN apt-get update && apt-get install -y --no-install-recommends \

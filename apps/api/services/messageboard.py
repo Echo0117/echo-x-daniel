@@ -2,7 +2,6 @@
 import os, json, uuid
 from datetime import datetime, timezone
 from typing import Optional, List
-import boto3
 from fastapi import HTTPException, Request
 from pydantic import BaseModel, Field
 
@@ -10,15 +9,12 @@ from pydantic import BaseModel, Field
 AWS_REGION = os.getenv("AWS_REGION") or "eu-north-1"
 DDB_TABLE = os.getenv("DDB_TABLE", "echo_x_daniel_messages")
 AUTO_CREATE = os.getenv("AUTO_CREATE_TABLE", "0") == "1"
-LOCAL_STORE = os.getenv("LOCAL_STORE", "/mnt/data/messageboard.jsonl")
+LOCAL_STORE = os.getenv("LOCAL_STORE", "/data/messageboard.jsonl")
 
 AUTH_USERNAME = os.getenv("AUTH_USERNAME")
 AUTH_PASSWORD = os.getenv("AUTH_PASSWORD")
 SECRET_KEY = os.getenv("SECRET_KEY")
 SESSION_USER_KEY = "user"
-
-ENDPOINT = os.getenv("DDB_ENDPOINT_URL")
-ddb = boto3.resource("dynamodb", region_name=AWS_REGION, endpoint_url=ENDPOINT)
 
 # ---------------- 模型 ----------------
 class MessageIn(BaseModel):
@@ -50,28 +46,11 @@ def check_login(username: str, password: str) -> bool:
     )
 
 # ---------------- 存储 ----------------
-USE_DDB = True
-try:
-    import boto3
-except Exception:
-    USE_DDB = False
+# DynamoDB disabled - using local JSONL storage
+USE_DDB = False
 
 def _ddb_table():
-    if not USE_DDB: return None
-    ddb = boto3.resource("dynamodb", region_name=AWS_REGION, endpoint_url=ENDPOINT)
-    table = ddb.Table(DDB_TABLE)
-    if AUTO_CREATE:
-        try:
-            table.load()
-        except Exception:
-            ddb.create_table(
-                TableName=DDB_TABLE,
-                AttributeDefinitions=[{"AttributeName": "id", "AttributeType": "S"}],
-                KeySchema=[{"AttributeName": "id", "KeyType": "HASH"}],
-                BillingMode="PAY_PER_REQUEST",
-            ).wait_until_exists()
-            table = ddb.Table(DDB_TABLE)
-    return table
+    return None
 
 def save_message(msg: MessageIn, request: Request) -> MessageOut:
     now = datetime.now(timezone.utc).isoformat()

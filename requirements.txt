@@ -12,7 +12,7 @@ aioredis==2.0.1
 python-dotenv==1.0.1
 jinja2==3.1.4
 python-multipart==0.0.9
-boto3
-transformers>=4.41
-peft>=0.11
-accelerate>=0.33
+# boto3  # Commented out - using local JSONL storage instead of DynamoDB/S3
+# transformers>=4.41
+# peft>=0.11
+# accelerate>=0.33

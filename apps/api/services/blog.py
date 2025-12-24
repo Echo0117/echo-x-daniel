@@ -9,37 +9,16 @@ AWS_REGION = os.getenv("AWS_REGION") or "eu-north-1"
 DDB_TABLE_POSTS = os.getenv("DDB_TABLE_POSTS", "echo_x_daniel_posts")
 AUTO_CREATE = (os.getenv("AUTO_CREATE_TABLE", "0").strip() == "1")
 DDB_ENDPOINT_URL = os.getenv("DDB_ENDPOINT_URL")
-LOCAL_POSTS = os.getenv("LOCAL_POSTS", "/mnt/data/blog_posts.jsonl")
+LOCAL_POSTS = os.getenv("LOCAL_POSTS", "/data/blog_posts.jsonl")
 
-USE_DDB = True
-try:
-    import boto3
-except Exception:
-    USE_DDB = False
-    boto3 = None
+# DynamoDB disabled - using local JSONL storage
+USE_DDB = False
 
 def _ddb():
-    if not USE_DDB or boto3 is None:
-        return None
-    return boto3.resource("dynamodb", region_name=AWS_REGION, endpoint_url=DDB_ENDPOINT_URL)
+    return None
 
 def _posts_table():
-    res = _ddb()
-    if res is None:
-        return None
-    tab = res.Table(DDB_TABLE_POSTS)
-    if AUTO_CREATE:
-        try:
-            tab.load()
-        except Exception:
-            res.create_table(
-                TableName=DDB_TABLE_POSTS,
-                AttributeDefinitions=[{"AttributeName": "id", "AttributeType": "S"}],
-                KeySchema=[{"AttributeName": "id", "KeyType": "HASH"}],
-                BillingMode="PAY_PER_REQUEST",
-            ).wait_until_exists()
-            tab = res.Table(DDB_TABLE_POSTS)
-    return tab
+    return None
 
 # ------------ Models ------------
 class PostIn(BaseModel):

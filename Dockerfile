@@ -39,13 +39,13 @@ COPY --from=builder /install /usr/local
 # Copy app code last to leverage cached deps layer
 COPY apps ./apps
 
+# Make init script executable and readable by appuser
+RUN chmod 755 apps/api/init_data.sh && \
+    chown -R appuser:appuser apps/
+
 EXPOSE 8080
 USER appuser
 
 # Keep shell form to allow env var expansion for PORT/WORKERS
-CMD gunicorn \
-  -k uvicorn.workers.UvicornWorker \
-  --workers ${UVICORN_WORKERS} \
-  --bind 0.0.0.0:${PORT} \
-  app:app \
-  --chdir apps/api
+# First initialize data, then start gunicorn
+CMD sh apps/api/init_data.sh && cd apps/api && gunicorn -k uvicorn.workers.UvicornWorker --workers ${UVICORN_WORKERS} --bind 0.0.0.0:${PORT} app:app

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from routers import home, letters, poetry, surprises, playful, perseids, first_love, eighteen_days, three_weeks, messageboard, blog
+from routers import home, letters, poetry, surprises, playful, perseids, first_love, eighteen_days, three_weeks, messageboard, blog, christmas
 from pathlib import Path
 from starlette.middleware.sessions import SessionMiddleware
 from dotenv import load_dotenv
@@ -44,6 +44,7 @@ app.include_router(eighteen_days.router)
 app.include_router(three_weeks.router)
 app.include_router(messageboard.router)
 app.include_router(blog.router)
+app.include_router(christmas.router, tags=["christmas"])
 
 @app.get("/health/live")
 def live():

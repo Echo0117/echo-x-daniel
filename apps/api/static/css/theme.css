@@ -28,6 +28,8 @@ body{
 .btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;padding:12px 16px;border-radius:14px}
 .btn.primary{color:#0b0f1a;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .btn.ghost{color:var(--text);border:1px solid #ffffff35;background:#0d1433b3}
+.btn.christmas-btn{color:#fff;background:linear-gradient(135deg,#165a2f 0%,#1a4d2e 50%,#8b0000 100%);border:2px solid #d4af37;box-shadow:0 0 20px rgba(212,175,55,0.3);animation:christmasGlow 2s ease-in-out infinite}
+@keyframes christmasGlow{0%,100%{box-shadow:0 0 20px rgba(212,175,55,0.3)}50%{box-shadow:0 0 30px rgba(212,175,55,0.6)}}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
 .k{padding:12px 14px;border-radius:14px;background:#0c1332a3;border:1px solid #ffffff22}
 .k .n{font-weight:900}
@@ -77,3 +79,888 @@ body{
 .poem-page .md.serif{font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.9;color:#2c2a28}
 .poem-page .btns{display:flex;gap:10px;margin-top:18px}
 .poem-page .pbtn{padding:10px 14px;border-radius:12px;border:1px solid #d6d0c6;background:#fff7ec;color:#2c2a28;font-weight:700;text-decoration:none}
+
+/* ===== Christmas Treasure Hunt Styling ===== */
+.christmas-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Snowflakes Animation */
+.snowflakes {
+  position: fixed;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10%;
+  color: #fff;
+  font-size: 1.5em;
+  opacity: 0.8;
+  animation: fall linear infinite;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.snowflake:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 1s; }
+.snowflake:nth-child(3) { left: 30%; animation-duration: 12s; animation-delay: 2s; }
+.snowflake:nth-child(4) { left: 40%; animation-duration: 9s; animation-delay: 0.5s; }
+.snowflake:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 1.5s; }
+.snowflake:nth-child(6) { left: 60%; animation-duration: 10s; animation-delay: 0s; }
+.snowflake:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 2.5s; }
+.snowflake:nth-child(8) { left: 80%; animation-duration: 8s; animation-delay: 1s; }
+.snowflake:nth-child(9) { left: 90%; animation-duration: 11s; animation-delay: 0.5s; }
+.snowflake:nth-child(10) { left: 95%; animation-duration: 9s; animation-delay: 2s; }
+
+@keyframes fall {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    top: 110%;
+    transform: translateX(50px) rotate(360deg);
+  }
+}
+
+/* Welcome Screen */
+.christmas-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.christmas-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px 40px;
+  background: linear-gradient(135deg, #1a4d2e 0%, #0f2818 100%);
+  border-radius: 30px;
+  border: 3px solid #d4af37;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5),
+              0 0 40px rgba(212,175,55,0.3),
+              inset 0 0 60px rgba(255,255,255,0.05);
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.christmas-card::before {
+  content: '✨';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 2em;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.christmas-card::after {
+  content: '✨';
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-size: 2em;
+  animation: sparkle 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.christmas-tree {
+  font-size: 5em;
+  margin-bottom: 20px;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.christmas-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #d4af37;
+  margin: 0 0 10px 0;
+  text-shadow: 0 2px 10px rgba(212,175,55,0.5);
+}
+
+.christmas-subtitle {
+  font-size: 1.5em;
+  color: #ffd700;
+  margin: 0 0 30px 0;
+}
+
+.christmas-message {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px 0;
+  border: 1px solid rgba(212,175,55,0.3);
+}
+
+.christmas-message p {
+  margin: 12px 0;
+  color: #e8f5e9;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.btn-christmas {
+  background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+  color: white;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(196,30,58,0.4);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-christmas:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(196,30,58,0.6);
+}
+
+/* Treasure Hunt Screen */
+.treasure-hunt {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-bar {
+  background: rgba(255,255,255,0.1);
+  border-radius: 50px;
+  height: 50px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(212,175,55,0.3);
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #d4af37 0%, #ffd700 100%);
+  height: 100%;
+  width: 25%;
+  transition: width 0.5s ease;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(212,175,55,0.5);
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Riddle Cards */
+.riddle-card {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 100%);
+  border-radius: 25px;
+  padding: 40px;
+  margin-bottom: 30px;
+  border: 2px solid rgba(142,197,255,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: slideIn 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.riddle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6fb5, #8ec5ff);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.riddle-card.solved {
+  border-color: rgba(212,175,55,0.6);
+  box-shadow: 0 20px 60px rgba(212,175,55,0.3);
+}
+
+.riddle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.riddle-number {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #8ec5ff;
+}
+
+.riddle-emoji {
+  font-size: 2em;
+}
+
+.riddle-content {
+  color: #eaf0ff;
+}
+
+.riddle-text {
+  margin-bottom: 30px;
+}
+
+.riddle-cn {
+  font-size: 1.3em;
+  line-height: 1.8;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  font-weight: 500;
+  white-space: pre-line;
+}
+
+.riddle-en {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 0;
+  color: #b7c2ff;
+  font-style: italic;
+  white-space: pre-line;
+}
+
+.hint-section {
+  margin: 25px 0;
+}
+
+.btn-hint {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ffd700;
+  padding: 12px 24px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-hint:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.05);
+}
+
+.hint-text {
+  margin-top: 15px;
+  padding: 20px;
+  background: rgba(255,215,0,0.1);
+  border-left: 4px solid #ffd700;
+  border-radius: 10px;
+  color: #ffe57f;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.answer-section {
+  margin-top: 30px;
+}
+
+.answer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-reveal {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  color: white;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(76,175,80,0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-reveal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(76,175,80,0.5);
+}
+
+.btn-skip {
+  background: rgba(255,255,255,0.05);
+  color: #b7c2ff;
+  padding: 12px 30px;
+  border: 2px solid rgba(142,197,255,0.3);
+  border-radius: 50px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-skip:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(142,197,255,0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142,197,255,0.3);
+}
+
+.location-reveal {
+  margin-top: 25px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(76,175,80,0.2) 0%, rgba(46,125,50,0.2) 100%);
+  border-radius: 20px;
+  border: 2px solid rgba(76,175,80,0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+.location-text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.location-text p {
+  margin: 10px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #4caf50;
+}
+
+.location-en {
+  font-size: 1.2em !important;
+  color: #81c784 !important;
+  font-style: italic;
+}
+
+.btn-next, .btn-final {
+  background: linear-gradient(135deg, #ff6fb5 0%, #8ec5ff 100%);
+  color: white;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255,111,181,0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-next:hover, .btn-final:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(255,111,181,0.5);
+}
+
+/* Final Message Screen */
+.final-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.final-card {
+  max-width: 700px;
+  width: 100%;
+  padding: 60px 50px;
+  background: linear-gradient(135deg, #4a0e4e 0%, #2d0a33 100%);
+  border-radius: 30px;
+  border: 3px solid #ff6fb5;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5),
+              0 0 60px rgba(255,111,181,0.4),
+              inset 0 0 60px rgba(255,255,255,0.05);
+  text-align: center;
+  position: relative;
+}
+
+.celebration {
+  font-size: 4em;
+  margin-bottom: 20px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.final-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  color: #ffd700;
+  margin: 0 0 30px 0;
+  text-shadow: 0 2px 15px rgba(255,215,0,0.5);
+}
+
+.final-content {
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 30px 0;
+  border: 1px solid rgba(255,111,181,0.3);
+}
+
+.love-message {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #ffe6f0;
+  margin: 15px 0;
+}
+
+.love-message.signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5em;
+  color: #ff6fb5;
+  margin-top: 30px;
+}
+
+.hearts {
+  font-size: 3em;
+  margin: 30px 0;
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.btn-restart {
+  background: linear-gradient(135deg, #8ec5ff 0%, #4a9eff 100%);
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(142,197,255,0.3);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-restart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(142,197,255,0.5);
+}
+
+/* Floating Hearts Animation */
+.floating-heart {
+  position: absolute;
+  bottom: 0;
+  font-size: 2em;
+  pointer-events: none;
+  animation: floatUp linear;
+}
+
+@keyframes floatUp {
+  0% {
+    bottom: 0;
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+    transform: translateX(30px) rotate(180deg);
+  }
+}
+
+/* Secret Number Reveal */
+.secret-number-reveal {
+  margin-top: 25px;
+  padding: 25px;
+  background: rgba(255,215,0,0.15);
+  border-radius: 15px;
+  border: 2px solid #ffd700;
+  text-align: center;
+}
+
+.number-label {
+  font-size: 1em;
+  color: #ffd700;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.secret-number {
+  font-size: 3em;
+  font-weight: 900;
+  color: #ffd700;
+  margin: 10px 0;
+  text-shadow: 0 0 20px rgba(255,215,0,0.5);
+  animation: numberPulse 2s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.number-hint-text {
+  font-size: 0.95em;
+  color: #ffe57f;
+  margin: 10px 0 0 0;
+}
+
+/* Password Screen */
+.password-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.password-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px 40px;
+  background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+  border-radius: 30px;
+  border: 3px solid #ff6fb5;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5),
+              0 0 60px rgba(255,111,181,0.4),
+              inset 0 0 60px rgba(255,255,255,0.05);
+  text-align: center;
+  position: relative;
+}
+
+.envelope-icon {
+  font-size: 5em;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.password-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  color: #ff6fb5;
+  margin: 0 0 25px 0;
+  text-shadow: 0 2px 15px rgba(255,111,181,0.5);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.password-subtitle {
+  font-size: 1.15em;
+  color: #ffd1e0;
+  margin: 0 0 30px 0;
+  line-height: 1.7;
+  white-space: pre-line;
+  font-style: italic;
+}
+
+.password-message {
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px 0;
+  border: 1px solid rgba(255,111,181,0.3);
+}
+
+.password-message p {
+  margin: 12px 0;
+  color: #ffe6f0;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.password-input-section {
+  margin-top: 30px;
+}
+
+.password-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  font-size: 2em;
+  text-align: center;
+  border: 3px solid #ff6fb5;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 30px rgba(255,215,0,0.5);
+}
+
+.password-input::placeholder {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.5em;
+  letter-spacing: normal;
+}
+
+.btn-unlock {
+  background: linear-gradient(135deg, #ff6fb5 0%, #8ec5ff 100%);
+  color: white;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255,111,181,0.4);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn-unlock:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(255,111,181,0.6);
+}
+
+.password-error {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255,82,82,0.2);
+  border: 2px solid #ff5252;
+  border-radius: 10px;
+  color: #ffb3b3;
+  font-size: 1.1em;
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Love Letter Card */
+.letter-card {
+  max-width: 900px;
+  width: 100%;
+  padding: 60px 50px;
+  background: linear-gradient(135deg, #fff9f0 0%, #fff5e8 100%);
+  border-radius: 20px;
+  border: 3px solid #d4af37;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3),
+              0 0 60px rgba(212,175,55,0.2);
+  position: relative;
+}
+
+.letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(212,175,55,0.3);
+}
+
+.letter-stamp {
+  font-size: 3em;
+}
+
+.letter-date {
+  font-size: 0.95em;
+  color: #8b7355;
+  font-style: italic;
+}
+
+.letter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8em;
+  color: #4a0e4e;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.letter-subtitle {
+  font-size: 1.5em;
+  color: #8b4789;
+  margin: 0 0 40px 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.letter-content {
+  color: #3d3d3d;
+  line-height: 1.9;
+}
+
+.letter-paragraph {
+  font-size: 1.15em;
+  margin: 20px 0;
+  text-indent: 2em;
+}
+
+.letter-paragraph:first-child {
+  text-indent: 0;
+  font-weight: 600;
+}
+
+.letter-english {
+  color: #5a5a5a;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+.letter-signature {
+  text-align: right;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5em;
+  color: #ff6fb5;
+  margin: 40px 0 30px 0;
+  font-weight: 600;
+}
+
+.letter-divider {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 40px 0;
+  color: #d4af37;
+}
+
+/* Markdown content styling */
+.letter-content-md {
+  color: #3d3d3d;
+  line-height: 1.9;
+}
+
+.letter-content-md h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8em;
+  color: #4a0e4e;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.letter-content-md h2 {
+  font-size: 1.5em;
+  color: #8b4789;
+  margin: 0 0 40px 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.letter-content-md p {
+  font-size: 1.15em;
+  margin: 20px 0;
+  text-indent: 2em;
+}
+
+.letter-content-md hr {
+  border: none;
+  border-top: 2px solid rgba(212,175,55,0.3);
+  margin: 40px 0;
+}
+
+.letter-content-md strong {
+  color: #4a0e4e;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .christmas-card, .final-card, .password-card {
+    padding: 40px 25px;
+  }
+
+  .christmas-title, .password-title {
+    font-size: 2em;
+  }
+
+  .riddle-card {
+    padding: 25px 20px;
+  }
+
+  .riddle-cn {
+    font-size: 1.1em;
+  }
+
+  .riddle-en {
+    font-size: 1em;
+  }
+
+  .final-title, .letter-title {
+    font-size: 2em;
+  }
+
+  .love-message, .letter-paragraph {
+    font-size: 1em;
+  }
+
+  .letter-card {
+    padding: 40px 25px;
+  }
+
+  .secret-number {
+    font-size: 2.5em;
+  }
+
+  .password-input {
+    font-size: 1.5em;
+    max-width: 100%;
+  }
+
+  .btn-unlock {
+    max-width: 100%;
+  }
+}

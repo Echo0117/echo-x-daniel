@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="christmas-container">
+    <!-- Snowflakes animation -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div class="christmas-welcome" id="welcomeScreen">
+        <div class="christmas-card">
+            <div class="christmas-tree">🎄</div>
+            <h1 class="christmas-title">Merry Christmas, My Love!</h1>
+            <p class="christmas-subtitle">亲爱的宝贝，圣诞快乐！</p>
+            <div class="christmas-message">
+                <p>今年的圣诞节，我为你准备了一个特别的惊喜</p>
+                <p>This Christmas, I've prepared a special surprise for you</p>
+                <p style="margin-top:20px;">跟随这些谜语，找到隐藏在我们家里的秘密</p>
+                <p>Follow these riddles to find secrets hidden in our home</p>
+            </div>
+            <button class="btn-christmas" onclick="startHunt()">
+                开始寻宝之旅 ✨
+                <br>
+                <span style="font-size: 0.9em;">Start the Treasure Hunt</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Treasure Hunt Screen -->
+    <div class="treasure-hunt" id="treasureHunt" style="display: none;">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-text" id="progressText">线索 1 / {{ total_riddles }}</div>
+        </div>
+
+        <div class="riddles-container">
+            {% for riddle in riddles %}
+            <div class="riddle-card" id="riddle-{{ riddle.id }}" {% if riddle.id != 1 %}style="display: none;"{% endif %}>
+                <div class="riddle-header">
+                    <span class="riddle-number">第 {{ riddle.id }} 个线索</span>
+                    <span class="riddle-emoji">🎁</span>
+                </div>
+
+                <div class="riddle-content">
+                    <div class="riddle-text">
+                        <p class="riddle-cn">{{ riddle.riddle_cn }}</p>
+                        <p class="riddle-en">{{ riddle.riddle_en }}</p>
+                    </div>
+
+                    <div class="hint-section">
+                        <button class="btn-hint" onclick="toggleHint({{ riddle.id }})">
+                            💡 需要提示吗？
+                        </button>
+                        <div class="hint-text" id="hint-{{ riddle.id }}" style="display: none;">
+                            {{ riddle.hint }}
+                        </div>
+                    </div>
+
+                    <div class="answer-section">
+                        <div class="answer-buttons">
+                            <button class="btn-reveal" onclick="revealLocation({{ riddle.id }})">
+                                ✓ 找到了！揭晓答案
+                                <br>
+                                <span style="font-size: 0.85em;">Found it! Reveal Answer</span>
+                            </button>
+                            {% if riddle.id < total_riddles %}
+                            <button class="btn-skip" onclick="skipRiddle({{ riddle.id }})">
+                                没找到，猜下一个谜语 →
+                                <br>
+                                <span style="font-size: 0.85em;">Can't find it, skip to next →</span>
+                            </button>
+                            {% else %}
+                            <button class="btn-skip" onclick="showPasswordScreen()">
+                                没找到，直接猜谜语 →
+                                <br>
+                                <span style="font-size: 0.85em;">Can't find it, go to riddle →</span>
+                            </button>
+                            {% endif %}
+                        </div>
+                        <div class="location-reveal" id="location-{{ riddle.id }}" style="display: none;">
+                            <div class="location-text">
+                                <p>📍 {{ riddle.location }}</p>
+                                <p class="location-en">{{ riddle.location_en }}</p>
+                            </div>
+                            {% if riddle.id < total_riddles %}
+                            <button class="btn-next" onclick="nextRiddle({{ riddle.id }})">
+                                下一个线索 →
+                            </button>
+                            {% else %}
+                            <button class="btn-final" onclick="showPasswordScreen()">
+                                打开情书 💌
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Password Screen -->
+    <div class="password-screen" id="passwordScreen" style="display: none;">
+        <div class="password-card">
+            <div class="envelope-icon">💌</div>
+            <h2 class="password-title">{{ final_riddle_cn }}</h2>
+            <p class="password-subtitle">{{ final_riddle_en }}</p>
+            <div class="password-input-section">
+                <input
+                    type="text"
+                    id="passwordInput"
+                    class="password-input"
+                    placeholder="Your answer..."
+                    maxlength="20"
+                />
+                <button class="btn-unlock" onclick="checkPassword()">
+                    🔓 Unlock
+                </button>
+                <div id="passwordError" class="password-error" style="display: none;">
+                    ❌
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Love Letter Screen -->
+    <div class="final-message" id="finalMessage" style="display: none;">
+        <div class="letter-card">
+            <div class="letter-content-md">
+                {{ letter_html|safe }}
+            </div>
+
+            <div class="hearts">💝 💖 💕</div>
+
+            <button class="btn-restart" onclick="restartHunt()">
+                重新开始 🔄
+                <br>
+                <span style="font-size: 0.85em;">Start Over</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentRiddle = 1;
+const totalRiddles = {{ total_riddles }};
+const correctPassword = "{{ password }}".toLowerCase();
+
+function startHunt() {
+    document.getElementById('welcomeScreen').style.display = 'none';
+    document.getElementById('treasureHunt').style.display = 'block';
+    updateProgress();
+}
+
+function toggleHint(riddleId) {
+    const hint = document.getElementById(`hint-${riddleId}`);
+    if (hint.style.display === 'none') {
+        hint.style.display = 'block';
+    } else {
+        hint.style.display = 'none';
+    }
+}
+
+function revealLocation(riddleId) {
+    const location = document.getElementById(`location-${riddleId}`);
+    location.style.display = 'block';
+
+    // Add celebration animation
+    const riddleCard = document.getElementById(`riddle-${riddleId}`);
+    riddleCard.classList.add('solved');
+}
+
+function nextRiddle(currentId) {
+    // Hide current riddle
+    document.getElementById(`riddle-${currentId}`).style.display = 'none';
+
+    // Show next riddle
+    const nextId = currentId + 1;
+    document.getElementById(`riddle-${nextId}`).style.display = 'block';
+
+    currentRiddle = nextId;
+    updateProgress();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function skipRiddle(currentId) {
+    // Same as nextRiddle, but without revealing location
+    nextRiddle(currentId);
+}
+
+function updateProgress() {
+    const progress = (currentRiddle / totalRiddles) * 100;
+    document.getElementById('progressFill').style.width = progress + '%';
+    document.getElementById('progressText').textContent = `线索 ${currentRiddle} / ${totalRiddles}`;
+}
+
+function showPasswordScreen() {
+    document.getElementById('treasureHunt').style.display = 'none';
+    document.getElementById('passwordScreen').style.display = 'flex';
+
+    // Focus on input
+    setTimeout(() => {
+        document.getElementById('passwordInput').focus();
+    }, 500);
+}
+
+function checkPassword() {
+    const input = document.getElementById('passwordInput');
+    const error = document.getElementById('passwordError');
+    const password = input.value.trim().toLowerCase();
+
+    if (password === correctPassword) {
+        // Correct password
+        error.style.display = 'none';
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('finalMessage').style.display = 'flex';
+        celebrateCompletion();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        // Wrong password
+        error.style.display = 'block';
+        input.value = '';
+        input.classList.add('shake');
+        setTimeout(() => {
+            input.classList.remove('shake');
+        }, 500);
+    }
+}
+
+// Allow Enter key to submit password
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('passwordInput');
+    if (passwordInput) {
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    }
+});
+
+function restartHunt() {
+    currentRiddle = 1;
+
+    // Hide all screens
+    document.getElementById('finalMessage').style.display = 'none';
+    document.getElementById('treasureHunt').style.display = 'none';
+    document.getElementById('passwordScreen').style.display = 'none';
+    document.getElementById('welcomeScreen').style.display = 'flex';
+
+    // Reset password input
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordError').style.display = 'none';
+
+    // Reset all riddles
+    for (let i = 1; i <= totalRiddles; i++) {
+        const riddle = document.getElementById(`riddle-${i}`);
+        riddle.style.display = i === 1 ? 'block' : 'none';
+        riddle.classList.remove('solved');
+
+        document.getElementById(`hint-${i}`).style.display = 'none';
+        document.getElementById(`location-${i}`).style.display = 'none';
+    }
+
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function celebrateCompletion() {
+    // Create floating hearts animation
+    const finalMessage = document.getElementById('finalMessage');
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = ['❤️', '💕', '💖', '💝'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            finalMessage.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 5000);
+        }, i * 100);
+    }
+}
+</script>
+{% endblock %}

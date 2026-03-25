@@ -1,5 +1,6 @@
-# ---------- Runtime stage ----------
 # syntax=docker/dockerfile:1.6
+
+# ---------- Runtime stage ----------
 
 # ---------- Builder stage (cacheable deps) ----------
 FROM python:3.11-slim AS builder
@@ -14,7 +15,7 @@ WORKDIR /deps
 # Only copy the lock/requirements to maximize cache hits
 COPY requirements.txt ./
 # Use BuildKit cache for pip; install CPU-only PyTorch first to avoid pulling huge CUDA wheels
-RUN --mount=type=cache,target=/root/.cache/pip \
+RUN --mount=type=cache,id=pip-cache-root,target=/root/.cache/pip \
     python -m pip install --upgrade pip && \
     pip install --no-cache-dir --prefix=/install --index-url https://download.pytorch.org/whl/cpu "torch==2.4.*" && \
     pip install --no-cache-dir --prefix=/install -r requirements.txt
@@ -30,7 +31,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN apt-get update && apt-get install -y --no-install-recommends \
       curl ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd -m -u 10001 appuser
+    && useradd -m -u 10001 appuser \
+    && mkdir -p /data \
+    && chown appuser:appuser /data
 
 WORKDIR /app
 # Bring in site-packages from builder without dev toolchain

@@ -5,9 +5,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 WORKDIR /opt/app
 # copy only requirements to maximize cache hits
 COPY apps/api/requirements.txt requirements.txt
-# use BuildKit cache for pip; install CPU-only PyTorch first to avoid large CUDA wheels
-RUN --mount=type=cache,id=pip-cache-api,target=/root/.cache/pip \
-	pip install --upgrade pip && \
+# install CPU-only PyTorch first to avoid large CUDA wheels
+RUN pip install --upgrade pip && \
 	pip install --no-cache-dir --prefix=/install --index-url https://download.pytorch.org/whl/cpu "torch==2.4.*" && \
 	pip install --no-cache-dir --prefix=/install -r requirements.txt
 

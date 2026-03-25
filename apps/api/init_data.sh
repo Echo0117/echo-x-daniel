@@ -2,7 +2,7 @@
 # Initialize data directory with seed data if empty
 
 DATA_DIR="/data"
-SEED_DIR="/app/apps/api/data"
+SEED_DIR="/app/data"
 
 # Copy seed data if /data is empty
 if [ ! -f "$DATA_DIR/messageboard.jsonl" ] && [ -f "$SEED_DIR/messageboard.jsonl" ]; then

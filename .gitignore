@@ -30,6 +30,5 @@ build/
 *.log
 
 # Application specific
-apps/api/letters/
 apps/api/models/
-apps/api/poems/
+

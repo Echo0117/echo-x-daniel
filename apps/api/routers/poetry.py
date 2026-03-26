@@ -15,8 +15,9 @@ APP_ROOT = Path(__file__).resolve().parents[1]
 ROOT = Path(os.getenv("APP_ROOT", str(APP_ROOT)))
 POEMS_ROOT = ROOT / "poems"
 MINE_DIR   = POEMS_ROOT / "mine"
+DANIEL_DIR = POEMS_ROOT / "daniel"
 FOUND_DIR  = POEMS_ROOT / "found"
-for d in (MINE_DIR, FOUND_DIR): d.mkdir(parents=True, exist_ok=True)
+for d in (MINE_DIR, DANIEL_DIR, FOUND_DIR): d.mkdir(parents=True, exist_ok=True)
 
 PATTERNS = ("*.md","*.markdown","*.MD","*.MARKDOWN")
 
@@ -66,15 +67,20 @@ def _list(folder: Path, kind: str) -> List[Dict]:
     items.sort(key=lambda x:(x["date"] or datetime.min.date(), x["slug"]), reverse=True)
     return items
 
+def _folder(kind: str) -> Path:
+    if kind == "mine": return MINE_DIR
+    if kind == "daniel": return DANIEL_DIR
+    return FOUND_DIR
+
 @router.get("/", response_class=HTMLResponse)
 def poetry_index(request: Request, kind: str = "mine"):
-    folder = MINE_DIR if kind == "mine" else FOUND_DIR
+    folder = _folder(kind)
     items = _list(folder, kind)
     return templates.TemplateResponse("poetry_list.html", {"request": request, "kind": kind, "items": items})
 
 @router.get("/open/{kind}/{slug}", response_class=HTMLResponse)
 def poetry_open(request: Request, kind: str, slug: str):
-    folder = MINE_DIR if kind == "mine" else FOUND_DIR
+    folder = _folder(kind)
     items = _list(folder, kind)
     it = next((x for x in items if x["slug"]==slug), None)
     if not it: return HTMLResponse("Not found", status_code=404)
@@ -92,7 +98,7 @@ def poetry_open(request: Request, kind: str, slug: str):
         "request": request,
         "kind": kind,
         "title": it["title"],
-        "author": "Echo" if kind=="mine" else (it["author"] or "—"),
+        "author": "Echo" if kind=="mine" else ("Daniel" if kind=="daniel" else (it["author"] or "—")),
         "date": it["date"].strftime("%Y-%m-%d") if it["date"] else "—",
         "body_html": "".join(paras)
     })

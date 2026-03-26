@@ -25,4 +25,4 @@ RUN chmod 755 /app/init_data.sh && \
 EXPOSE 8080
 USER appuser
 
-CMD sh /app/init_data.sh && gunicorn -k uvicorn.workers.UvicornWorker --workers ${UVICORN_WORKERS} --bind 0.0.0.0:${PORT} app:app
+CMD ["/bin/sh", "-c", "sh /app/init_data.sh && gunicorn -k uvicorn.workers.UvicornWorker --workers $UVICORN_WORKERS --bind 0.0.0.0:$PORT app:app"]

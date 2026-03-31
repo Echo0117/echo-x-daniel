@@ -42,7 +42,7 @@ def main():
     if blog_jsonl.exists():
         jsonl_to_csv(
             blog_jsonl,
-            backup_dir / "blog_posts.csv",
+            backup_dir / "blog.csv",
             ["id", "author", "body", "cover_url", "created_at", "slug", "tags", "title", "updated_at"]
         )
 

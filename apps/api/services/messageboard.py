@@ -1,15 +1,19 @@
 # services/messageboard.py
-import os, json, uuid
+import os, uuid
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Optional, List
 from fastapi import HTTPException, Request
 from pydantic import BaseModel, Field
+from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, write_csv_rows
 
 # ---------------- 配置 ----------------
 AWS_REGION = os.getenv("AWS_REGION") or "eu-north-1"
 DDB_TABLE = os.getenv("DDB_TABLE", "echo_x_daniel_messages")
 AUTO_CREATE = os.getenv("AUTO_CREATE_TABLE", "0") == "1"
-LOCAL_STORE = os.getenv("LOCAL_STORE", "/data/messageboard.jsonl")
+LOCAL_STORE = Path(os.getenv("MESSAGEBOARD_CSV") or default_data_path("messageboard.csv"))
+LEGACY_LOCAL_STORE = Path(os.getenv("LOCAL_STORE") or default_data_path("messageboard.jsonl"))
+MESSAGE_FIELDS = ["id", "author", "content", "created_at", "title"]
 
 AUTH_USERNAME = os.getenv("AUTH_USERNAME")
 AUTH_PASSWORD = os.getenv("AUTH_PASSWORD")
@@ -46,7 +50,7 @@ def check_login(username: str, password: str) -> bool:
     )
 
 # ---------------- 存储 ----------------
-# DynamoDB disabled - using local JSONL storage
+# DynamoDB disabled - using local CSV storage
 USE_DDB = False
 
 def _ddb_table():
@@ -65,9 +69,8 @@ def save_message(msg: MessageIn, request: Request) -> MessageOut:
     if table:
         table.put_item(Item=item)
     else:
-        os.makedirs(os.path.dirname(LOCAL_STORE), exist_ok=True)
-        with open(LOCAL_STORE, "a", encoding="utf-8") as f:
-            f.write(json.dumps(item, ensure_ascii=False) + "\n")
+        _bootstrap_csv_from_legacy()
+        append_csv_row(LOCAL_STORE, MESSAGE_FIELDS, item)
     return MessageOut(**item)
 
 def list_messages(limit: int = 20) -> List[MessageOut]:
@@ -76,8 +79,45 @@ def list_messages(limit: int = 20) -> List[MessageOut]:
     if table:
         scan = table.scan(Limit=1000)
         items = scan.get("Items", [])
-    elif os.path.exists(LOCAL_STORE):
-        with open(LOCAL_STORE, "r", encoding="utf-8") as f:
-            items = [json.loads(x) for x in f.readlines()]
+    else:
+        items = _load_local_messages()
     items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-    return [MessageOut(**{k: it.get(k, "") for k in ["id", "created_at", "author", "title", "content"]}) for it in items[:limit]]
+    return [MessageOut(**_normalize_message(it)) for it in items[:limit]]
+
+
+def _load_local_messages() -> List[dict]:
+    items = read_csv_rows(LOCAL_STORE)
+    if items:
+        return items
+
+    legacy_items = read_jsonl_rows(LEGACY_LOCAL_STORE)
+    if legacy_items:
+        write_csv_rows(LOCAL_STORE, MESSAGE_FIELDS, legacy_items)
+    return legacy_items
+
+
+def _bootstrap_csv_from_legacy() -> None:
+    if LOCAL_STORE.exists() and LOCAL_STORE.stat().st_size > 0:
+        return
+
+    legacy_items = read_jsonl_rows(LEGACY_LOCAL_STORE)
+    if legacy_items:
+        write_csv_rows(LOCAL_STORE, MESSAGE_FIELDS, legacy_items)
+
+
+def _normalize_message(item: dict) -> dict:
+    return {
+        "id": str(item.get("id") or ""),
+        "created_at": str(item.get("created_at") or ""),
+        "author": str(item.get("author") or ""),
+        "title": _optional_text(item.get("title")),
+        "content": str(item.get("content") or ""),
+    }
+
+
+def _optional_text(value: object) -> Optional[str]:
+    if value is None:
+        return None
+
+    text = str(value).strip()
+    return text or None

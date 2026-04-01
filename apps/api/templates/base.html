@@ -6,8 +6,9 @@
   <title>{{ title if title else 'Echo × Daniel' }}</title>
   <link rel="icon" href="/static/favicon.ico">
   <!-- Fonts for elegant letters/poems -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Serif+SC:wght@400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Serif+SC:wght@400;600&family=Dancing+Script:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/theme.css">
+  {% block head %}{% endblock %}
 </head>
 <body>
   <div class="nav">

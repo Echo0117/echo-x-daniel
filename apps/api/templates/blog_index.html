@@ -18,8 +18,8 @@
           <div class="text-xs text-gray-500">{{ p.created_at }}</div>
           <div class="mt-1 text-xl font-semibold text-gray-800">{{ p.title }}</div>
           {% if p.tags %}<div class="text-sm text-gray-500 mt-1"># {{ p.tags }}</div>{% endif %}
-          {% if p.cover_url %}<img src="{{ p.cover_url }}" class="mt-3 rounded-xl border" alt="cover">{% endif %}
-          <p class="mt-3 text-gray-700 line-clamp-3">{{ p.body }}</p>
+          {% if p.cover_url %}<img src="{{ p.cover_url }}" class="mt-3 rounded-xl border w-full" alt="cover">{% endif %}
+          <p class="mt-3 text-gray-700 line-clamp-3">{{ p.body | replace('#', '') | replace('**', '') | replace('*', '') | replace('---', '') | replace('→', '→') | truncate(150) }}</p>
         </a>
       {% else %}
         <div class="text-sm text-gray-500">No posts yet. Write one ✨</div>

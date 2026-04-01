@@ -1,4 +1,5 @@
 # routers/blog.py
+import html
 from pathlib import Path
 from fastapi import APIRouter, Request, Depends, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
@@ -28,7 +29,15 @@ async def blog_view(request: Request, slug: str):
     post = get_post_by_slug(slug)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
-    return templates.TemplateResponse("blog_view.html", {"request": request, "post": post})
+
+    try:
+        import markdown as md
+        body_html = md.markdown(post.body, extensions=["extra"])  # type: ignore
+    except Exception:
+        esc = html.escape(post.body).replace("\n\n", "</p><p>").replace("\n", "<br/>")
+        body_html = f"<p>{esc}</p>"
+
+    return templates.TemplateResponse("blog_view.html", {"request": request, "post": post, "body_html": body_html})
 
 @router.post("/api/blog", response_model=PostOut, dependencies=[Depends(require_auth)])
 async def blog_create(request: Request, data: PostIn):

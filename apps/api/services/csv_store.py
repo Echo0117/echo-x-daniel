@@ -1,3 +1,4 @@
+import os
 import csv
 import json
 from pathlib import Path
@@ -5,6 +6,9 @@ from typing import Any, Mapping, Sequence
 
 
 def default_data_path(filename: str) -> Path:
+    railway_volume = os.getenv("RAILWAY_VOLUME_MOUNT_PATH")
+    if railway_volume:
+        return Path(railway_volume) / filename
     return Path(__file__).resolve().parents[1] / "data" / filename
 
 

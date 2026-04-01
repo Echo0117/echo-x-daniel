@@ -16,11 +16,11 @@ RUN pip install --upgrade pip && \
 	find /install -type f -name '*.pyc' -delete
 
 FROM python:3.11-slim
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/* && useradd -m appuser && mkdir -p /data && chown appuser:appuser /data
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/* && useradd -m appuser && mkdir -p /data /seed-data && chown appuser:appuser /data /seed-data
 WORKDIR /app
 COPY --from=builder /install /usr/local
 COPY apps/api /app
-RUN chown -R appuser:appuser /app
+RUN cp -R /app/data/. /seed-data/ && chown -R appuser:appuser /app /seed-data
 ENV PORT=8080
 EXPOSE 8080
 USER appuser

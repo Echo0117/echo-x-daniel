@@ -15,12 +15,13 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     rm -rf /root/.cache
 
 RUN useradd -m -u 10001 appuser && \
-    mkdir -p /data && \
-    chown appuser:appuser /data
+    mkdir -p /data /seed-data && \
+    chown appuser:appuser /data /seed-data
 
 COPY apps/api /app
-RUN chmod 755 /app/init_data.sh && \
-    chown -R appuser:appuser /app
+RUN cp -R /app/data/. /seed-data/ && \
+    chmod 755 /app/init_data.sh && \
+    chown -R appuser:appuser /app /seed-data
 
 EXPOSE 8080
 USER appuser

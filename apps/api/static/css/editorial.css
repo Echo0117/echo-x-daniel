@@ -1,0 +1,382 @@
+.journal-shell{
+  display:grid;
+  gap:20px;
+}
+
+.journal-grid{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.journal-card{
+  display:grid;
+  gap:14px;
+  color:var(--text);
+  text-decoration:none;
+}
+
+.journal-card:hover .journal-title{
+  color:var(--text-strong);
+}
+
+.journal-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+  color:var(--text-dim);
+  font-size:13px;
+}
+
+.journal-title{
+  margin:0;
+  color:var(--text);
+  font-family:var(--font-display);
+  font-size:clamp(24px, 3vw, 34px);
+  line-height:1.1;
+}
+
+.journal-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.journal-tag,
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--text-muted);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.04em;
+}
+
+.journal-cover{
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.journal-cover-spaced{
+  margin-top:24px;
+}
+
+.journal-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.journal-excerpt{
+  margin:0;
+  color:var(--text-muted);
+  line-height:1.8;
+}
+
+.journal-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.journal-article{
+  padding:clamp(22px, 4vw, 38px);
+}
+
+.journal-article .prose{
+  margin-top:24px;
+}
+
+.meta-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--text-muted);
+  font-size:12px;
+  font-weight:700;
+}
+
+.note-grid{
+  display:grid;
+  gap:16px;
+}
+
+.note-card{
+  display:grid;
+  gap:14px;
+}
+
+.note-card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+}
+
+.note-author{
+  color:var(--text-strong);
+  font-weight:800;
+}
+
+.note-title{
+  margin-top:4px;
+  color:var(--text-dim);
+  font-size:14px;
+}
+
+.note-copy{
+  margin:0;
+  white-space:pre-wrap;
+  color:var(--text);
+  line-height:1.8;
+}
+
+.auth-card{
+  max-width:640px;
+  margin:0 auto;
+}
+
+.auth-card .page-title{
+  font-size:clamp(30px, 5vw, 44px);
+}
+
+.page-panel{
+  display:grid;
+  gap:20px;
+}
+
+.surface-paper .page-title,
+.surface-paper .journal-title,
+.surface-paper .title,
+.surface-paper .ltitle{
+  color:var(--ink);
+}
+
+.surface-paper .page-subtitle,
+.surface-paper .journal-excerpt,
+.surface-paper .prose,
+.surface-paper .small,
+.surface-paper .helper-text{
+  color:#5f5551;
+}
+
+.letter-wrap{
+  max-width:900px;
+  margin:28px auto;
+  padding:0 14px;
+}
+
+.paper-airmail{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  padding:56px 48px 46px 88px;
+  color:#2c2a28;
+  background:repeating-linear-gradient(to bottom, #fbfaf7 0 28px, #e8e4dc 29px, #fbfaf7 56px);
+  border:12px solid #e3d4a5;
+  box-shadow:0 24px 68px rgba(0,0,0,0.35);
+}
+
+.paper-airmail::before{
+  content:"";
+  position:absolute;
+  left:64px;
+  top:32px;
+  bottom:32px;
+  width:2px;
+  background:#c9a068;
+  border-radius:2px;
+}
+
+.ltitle{
+  margin:0 0 8px;
+  color:#1d1b19;
+  font-family:var(--font-display);
+  font-size:36px;
+  font-weight:700;
+}
+
+.ldate,
+.lmeta{
+  margin:0 0 18px;
+  color:#6b6a68;
+  font-size:14px;
+}
+
+.letterhead{
+  margin-bottom:6px;
+  color:#9b7d6b;
+  font-family:var(--font-script);
+  font-size:24px;
+}
+
+.pbtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid #d6d0c6;
+  background:#fff7ec;
+  color:#2c2a28;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.btnbar,
+.btns{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.content.serif,
+.md.serif{
+  color:#2c2a28;
+  font-family:"Noto Serif SC", serif;
+  font-size:18px;
+  line-height:1.9;
+}
+
+.env{
+  position:relative;
+  display:block;
+  min-height:180px;
+  overflow:hidden;
+  border-radius:20px;
+  padding:18px 18px 24px;
+  border:1px solid var(--line-soft);
+  background:linear-gradient(180deg, rgba(28, 38, 82, 0.95), rgba(15, 22, 53, 0.92));
+  color:var(--text);
+  text-decoration:none;
+  box-shadow:var(--shadow-soft);
+  transition:transform .18s ease, border-color .18s ease;
+}
+
+.env:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255, 203, 225, 0.26);
+}
+
+.env .flap{
+  position:absolute;
+  inset:0 0 auto;
+  height:84px;
+  background:linear-gradient(180deg, #25346f, #16214b);
+  clip-path:polygon(0 0, 100% 0, 50% 100%);
+  border-bottom:1px solid #2c3563;
+}
+
+.env .stamp{
+  position:absolute;
+  right:16px;
+  top:16px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #ffd1dc 0%, #ff7eb3 50%, #ff4d6d 100%);
+  border:2px solid rgba(255,255,255,0.25);
+  box-shadow:0 0 18px rgba(255,126,179,0.4);
+}
+
+.env .badge{
+  position:relative;
+  margin-top:58px;
+  color:var(--accent-soft);
+}
+
+.env .title{
+  position:relative;
+  margin-top:12px;
+  font-family:var(--font-display);
+  font-size:24px;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.env .date,
+.env .meta{
+  position:relative;
+  margin-top:10px;
+  color:#c6ceff;
+  font-size:12px;
+}
+
+.poem-page .paper{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  color:#2c2a28;
+  background:#fbfaf7;
+  box-shadow:0 24px 68px rgba(0,0,0,0.35);
+}
+
+.poem-page .paper .inner{
+  padding:56px 48px 46px 88px;
+}
+
+.poem-page .paper::before{
+  content:"";
+  position:absolute;
+  left:64px;
+  top:32px;
+  bottom:32px;
+  width:2px;
+  background:#c9a068;
+  opacity:.85;
+  border-radius:2px;
+}
+
+.poem-page .paper.mine{
+  border:12px solid #e3d4a5;
+  background:repeating-linear-gradient(to bottom, #fbfaf7 0 28px, #e8e4dc 29px, #fbfaf7 56px);
+}
+
+.poem-page .paper.found{
+  border:12px solid #cfe0ee;
+  background:repeating-linear-gradient(to bottom, #f9fcff 0 28px, #e7f1fa 29px, #f9fcff 56px);
+}
+
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+@media (max-width: 760px){
+  .journal-grid{
+    grid-template-columns:1fr;
+  }
+  .paper-airmail{
+    padding:42px 24px 34px 42px;
+    border-width:10px;
+  }
+  .paper-airmail::before,
+  .poem-page .paper::before{
+    left:24px;
+  }
+  .poem-page .paper .inner{
+    padding:42px 24px 34px 42px;
+  }
+  .ltitle{font-size:30px}
+  .note-card-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}

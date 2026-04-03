@@ -7,27 +7,39 @@
   <link rel="icon" href="/static/favicon.ico">
   <!-- Fonts for elegant letters/poems -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Serif+SC:wght@400;600&family=Dancing+Script:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/core.css">
+  <link rel="stylesheet" href="/static/css/editorial.css">
+  <link rel="stylesheet" href="/static/css/skins.css">
   {% block head %}{% endblock %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
+  {% set current_path = request.url.path if request else '' %}
+  <div class="site-bg" aria-hidden="true"></div>
+  <header class="site-header">
   <div class="nav">
     <a class="brand" href="/">
       <span class="heart">★</span>
-      <span>Daniel × Echo</span>
+      <span class="brand-copy">
+        <span class="brand-title">Daniel × Echo</span>
+        <span class="brand-subtitle">Letters, poems, and little worlds</span>
+      </span>
     </a>
     <div class="navlinks">
-      <a class="pill" href="/letters">Letters</a>
-      <a class="pill" href="/poetry?kind=mine">Poetry</a>
-      <a class="pill" href="/eighteen-days">18 Days</a>
-      <a class="pill" href="/three-weeks">3 Weeks</a>
-      <a class="pill" href="/perseids">Perseids</a>
-      <a class="pill" href="/first-love">First Love</a>
+      <a class="pill {{ 'active' if current_path.startswith('/letters') else '' }}" href="/letters">Letters</a>
+      <a class="pill {{ 'active' if current_path.startswith('/poetry') else '' }}" href="/poetry?kind=mine">Poetry</a>
+      <a class="pill {{ 'active' if current_path.startswith('/blog') else '' }}" href="/blog">Blog</a>
+      <a class="pill {{ 'active' if current_path.startswith('/messageboard') or current_path.startswith('/login') else '' }}" href="/messageboard">Message Board</a>
+      <a class="pill {{ 'active' if current_path.startswith('/eighteen-days') else '' }}" href="/eighteen-days">18 Days</a>
+      <a class="pill {{ 'active' if current_path.startswith('/three-weeks') else '' }}" href="/three-weeks">3 Weeks</a>
+      <a class="pill {{ 'active' if current_path.startswith('/perseids') else '' }}" href="/perseids">Perseids</a>
+      <a class="pill {{ 'active' if current_path.startswith('/first-love') else '' }}" href="/first-love">First Love</a>
     </div>
   </div>
-  <main class="wrap">
+  </header>
+  <main class="wrap {% block page_class %}{% endblock %}">
     {% block content %}{% endblock %}
   </main>
   <footer class="footer">crafted with ★ and a bit of stardust</footer>
+  {% block body_end %}{% endblock %}
 </body>
 </html>

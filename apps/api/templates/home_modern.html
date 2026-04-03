@@ -1,0 +1,687 @@
+{% extends 'base.html' %}
+{% set title = 'Daniel × Echo' %}
+{% block page_class %}page-shell page-shell--wide home-page{% endblock %}
+{% block content %}
+  <div class="version-switch motion-item is-visible">
+    <span class="version-switch-label">Version</span>
+    <a class="version-switch-link active" href="/?view=modern">Modern</a>
+    <a class="version-switch-link" href="/?view=classic">Classic</a>
+  </div>
+
+  <section class="home-hero motion-item motion-delay-1" data-tilt>
+    <div class="home-hero-copy motion-item motion-delay-1">
+      <div class="eyebrow">Daniel × Echo</div>
+      <h1 class="home-title">
+        <span>Love, it's us</span>
+        <span>you and me</span>
+        <span>private island.</span>
+      </h1>
+      <p class="home-lead">Letters, poems, notes, and a few luminous detours.</p>
+
+      <div class="home-actions">
+        <a class="btn primary" href="/letters">Letters</a>
+        <a class="btn ghost" href="/poetry?kind=mine">Poetry</a>
+        <a class="btn subtle" href="/messageboard-wall">Latest note</a>
+      </div>
+    </div>
+
+    <div class="home-hero-side">
+      <div class="arrival-card motion-item motion-delay-2" data-tilt role="timer" aria-live="polite" aria-label="Countdown until seeing my bebe">
+        <div class="arrival-top">
+          <div>
+            <div class="arrival-kicker">Arrival</div>
+            <div class="arrival-title">See my bebe in</div>
+          </div>
+          <div class="arrival-status">
+            <span class="arrival-status-dot" aria-hidden="true"></span>
+            live
+          </div>
+        </div>
+
+        <div class="arrival-primary">
+          <span class="arrival-unit-label">days</span>
+          <span class="arrival-days" id="cd-days">003</span>
+        </div>
+
+        <div class="arrival-grid">
+          <div class="arrival-unit">
+            <span class="arrival-unit-label">hours</span>
+            <span class="arrival-digits" id="cd-hours">00</span>
+          </div>
+          <div class="arrival-unit">
+            <span class="arrival-unit-label">minutes</span>
+            <span class="arrival-digits" id="cd-mins">00</span>
+          </div>
+          <div class="arrival-unit">
+            <span class="arrival-unit-label">seconds</span>
+            <span class="arrival-digits" id="cd-secs">00</span>
+          </div>
+        </div>
+
+        <div class="arrival-meta">
+          <span>Apr 04, 2026</span>
+          <span>09:00 Paris</span>
+        </div>
+      </div>
+
+      <div class="hero-links">
+        <a class="hero-link-card motion-item motion-delay-3" data-tilt href="/blog">
+          <span class="hero-link-label">Journal</span>
+          <strong>Blog</strong>
+        </a>
+        <a class="hero-link-card hero-link-card-christmas motion-item motion-delay-4" data-tilt href="/christmas">
+          <span class="hero-link-label">Seasonal</span>
+          <strong>Christmas</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-grid-section" aria-labelledby="home-grid-title">
+    <div class="section-head motion-item motion-delay-2">
+      <div class="eyebrow">Explore</div>
+      <h2 id="home-grid-title" class="section-title">The essential rooms.</h2>
+    </div>
+
+    <div class="home-grid">
+      <a class="home-card home-card-feature motion-item motion-delay-1" data-tilt href="/letters">
+        <span class="home-card-label">Core</span>
+        <h3>Letters</h3>
+        <p>Stationery, archives, and the emotional center.</p>
+      </a>
+
+      <a class="home-card home-card-feature home-card-cool motion-item motion-delay-2" data-tilt href="/poetry?kind=mine">
+        <span class="home-card-label">Core</span>
+        <h3>Poetry</h3>
+        <p>Original pieces and found gems in a quieter register.</p>
+      </a>
+
+      <a class="home-card motion-item motion-delay-3" data-tilt href="/messageboard-wall">
+        <span class="home-card-label">Daily</span>
+        <h3>Message Board</h3>
+        <p>Short notes and recent words.</p>
+      </a>
+
+      <a class="home-card motion-item motion-delay-4" data-tilt href="/blog">
+        <span class="home-card-label">Journal</span>
+        <h3>Blog</h3>
+        <p>Longer stories and memories.</p>
+      </a>
+
+      <a class="home-card home-card-christmas motion-item motion-delay-5" data-tilt href="/christmas">
+        <span class="home-card-label">Seasonal</span>
+        <h3>Christmas</h3>
+        <p>Brighter, festive, and intentionally more playful.</p>
+      </a>
+    </div>
+
+    <div class="home-strip motion-item motion-delay-4">
+      <a class="home-strip-item" href="/perseids">Perseids</a>
+      <a class="home-strip-item" href="/eighteen-days">18 Days</a>
+      <a class="home-strip-item" href="/three-weeks">Three Weeks</a>
+      <a class="home-strip-item" href="/first-love">First “I love you”</a>
+      <a class="home-strip-item" href="{{ url_for('two_weeks_menu') if url_for else '/two_weeks_menu' }}">Two-Weeks Menu</a>
+      <a class="home-strip-item" href="{{ url_for('two_weeks_v1') if url_for else '/two_weeks_v1' }}">Two-Weeks V1</a>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var target = new Date('2026-04-04T09:00:00+02:00');
+      function pad(n, width){ return String(n).padStart(width, '0'); }
+      function tick(){
+        var now = new Date();
+        var diff = target - now;
+        if(diff <= 0) diff = 0;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('cd-days').textContent = pad(days, Math.max(3, String(days).length));
+        document.getElementById('cd-hours').textContent = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)), 2);
+        document.getElementById('cd-mins').textContent = pad(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)), 2);
+        document.getElementById('cd-secs').textContent = pad(Math.floor((diff % (1000 * 60)) / 1000), 2);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    (function(){
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var items = document.querySelectorAll('.motion-item');
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16 });
+        items.forEach(function(item){ observer.observe(item); });
+      } else {
+        items.forEach(function(item){ item.classList.add('is-visible'); });
+      }
+
+      if (reduceMotion) return;
+
+      var tilts = document.querySelectorAll('[data-tilt]');
+      tilts.forEach(function(node){
+        node.addEventListener('mousemove', function(event){
+          var rect = node.getBoundingClientRect();
+          var x = event.clientX - rect.left;
+          var y = event.clientY - rect.top;
+          var px = x / rect.width;
+          var py = y / rect.height;
+          var rx = (0.5 - py) * 6;
+          var ry = (px - 0.5) * 8;
+          node.style.setProperty('--mx', x + 'px');
+          node.style.setProperty('--my', y + 'px');
+          node.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+          node.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+          node.style.setProperty('--lift', '-8px');
+        });
+        node.addEventListener('mouseleave', function(){
+          node.style.setProperty('--rx', '0deg');
+          node.style.setProperty('--ry', '0deg');
+          node.style.setProperty('--lift', '0px');
+          node.style.setProperty('--mx', '50%');
+          node.style.setProperty('--my', '50%');
+        });
+      });
+    })();
+  </script>
+{% endblock %}
+
+{% block head %}
+  <style>
+    .version-switch{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:50;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border:1px solid rgba(220, 228, 255, 0.1);
+      border-radius:999px;
+      background:rgba(9, 13, 24, 0.76);
+      backdrop-filter:blur(18px);
+      box-shadow:0 18px 40px rgba(2, 6, 20, 0.28);
+    }
+
+    .version-switch-label{
+      color:rgba(223, 231, 248, 0.64);
+      font:700 10px/1 var(--font-mono);
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+    }
+
+    .version-switch-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:8px 12px;
+      border-radius:999px;
+      color:rgba(230, 237, 255, 0.82);
+      font-size:13px;
+      font-weight:700;
+      text-decoration:none;
+      border:1px solid transparent;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .version-switch-link.active{
+      color:#0b111d;
+      background:linear-gradient(135deg, #ffd2e6 0%, #ff7ab8 42%, #8bc8ff 100%);
+    }
+
+    .home-page{
+      gap:28px;
+    }
+
+    .motion-item{
+      opacity:0;
+      transform:translateY(28px) scale(.985);
+      transition:
+        opacity .8s cubic-bezier(.2, .8, .2, 1),
+        transform .8s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .motion-item.is-visible{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    .motion-delay-1{transition-delay:.04s}
+    .motion-delay-2{transition-delay:.12s}
+    .motion-delay-3{transition-delay:.18s}
+    .motion-delay-4{transition-delay:.24s}
+    .motion-delay-5{transition-delay:.3s}
+
+    .home-hero{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0, 1.08fr) minmax(340px, .92fr);
+      gap:18px;
+      align-items:stretch;
+      padding:34px;
+      border:1px solid rgba(214, 224, 255, 0.08);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 124, 184, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(120, 180, 255, 0.1), transparent 30%),
+        linear-gradient(160deg, rgba(11, 16, 28, 0.96), rgba(8, 12, 22, 0.92));
+      box-shadow:0 34px 90px rgba(2, 6, 20, 0.34);
+      overflow:hidden;
+      transform:perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+      transform-style:preserve-3d;
+      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+
+    .home-hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.08), transparent 46%);
+      pointer-events:none;
+      opacity:.85;
+    }
+
+    .home-hero-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:24px;
+      max-width:620px;
+    }
+
+    .home-title{
+      margin:0;
+      color:var(--text-strong);
+      font-family:var(--font-display);
+      font-size:clamp(46px, 6.2vw, 82px);
+      line-height:0.92;
+      letter-spacing:-0.045em;
+    }
+
+    .home-title span{
+      display:block;
+    }
+
+    .home-lead{
+      margin:0;
+      max-width:34ch;
+      color:rgba(224, 232, 250, 0.7);
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    .home-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .home-hero-side{
+      display:grid;
+      grid-template-rows:1fr auto;
+      gap:16px;
+    }
+
+    .arrival-card,
+    .hero-link-card,
+    .home-card{
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(219, 227, 255, 0.08);
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(17, 24, 42, 0.86), rgba(9, 13, 23, 0.86));
+      box-shadow:0 24px 60px rgba(3, 8, 21, 0.28);
+      transform:perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+      transform-style:preserve-3d;
+      transition:
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease,
+        background .28s ease;
+    }
+
+    .arrival-card::after,
+    .hero-link-card::after,
+    .home-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.1), transparent 48%);
+      opacity:.75;
+      pointer-events:none;
+    }
+
+    .arrival-card{
+      padding:24px;
+      background:
+        linear-gradient(180deg, rgba(28, 11, 12, 0.9), rgba(10, 5, 7, 0.96)),
+        radial-gradient(circle at top, rgba(255, 144, 109, 0.16), transparent 28%);
+    }
+
+    .arrival-top,
+    .arrival-meta{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .arrival-kicker,
+    .arrival-unit-label,
+    .home-card-label,
+    .hero-link-label{
+      color:rgba(255, 202, 182, 0.64);
+      font:700 11px/1 var(--font-mono);
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+    }
+
+    .arrival-title{
+      margin-top:10px;
+      color:#ffe8dc;
+      font-family:var(--font-display);
+      font-size:clamp(30px, 4vw, 42px);
+      line-height:1;
+    }
+
+    .arrival-status{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255, 138, 98, 0.08);
+      border:1px solid rgba(255, 157, 119, 0.16);
+      color:rgba(255, 209, 191, 0.8);
+      font:700 10px/1 var(--font-mono);
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+    }
+
+    .arrival-status-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#ff7d56;
+      box-shadow:0 0 10px rgba(255, 125, 86, 0.85);
+      animation:arrivalPulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes arrivalPulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.45;transform:scale(.82)}
+    }
+
+    .arrival-primary{
+      display:grid;
+      gap:12px;
+      margin-top:22px;
+      padding:18px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(71, 18, 14, 0.42), rgba(17, 8, 8, 0.94));
+      border:1px solid rgba(255, 145, 104, 0.1);
+    }
+
+    .arrival-days{
+      display:block;
+      min-width:0;
+      overflow:hidden;
+      color:#ffb08d;
+      font-family:var(--font-mono);
+      font-size:clamp(56px, 8vw, 96px);
+      font-weight:700;
+      line-height:.92;
+      letter-spacing:0.02em;
+      text-shadow:0 0 12px rgba(255, 138, 101, 0.74);
+      font-variant-numeric:tabular-nums;
+    }
+
+    .arrival-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .arrival-unit{
+      display:grid;
+      gap:12px;
+      min-width:0;
+      padding:14px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(74, 18, 14, 0.42), rgba(14, 7, 8, 0.92));
+      border:1px solid rgba(255, 145, 104, 0.1);
+    }
+
+    .arrival-digits{
+      display:block;
+      min-width:0;
+      overflow:hidden;
+      padding:14px 6px;
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(35, 8, 8, 0.88), rgba(14, 4, 4, 0.96));
+      color:#ffac88;
+      text-align:center;
+      text-shadow:0 0 10px rgba(255, 139, 104, 0.84);
+      font-family:var(--font-mono);
+      font-size:clamp(26px, 3.8vw, 42px);
+      font-weight:700;
+      line-height:1;
+      letter-spacing:0.03em;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .arrival-meta{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid rgba(255, 140, 101, 0.1);
+      color:rgba(255, 220, 206, 0.76);
+      font:700 12px/1 var(--font-mono);
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+    }
+
+    .hero-links{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .hero-link-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      min-height:144px;
+      padding:20px;
+      text-decoration:none;
+    }
+
+    .hero-link-card-christmas{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 219, 118, 0.24), transparent 22%),
+        radial-gradient(circle at 84% 20%, rgba(255, 88, 88, 0.22), transparent 24%),
+        linear-gradient(160deg, rgba(16, 58, 35, 0.96), rgba(33, 8, 17, 0.96));
+    }
+
+    .hero-link-card:hover,
+    .home-card:hover{
+      border-color:rgba(255, 196, 223, 0.18);
+      box-shadow:0 30px 70px rgba(1, 5, 16, 0.36);
+    }
+
+    .hero-link-card strong{
+      margin-top:12px;
+      color:var(--text-strong);
+      font-family:var(--font-display);
+      font-size:28px;
+      line-height:1.06;
+    }
+
+    .home-grid-section{
+      display:grid;
+      gap:18px;
+    }
+
+    .section-head{
+      display:grid;
+      gap:10px;
+      max-width:560px;
+    }
+
+    .section-title{
+      margin:0;
+      color:var(--text-strong);
+      font-family:var(--font-display);
+      font-size:clamp(30px, 4vw, 44px);
+      line-height:1.06;
+    }
+
+    .home-grid{
+      display:grid;
+      grid-template-columns:repeat(12, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .home-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      min-height:220px;
+      grid-column:span 3;
+      padding:22px;
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .home-card-feature{
+      min-height:320px;
+      grid-column:span 4;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255, 129, 186, 0.16), transparent 24%),
+        linear-gradient(160deg, rgba(25, 23, 40, 0.95), rgba(10, 14, 25, 0.94));
+    }
+
+    .home-card-cool{
+      background:
+        radial-gradient(circle at 20% 18%, rgba(129, 192, 255, 0.16), transparent 24%),
+        linear-gradient(160deg, rgba(18, 29, 52, 0.95), rgba(10, 14, 25, 0.94));
+    }
+
+    .home-card-christmas{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 222, 123, 0.22), transparent 22%),
+        radial-gradient(circle at 85% 18%, rgba(255, 96, 96, 0.22), transparent 22%),
+        linear-gradient(160deg, rgba(17, 61, 38, 0.96), rgba(45, 10, 18, 0.96));
+    }
+
+    .home-card h3{
+      margin:12px 0 0;
+      color:var(--text-strong);
+      font-family:var(--font-display);
+      font-size:clamp(28px, 3.2vw, 38px);
+      line-height:1.05;
+    }
+
+    .home-card p{
+      margin:12px 0 0;
+      max-width:24ch;
+      color:rgba(223, 231, 248, 0.7);
+      line-height:1.7;
+    }
+
+    .home-strip{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:2px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+
+    .home-strip::-webkit-scrollbar{display:none}
+
+    .home-strip-item{
+      display:flex;
+      align-items:center;
+      min-height:42px;
+      padding:10px 14px;
+      border-radius:18px;
+      border:1px solid rgba(222, 229, 255, 0.08);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      text-decoration:none;
+      white-space:nowrap;
+      transition:transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .home-strip-item:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,0.07);
+      border-color:rgba(255, 196, 223, 0.14);
+      box-shadow:0 18px 34px rgba(2, 6, 18, 0.22);
+    }
+
+    @media (max-width: 1120px){
+      .home-hero{grid-template-columns:1fr}
+      .home-grid .home-card,
+      .home-grid .home-card-feature{grid-column:span 6}
+    }
+
+    @media (max-width: 760px){
+      .version-switch{
+        right:12px;
+        bottom:12px;
+        padding:8px 10px;
+      }
+      .home-page{gap:24px}
+      .home-hero{
+        padding:22px;
+        border-radius:24px;
+      }
+      .home-title{
+        font-size:clamp(38px, 10.5vw, 56px);
+        line-height:0.94;
+      }
+      .home-actions > *{width:100%}
+      .motion-item{
+        opacity:1;
+        transform:none;
+      }
+      .arrival-top,
+      .arrival-meta{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .arrival-grid{grid-template-columns:1fr}
+      .hero-links{grid-template-columns:1fr}
+      .home-grid{grid-template-columns:1fr}
+      .home-grid .home-card,
+      .home-grid .home-card-feature{
+        grid-column:auto;
+        min-height:auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .motion-item{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+      .home-hero,
+      .arrival-card,
+      .hero-link-card,
+      .home-card,
+      .home-strip-item{
+        transform:none !important;
+        transition:none !important;
+      }
+    }
+  </style>
+{% endblock %}

@@ -1,30 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Our Blog — Echo 💜 Daniel</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-violet-50 to-pink-50 p-6">
-  <div class="max-w-4xl mx-auto">
-    <div class="flex items-baseline gap-4">
-      <h1 class="text-3xl font-semibold text-gray-800">Our Blog</h1>
-      <a class="text-sm text-violet-700 hover:underline ml-auto" href="{{ request.url_for('blog_new') }}">New post →</a>
+{% extends 'base.html' %}
+{% set title = 'Our Blog' %}
+{% block page_class %}page-shell page-shell--wide journal-shell{% endblock %}
+{% block content %}
+  <section class="page-header">
+    <div class="page-header-copy">
+      <div class="eyebrow">Shared Journal</div>
+      <h1 class="page-title">Our Blog</h1>
+      <p class="page-subtitle">Longer stories, little observations, and the memories that deserve more room than a note card.</p>
     </div>
+    <div class="page-actions">
+      <a class="btn primary" href="{{ request.url_for('blog_new') }}">Write a post</a>
+      <a class="btn subtle" href="/messageboard-wall">See recent notes</a>
+    </div>
+  </section>
 
-    <div class="mt-6 grid gap-4">
+  {% if posts %}
+    <section class="journal-grid">
       {% for p in posts %}
-        <a class="block bg-white/80 backdrop-blur rounded-2xl shadow p-5 hover:shadow-lg transition" href="{{ request.url_for('blog_view', slug=p.slug) }}">
-          <div class="text-xs text-gray-500">{{ p.created_at }}</div>
-          <div class="mt-1 text-xl font-semibold text-gray-800">{{ p.title }}</div>
-          {% if p.tags %}<div class="text-sm text-gray-500 mt-1"># {{ p.tags }}</div>{% endif %}
-          {% if p.cover_url %}<img src="{{ p.cover_url }}" class="mt-3 rounded-xl border w-full" alt="cover">{% endif %}
-          <p class="mt-3 text-gray-700 line-clamp-3">{{ p.body | replace('#', '') | replace('**', '') | replace('*', '') | replace('---', '') | replace('→', '→') | truncate(150) }}</p>
+        <a class="surface surface-glass journal-card" href="{{ request.url_for('blog_view', slug=p.slug) }}">
+          <div class="journal-meta">
+            <span>{{ p.created_at }}</span>
+            <span>by {{ p.author }}</span>
+          </div>
+          <h2 class="journal-title">{{ p.title }}</h2>
+          {% if p.tags %}
+            <div class="journal-tags">
+              <span class="journal-tag"># {{ p.tags }}</span>
+            </div>
+          {% endif %}
+          {% if p.cover_url %}
+            <div class="journal-cover">
+              <img src="{{ p.cover_url }}" alt="cover for {{ p.title }}">
+            </div>
+          {% endif %}
+          <p class="journal-excerpt">{{ p.body | replace('#', '') | replace('**', '') | replace('*', '') | replace('---', '') | truncate(190) }}</p>
         </a>
-      {% else %}
-        <div class="text-sm text-gray-500">No posts yet. Write one ✨</div>
       {% endfor %}
-    </div>
-  </div>
-</body>
-</html>
+    </section>
+  {% else %}
+    <div class="empty-state">No posts yet. Start the journal with one memory worth keeping.</div>
+  {% endif %}
+{% endblock %}

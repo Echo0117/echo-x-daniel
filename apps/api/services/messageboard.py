@@ -110,8 +110,8 @@ def _normalize_message(item: dict) -> dict:
         "id": str(item.get("id") or ""),
         "created_at": str(item.get("created_at") or ""),
         "author": str(item.get("author") or ""),
-        "title": _optional_text(item.get("title")),
-        "content": str(item.get("content") or ""),
+        "title": _optional_text(_decode_escaped_newlines(item.get("title"))),
+        "content": _decode_escaped_newlines(item.get("content")),
     }
 
 
@@ -121,3 +121,8 @@ def _optional_text(value: object) -> Optional[str]:
 
     text = str(value).strip()
     return text or None
+
+
+def _decode_escaped_newlines(value: object) -> str:
+    text = str(value or "")
+    return text.replace("\\r\\n", "\n").replace("\\n", "\n").replace("\\r", "\n")

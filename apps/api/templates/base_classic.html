@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ title if title else 'Echo × Daniel' }}</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Serif+SC:wght@400;600&family=Dancing+Script:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/theme.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="nav">
+    <a class="brand" href="/">
+      <span class="heart">★</span>
+      <span>Daniel × Echo</span>
+    </a>
+    <div class="navlinks">
+      <a class="pill" href="/letters">Letters</a>
+      <a class="pill" href="/poetry?kind=mine">Poetry</a>
+      <a class="pill" href="/eighteen-days">18 Days</a>
+      <a class="pill" href="/three-weeks">3 Weeks</a>
+      <a class="pill" href="/perseids">Perseids</a>
+      <a class="pill" href="/first-love">First Love</a>
+    </div>
+  </div>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">crafted with ★ and a bit of stardust</footer>
+</body>
+</html>

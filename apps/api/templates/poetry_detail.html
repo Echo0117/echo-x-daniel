@@ -1,21 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<!-- TEMP inline CSS to guarantee the stationery appears; safe to remove later -->
-<style>
-.poem-page .letter-wrap{max-width:900px;margin:28px auto;padding:0 14px}
-.poem-page .paper{position:relative;border-radius:20px;overflow:hidden;color:#2c2a28;box-shadow:0 24px 68px rgba(0,0,0,.4);background:#fbfaf7}
-.poem-page .paper .inner{padding:56px 48px 46px 88px}
-.poem-page .paper::before{content:"";position:absolute;left:64px;top:32px;bottom:32px;width:2px;background:#c9a068;opacity:.85;border-radius:2px}
-.poem-page .paper.mine{border:12px solid #e3d4a5;background:repeating-linear-gradient(to bottom,#fbfaf7 0 28px,#e8e4dc 29px,#fbfaf7 56px)}
-.poem-page .paper.found{border:12px solid #cfe0ee;background:repeating-linear-gradient(to bottom,#f9fcff 0 28px,#e7f1fa 29px,#f9fcff 56px)}
-.poem-page .ltitle{font-family:'Playfair Display',serif;color:#1d1b19;font-size:36px;font-weight:700;margin:0 0 8px}
-.poem-page .lmeta{color:#6b6a68;font-size:14px;margin:0 0 18px}
-.poem-page .md.serif{font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.9;color:#2c2a28}
-.poem-page .btns{display:flex;gap:10px;margin-top:18px}
-.poem-page .pbtn{padding:10px 14px;border-radius:12px;border:1px solid #d6d0c6;background:#fff7ec;color:#2c2a28;font-weight:700;text-decoration:none}
-</style>
-
 <div class="poem-page">
   <div class="letter-wrap">
     <div class="paper {{ 'mine' if kind=='mine' else 'found' }}">

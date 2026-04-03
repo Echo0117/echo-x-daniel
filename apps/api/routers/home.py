@@ -9,4 +9,6 @@ templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 @router.get("/", response_class=HTMLResponse)
 def index(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
+    view = request.query_params.get("view", "modern").strip().lower()
+    template_name = "home_classic.html" if view == "classic" else "home_modern.html"
+    return templates.TemplateResponse(template_name, {"request": request, "home_view": view})

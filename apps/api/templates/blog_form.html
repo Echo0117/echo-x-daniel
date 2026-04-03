@@ -1,72 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>New Post — Echo 💜 Daniel</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-pink-50 to-violet-50 p-6">
-  <div class="max-w-3xl mx-auto bg-white/80 backdrop-blur rounded-2xl shadow-xl p-6 md:p-8">
-    <div class="flex items-baseline gap-4">
-      <h1 class="text-3xl font-semibold text-gray-800">Write a new post ✍️</h1>
-      <a class="text-sm text-violet-700 hover:underline ml-auto" href="{{ request.url_for('blog_index') }}">All posts →</a>
+{% extends 'base.html' %}
+{% set title = 'New Post' %}
+{% block page_class %}page-shell page-shell--narrow{% endblock %}
+{% block content %}
+  <section class="page-header">
+    <div class="page-header-copy">
+      <div class="eyebrow">Blog Editor</div>
+      <h1 class="page-title">Write a new post</h1>
+      <p class="page-subtitle">Draft something longer than a note: a memory, a recap, or a story you want to keep.</p>
     </div>
+    <div class="page-actions">
+      <a class="btn subtle" href="{{ request.url_for('blog_index') }}">All posts</a>
+    </div>
+  </section>
 
-    <form id="postForm" class="mt-6 space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm font-medium">Title</label>
-          <input name="title" class="mt-1 w-full rounded-xl border border-gray-200 p-3" required maxlength="140" placeholder="A little love note"/>
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Tags (comma)</label>
-          <input name="tags" class="mt-1 w-full rounded-xl border border-gray-200 p-3" maxlength="120" placeholder="us, memory, paris"/>
-        </div>
+  <section class="surface surface-glass page-panel">
+    <form id="postForm" class="stack-lg">
+      <div class="form-grid">
+        <label class="field">
+          <span class="label">Title</span>
+          <input class="input" name="title" required maxlength="140" placeholder="A little love note">
+        </label>
+        <label class="field">
+          <span class="label">Tags</span>
+          <input class="input" name="tags" maxlength="120" placeholder="us, memory, paris">
+        </label>
       </div>
 
-      <div>
-        <label class="block text-sm font-medium">Cover image URL (optional)</label>
-        <input name="cover_url" class="mt-1 w-full rounded-xl border border-gray-200 p-3" placeholder="https://..."/>
-      </div>
+      <label class="field">
+        <span class="label">Cover image URL</span>
+        <input class="input" name="cover_url" placeholder="https://...">
+      </label>
 
-      <div>
-        <label class="block text-sm font-medium">Body</label>
-        <textarea name="body" rows="14" class="mt-1 w-full rounded-xl border border-gray-200 p-3" required placeholder="Write from the heart..."></textarea>
-        <p class="mt-2 text-sm text-gray-500">Markdown is supported for headings, lists, links, bold text, and more.</p>
-      </div>
+      <label class="field">
+        <span class="label">Body</span>
+        <textarea class="area" name="body" rows="14" required placeholder="Write from the heart..."></textarea>
+        <span class="helper-text">Markdown is supported for headings, lists, links, bold text, and more.</span>
+      </label>
 
-      <div class="flex items-center gap-3">
-        <button class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-violet-600 text-white hover:bg-violet-700 shadow" type="submit">Save post</button>
-        <a class="text-sm text-gray-600 hover:underline" href="{{ request.url_for('blog_index') }}">Cancel</a>
+      <div class="actions">
+        <button class="btn primary" type="submit">Save post</button>
+        <a class="btn subtle" href="{{ request.url_for('blog_index') }}">Cancel</a>
       </div>
     </form>
 
-    <div id="status" class="mt-4 text-sm"></div>
-  </div>
-
-<script>
-const form = document.getElementById('postForm');
-const statusEl = document.getElementById('status');
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  statusEl.textContent = 'Saving…';
-  const data = Object.fromEntries(new FormData(form).entries());
-  try {
-    const res = await fetch('/api/blog', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)
+    <div id="status" class="status" aria-live="polite"></div>
+  </section>
+{% endblock %}
+{% block body_end %}
+  <script>
+    const form = document.getElementById('postForm');
+    const statusEl = document.getElementById('status');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.className = 'status';
+      statusEl.textContent = 'Saving…';
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        const res = await fetch('/api/blog', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('Save failed');
+        const out = await res.json();
+        statusEl.className = 'status success';
+        statusEl.textContent = 'Saved! Redirecting…';
+        window.location.href = `/blog/${out.slug}`;
+      } catch (err) {
+        statusEl.className = 'status error';
+        statusEl.textContent = 'Error saving post.';
+      }
     });
-    if (!res.ok) throw new Error('Save failed');
-    const out = await res.json();
-    statusEl.className = 'mt-4 text-sm text-green-700';
-    statusEl.textContent = 'Saved! Redirecting…';
-    window.location.href = `/blog/${out.slug}`;   // auto-open right after save
-  } catch (err) {
-    statusEl.className = 'mt-4 text-sm text-red-700';
-    statusEl.textContent = 'Error saving post.';
-  }
-});
-</script>
-</body>
-</html>
+  </script>
+{% endblock %}

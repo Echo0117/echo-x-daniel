@@ -607,6 +607,8 @@ function renderResults(data) {
     tbody.appendChild(tr);
   });
 
+  resultsEl.style.display = 'block';
+
   // charts
   renderFan('fcChartFanLiq', data.years, data.fan_liquid_all,
             data.fan_liquid_p25, data.fan_liquid_p75, data.fan_liquid_med,
@@ -616,7 +618,12 @@ function renderResults(data) {
             `Net worth — ${data.n_scenarios} scenarios`);
   renderTop('fcChartTopLiq', 'fcChartTopNw', data.years, data.top_traces);
 
-  resultsEl.style.display = 'block';
+  requestAnimationFrame(() => {
+    ['fcChartFanLiq', 'fcChartFanNw', 'fcChartTopLiq', 'fcChartTopNw'].forEach((id) => {
+      Plotly.Plots.resize(document.getElementById(id));
+    });
+  });
+
   resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>

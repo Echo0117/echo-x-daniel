@@ -4,7 +4,7 @@ load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from routers import home, letters, poetry, surprises, playful, perseids, first_love, eighteen_days, three_weeks, messageboard, blog, christmas
+from routers import home, letters, poetry, surprises, playful, perseids, first_love, eighteen_days, three_weeks, messageboard, blog, christmas, finance
 from pathlib import Path
 from starlette.middleware.sessions import SessionMiddleware
 import os
@@ -45,6 +45,7 @@ app.include_router(three_weeks.router)
 app.include_router(messageboard.router)
 app.include_router(blog.router)
 app.include_router(christmas.router, tags=["christmas"])
+app.include_router(finance.router,   tags=["finance"])
 
 @app.get("/health/live")
 def live():

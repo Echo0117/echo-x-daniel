@@ -1,0 +1,623 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<style>
+/* ── page layout ── */
+.fc-page { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+.fc-hero { margin-bottom: 32px; }
+.fc-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,48px);
+  background:linear-gradient(90deg,#fff,#d9e9ff); -webkit-background-clip:text;
+  color:transparent; margin:0 0 6px; }
+.fc-hero p { color:#b7c2ff; font-size:15px; margin:0; }
+
+/* ── form card sections ── */
+.fc-sections { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:760px){ .fc-sections{ grid-template-columns:1fr; } }
+.fc-section { background:#11162a; border:1px solid #2a345f; border-radius:18px;
+  padding:20px 22px; }
+.fc-section h3 { margin:0 0 16px; font-size:13px; font-weight:800; letter-spacing:.08em;
+  text-transform:uppercase; color:#8ec5ff; }
+.fc-field { margin-bottom:13px; }
+.fc-field label { display:block; font-size:12px; color:#b7c2ff; margin-bottom:4px; }
+.fc-field input[type=number], .fc-field input[type=text], .fc-field select {
+  width:100%; padding:8px 10px; border-radius:9px; border:1px solid #2a345f;
+  background:#0b1028; color:#eaf0ff; font-size:13px; }
+.fc-field input[type=number]:focus, .fc-field select:focus {
+  outline:none; border-color:#8ec5ff; }
+.fc-row2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.fc-row3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.fc-hint { font-size:11px; color:#6a75b0; margin-top:3px; }
+
+/* ── checkboxes ── */
+.fc-checks { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+.fc-check { display:flex; align-items:center; gap:5px; font-size:12px; cursor:pointer;
+  padding:4px 10px; border-radius:20px; border:1px solid #2a345f; background:#0d1330;
+  user-select:none; transition:border-color .15s, background .15s; }
+.fc-check:has(input:checked) { border-color:#ff6fb5; background:#1a0e1f; color:#ff6fb5; }
+.fc-check input { accent-color:#ff6fb5; cursor:pointer; }
+
+/* ── location grid ── */
+.fc-locs { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+@media(max-width:500px){ .fc-locs{ grid-template-columns:1fr; } }
+
+/* ── generate button ── */
+.fc-generate-wrap { margin:22px 0 0; text-align:center; }
+.fc-btn { display:inline-flex; align-items:center; gap:10px; font-weight:800;
+  font-size:15px; padding:14px 36px; border-radius:14px; border:none; cursor:pointer;
+  background:linear-gradient(90deg,#ff6fb5,#8ec5ff); color:#0b0f1a;
+  box-shadow:0 4px 24px #ff6fb540; transition:opacity .15s, transform .1s; }
+.fc-btn:hover { opacity:.9; transform:translateY(-1px); }
+.fc-btn:disabled { opacity:.55; cursor:not-allowed; transform:none; }
+.fc-spinner { display:none; width:16px; height:16px; border:2.5px solid #0b0f1a40;
+  border-top-color:#0b0f1a; border-radius:50%; animation:spin .7s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ── results ── */
+.fc-results { margin-top:36px; }
+.fc-results-header { display:flex; align-items:baseline; gap:14px; margin-bottom:18px; }
+.fc-results-header h2 { font-family:'Playfair Display',serif; font-size:22px; margin:0; }
+.fc-badge { padding:3px 10px; border-radius:20px; background:#1a2852;
+  border:1px solid #2a345f; font-size:12px; color:#8ec5ff; }
+
+/* ── table ── */
+.fc-table-wrap { overflow-x:auto; border-radius:14px; border:1px solid #2a345f; margin-bottom:28px; }
+table.fc-table { width:100%; border-collapse:collapse; font-size:12px; }
+table.fc-table th { background:#0e1438; color:#8ec5ff; font-weight:700; padding:10px 12px;
+  text-align:left; white-space:nowrap; border-bottom:1px solid #2a345f; }
+table.fc-table td { padding:8px 12px; border-bottom:1px solid #1a2040;
+  color:#dde4ff; white-space:nowrap; }
+table.fc-table tr:last-child td { border-bottom:none; }
+table.fc-table tr:hover td { background:#0e1438; }
+.neg { color:#ff6b6b; }
+.pos { color:#80ed99; }
+
+/* ── charts ── */
+.fc-chart-block { margin-bottom:28px; }
+.fc-chart-block h3 { font-size:13px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.07em; color:#8ec5ff; margin:0 0 10px; }
+.fc-plotly { width:100%; border-radius:14px; border:1px solid #2a345f; overflow:hidden; }
+
+/* ── select-all toggle ── */
+.fc-loc-header { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.fc-loc-header label { font-size:12px; color:#b7c2ff; }
+.fc-toggle-btn { padding:2px 10px; border-radius:20px; border:1px solid #2a345f;
+  background:#0d1330; color:#8ec5ff; font-size:11px; font-weight:700; cursor:pointer; }
+.fc-toggle-btn:hover { border-color:#8ec5ff; }
+
+/* ── error banner ── */
+.fc-error { display:none; margin-top:16px; padding:12px 16px; border-radius:12px;
+  background:#2a0e10; border:1px solid #ff6b6b; color:#ff9999; font-size:13px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fc-page">
+  <div class="fc-hero">
+    <h1>Family Finance Planner</h1>
+    <p>Sweep locations, moving timing, housing, and childcare scenarios to see your 30-year wealth trajectory.</p>
+  </div>
+
+  <form id="fcForm">
+    <div class="fc-sections">
+
+      <!-- ① Savings & Income -->
+      <div class="fc-section">
+        <h3>💰 Savings &amp; Income</h3>
+        <div class="fc-field">
+          <label>Current savings (USD)</label>
+          <input type="number" name="current_savings_usd" value="300000" step="1000" min="0">
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Salary 1 — starting (USD)</label>
+            <input type="number" name="salary1_start_usd" value="180000" step="1000" min="0">
+          </div>
+          <div class="fc-field">
+            <label>Salary 2 — starting (USD)</label>
+            <input type="number" name="salary2_start_usd" value="120000" step="1000" min="0">
+          </div>
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Salary 1 growth / yr</label>
+            <input type="number" name="salary1_growth" value="0.03" step="0.005" min="0" max="0.3">
+          </div>
+          <div class="fc-field">
+            <label>Salary 2 growth / yr</label>
+            <input type="number" name="salary2_growth" value="0.03" step="0.005" min="0" max="0.3">
+          </div>
+        </div>
+        <div class="fc-field">
+          <label>Extra investment income — starting (USD)</label>
+          <input type="number" name="extra_investment_income_start_usd" value="0" step="500" min="0">
+        </div>
+        <div class="fc-field">
+          <label>Other annual spending (USD)</label>
+          <input type="number" name="other_annual_spending_usd" value="45000" step="500" min="0">
+        </div>
+        <div class="fc-field">
+          <label>Horizon — years from now</label>
+          <input type="number" name="end_year_offset" value="30" step="1" min="5" max="50">
+        </div>
+      </div>
+
+      <!-- ② Rates & Inflation -->
+      <div class="fc-section">
+        <h3>📈 Rates &amp; Inflation</h3>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Investment return</label>
+            <input type="number" name="investment_return" value="0.05" step="0.005" min="0" max="0.5">
+          </div>
+          <div class="fc-field">
+            <label>Debt interest rate</label>
+            <input type="number" name="debt_interest_rate" value="0.08" step="0.005" min="0" max="0.5">
+          </div>
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>General inflation</label>
+            <input type="number" name="general_inflation" value="0.025" step="0.005" min="0" max="0.2">
+          </div>
+          <div class="fc-field">
+            <label>Education inflation</label>
+            <input type="number" name="education_inflation" value="0.04" step="0.005" min="0" max="0.2">
+          </div>
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Rent inflation</label>
+            <input type="number" name="rent_inflation" value="0.03" step="0.005" min="0" max="0.2">
+          </div>
+          <div class="fc-field">
+            <label>Home appreciation</label>
+            <input type="number" name="home_appreciation" value="0.03" step="0.005" min="-0.1" max="0.3">
+          </div>
+        </div>
+
+        <h3 style="margin-top:18px">🏡 Housing</h3>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Home size (sqft)</label>
+            <input type="number" name="home_size_sqft" value="1500" step="100" min="500" max="10000">
+          </div>
+          <div class="fc-field">
+            <label>Carrying cost rate</label>
+            <input type="number" name="owner_carrying_cost_rate" value="0.018" step="0.001" min="0" max="0.1">
+            <div class="fc-hint">Property tax + maintenance as % of value</div>
+          </div>
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Transaction cost rate</label>
+            <input type="number" name="buying_transaction_cost_rate" value="0.03" step="0.005" min="0" max="0.15">
+          </div>
+          <div class="fc-field" style="display:flex;align-items:center;gap:8px;padding-top:18px">
+            <label class="fc-check" style="border-radius:9px;padding:8px 10px">
+              <input type="checkbox" name="buy_only_after_final_move" checked>
+              <span>Buy only after final move</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ③ Scenario: Moving -->
+      <div class="fc-section">
+        <h3>✈️ Scenario — Moving</h3>
+        <div class="fc-field">
+          <div class="fc-loc-header">
+            <label>Pre-move locations <span class="fc-hint" style="display:inline">(included in sweep)</span></label>
+            <button type="button" class="fc-toggle-btn" onclick="toggleAll('pre_locs')">全选/取消</button>
+          </div>
+          <div class="fc-checks fc-locs" id="pre_locs">
+            {% for loc in all_locations %}
+            <label class="fc-check">
+              <input type="checkbox" name="pre_move_locations" value="{{ loc }}" checked>
+              {{ loc }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="fc-field" style="margin-top:12px">
+          <div class="fc-loc-header">
+            <label>Post-move locations <span class="fc-hint" style="display:inline">(included in sweep)</span></label>
+            <button type="button" class="fc-toggle-btn" onclick="toggleAll('post_locs')">全选/取消</button>
+          </div>
+          <div class="fc-checks fc-locs" id="post_locs">
+            {% for loc in all_locations %}
+            <label class="fc-check">
+              <input type="checkbox" name="post_move_locations" value="{{ loc }}" checked>
+              {{ loc }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="fc-row2" style="margin-top:12px">
+          <div class="fc-field">
+            <label class="fc-check" style="margin-bottom:8px;border-radius:9px;padding:8px 10px">
+              <input type="checkbox" name="include_no_move" checked>
+              Include "no move" option
+            </label>
+          </div>
+          <div class="fc-field">
+            <label>Move — years from now</label>
+            <input type="number" name="move_year_offset" value="5" step="1" min="1" max="40">
+            <div class="fc-hint">Leave blank or 0 to exclude a move option</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ④ Scenario: Housing & Buy Year -->
+      <div class="fc-section">
+        <h3>🏠 Scenario — Buy vs Rent</h3>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label class="fc-check" style="border-radius:9px;padding:8px 10px">
+              <input type="checkbox" name="include_rent_forever" checked>
+              Include "rent forever" option
+            </label>
+          </div>
+          <div class="fc-field">
+            <label>Buy — years from now</label>
+            <input type="number" name="buy_year_offset" value="8" step="1" min="1" max="40">
+            <div class="fc-hint">Leave blank or 0 to exclude a buy option</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:18px">👶 Family &amp; Education</h3>
+        <div class="fc-field">
+          <label>Child birth years (comma-separated)</label>
+          <input type="text" name="child_birth_years_str" value="2030, 2032" placeholder="e.g. 2028, 2031">
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Caregiver parent</label>
+            <select name="caregiver_parent_index">
+              <option value="1">Parent 1</option>
+              <option value="2" selected>Parent 2</option>
+            </select>
+          </div>
+          <div class="fc-field">
+            <label>Caregiver salary fraction</label>
+            <input type="number" name="parent_care_salary_fraction" value="0.20" step="0.05" min="0" max="1">
+            <div class="fc-hint">Fraction of salary kept while caring for infant</div>
+          </div>
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label>Homeschool salary fraction</label>
+            <input type="number" name="homeschool_salary_fraction" value="0.25" step="0.05" min="0" max="1">
+          </div>
+          <div class="fc-field">
+            <label>Homeschool annual cost (USD)</label>
+            <input type="number" name="homeschool_annual_usd" value="1500" step="100" min="0">
+          </div>
+        </div>
+        <div class="fc-row2">
+          <div class="fc-field">
+            <label class="fc-check" style="border-radius:9px;padding:8px 10px">
+              <input type="checkbox" name="include_university" checked>
+              Include university costs
+            </label>
+          </div>
+          <div class="fc-field">
+            <label>University years</label>
+            <input type="number" name="university_years" value="4" step="1" min="2" max="6">
+          </div>
+        </div>
+
+        <h3 style="margin-top:18px">🎓 Childcare &amp; School Modes</h3>
+        <div class="fc-field">
+          <label>Childcare modes (sweep)</label>
+          <div class="fc-checks">
+            <label class="fc-check"><input type="checkbox" name="childcare_modes" value="daycare" checked> Daycare</label>
+            <label class="fc-check"><input type="checkbox" name="childcare_modes" value="parent" checked> Parent care</label>
+          </div>
+        </div>
+        <div class="fc-field">
+          <label>School modes (sweep)</label>
+          <div class="fc-checks">
+            <label class="fc-check"><input type="checkbox" name="school_modes" value="public" checked> Public</label>
+            <label class="fc-check"><input type="checkbox" name="school_modes" value="private" checked> Private</label>
+            <label class="fc-check"><input type="checkbox" name="school_modes" value="homeschool" checked> Homeschool</label>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .fc-sections -->
+
+    <div class="fc-generate-wrap">
+      <button type="submit" class="fc-btn" id="fcBtn">
+        <span class="fc-spinner" id="fcSpinner"></span>
+        <span id="fcBtnText">Run Scenarios</span>
+      </button>
+    </div>
+    <div class="fc-error" id="fcError"></div>
+  </form>
+
+  <!-- Results -->
+  <div class="fc-results" id="fcResults" style="display:none">
+    <div class="fc-results-header">
+      <h2>Results</h2>
+      <span class="fc-badge" id="fcBadge"></span>
+    </div>
+
+    <div class="fc-table-wrap">
+      <table class="fc-table" id="fcTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Scenario</th>
+            <th>Final Net Worth</th>
+            <th>Final Liquid</th>
+            <th>Min Liquid</th>
+            <th>Ever Negative</th>
+          </tr>
+        </thead>
+        <tbody id="fcTbody"></tbody>
+      </table>
+    </div>
+
+    <div class="fc-chart-block">
+      <h3>All scenarios — liquid wealth fan</h3>
+      <div id="fcChartFanLiq" class="fc-plotly" style="height:420px"></div>
+    </div>
+    <div class="fc-chart-block">
+      <h3>All scenarios — net worth fan</h3>
+      <div id="fcChartFanNw" class="fc-plotly" style="height:420px"></div>
+    </div>
+
+    <div class="fc-chart-block">
+      <h3>Top 15 scenarios — liquid wealth</h3>
+      <div id="fcChartTopLiq" class="fc-plotly" style="height:420px"></div>
+    </div>
+    <div class="fc-chart-block">
+      <h3>Top 15 scenarios — net worth</h3>
+      <div id="fcChartTopNw" class="fc-plotly" style="height:480px"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const form = document.getElementById('fcForm');
+const btn  = document.getElementById('fcBtn');
+const btnText = document.getElementById('fcBtnText');
+const spinner = document.getElementById('fcSpinner');
+const errorEl = document.getElementById('fcError');
+const resultsEl = document.getElementById('fcResults');
+
+// ── Select-all toggle ──
+function toggleAll(groupId) {
+  const boxes = document.querySelectorAll(`#${groupId} input[type=checkbox]`);
+  const anyUnchecked = [...boxes].some(b => !b.checked);
+  boxes.forEach(b => { b.checked = anyUnchecked; });
+}
+
+function fmt(n) {
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function collectForm() {
+  const fd = new FormData(form);
+  const num = (k) => { const v = parseFloat(fd.get(k)); return isNaN(v) ? null : v; };
+  const int = (k) => { const v = parseInt(fd.get(k));   return isNaN(v) ? null : v; };
+  const move_year_offset_raw = int('move_year_offset');
+  const buy_year_offset_raw  = int('buy_year_offset');
+  const birthStr = (fd.get('child_birth_years_str') || '').trim();
+  return {
+    current_savings_usd:              num('current_savings_usd'),
+    salary1_start_usd:                num('salary1_start_usd'),
+    salary2_start_usd:                num('salary2_start_usd'),
+    salary1_growth:                   num('salary1_growth'),
+    salary2_growth:                   num('salary2_growth'),
+    extra_investment_income_start_usd:num('extra_investment_income_start_usd'),
+    other_annual_spending_usd:        num('other_annual_spending_usd'),
+    end_year_offset:                  int('end_year_offset') || 30,
+    investment_return:                num('investment_return'),
+    debt_interest_rate:               num('debt_interest_rate'),
+    general_inflation:                num('general_inflation'),
+    education_inflation:              num('education_inflation'),
+    rent_inflation:                   num('rent_inflation'),
+    home_appreciation:                num('home_appreciation'),
+    home_size_sqft:                   num('home_size_sqft'),
+    owner_carrying_cost_rate:         num('owner_carrying_cost_rate'),
+    buying_transaction_cost_rate:     num('buying_transaction_cost_rate'),
+    buy_only_after_final_move:        fd.has('buy_only_after_final_move'),
+    child_birth_years: birthStr
+      ? birthStr.split(/[\s,]+/).map(s => parseInt(s)).filter(n => !isNaN(n))
+      : [],
+    include_university:               fd.has('include_university'),
+    university_years:                 int('university_years') || 4,
+    caregiver_parent_index:           int('caregiver_parent_index') || 2,
+    parent_care_salary_fraction:      num('parent_care_salary_fraction'),
+    homeschool_salary_fraction:       num('homeschool_salary_fraction'),
+    homeschool_annual_usd:            num('homeschool_annual_usd'),
+    pre_move_locations:               fd.getAll('pre_move_locations'),
+    post_move_locations:              fd.getAll('post_move_locations'),
+    include_no_move:                  fd.has('include_no_move'),
+    move_year_offset:  (move_year_offset_raw && move_year_offset_raw > 0) ? move_year_offset_raw : null,
+    include_rent_forever:             fd.has('include_rent_forever'),
+    buy_year_offset:   (buy_year_offset_raw && buy_year_offset_raw > 0) ? buy_year_offset_raw : null,
+    childcare_modes:                  fd.getAll('childcare_modes'),
+    school_modes:                     fd.getAll('school_modes'),
+    public_school_annual_usd:         0,
+  };
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  btn.disabled = true;
+  spinner.style.display = 'block';
+  btnText.textContent = 'Running…';
+  errorEl.style.display = 'none';
+  resultsEl.style.display = 'none';
+  try {
+    const res = await fetch('/api/finance/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(collectForm()),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Simulation failed.');
+    renderResults(data);
+  } catch (err) {
+    errorEl.textContent = '⚠ ' + err.message;
+    errorEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    btnText.textContent = 'Run Scenarios';
+  }
+});
+
+// ── Plotly helpers ──
+const PLOT_BG    = '#0b0f1a';
+const PAPER_BG   = '#0b0f1a';
+const GRID_COL   = '#1e2952';
+const TEXT_COL   = '#c6d0ff';
+const ACCENT     = '#8ec5ff';
+
+function usdTick(v) {
+  if (Math.abs(v) >= 1e6) return '$' + (v/1e6).toFixed(1) + 'M';
+  if (Math.abs(v) >= 1e3) return '$' + (v/1e3).toFixed(0) + 'K';
+  return '$' + v;
+}
+
+function baseLayout(title) {
+  return {
+    title: { text: title, font: { color: TEXT_COL, size: 14 } },
+    paper_bgcolor: PAPER_BG,
+    plot_bgcolor:  PLOT_BG,
+    font: { color: TEXT_COL, size: 11 },
+    xaxis: {
+      gridcolor: GRID_COL, zerolinecolor: GRID_COL,
+      tickfont: { color: TEXT_COL }, title: { text: 'Year', font: { color: TEXT_COL } },
+    },
+    yaxis: {
+      gridcolor: GRID_COL, zerolinecolor: '#ffffff33',
+      tickfont: { color: TEXT_COL }, title: { text: 'USD', font: { color: TEXT_COL } },
+      tickformat: '$.3s',
+    },
+    hovermode: 'x unified',
+    hoverlabel: { bgcolor: '#0e1538', bordercolor: ACCENT, font: { color: TEXT_COL, size: 11 } },
+    margin: { l: 70, r: 20, t: 40, b: 50 },
+    showlegend: false,
+  };
+}
+
+// Fan chart: all lines + percentile band + median
+function renderFan(divId, years, allLines, p25, p75, med, title) {
+  const traces = [];
+
+  // individual scenario lines (thin, low opacity)
+  allLines.forEach(y => {
+    traces.push({
+      x: years, y,
+      type: 'scatter', mode: 'lines',
+      line: { width: 0.6, color: '#ff6fb5' },
+      opacity: 0.25,
+      hoverinfo: 'skip',
+      showlegend: false,
+    });
+  });
+
+  // 25-75th band
+  traces.push({
+    x: [...years, ...years.slice().reverse()],
+    y: [...p75, ...p25.slice().reverse()],
+    type: 'scatter', mode: 'lines', fill: 'toself',
+    fillcolor: 'rgba(142,197,255,0.15)',
+    line: { color: 'transparent' },
+    name: '25–75th pct',
+    hoverinfo: 'skip',
+    showlegend: true,
+  });
+
+  // median line
+  traces.push({
+    x: years, y: med,
+    type: 'scatter', mode: 'lines',
+    line: { color: ACCENT, width: 2.5 },
+    name: 'Median',
+    hovertemplate: 'Year %{x}<br>Median: %{y:$.3s}<extra></extra>',
+    showlegend: true,
+  });
+
+  const layout = {
+    ...baseLayout(title),
+    showlegend: true,
+    legend: { x: 0.01, y: 0.99, bgcolor: '#0e153899', bordercolor: GRID_COL,
+              font: { color: TEXT_COL, size: 10 } },
+  };
+  Plotly.react(divId, traces, layout, { responsive: true, displayModeBar: false });
+}
+
+// Top-15 detail chart
+const TOP_COLORS = [
+  '#ff6fb5','#8ec5ff','#a8ff78','#ffd166','#ef476f',
+  '#06d6a0','#ffd700','#c77dff','#f72585','#4cc9f0',
+  '#fb8500','#80ed99','#e9c46a','#a0c4ff','#bde0fe',
+];
+
+function renderTop(liqDivId, nwDivId, years, topTraces) {
+  const liqTraces = [], nwTraces = [];
+  topTraces.forEach((t, i) => {
+    const col = TOP_COLORS[i % TOP_COLORS.length];
+    const shortLabel = `#${i+1} ${t.label}`;
+    const common = { x: years, mode: 'lines', line: { color: col, width: i < 5 ? 2.2 : 1.5 },
+                     name: shortLabel };
+    liqTraces.push({ ...common, y: t.liquid,
+      hovertemplate: `<b>#${i+1}</b> %{y:$.3s}<extra>${t.label}</extra>` });
+    nwTraces.push({ ...common,  y: t.net_worth,
+      hovertemplate: `<b>#${i+1}</b> %{y:$.3s}<extra>${t.label}</extra>` });
+  });
+
+  const legendLayout = {
+    showlegend: true,
+    legend: { x: 1.01, y: 0.5, xanchor: 'left', bgcolor: '#0e153899',
+              bordercolor: GRID_COL, font: { color: TEXT_COL, size: 9 }, tracegroupgap: 2 },
+    margin: { l: 70, r: 220, t: 40, b: 50 },
+  };
+
+  Plotly.react(liqDivId, liqTraces, { ...baseLayout('Top 15 — liquid wealth'), ...legendLayout },
+               { responsive: true, displayModeBar: false });
+  Plotly.react(nwDivId,  nwTraces,  { ...baseLayout('Top 15 — net worth'),     ...legendLayout },
+               { responsive: true, displayModeBar: false });
+}
+
+function renderResults(data) {
+  document.getElementById('fcBadge').textContent = data.n_scenarios + ' scenarios simulated';
+
+  // table
+  const tbody = document.getElementById('fcTbody');
+  tbody.innerHTML = '';
+  data.top_rows.forEach((row, i) => {
+    const neg = row.ever_negative_liquid;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="opacity:.5">${i+1}</td>
+      <td style="max-width:380px;white-space:normal;line-height:1.4">${row.label}</td>
+      <td class="pos">${fmt(row.final_net_worth_usd)}</td>
+      <td>${fmt(row.final_liquid_usd)}</td>
+      <td class="${row.min_liquid_usd < 0 ? 'neg' : ''}">${fmt(row.min_liquid_usd)}</td>
+      <td class="${neg ? 'neg' : 'pos'}">${neg ? 'Yes' : 'No'}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  // charts
+  renderFan('fcChartFanLiq', data.years, data.fan_liquid_all,
+            data.fan_liquid_p25, data.fan_liquid_p75, data.fan_liquid_med,
+            `Liquid wealth — ${data.n_scenarios} scenarios`);
+  renderFan('fcChartFanNw',  data.years, data.fan_nw_all,
+            data.fan_nw_p25, data.fan_nw_p75, data.fan_nw_med,
+            `Net worth — ${data.n_scenarios} scenarios`);
+  renderTop('fcChartTopLiq', 'fcChartTopNw', data.years, data.top_traces);
+
+  resultsEl.style.display = 'block';
+  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+{% endblock %}

@@ -3,7 +3,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 
-from services.finance_calc import FinanceInput, run_simulation, ALL_LOCATIONS
+from services.finance_calc import FinanceInput, run_simulation, ALL_LOCATIONS, AdvancedRequest, run_advanced
 
 router = APIRouter()
 TEMPLATES_DIR = Path(__file__).resolve().parents[1] / "templates"
@@ -27,3 +27,14 @@ async def finance_run(data: FinanceInput):
         return JSONResponse(status_code=400, content={"detail": str(exc)})
     except Exception as exc:
         return JSONResponse(status_code=500, content={"detail": f"Simulation error: {exc}"})
+
+
+@router.post("/api/finance/advanced")
+async def finance_advanced(data: AdvancedRequest):
+    try:
+        result = run_advanced(data)
+        return result
+    except ValueError as exc:
+        return JSONResponse(status_code=400, content={"detail": str(exc)})
+    except Exception as exc:
+        return JSONResponse(status_code=500, content={"detail": f"Advanced analysis error: {exc}"})

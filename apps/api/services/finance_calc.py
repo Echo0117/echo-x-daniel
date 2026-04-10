@@ -412,3 +412,343 @@ def run_simulation(inp: FinanceInput) -> FinanceOutput:
         fan_nw_med=chart_data["fan_nw_med"],
         top_traces=chart_data["top_traces"],
     )
+
+
+# ---------------------------------------------------------------------------
+# Advanced analysis — Monte Carlo + Stress tests
+# ---------------------------------------------------------------------------
+
+class MCParams(BaseModel):
+    n_runs: int = Field(500, ge=100, le=2000)
+    return_std: float = Field(0.12, ge=0.01, le=0.5)
+    salary_noise_fraction: float = Field(0.0, ge=0, le=0.3)
+    top_n: int = Field(8, ge=1, le=30)
+
+
+class StressParams(BaseModel):
+    job_loss_durations: List[int] = Field(default_factory=lambda: [1, 2])
+    capital_shocks_usd: List[float] = Field(default_factory=lambda: [50_000, 100_000])
+    shock_earliest_year_offset: int = Field(2, ge=1, le=20)
+    shock_latest_year_offset: int = Field(10, ge=2, le=40)
+    n_runs: int = Field(300, ge=50, le=1000)
+    top_n: int = Field(5, ge=1, le=20)
+
+
+class AdvancedRequest(BaseModel):
+    finance: FinanceInput
+    mc: MCParams = Field(default_factory=MCParams)
+    stress: StressParams = Field(default_factory=StressParams)
+
+
+class MCBand(BaseModel):
+    label: str
+    det_liquid: List[float]
+    det_nw: List[float]
+    p5_liquid: List[float]
+    p25_liquid: List[float]
+    p50_liquid: List[float]
+    p75_liquid: List[float]
+    p95_liquid: List[float]
+    p5_nw: List[float]
+    p25_nw: List[float]
+    p50_nw: List[float]
+    p75_nw: List[float]
+    p95_nw: List[float]
+    prob_bankruptcy: float
+    prob_negative_final: float
+
+
+class ShockSummary(BaseModel):
+    shock_name: str
+    p10: float
+    p25: float
+    p50: float
+    p75: float
+    p90: float
+    mean: float
+    prob_bankruptcy: float
+
+
+class StressScenarioResult(BaseModel):
+    label: str
+    baseline: ShockSummary
+    shocks: List[ShockSummary]
+
+
+class AdvancedOutput(BaseModel):
+    years: List[int]
+    n_mc_runs: int
+    mc_bands: List[MCBand]
+    stress_results: List[StressScenarioResult]
+
+
+# ---------------------------------------------------------------------------
+# Cashflow extraction (deterministic, used as base for MC)
+# ---------------------------------------------------------------------------
+
+def _compute_cashflows(
+    inp: FinanceInput,
+    location_map: Dict[str, Any],
+    years: np.ndarray,
+    current_year: int,
+    salary1: np.ndarray,
+    salary2: np.ndarray,
+    pre_loc_name: str,
+    post_loc_name: str,
+    move_year: Optional[float],
+    house_purchase_year: Optional[float],
+    childcare_mode: str,
+    school_mode: str,
+) -> Dict[str, np.ndarray]:
+    """
+    Extract per-year deterministic cashflow components:
+      salary_income: s1+s2 after caregiver adjustment (zeroed during job loss)
+      extra_income:  constant investment income
+      costs:         housing + education + other
+      home_outflow:  one-time purchase outflow
+      home_value:    appreciated home value at each year
+    """
+    eff_buy_year = house_purchase_year
+    if inp.buy_only_after_final_move and eff_buy_year is not None and move_year is not None:
+        eff_buy_year = max(eff_buy_year, move_year)
+
+    n = len(years)
+    salary_income = np.zeros(n)
+    extra_income  = np.zeros(n)
+    costs         = np.zeros(n)
+    home_outflow  = np.zeros(n)
+    home_value    = np.zeros(n)
+
+    owned_home = False
+    carried_home_value = 0.0
+
+    for k, year_now in enumerate(years):
+        active_loc = pre_loc_name if (move_year is None or year_now < move_year) else post_loc_name
+        loc = location_map[active_loc]
+
+        if owned_home:
+            carried_home_value *= (1.0 + inp.home_appreciation)
+
+        if (not owned_home) and (eff_buy_year is not None) and (year_now >= eff_buy_year):
+            base_val = loc.buy_price_per_sqft_usd * inp.home_size_sqft
+            home_outflow[k] = base_val * (1.0 + inp.buying_transaction_cost_rate)
+            carried_home_value = base_val
+            owned_home = True
+
+        ed_cost, salary_factor = _education_care_cost(
+            inp, childcare_mode, school_mode, loc, int(year_now), current_year)
+
+        s1 = salary1[k] * (salary_factor if inp.caregiver_parent_index == 1 else 1.0)
+        s2 = salary2[k] * (salary_factor if inp.caregiver_parent_index == 2 else 1.0)
+
+        salary_income[k] = s1 + s2
+        extra_income[k]  = inp.extra_investment_income_start_usd
+
+        yrs_from_base = int(year_now - current_year)
+        housing_cost = (
+            carried_home_value * inp.owner_carrying_cost_rate
+            if owned_home
+            else loc.rent_monthly_usd * 12.0 * (1.0 + inp.rent_inflation) ** yrs_from_base
+        )
+        other_cost = inp.other_annual_spending_usd * (1.0 + inp.general_inflation) ** yrs_from_base
+        costs[k]      = housing_cost + ed_cost + other_cost
+        home_value[k] = carried_home_value
+
+    return {
+        "salary_income": salary_income,
+        "extra_income":  extra_income,
+        "costs":         costs,
+        "home_outflow":  home_outflow,
+        "home_value":    home_value,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Vectorised MC engine
+# ---------------------------------------------------------------------------
+
+def _mc_paths(
+    inp: FinanceInput,
+    cf: Dict[str, np.ndarray],
+    n_runs: int,
+    return_std: float,
+    salary_noise_fraction: float,
+    rng: np.random.Generator,
+    job_loss_mask: Optional[np.ndarray] = None,   # (n_runs, n_years) bool
+    capital_loss_mask: Optional[np.ndarray] = None, # (n_runs, n_years) float
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Returns (liquid_paths, nw_paths) each shape (n_runs, n_years).
+    All state updates are fully vectorised over runs.
+    """
+    n_years = len(cf["salary_income"])
+
+    returns = rng.normal(inp.investment_return, return_std, (n_runs, n_years))
+    returns = np.clip(returns, -0.9, 2.0)
+
+    income_noise = (
+        rng.normal(0.0, salary_noise_fraction, (n_runs, n_years))
+        if salary_noise_fraction > 0
+        else np.zeros((n_runs, n_years))
+    )
+
+    liquid = np.full(n_runs, float(inp.current_savings_usd))
+    liquid_paths = np.zeros((n_runs, n_years))
+
+    for k in range(n_years):
+        growth = np.where(liquid >= 0, 1.0 + returns[:, k], 1.0 + inp.debt_interest_rate)
+        liquid = liquid * growth
+
+        # Salary (possibly suppressed by job-loss shock)
+        if job_loss_mask is not None:
+            eff_salary = np.where(job_loss_mask[:, k], 0.0, cf["salary_income"][k])
+        else:
+            eff_salary = cf["salary_income"][k] * (1.0 + income_noise[:, k])
+
+        net = eff_salary + cf["extra_income"][k] - cf["costs"][k] - cf["home_outflow"][k]
+        liquid += net
+
+        if capital_loss_mask is not None:
+            liquid -= capital_loss_mask[:, k]
+
+        liquid_paths[:, k] = liquid
+
+    nw_paths = liquid_paths + cf["home_value"][np.newaxis, :]
+    return liquid_paths, nw_paths
+
+
+def _shock_summary(name: str, liq_paths: np.ndarray, home_final: float) -> ShockSummary:
+    final_nw = liq_paths[:, -1] + home_final
+    ever_bankrupt = np.any(liq_paths < 0, axis=1)
+    return ShockSummary(
+        shock_name=name,
+        p10=float(np.percentile(final_nw, 10)),
+        p25=float(np.percentile(final_nw, 25)),
+        p50=float(np.percentile(final_nw, 50)),
+        p75=float(np.percentile(final_nw, 75)),
+        p90=float(np.percentile(final_nw, 90)),
+        mean=float(np.mean(final_nw)),
+        prob_bankruptcy=float(np.mean(ever_bankrupt)),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Public entry point for advanced analysis
+# ---------------------------------------------------------------------------
+
+def run_advanced(req: AdvancedRequest) -> AdvancedOutput:
+    inp    = req.finance
+    mc     = req.mc
+    stress = req.stress
+
+    current_year = pd.Timestamp.today().year
+    years = np.arange(current_year, current_year + inp.end_year_offset + 1, dtype=int)
+    n_years = len(years)
+    location_map: Dict[str, Any] = {loc.name: loc for loc in _location_data()}
+
+    def _series(start: float, growth: float) -> np.ndarray:
+        return start * (1.0 + growth) ** np.arange(n_years)
+
+    salary1 = _series(inp.salary1_start_usd, inp.salary1_growth)
+    salary2 = _series(inp.salary2_start_usd, inp.salary2_growth)
+
+    # Re-use deterministic simulation to rank scenarios
+    det = run_simulation(inp)
+    years_list = det.years
+
+    rng = np.random.default_rng()
+
+    # ── Monte Carlo bands ──────────────────────────────────────────────────
+    mc_bands: List[MCBand] = []
+
+    for row in det.top_rows[: mc.top_n]:
+        cf = _compute_cashflows(
+            inp, location_map, years, current_year, salary1, salary2,
+            row.pre_move_location, row.post_move_location,
+            row.move_year, row.house_purchase_year,
+            row.childcare_mode, row.school_mode,
+        )
+
+        # Deterministic path reproduced from cashflows
+        det_liq, det_nw = [], []
+        liq = float(inp.current_savings_usd)
+        for k in range(n_years):
+            r = inp.investment_return if liq >= 0 else inp.debt_interest_rate
+            liq = (liq * (1.0 + r)
+                   + cf["salary_income"][k] + cf["extra_income"][k]
+                   - cf["costs"][k] - cf["home_outflow"][k])
+            det_liq.append(liq)
+            det_nw.append(liq + float(cf["home_value"][k]))
+
+        liq_paths, nw_paths = _mc_paths(
+            inp, cf, mc.n_runs, mc.return_std, mc.salary_noise_fraction, rng)
+
+        ever_bankrupt = np.any(liq_paths < 0, axis=1)
+
+        mc_bands.append(MCBand(
+            label=row.label,
+            det_liquid=det_liq,
+            det_nw=det_nw,
+            p5_liquid=np.percentile(liq_paths,  5, axis=0).tolist(),
+            p25_liquid=np.percentile(liq_paths, 25, axis=0).tolist(),
+            p50_liquid=np.percentile(liq_paths, 50, axis=0).tolist(),
+            p75_liquid=np.percentile(liq_paths, 75, axis=0).tolist(),
+            p95_liquid=np.percentile(liq_paths, 95, axis=0).tolist(),
+            p5_nw=np.percentile(nw_paths,  5, axis=0).tolist(),
+            p25_nw=np.percentile(nw_paths, 25, axis=0).tolist(),
+            p50_nw=np.percentile(nw_paths, 50, axis=0).tolist(),
+            p75_nw=np.percentile(nw_paths, 75, axis=0).tolist(),
+            p95_nw=np.percentile(nw_paths, 95, axis=0).tolist(),
+            prob_bankruptcy=float(np.mean(ever_bankrupt)),
+            prob_negative_final=float(np.mean(liq_paths[:, -1] < 0)),
+        ))
+
+    # ── Stress tests ──────────────────────────────────────────────────────
+    stress_results: List[StressScenarioResult] = []
+
+    w_start = max(0, min(stress.shock_earliest_year_offset, n_years - 2))
+    w_end   = max(w_start + 1, min(stress.shock_latest_year_offset, n_years - 2))
+    k_idx   = np.arange(n_years)[np.newaxis, :]          # (1, n_years) for broadcasting
+    n_st    = stress.n_runs
+
+    for row in det.top_rows[: stress.top_n]:
+        cf = _compute_cashflows(
+            inp, location_map, years, current_year, salary1, salary2,
+            row.pre_move_location, row.post_move_location,
+            row.move_year, row.house_purchase_year,
+            row.childcare_mode, row.school_mode,
+        )
+        home_final = float(cf["home_value"][-1])
+
+        # Baseline MC (no shock)
+        liq_base, _ = _mc_paths(inp, cf, n_st, mc.return_std, 0.0, rng)
+        baseline    = _shock_summary("Baseline", liq_base, home_final)
+
+        shocks: List[ShockSummary] = []
+
+        # Job-loss shocks
+        for dur in stress.job_loss_durations:
+            s_start = rng.integers(w_start, w_end + 1, size=n_st)[:, np.newaxis]  # (n_st,1)
+            mask = (k_idx >= s_start) & (k_idx < s_start + dur)                   # (n_st, n_years)
+            liq_p, _ = _mc_paths(inp, cf, n_st, mc.return_std, 0.0, rng, job_loss_mask=mask)
+            shocks.append(_shock_summary(f"Job loss {dur}yr", liq_p, home_final))
+
+        # Capital-loss shocks
+        for amount in stress.capital_shocks_usd:
+            s_year = rng.integers(w_start, w_end + 1, size=n_st)[:, np.newaxis]  # (n_st,1)
+            cap_mask = np.where(k_idx == s_year, float(amount), 0.0)              # (n_st, n_years)
+            liq_p, _ = _mc_paths(inp, cf, n_st, mc.return_std, 0.0, rng, capital_loss_mask=cap_mask)
+            shocks.append(_shock_summary(f"Capital loss ${int(amount/1000)}K", liq_p, home_final))
+
+        stress_results.append(StressScenarioResult(
+            label=row.label,
+            baseline=baseline,
+            shocks=shocks,
+        ))
+
+    return AdvancedOutput(
+        years=years_list,
+        n_mc_runs=mc.n_runs,
+        mc_bands=mc_bands,
+        stress_results=stress_results,
+    )

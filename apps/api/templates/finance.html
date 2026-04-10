@@ -85,6 +85,11 @@ table.fc-table tr:hover td { background:#0e1438; }
   background:#0d1330; color:#8ec5ff; font-size:11px; font-weight:700; cursor:pointer; }
 .fc-toggle-btn:hover { border-color:#8ec5ff; }
 
+/* ── section divider ── */
+.fc-section-divider { margin:40px 0 22px; padding-bottom:12px; border-bottom:1px solid #2a345f; }
+.fc-section-divider h2 { font-family:'Playfair Display',serif; font-size:22px; margin:0 0 4px; }
+.fc-section-divider p { color:#8ec5ff; font-size:13px; margin:0; }
+
 /* ── error banner ── */
 .fc-error { display:none; margin-top:16px; padding:12px 16px; border-radius:12px;
   background:#2a0e10; border:1px solid #ff6b6b; color:#ff9999; font-size:13px; }
@@ -379,6 +384,140 @@ table.fc-table tr:hover td { background:#0e1438; }
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- ADVANCED ANALYSIS                                                      -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div class="fc-page" id="fcAdvanced" style="display:none">
+
+  <div class="fc-section-divider">
+    <h2>Advanced Analysis</h2>
+    <p>Monte Carlo uncertainty bands &amp; stress-test resilience — runs on the top scenarios above.</p>
+  </div>
+
+  <div class="fc-sections">
+
+    <!-- Monte Carlo params -->
+    <div class="fc-section">
+      <h3>🎲 Monte Carlo</h3>
+      <div class="fc-row2">
+        <div class="fc-field">
+          <label>Simulations per scenario</label>
+          <input type="number" id="mc_n_runs" value="500" min="100" max="2000" step="100">
+        </div>
+        <div class="fc-field">
+          <label>Annual return std dev</label>
+          <input type="number" id="mc_return_std" value="0.12" min="0.01" max="0.5" step="0.01">
+          <div class="fc-hint">Equity ≈ 0.15–0.18 · Balanced ≈ 0.10–0.12 · Bonds ≈ 0.05–0.07</div>
+        </div>
+      </div>
+      <div class="fc-row2">
+        <div class="fc-field">
+          <label>Salary noise fraction</label>
+          <input type="number" id="mc_salary_noise" value="0.0" min="0" max="0.3" step="0.02">
+          <div class="fc-hint">Year-to-year income variability (0 = deterministic salary)</div>
+        </div>
+        <div class="fc-field">
+          <label>Top N scenarios to analyse</label>
+          <input type="number" id="mc_top_n" value="8" min="1" max="20" step="1">
+        </div>
+      </div>
+    </div>
+
+    <!-- Stress params -->
+    <div class="fc-section">
+      <h3>⚡ Stress Tests</h3>
+      <div class="fc-field">
+        <label>Job loss durations to test</label>
+        <div class="fc-checks">
+          <label class="fc-check"><input type="checkbox" name="adv_job_loss" value="1" checked> 1 year</label>
+          <label class="fc-check"><input type="checkbox" name="adv_job_loss" value="2" checked> 2 years</label>
+          <label class="fc-check"><input type="checkbox" name="adv_job_loss" value="3"> 3 years</label>
+        </div>
+      </div>
+      <div class="fc-field" style="margin-top:10px">
+        <label>Sudden capital-loss amounts</label>
+        <div class="fc-checks">
+          <label class="fc-check"><input type="checkbox" name="adv_cap_shock" value="50000" checked> $50K</label>
+          <label class="fc-check"><input type="checkbox" name="adv_cap_shock" value="100000" checked> $100K</label>
+          <label class="fc-check"><input type="checkbox" name="adv_cap_shock" value="200000"> $200K</label>
+        </div>
+      </div>
+      <div class="fc-row2" style="margin-top:10px">
+        <div class="fc-field">
+          <label>Shock window — earliest year</label>
+          <input type="number" id="stress_w_start" value="2" min="1" max="20">
+        </div>
+        <div class="fc-field">
+          <label>Shock window — latest year</label>
+          <input type="number" id="stress_w_end" value="10" min="2" max="40">
+        </div>
+      </div>
+      <div class="fc-row2">
+        <div class="fc-field">
+          <label>Stress simulations per shock</label>
+          <input type="number" id="stress_n_runs" value="300" min="50" max="1000" step="50">
+        </div>
+        <div class="fc-field">
+          <label>Top N scenarios to stress</label>
+          <input type="number" id="stress_top_n" value="5" min="1" max="15">
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .fc-sections -->
+
+  <div class="fc-generate-wrap">
+    <button type="button" class="fc-btn" id="fcAdvBtn" onclick="runAdvanced()">
+      <span class="fc-spinner" id="fcAdvSpinner"></span>
+      <span id="fcAdvBtnText">Run Advanced Analysis</span>
+    </button>
+  </div>
+  <div class="fc-error" id="fcAdvError"></div>
+
+  <!-- Advanced results -->
+  <div id="fcAdvResults" style="display:none">
+
+    <!-- MC section -->
+    <div class="fc-results-header" style="margin-top:36px">
+      <h2>Monte Carlo — Confidence Bands</h2>
+      <span class="fc-badge" id="fcMcBadge"></span>
+    </div>
+    <p style="color:#8ec5ff;font-size:13px;margin:-10px 0 18px">
+      Solid line = median · dark band = p25–p75 · light band = p5–p95 · dashed = deterministic path
+    </p>
+    <div class="fc-chart-block">
+      <h3>Liquid wealth — uncertainty bands</h3>
+      <div id="fcMcLiqChart" class="fc-plotly" style="height:480px"></div>
+    </div>
+    <div class="fc-chart-block">
+      <h3>Net worth — uncertainty bands</h3>
+      <div id="fcMcNwChart" class="fc-plotly" style="height:480px"></div>
+    </div>
+    <div class="fc-chart-block">
+      <h3>Probability of bankruptcy — by scenario</h3>
+      <div id="fcBankruptChart" class="fc-plotly" style="height:340px"></div>
+    </div>
+
+    <!-- Stress section -->
+    <div class="fc-results-header" style="margin-top:36px">
+      <h2>Stress Tests — Resilience Under Shock</h2>
+      <span class="fc-badge" id="fcStressBadge"></span>
+    </div>
+    <p style="color:#8ec5ff;font-size:13px;margin:-10px 0 18px">
+      Bars show final net worth (p50) with p10–p90 error bars. Shock timing is randomised within the window you set.
+    </p>
+    <div class="fc-chart-block">
+      <h3>Final net worth (p50) — baseline vs. shocks</h3>
+      <div id="fcStressBarChart" class="fc-plotly" style="height:420px"></div>
+    </div>
+    <div class="fc-chart-block">
+      <h3>P(bankruptcy) under each shock</h3>
+      <div id="fcStressBankruptChart" class="fc-plotly" style="height:340px"></div>
+    </div>
+
+  </div><!-- end #fcAdvResults -->
+</div><!-- end #fcAdvanced -->
+
 <script>
 const form = document.getElementById('fcForm');
 const btn  = document.getElementById('fcBtn');
@@ -588,6 +727,9 @@ function renderTop(liqDivId, nwDivId, years, topTraces) {
                { responsive: true, displayModeBar: false });
 }
 
+// Saved for advanced analysis
+let _lastFinanceInput = null;
+
 function renderResults(data) {
   document.getElementById('fcBadge').textContent = data.n_scenarios + ' scenarios simulated';
 
@@ -625,6 +767,214 @@ function renderResults(data) {
   });
 
   resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Show advanced section
+  document.getElementById('fcAdvanced').style.display = 'block';
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// ADVANCED ANALYSIS
+// ══════════════════════════════════════════════════════════════════════════
+
+// Also save the finance input when form is submitted
+const _origSubmit = form.onsubmit;
+form.addEventListener('submit', () => { _lastFinanceInput = collectForm(); });
+
+function runAdvanced() {
+  if (!_lastFinanceInput) return;
+  const advBtn     = document.getElementById('fcAdvBtn');
+  const advSpinner = document.getElementById('fcAdvSpinner');
+  const advBtnText = document.getElementById('fcAdvBtnText');
+  const advError   = document.getElementById('fcAdvError');
+
+  advBtn.disabled = true;
+  advSpinner.style.display = 'block';
+  advBtnText.textContent = 'Analysing…';
+  advError.style.display = 'none';
+  document.getElementById('fcAdvResults').style.display = 'none';
+
+  const payload = {
+    finance: _lastFinanceInput,
+    mc: {
+      n_runs:                  parseInt(document.getElementById('mc_n_runs').value)     || 500,
+      return_std:              parseFloat(document.getElementById('mc_return_std').value) || 0.12,
+      salary_noise_fraction:   parseFloat(document.getElementById('mc_salary_noise').value) || 0,
+      top_n:                   parseInt(document.getElementById('mc_top_n').value)      || 8,
+    },
+    stress: {
+      job_loss_durations:      [...document.querySelectorAll('input[name=adv_job_loss]:checked')].map(e => parseInt(e.value)),
+      capital_shocks_usd:      [...document.querySelectorAll('input[name=adv_cap_shock]:checked')].map(e => parseFloat(e.value)),
+      shock_earliest_year_offset: parseInt(document.getElementById('stress_w_start').value) || 2,
+      shock_latest_year_offset:   parseInt(document.getElementById('stress_w_end').value)   || 10,
+      n_runs:                  parseInt(document.getElementById('stress_n_runs').value)  || 300,
+      top_n:                   parseInt(document.getElementById('stress_top_n').value)   || 5,
+    },
+  };
+
+  fetch('/api/finance/advanced', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.detail) throw new Error(data.detail);
+    renderAdvancedResults(data);
+    document.getElementById('fcAdvResults').style.display = 'block';
+    document.getElementById('fcAdvResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  })
+  .catch(err => {
+    advError.textContent = '⚠ ' + err.message;
+    advError.style.display = 'block';
+  })
+  .finally(() => {
+    advBtn.disabled = false;
+    advSpinner.style.display = 'none';
+    advBtnText.textContent = 'Run Advanced Analysis';
+  });
+}
+
+// ── helpers ──────────────────────────────────────────────────────────────
+
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16),
+        g = parseInt(hex.slice(3,5),16),
+        b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+const MC_COLORS = [
+  '#ff6fb5','#8ec5ff','#a8ff78','#ffd166','#ef476f',
+  '#06d6a0','#c77dff','#fb8500','#4cc9f0','#80ed99',
+];
+const SHOCK_COLORS = ['#80ed99','#ffd166','#fb8500','#ef476f','#c77dff','#ff6fb5','#4cc9f0'];
+
+function _mcBandTraces(years, band, col, showLegend, shortLabel) {
+  const oa = hexToRgba(col, 0.07), ia = hexToRgba(col, 0.18);
+  return [
+    // p5-p95 outer envelope
+    { x:years, y:band.p95_liquid, type:'scatter', mode:'lines', line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    { x:years, y:band.p5_liquid,  type:'scatter', mode:'lines', fill:'tonexty', fillcolor:oa, line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    // p25-p75 inner band
+    { x:years, y:band.p75_liquid, type:'scatter', mode:'lines', line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    { x:years, y:band.p25_liquid, type:'scatter', mode:'lines', fill:'tonexty', fillcolor:ia, line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    // Median
+    { x:years, y:band.p50_liquid, type:'scatter', mode:'lines', line:{color:col,width:2.2},
+      name: `${shortLabel}  P(bankrupt)=${(band.prob_bankruptcy*100).toFixed(1)}%`,
+      showlegend,
+      hovertemplate:`%{y:$.3s}<extra>${shortLabel}</extra>` },
+    // Deterministic (dashed)
+    { x:years, y:band.det_liquid, type:'scatter', mode:'lines', line:{color:col,width:1.5,dash:'dot'},
+      opacity:0.55, hoverinfo:'skip', showlegend:false },
+  ];
+}
+
+function _mcNwTraces(years, band, col, showLegend, shortLabel) {
+  const oa = hexToRgba(col, 0.07), ia = hexToRgba(col, 0.18);
+  return [
+    { x:years, y:band.p95_nw, type:'scatter', mode:'lines', line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    { x:years, y:band.p5_nw,  type:'scatter', mode:'lines', fill:'tonexty', fillcolor:oa, line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    { x:years, y:band.p75_nw, type:'scatter', mode:'lines', line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    { x:years, y:band.p25_nw, type:'scatter', mode:'lines', fill:'tonexty', fillcolor:ia, line:{color:'transparent'}, hoverinfo:'skip', showlegend:false },
+    { x:years, y:band.p50_nw, type:'scatter', mode:'lines', line:{color:col,width:2.2},
+      name: shortLabel, showlegend,
+      hovertemplate:`%{y:$.3s}<extra>${shortLabel}</extra>` },
+    { x:years, y:band.det_nw, type:'scatter', mode:'lines', line:{color:col,width:1.5,dash:'dot'},
+      opacity:0.55, hoverinfo:'skip', showlegend:false },
+  ];
+}
+
+// ── render ────────────────────────────────────────────────────────────────
+
+function renderAdvancedResults(data) {
+  document.getElementById('fcMcBadge').textContent =
+    `${data.mc_bands.length} scenarios × ${data.n_mc_runs} runs`;
+  document.getElementById('fcStressBadge').textContent =
+    `${data.stress_results.length} scenarios`;
+
+  // MC charts
+  const liqTraces = [], nwTraces = [];
+  data.mc_bands.forEach((band, i) => {
+    const col = MC_COLORS[i % MC_COLORS.length];
+    const shortLabel = `#${i+1} ${band.label.split('|')[0].trim()}`;
+    liqTraces.push(..._mcBandTraces(data.years, band, col, true, shortLabel));
+    nwTraces.push(..._mcNwTraces(data.years, band, col, true, shortLabel));
+  });
+
+  const mcLegend = {
+    showlegend:true,
+    legend:{ x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
+             font:{color:TEXT_COL, size:8.5}, tracegroupgap:2 },
+    margin:{ l:70, r:220, t:40, b:50 },
+  };
+  Plotly.react('fcMcLiqChart', liqTraces, {...baseLayout('MC — Liquid wealth'), ...mcLegend},
+               {responsive:true, displayModeBar:false});
+  Plotly.react('fcMcNwChart',  nwTraces,  {...baseLayout('MC — Net worth'),     ...mcLegend},
+               {responsive:true, displayModeBar:false});
+
+  // Bankruptcy bar chart
+  const bankLabels = data.mc_bands.map((b,i) => `#${i+1} ${b.label.split('|')[0].trim()}`);
+  Plotly.react('fcBankruptChart', [
+    { type:'bar', name:'P(ever bankrupt)', x:bankLabels,
+      y:data.mc_bands.map(b => +(b.prob_bankruptcy*100).toFixed(2)),
+      marker:{color:'#ef476f'},
+      hovertemplate:'%{y:.2f}%<extra>P(ever bankrupt)</extra>' },
+    { type:'bar', name:'P(negative at end)', x:bankLabels,
+      y:data.mc_bands.map(b => +(b.prob_negative_final*100).toFixed(2)),
+      marker:{color:'#ffd166'},
+      hovertemplate:'%{y:.2f}%<extra>P(neg. at end)</extra>' },
+  ], {
+    ...baseLayout('Probability of bankruptcy (%)'),
+    barmode:'group', showlegend:true,
+    yaxis:{ ...baseLayout('').yaxis, tickformat:'.2f', title:{text:'Probability (%)',font:{color:TEXT_COL}} },
+    xaxis:{ ...baseLayout('').xaxis, tickangle:-25 },
+    legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
+    margin:{ l:70, r:20, t:40, b:130 },
+  }, {responsive:true, displayModeBar:false});
+
+  // Stress bar chart — final NW p50 with error bars
+  const scenLabels = data.stress_results.map((r,i) => `#${i+1} ${r.label.split('|')[0].trim()}`);
+  const allShockNames = ['Baseline', ...data.stress_results[0].shocks.map(s => s.shock_name)];
+
+  const stressBarTraces = allShockNames.map((name, si) => ({
+    type:'bar', name,
+    x: scenLabels,
+    y: data.stress_results.map(r => si === 0 ? r.baseline.p50 : r.shocks[si-1].p50),
+    error_y: {
+      type:'data', symmetric:false,
+      array:      data.stress_results.map(r => { const s = si===0?r.baseline:r.shocks[si-1]; return s.p90 - s.p50; }),
+      arrayminus: data.stress_results.map(r => { const s = si===0?r.baseline:r.shocks[si-1]; return s.p50 - s.p10; }),
+      color: SHOCK_COLORS[si % SHOCK_COLORS.length], thickness:1.5, width:5,
+    },
+    marker:{ color: SHOCK_COLORS[si % SHOCK_COLORS.length] },
+    hovertemplate:`${name}<br>p50: %{y:$.3s}<br>p10–p90 shown as error bars<extra></extra>`,
+  }));
+
+  Plotly.react('fcStressBarChart', stressBarTraces, {
+    ...baseLayout('Final net worth p50 under each shock'),
+    barmode:'group', showlegend:true,
+    legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
+    xaxis:{ ...baseLayout('').xaxis, tickangle:-25 },
+    margin:{ l:70, r:20, t:40, b:130 },
+  }, {responsive:true, displayModeBar:false});
+
+  // Stress P(bankruptcy) chart
+  const stressBankTraces = allShockNames.map((name, si) => ({
+    type:'bar', name,
+    x: scenLabels,
+    y: data.stress_results.map(r => +((si===0 ? r.baseline : r.shocks[si-1]).prob_bankruptcy * 100).toFixed(2)),
+    marker:{ color: SHOCK_COLORS[si % SHOCK_COLORS.length] },
+    hovertemplate:`${name}<br>P(bankrupt): %{y:.2f}%<extra></extra>`,
+  }));
+
+  Plotly.react('fcStressBankruptChart', stressBankTraces, {
+    ...baseLayout('P(bankruptcy) under each shock (%)'),
+    barmode:'group', showlegend:true,
+    yaxis:{ ...baseLayout('').yaxis, tickformat:'.2f', title:{text:'Probability (%)',font:{color:TEXT_COL}} },
+    xaxis:{ ...baseLayout('').xaxis, tickangle:-25 },
+    legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
+    margin:{ l:70, r:20, t:40, b:130 },
+  }, {responsive:true, displayModeBar:false});
 }
 </script>
 {% endblock %}

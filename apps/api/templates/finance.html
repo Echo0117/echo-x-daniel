@@ -855,6 +855,39 @@ const MC_COLORS = [
 ];
 const SHOCK_COLORS = ['#80ed99','#ffd166','#fb8500','#ef476f','#c77dff','#ff6fb5','#4cc9f0'];
 
+function scenarioXAxis(tickAngle = -25) {
+  return {
+    ...baseLayout('').xaxis,
+    title: { text: 'Scenario', font: { color: TEXT_COL } },
+    tickangle: tickAngle,
+  };
+}
+
+function probabilityYAxis(maxValue) {
+  return {
+    ...baseLayout('').yaxis,
+    tickformat: '.2f',
+    title: { text: 'Probability (%)', font: { color: TEXT_COL } },
+    range: [0, Math.min(100, Math.max(1, maxValue * 1.15))],
+  };
+}
+
+function zeroProbabilityAnnotation(maxValue) {
+  if (maxValue > 0) return [];
+  return [{
+    text: '0% in this simulation sample',
+    xref: 'paper',
+    yref: 'paper',
+    x: 0.5,
+    y: 0.55,
+    showarrow: false,
+    font: { color: TEXT_COL, size: 13 },
+    bgcolor: '#0e153899',
+    bordercolor: GRID_COL,
+    borderpad: 8,
+  }];
+}
+
 function _mcBandTraces(years, band, col, showLegend, shortLabel) {
   const oa = hexToRgba(col, 0.07), ia = hexToRgba(col, 0.18);
   return [
@@ -920,21 +953,27 @@ function renderAdvancedResults(data) {
 
   // Bankruptcy bar chart
   const bankLabels = data.mc_bands.map((b,i) => `#${i+1} ${b.label.split('|')[0].trim()}`);
+  const bankValues = [
+    data.mc_bands.map(b => +(b.prob_bankruptcy*100).toFixed(2)),
+    data.mc_bands.map(b => +(b.prob_negative_final*100).toFixed(2)),
+  ];
+  const maxBankValue = Math.max(0, ...bankValues.flat());
   Plotly.react('fcBankruptChart', [
     { type:'bar', name:'P(ever bankrupt)', x:bankLabels,
-      y:data.mc_bands.map(b => +(b.prob_bankruptcy*100).toFixed(2)),
+      y:bankValues[0],
       marker:{color:'#ef476f'},
       hovertemplate:'%{y:.2f}%<extra>P(ever bankrupt)</extra>' },
     { type:'bar', name:'P(negative at end)', x:bankLabels,
-      y:data.mc_bands.map(b => +(b.prob_negative_final*100).toFixed(2)),
+      y:bankValues[1],
       marker:{color:'#ffd166'},
       hovertemplate:'%{y:.2f}%<extra>P(neg. at end)</extra>' },
   ], {
     ...baseLayout('Probability of bankruptcy (%)'),
     barmode:'group', showlegend:true,
-    yaxis:{ ...baseLayout('').yaxis, tickformat:'.2f', title:{text:'Probability (%)',font:{color:TEXT_COL}} },
-    xaxis:{ ...baseLayout('').xaxis, tickangle:-25 },
+    yaxis: probabilityYAxis(maxBankValue),
+    xaxis: scenarioXAxis(),
     legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
+    annotations: zeroProbabilityAnnotation(maxBankValue),
     margin:{ l:70, r:20, t:40, b:130 },
   }, {responsive:true, displayModeBar:false});
 
@@ -960,15 +999,19 @@ function renderAdvancedResults(data) {
     ...baseLayout('Final net worth p50 under each shock'),
     barmode:'group', showlegend:true,
     legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
-    xaxis:{ ...baseLayout('').xaxis, tickangle:-25 },
+    xaxis: scenarioXAxis(),
     margin:{ l:70, r:20, t:40, b:130 },
   }, {responsive:true, displayModeBar:false});
 
   // Stress P(bankruptcy) chart
+  const stressBankValues = allShockNames.map((name, si) =>
+    data.stress_results.map(r => +((si===0 ? r.baseline : r.shocks[si-1]).prob_bankruptcy * 100).toFixed(2))
+  );
+  const maxStressBankValue = Math.max(0, ...stressBankValues.flat());
   const stressBankTraces = allShockNames.map((name, si) => ({
     type:'bar', name,
     x: scenLabels,
-    y: data.stress_results.map(r => +((si===0 ? r.baseline : r.shocks[si-1]).prob_bankruptcy * 100).toFixed(2)),
+    y: stressBankValues[si],
     marker:{ color: SHOCK_COLORS[si % SHOCK_COLORS.length] },
     hovertemplate:`${name}<br>P(bankrupt): %{y:.2f}%<extra></extra>`,
   }));
@@ -976,9 +1019,10 @@ function renderAdvancedResults(data) {
   Plotly.react('fcStressBankruptChart', stressBankTraces, {
     ...baseLayout('P(bankruptcy) under each shock (%)'),
     barmode:'group', showlegend:true,
-    yaxis:{ ...baseLayout('').yaxis, tickformat:'.2f', title:{text:'Probability (%)',font:{color:TEXT_COL}} },
-    xaxis:{ ...baseLayout('').xaxis, tickangle:-25 },
+    yaxis: probabilityYAxis(maxStressBankValue),
+    xaxis: scenarioXAxis(),
     legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
+    annotations: zeroProbabilityAnnotation(maxStressBankValue),
     margin:{ l:70, r:20, t:40, b:130 },
   }, {responsive:true, displayModeBar:false});
 }

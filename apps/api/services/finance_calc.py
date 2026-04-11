@@ -421,8 +421,12 @@ def run_simulation(inp: FinanceInput) -> FinanceOutput:
 class MCParams(BaseModel):
     n_runs: int = Field(500, ge=100, le=2000)
     return_std: float = Field(0.12, ge=0.01, le=0.5)
-    salary_noise_fraction: float = Field(0.0, ge=0, le=0.3)
+    # Multiplicative annual salary noise: each year salary × (1 + ε), ε ~ N(0, σ).
+    # Mean growth trend (salary1_growth / salary2_growth) still applies.
+    # σ=0.15 → ±15% annual volatility. Capped at ±99% per year (can't go negative).
+    salary_noise_fraction: float = Field(0.0, ge=0, le=0.5)
     top_n: int = Field(8, ge=1, le=30)
+    rng_seed: Optional[int] = Field(None, ge=0)
 
 
 class StressParams(BaseModel):
@@ -432,6 +436,10 @@ class StressParams(BaseModel):
     shock_latest_year_offset: int = Field(10, ge=2, le=40)
     n_runs: int = Field(300, ge=50, le=1000)
     top_n: int = Field(5, ge=1, le=20)
+    # Extra home appreciation rates to test (on top of baseline)
+    house_appreciation_scenarios: List[float] = Field(
+        default_factory=lambda: [0.0, -0.02, -0.05]
+    )
 
 
 class AdvancedRequest(BaseModel):
@@ -475,11 +483,41 @@ class StressScenarioResult(BaseModel):
     shocks: List[ShockSummary]
 
 
+class HouseStressPoint(BaseModel):
+    rate: float
+    rate_label: str
+    final_nw: float
+    final_liquid: float
+    trajectory_nw: List[float]
+
+
+class HouseStressResult(BaseModel):
+    label: str
+    baseline_rate: float
+    points: List[HouseStressPoint]
+
+
+class BuyTimingPoint(BaseModel):
+    buy_year: int      # absolute year, or 0 = rent-forever
+    offset: int        # years from now; 0 = rent-forever
+    label: str
+    final_nw: float
+    final_liquid: float
+
+
+class BuyTimingResult(BaseModel):
+    label: str
+    original_buy_year: int   # the scenario's original plan (0 = rent-forever)
+    points: List[BuyTimingPoint]
+
+
 class AdvancedOutput(BaseModel):
     years: List[int]
     n_mc_runs: int
     mc_bands: List[MCBand]
     stress_results: List[StressScenarioResult]
+    house_stress_results: List[HouseStressResult]
+    buy_timing_results: List[BuyTimingResult]
 
 
 # ---------------------------------------------------------------------------
@@ -586,8 +624,9 @@ def _mc_paths(
     returns = rng.normal(inp.investment_return, return_std, (n_runs, n_years))
     returns = np.clip(returns, -0.9, 2.0)
 
+    # Multiplicative noise: salary × (1 + ε). Clip so salary never turns negative.
     income_noise = (
-        rng.normal(0.0, salary_noise_fraction, (n_runs, n_years))
+        np.clip(rng.normal(0.0, salary_noise_fraction, (n_runs, n_years)), -0.99, 3.0)
         if salary_noise_fraction > 0
         else np.zeros((n_runs, n_years))
     )
@@ -656,7 +695,7 @@ def run_advanced(req: AdvancedRequest) -> AdvancedOutput:
     det = run_simulation(inp)
     years_list = det.years
 
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(mc.rng_seed)
 
     # ── Monte Carlo bands ──────────────────────────────────────────────────
     mc_bands: List[MCBand] = []
@@ -746,9 +785,81 @@ def run_advanced(req: AdvancedRequest) -> AdvancedOutput:
             shocks=shocks,
         ))
 
+    # ── House price sensitivity ────────────────────────────────────────────
+    house_stress_results: List[HouseStressResult] = []
+    all_rates = [inp.home_appreciation] + [
+        r for r in stress.house_appreciation_scenarios if r != inp.home_appreciation
+    ]
+
+    for row in det.top_rows[: stress.top_n]:
+        hpoints: List[HouseStressPoint] = []
+        for rate in all_rates:
+            inp_mod = inp.model_copy(update={"home_appreciation": rate})
+            sim = _simulate_one(
+                inp_mod, location_map, years, current_year, salary1, salary2,
+                row.pre_move_location, row.post_move_location,
+                row.move_year, row.house_purchase_year,
+                row.childcare_mode, row.school_mode,
+            )
+            lbl = (f"{rate*100:.1f}%/yr (base)" if rate == inp.home_appreciation
+                   else f"{rate*100:+.1f}%/yr")
+            hpoints.append(HouseStressPoint(
+                rate=rate,
+                rate_label=lbl,
+                final_nw=float(sim["final_net_worth"]),
+                final_liquid=float(sim["final_liquid"]),
+                trajectory_nw=sim["net_worth"].tolist(),
+            ))
+        house_stress_results.append(HouseStressResult(
+            label=row.label,
+            baseline_rate=inp.home_appreciation,
+            points=hpoints,
+        ))
+
+    # ── Buy timing sweep ──────────────────────────────────────────────────
+    buy_timing_results: List[BuyTimingResult] = []
+
+    for row in det.top_rows[: mc.top_n]:
+        bpoints: List[BuyTimingPoint] = []
+        # Rent-forever baseline
+        sim = _simulate_one(
+            inp, location_map, years, current_year, salary1, salary2,
+            row.pre_move_location, row.post_move_location,
+            row.move_year, None,
+            row.childcare_mode, row.school_mode,
+        )
+        bpoints.append(BuyTimingPoint(
+            buy_year=0, offset=0, label="Rent forever",
+            final_nw=float(sim["final_net_worth"]),
+            final_liquid=float(sim["final_liquid"]),
+        ))
+        # Sweep buy years 1 … end_year_offset-1
+        for offset in range(1, inp.end_year_offset):
+            by = float(current_year + offset)
+            sim = _simulate_one(
+                inp, location_map, years, current_year, salary1, salary2,
+                row.pre_move_location, row.post_move_location,
+                row.move_year, by,
+                row.childcare_mode, row.school_mode,
+            )
+            bpoints.append(BuyTimingPoint(
+                buy_year=int(by), offset=offset,
+                label=f"{int(by)} (+{offset}yr)",
+                final_nw=float(sim["final_net_worth"]),
+                final_liquid=float(sim["final_liquid"]),
+            ))
+        orig_buy = (int(row.house_purchase_year) if row.house_purchase_year else 0)
+        buy_timing_results.append(BuyTimingResult(
+            label=row.label,
+            original_buy_year=orig_buy,
+            points=bpoints,
+        ))
+
     return AdvancedOutput(
         years=years_list,
         n_mc_runs=mc.n_runs,
         mc_bands=mc_bands,
         stress_results=stress_results,
+        house_stress_results=house_stress_results,
+        buy_timing_results=buy_timing_results,
     )

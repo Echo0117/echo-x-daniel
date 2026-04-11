@@ -93,6 +93,11 @@ table.fc-table tr:hover td { background:#0e1438; }
 /* ── error banner ── */
 .fc-error { display:none; margin-top:16px; padding:12px 16px; border-radius:12px;
   background:#2a0e10; border:1px solid #ff6b6b; color:#ff9999; font-size:13px; }
+
+/* ── MC scenario toggle chips ── */
+.fc-mc-toggles { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; align-items:center; }
+.fc-mc-chip { padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700;
+  cursor:pointer; transition:background .15s, color .15s; border-width:2px; border-style:solid; }
 </style>
 {% endblock %}
 
@@ -412,13 +417,20 @@ table.fc-table tr:hover td { background:#0e1438; }
       </div>
       <div class="fc-row2">
         <div class="fc-field">
-          <label>Salary noise fraction</label>
-          <input type="number" id="mc_salary_noise" value="0.0" min="0" max="0.3" step="0.02">
-          <div class="fc-hint">Year-to-year income variability (0 = deterministic salary)</div>
+          <label>Salary noise σ (multiplicative)</label>
+          <input type="number" id="mc_salary_noise" value="0.0" min="0" max="0.5" step="0.02">
+          <div class="fc-hint">Each year: salary × (1+ε), ε~N(0,σ). Trend still applies. σ=0.15 → ±15%/yr volatility.</div>
         </div>
         <div class="fc-field">
           <label>Top N scenarios to analyse</label>
           <input type="number" id="mc_top_n" value="8" min="1" max="20" step="1">
+        </div>
+      </div>
+      <div class="fc-row2">
+        <div class="fc-field">
+          <label>RNG seed (blank = random)</label>
+          <input type="number" id="mc_rng_seed" placeholder="e.g. 42" min="0" step="1">
+          <div class="fc-hint">Set a fixed seed to reproduce the same MC draw</div>
         </div>
       </div>
     </div>
@@ -482,9 +494,10 @@ table.fc-table tr:hover td { background:#0e1438; }
       <h2>Monte Carlo — Confidence Bands</h2>
       <span class="fc-badge" id="fcMcBadge"></span>
     </div>
-    <p style="color:#8ec5ff;font-size:13px;margin:-10px 0 18px">
+    <p style="color:#8ec5ff;font-size:13px;margin:-10px 0 12px">
       Solid line = median · dark band = p25–p75 · light band = p5–p95 · dashed = deterministic path
     </p>
+    <div class="fc-mc-toggles" id="fcMcToggles"></div>
     <div class="fc-chart-block">
       <h3>Liquid wealth — uncertainty bands</h3>
       <div id="fcMcLiqChart" class="fc-plotly" style="height:480px"></div>
@@ -513,6 +526,34 @@ table.fc-table tr:hover td { background:#0e1438; }
     <div class="fc-chart-block">
       <h3>P(bankruptcy) under each shock</h3>
       <div id="fcStressBankruptChart" class="fc-plotly" style="height:340px"></div>
+    </div>
+
+    <!-- House price sensitivity -->
+    <div class="fc-results-header" style="margin-top:36px">
+      <h2>House Price Sensitivity</h2>
+    </div>
+    <p style="color:#8ec5ff;font-size:13px;margin:-10px 0 18px">
+      How does your net worth trajectory change if home prices stagnate or fall? Each line = one appreciation rate.
+    </p>
+    <div class="fc-chart-block">
+      <h3>Net worth trajectories under different home appreciation rates</h3>
+      <div id="fcHouseStressChart" class="fc-plotly" style="height:420px"></div>
+    </div>
+    <div class="fc-chart-block">
+      <h3>Final net worth impact — scenarios vs. rates</h3>
+      <div id="fcHouseStressBarChart" class="fc-plotly" style="height:380px"></div>
+    </div>
+
+    <!-- Buy timing sweep -->
+    <div class="fc-results-header" style="margin-top:36px">
+      <h2>Optimal Buy Timing</h2>
+    </div>
+    <p style="color:#8ec5ff;font-size:13px;margin:-10px 0 18px">
+      For each top scenario, final net worth across every possible house purchase year. ★ marks the original plan.
+    </p>
+    <div class="fc-chart-block">
+      <h3>Final net worth vs. year of house purchase</h3>
+      <div id="fcBuyTimingChart" class="fc-plotly" style="height:460px"></div>
     </div>
 
   </div><!-- end #fcAdvResults -->
@@ -694,31 +735,36 @@ function renderFan(divId, years, allLines, p25, p75, med, title) {
   Plotly.react(divId, traces, layout, { responsive: true, displayModeBar: false });
 }
 
-// Top-15 detail chart
-const TOP_COLORS = [
+// Shared color palette — same index = same scenario color everywhere
+const SCENARIO_COLORS = [
   '#ff6fb5','#8ec5ff','#a8ff78','#ffd166','#ef476f',
   '#06d6a0','#ffd700','#c77dff','#f72585','#4cc9f0',
   '#fb8500','#80ed99','#e9c46a','#a0c4ff','#bde0fe',
 ];
+const TOP_COLORS = SCENARIO_COLORS;
 
+// Top-15 detail chart — legend shows rank + final value; hover shows full label
 function renderTop(liqDivId, nwDivId, years, topTraces) {
   const liqTraces = [], nwTraces = [];
   topTraces.forEach((t, i) => {
-    const col = TOP_COLORS[i % TOP_COLORS.length];
-    const shortLabel = `#${i+1} ${t.label}`;
-    const common = { x: years, mode: 'lines', line: { color: col, width: i < 5 ? 2.2 : 1.5 },
-                     name: shortLabel };
-    liqTraces.push({ ...common, y: t.liquid,
+    const col = SCENARIO_COLORS[i % SCENARIO_COLORS.length];
+    const finalLiq = t.liquid[t.liquid.length - 1];
+    const finalNw  = t.net_worth[t.net_worth.length - 1];
+    const baseStyle = { x: years, mode: 'lines', line: { color: col, width: i < 5 ? 2.2 : 1.5 } };
+    liqTraces.push({ ...baseStyle, y: t.liquid,
+      name: `#${i+1}  ${fmt(finalLiq)}`,
       hovertemplate: `<b>#${i+1}</b> %{y:$.3s}<extra>${t.label}</extra>` });
-    nwTraces.push({ ...common,  y: t.net_worth,
+    nwTraces.push({ ...baseStyle, y: t.net_worth,
+      name: `#${i+1}  ${fmt(finalNw)}`,
       hovertemplate: `<b>#${i+1}</b> %{y:$.3s}<extra>${t.label}</extra>` });
   });
 
   const legendLayout = {
     showlegend: true,
     legend: { x: 1.01, y: 0.5, xanchor: 'left', bgcolor: '#0e153899',
-              bordercolor: GRID_COL, font: { color: TEXT_COL, size: 9 }, tracegroupgap: 2 },
-    margin: { l: 70, r: 220, t: 40, b: 50 },
+              bordercolor: GRID_COL, font: { color: TEXT_COL, size: 9, family: 'monospace' },
+              tracegroupgap: 2 },
+    margin: { l: 70, r: 200, t: 40, b: 50 },
   };
 
   Plotly.react(liqDivId, liqTraces, { ...baseLayout('Top 15 — liquid wealth'), ...legendLayout },
@@ -793,6 +839,7 @@ function runAdvanced() {
   advError.style.display = 'none';
   document.getElementById('fcAdvResults').style.display = 'none';
 
+  const _seedRaw = document.getElementById('mc_rng_seed').value.trim();
   const payload = {
     finance: _lastFinanceInput,
     mc: {
@@ -800,6 +847,7 @@ function runAdvanced() {
       return_std:              parseFloat(document.getElementById('mc_return_std').value) || 0.12,
       salary_noise_fraction:   parseFloat(document.getElementById('mc_salary_noise').value) || 0,
       top_n:                   parseInt(document.getElementById('mc_top_n').value)      || 8,
+      rng_seed:                _seedRaw === '' ? null : parseInt(_seedRaw),
     },
     stress: {
       job_loss_durations:      [...document.querySelectorAll('input[name=adv_job_loss]:checked')].map(e => parseInt(e.value)),
@@ -818,13 +866,17 @@ function runAdvanced() {
   })
   .then(r => r.json())
   .then(data => {
-    if (data.detail) throw new Error(data.detail);
+    if (data.detail) throw new Error(
+      Array.isArray(data.detail) ? data.detail.map(e => e.msg || JSON.stringify(e)).join('; ') : data.detail
+    );
     const advResults = document.getElementById('fcAdvResults');
     advResults.style.display = 'block';
     renderAdvancedResults(data);
     requestAnimationFrame(() => {
-      ['fcMcLiqChart', 'fcMcNwChart', 'fcBankruptChart', 'fcStressBarChart', 'fcStressBankruptChart'].forEach((id) => {
-        Plotly.Plots.resize(document.getElementById(id));
+      ['fcMcLiqChart', 'fcMcNwChart', 'fcBankruptChart', 'fcStressBarChart', 'fcStressBankruptChart',
+       'fcHouseStressChart', 'fcHouseStressBarChart', 'fcBuyTimingChart'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) Plotly.Plots.resize(el);
       });
     });
     advResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -849,11 +901,72 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-const MC_COLORS = [
-  '#ff6fb5','#8ec5ff','#a8ff78','#ffd166','#ef476f',
-  '#06d6a0','#c77dff','#fb8500','#4cc9f0','#80ed99',
-];
 const SHOCK_COLORS = ['#80ed99','#ffd166','#fb8500','#ef476f','#c77dff','#ff6fb5','#4cc9f0'];
+
+// ── MC band toggle state ──────────────────────────────────────────────────
+let _mcAllBands = null, _mcAllYears = null;
+let _mcVisible = new Set();
+
+function buildMcToggles(bands, years) {
+  _mcAllBands = bands;
+  _mcAllYears = years;
+  const c = document.getElementById('fcMcToggles');
+  c.innerHTML = '';
+
+  const mkBtn = (label, fn) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'fc-toggle-btn'; b.textContent = label;
+    b.onclick = fn; c.appendChild(b);
+  };
+  mkBtn('全部显示', () => { bands.forEach((_, i) => _mcVisible.add(i));  renderMcBandCharts(); updateMcChipStyles(); });
+  mkBtn('全部隐藏', () => { _mcVisible.clear(); renderMcBandCharts(); updateMcChipStyles(); });
+
+  bands.forEach((band, i) => {
+    const col = SCENARIO_COLORS[i % SCENARIO_COLORS.length];
+    const chip = document.createElement('button');
+    chip.type = 'button'; chip.className = 'fc-mc-chip'; chip.dataset.idx = i;
+    chip.title = band.label;
+    chip.textContent = `#${i+1}`;
+    chip.style.borderColor = col;
+    chip.onclick = () => {
+      if (_mcVisible.has(i)) _mcVisible.delete(i); else _mcVisible.add(i);
+      renderMcBandCharts(); updateMcChipStyles();
+    };
+    c.appendChild(chip);
+  });
+  updateMcChipStyles();
+}
+
+function updateMcChipStyles() {
+  document.querySelectorAll('#fcMcToggles [data-idx]').forEach(chip => {
+    const i = parseInt(chip.dataset.idx);
+    const col = SCENARIO_COLORS[i % SCENARIO_COLORS.length];
+    const active = _mcVisible.has(i);
+    chip.style.background = active ? col : 'transparent';
+    chip.style.color       = active ? '#0b0f1a' : col;
+  });
+}
+
+function renderMcBandCharts() {
+  if (!_mcAllBands) return;
+  const liqTraces = [], nwTraces = [];
+  // iterate in insertion order (natural order = 0,1,2...)
+  _mcAllBands.forEach((band, i) => {
+    if (!_mcVisible.has(i)) return;
+    const col = SCENARIO_COLORS[i % SCENARIO_COLORS.length];
+    const shortLabel = `#${i+1} ${band.label.split('|')[0].trim()}`;
+    liqTraces.push(..._mcBandTraces(_mcAllYears, band, col, true, shortLabel));
+    nwTraces.push(..._mcNwTraces(_mcAllYears, band, col, true, shortLabel));
+  });
+  const mcLegend = {
+    showlegend: true,
+    legend: { x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
+              font:{ color:TEXT_COL, size:8.5 }, tracegroupgap:2 },
+    margin: { l:70, r:220, t:40, b:50 },
+  };
+  Plotly.react('fcMcLiqChart', liqTraces, {...baseLayout('MC — Liquid wealth'), ...mcLegend}, {responsive:true, displayModeBar:false});
+  Plotly.react('fcMcNwChart',  nwTraces,  {...baseLayout('MC — Net worth'),     ...mcLegend}, {responsive:true, displayModeBar:false});
+}
 
 function scenarioXAxis(tickAngle = -25) {
   return {
@@ -931,25 +1044,10 @@ function renderAdvancedResults(data) {
   document.getElementById('fcStressBadge').textContent =
     `${data.stress_results.length} scenarios`;
 
-  // MC charts
-  const liqTraces = [], nwTraces = [];
-  data.mc_bands.forEach((band, i) => {
-    const col = MC_COLORS[i % MC_COLORS.length];
-    const shortLabel = `#${i+1} ${band.label.split('|')[0].trim()}`;
-    liqTraces.push(..._mcBandTraces(data.years, band, col, true, shortLabel));
-    nwTraces.push(..._mcNwTraces(data.years, band, col, true, shortLabel));
-  });
-
-  const mcLegend = {
-    showlegend:true,
-    legend:{ x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
-             font:{color:TEXT_COL, size:8.5}, tracegroupgap:2 },
-    margin:{ l:70, r:220, t:40, b:50 },
-  };
-  Plotly.react('fcMcLiqChart', liqTraces, {...baseLayout('MC — Liquid wealth'), ...mcLegend},
-               {responsive:true, displayModeBar:false});
-  Plotly.react('fcMcNwChart',  nwTraces,  {...baseLayout('MC — Net worth'),     ...mcLegend},
-               {responsive:true, displayModeBar:false});
+  // MC charts — build toggles, then render
+  _mcVisible = new Set(data.mc_bands.map((_, i) => i));
+  buildMcToggles(data.mc_bands, data.years);
+  renderMcBandCharts();
 
   // Bankruptcy bar chart
   const bankLabels = data.mc_bands.map((b,i) => `#${i+1} ${b.label.split('|')[0].trim()}`);
@@ -1024,6 +1122,119 @@ function renderAdvancedResults(data) {
     legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
     annotations: zeroProbabilityAnnotation(maxStressBankValue),
     margin:{ l:70, r:20, t:40, b:130 },
+  }, {responsive:true, displayModeBar:false});
+
+  renderHouseStress(data.house_stress_results, data.years);
+  renderBuyTiming(data.buy_timing_results);
+}
+
+// ── House price sensitivity ───────────────────────────────────────────────
+
+const RATE_DASH = ['solid', 'dash', 'dot', 'dashdot', 'longdash'];
+
+function renderHouseStress(results, years) {
+  if (!results || !results.length) return;
+
+  // Trajectories chart: each (scenario, rate) = one line
+  const trajTraces = [];
+  results.forEach((res, si) => {
+    const col = SCENARIO_COLORS[si % SCENARIO_COLORS.length];
+    res.points.forEach((pt, ri) => {
+      trajTraces.push({
+        x: years, y: pt.trajectory_nw, type:'scatter', mode:'lines',
+        line: { color: col, width: ri === 0 ? 2 : 1.4, dash: RATE_DASH[ri % RATE_DASH.length] },
+        name: `#${si+1} ${pt.rate_label}`,
+        legendgroup: `s${si}`,
+        legendgrouptitle: ri === 0 ? { text: `#${si+1}`, font:{color:col,size:9} } : undefined,
+        hovertemplate: `%{y:$.3s}<extra>#${si+1} ${pt.rate_label}</extra>`,
+        showlegend: true,
+      });
+    });
+  });
+
+  Plotly.react('fcHouseStressChart', trajTraces, {
+    ...baseLayout('Net worth — home appreciation scenarios'),
+    showlegend: true,
+    legend: { x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
+              font:{color:TEXT_COL,size:9}, tracegroupgap:4 },
+    margin: { l:70, r:200, t:40, b:50 },
+  }, {responsive:true, displayModeBar:false});
+
+  // Bar chart: final NW per (rate, scenario)
+  const rateLabels = results[0].points.map(p => p.rate_label);
+  const scenLabels = results.map((r, i) => `#${i+1} ${r.label.split('|')[0].trim()}`);
+  const barTraces = rateLabels.map((rLabel, ri) => ({
+    type:'bar', name: rLabel,
+    x: scenLabels,
+    y: results.map(r => r.points[ri].final_nw),
+    marker:{ color: SHOCK_COLORS[ri % SHOCK_COLORS.length] },
+    hovertemplate:`${rLabel}<br>Final NW: %{y:$.3s}<extra></extra>`,
+  }));
+  Plotly.react('fcHouseStressBarChart', barTraces, {
+    ...baseLayout('Final net worth by appreciation rate'),
+    barmode:'group', showlegend:true,
+    xaxis: scenarioXAxis(),
+    legend:{ x:0.01, y:0.99, bgcolor:'#0e153899', bordercolor:GRID_COL, font:{color:TEXT_COL,size:10} },
+    margin:{ l:70, r:20, t:40, b:130 },
+  }, {responsive:true, displayModeBar:false});
+}
+
+// ── Buy timing sweep ──────────────────────────────────────────────────────
+
+function renderBuyTiming(results) {
+  if (!results || !results.length) return;
+
+  const traces = [];
+  const annotations = [];
+
+  results.forEach((res, si) => {
+    const col = SCENARIO_COLORS[si % SCENARIO_COLORS.length];
+    // x: buy_year (use offset as label, but plot actual year on axis)
+    const xs = res.points.map(p => p.buy_year === 0 ? 'Rent ∞' : p.buy_year);
+    const ys = res.points.map(p => p.final_nw);
+
+    traces.push({
+      x: xs, y: ys, type:'scatter', mode:'lines+markers',
+      line: { color: col, width: 1.8 },
+      marker: { color: col, size: 5 },
+      name: `#${si+1} ${res.label.split('|')[0].trim()}`,
+      hovertemplate: `Buy: %{x}<br>Final NW: %{y:$.3s}<extra>#${si+1}</extra>`,
+    });
+
+    // Mark best year
+    let bestIdx = 0;
+    ys.forEach((v, i) => { if (v > ys[bestIdx]) bestIdx = i; });
+    annotations.push({
+      x: xs[bestIdx], y: ys[bestIdx],
+      text: `★ ${fmt(ys[bestIdx])}`,
+      showarrow: true, arrowhead: 0, ax: 0, ay: -28,
+      font: { color: col, size: 10 }, arrowcolor: col,
+    });
+
+    // Mark the original plan
+    if (res.original_buy_year > 0) {
+      const origXs = xs.indexOf(res.original_buy_year);
+      if (origXs >= 0) {
+        annotations.push({
+          x: xs[origXs], y: ys[origXs],
+          text: '● plan',
+          showarrow: false,
+          font: { color: col, size: 9 },
+          yshift: -16,
+        });
+      }
+    }
+  });
+
+  Plotly.react('fcBuyTimingChart', traces, {
+    ...baseLayout('Final net worth vs. house purchase year'),
+    showlegend: true,
+    legend:{ x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
+             font:{color:TEXT_COL,size:9} },
+    xaxis: { ...baseLayout('').xaxis, title:{ text:'Purchase year', font:{color:TEXT_COL} },
+             type:'category' },
+    annotations,
+    margin:{ l:70, r:200, t:40, b:80 },
   }, {responsive:true, displayModeBar:false});
 }
 </script>

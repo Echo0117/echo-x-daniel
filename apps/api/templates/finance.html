@@ -464,7 +464,18 @@ table.fc-table tr:hover td { background:#0e1438; }
           <input type="number" id="stress_w_end" value="10" min="2" max="40">
         </div>
       </div>
-      <div class="fc-row2">
+      <div class="fc-field" style="margin-top:10px">
+        <label>House price appreciation to test</label>
+        <div class="fc-checks">
+          <label class="fc-check"><input type="checkbox" name="adv_house_rate" value="0.0" checked> 0%/yr (flat)</label>
+          <label class="fc-check"><input type="checkbox" name="adv_house_rate" value="-0.02" checked> −2%/yr</label>
+          <label class="fc-check"><input type="checkbox" name="adv_house_rate" value="-0.05" checked> −5%/yr</label>
+          <label class="fc-check"><input type="checkbox" name="adv_house_rate" value="-0.10"> −10%/yr</label>
+          <label class="fc-check"><input type="checkbox" name="adv_house_rate" value="0.05"> +5%/yr</label>
+        </div>
+        <div class="fc-hint">Baseline rate from main form is always included</div>
+      </div>
+      <div class="fc-row2" style="margin-top:10px">
         <div class="fc-field">
           <label>Stress simulations per shock</label>
           <input type="number" id="stress_n_runs" value="300" min="50" max="1000" step="50">
@@ -852,6 +863,7 @@ function runAdvanced() {
     stress: {
       job_loss_durations:      [...document.querySelectorAll('input[name=adv_job_loss]:checked')].map(e => parseInt(e.value)),
       capital_shocks_usd:      [...document.querySelectorAll('input[name=adv_cap_shock]:checked')].map(e => parseFloat(e.value)),
+      house_appreciation_scenarios: [...document.querySelectorAll('input[name=adv_house_rate]:checked')].map(e => parseFloat(e.value)),
       shock_earliest_year_offset: parseInt(document.getElementById('stress_w_start').value) || 2,
       shock_latest_year_offset:   parseInt(document.getElementById('stress_w_end').value)   || 10,
       n_runs:                  parseInt(document.getElementById('stress_n_runs').value)  || 300,

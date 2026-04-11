@@ -98,22 +98,6 @@ table.fc-table tr:hover td { background:#0e1438; }
 .fc-mc-toggles { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; align-items:center; }
 .fc-mc-chip { padding:3px 12px; border-radius:20px; font-size:11px; font-weight:700;
   cursor:pointer; transition:background .15s, color .15s; border-width:2px; border-style:solid; }
-
-/* ── MC chart + side panel layout ── */
-.fc-mc-row { display:flex; gap:14px; align-items:flex-start; }
-.fc-mc-row .fc-plotly { flex:1; min-width:0; }
-.fc-mc-panel { width:190px; flex-shrink:0; background:#0b1028; border:1px solid #2a345f;
-  border-radius:12px; padding:10px 12px; display:none; font-size:11px; align-self:stretch;
-  overflow-y:auto; }
-.fc-mc-panel .mc-panel-year { font-size:12px; font-weight:800; color:#8ec5ff;
-  margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid #2a345f; }
-.fc-mc-panel .mc-panel-row { display:flex; justify-content:space-between; align-items:center;
-  padding:3px 0; border-bottom:1px solid #1a2040; gap:6px; }
-.fc-mc-panel .mc-panel-row:last-child { border-bottom:none; }
-.fc-mc-panel .mc-panel-label { color:#b7c2ff; white-space:nowrap; overflow:hidden;
-  text-overflow:ellipsis; max-width:90px; }
-.fc-mc-panel .mc-panel-val { font-weight:700; white-space:nowrap; font-family:monospace; }
-.fc-mc-panel .mc-panel-hint { font-size:10px; color:#6a75b0; margin-top:8px; text-align:center; }
 </style>
 {% endblock %}
 
@@ -526,18 +510,12 @@ table.fc-table tr:hover td { background:#0e1438; }
     </p>
     <div class="fc-mc-toggles" id="fcMcToggles"></div>
     <div class="fc-chart-block">
-      <h3>Liquid wealth — uncertainty bands <span style="font-size:10px;color:#6a75b0;font-weight:400;text-transform:none">click chart to inspect values</span></h3>
-      <div class="fc-mc-row">
-        <div id="fcMcLiqChart" class="fc-plotly" style="height:480px"></div>
-        <div id="fcMcLiqPanel" class="fc-mc-panel"></div>
-      </div>
+      <h3>Liquid wealth — uncertainty bands</h3>
+      <div id="fcMcLiqChart" class="fc-plotly" style="height:480px"></div>
     </div>
     <div class="fc-chart-block">
-      <h3>Net worth — uncertainty bands <span style="font-size:10px;color:#6a75b0;font-weight:400;text-transform:none">click chart to inspect values</span></h3>
-      <div class="fc-mc-row">
-        <div id="fcMcNwChart" class="fc-plotly" style="height:480px"></div>
-        <div id="fcMcNwPanel" class="fc-mc-panel"></div>
-      </div>
+      <h3>Net worth — uncertainty bands</h3>
+      <div id="fcMcNwChart" class="fc-plotly" style="height:480px"></div>
     </div>
     <div class="fc-chart-block">
       <h3>Probability of bankruptcy — by scenario</h3>
@@ -984,6 +962,7 @@ function updateMcChipStyles() {
 function renderMcBandCharts() {
   if (!_mcAllBands) return;
   const liqTraces = [], nwTraces = [];
+  // iterate in insertion order (natural order = 0,1,2...)
   _mcAllBands.forEach((band, i) => {
     if (!_mcVisible.has(i)) return;
     const col = SCENARIO_COLORS[i % SCENARIO_COLORS.length];
@@ -991,56 +970,14 @@ function renderMcBandCharts() {
     liqTraces.push(..._mcBandTraces(_mcAllYears, band, col, true, shortLabel));
     nwTraces.push(..._mcNwTraces(_mcAllYears, band, col, true, shortLabel));
   });
-  const mcLayout = {
-    ...baseLayout('MC — Liquid wealth'),
-    hovermode: false,
+  const mcLegend = {
     showlegend: true,
     legend: { x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
               font:{ color:TEXT_COL, size:8.5 }, tracegroupgap:2 },
-    margin: { l:70, r:10, t:40, b:50 },
+    margin: { l:70, r:220, t:40, b:50 },
   };
-  Plotly.react('fcMcLiqChart', liqTraces, mcLayout, {responsive:true, displayModeBar:false});
-  Plotly.react('fcMcNwChart',  nwTraces,  {...mcLayout, title:{text:'MC — Net worth', font:{color:TEXT_COL,size:14}}},
-               {responsive:true, displayModeBar:false});
-
-  // Wire click handlers (safe to re-attach — Plotly replaces listeners on react)
-  const liqEl = document.getElementById('fcMcLiqChart');
-  const nwEl  = document.getElementById('fcMcNwChart');
-  liqEl.removeAllListeners && liqEl.removeAllListeners('plotly_click');
-  nwEl.removeAllListeners  && nwEl.removeAllListeners('plotly_click');
-  liqEl.on('plotly_click', d => _onMcClick(d, 'liq'));
-  nwEl.on( 'plotly_click', d => _onMcClick(d, 'nw'));
-}
-
-function _onMcClick(eventData, mode) {
-  if (!eventData.points.length) return;
-  const yearVal = eventData.points[0].x;
-  const yearIdx = _mcAllYears.indexOf(yearVal);
-  if (yearIdx < 0) return;
-  _renderMcPanel('fcMcLiqPanel', yearVal, yearIdx, 'liquid');
-  _renderMcPanel('fcMcNwPanel',  yearVal, yearIdx, 'nw');
-}
-
-function _renderMcPanel(panelId, year, idx, mode) {
-  const panel = document.getElementById(panelId);
-  panel.style.display = 'block';
-  const rows = [..._mcVisible].map(i => {
-    const band = _mcAllBands[i];
-    const col  = SCENARIO_COLORS[i % SCENARIO_COLORS.length];
-    const p50  = mode === 'liquid' ? band.p50_liquid[idx] : band.p50_nw[idx];
-    const p25  = mode === 'liquid' ? band.p25_liquid[idx] : band.p25_nw[idx];
-    const p75  = mode === 'liquid' ? band.p75_liquid[idx] : band.p75_nw[idx];
-    const short = `#${i+1} ${band.label.split('|')[0].trim()}`;
-    return `<div class="mc-panel-row">
-      <span class="mc-panel-label" style="color:${col}" title="${band.label}">${short}</span>
-      <span class="mc-panel-val" style="color:${col}">${fmt(p50)}</span>
-    </div>
-    <div style="font-size:10px;color:#6a75b0;text-align:right;padding:0 0 4px;border-bottom:1px solid #1a2040">
-      p25 ${fmt(p25)} · p75 ${fmt(p75)}
-    </div>`;
-  }).join('');
-  panel.innerHTML = `<div class="mc-panel-year">${year} — p50</div>${rows}
-    <div class="mc-panel-hint">click another year to update</div>`;
+  Plotly.react('fcMcLiqChart', liqTraces, {...baseLayout('MC — Liquid wealth'), ...mcLegend}, {responsive:true, displayModeBar:false});
+  Plotly.react('fcMcNwChart',  nwTraces,  {...baseLayout('MC — Net worth'),     ...mcLegend}, {responsive:true, displayModeBar:false});
 }
 
 function scenarioXAxis(tickAngle = -25) {

@@ -1187,54 +1187,61 @@ function renderBuyTiming(results) {
   const traces = [];
   const annotations = [];
 
+  // Build tick labels once from the first result (same offsets for all)
+  const refPoints = results[0].points;
+  const tickVals  = refPoints.map(p => p.offset);
+  const tickTexts = refPoints.map(p => p.offset === 0 ? 'Rent ∞' : String(p.buy_year));
+
   results.forEach((res, si) => {
     const col = SCENARIO_COLORS[si % SCENARIO_COLORS.length];
-    // x: buy_year (use offset as label, but plot actual year on axis)
-    const xs = res.points.map(p => p.buy_year === 0 ? 'Rent ∞' : p.buy_year);
+    const xs = res.points.map(p => p.offset);   // numeric 0,1,2,…
     const ys = res.points.map(p => p.final_nw);
+    const labels = res.points.map(p => p.offset === 0 ? 'Rent ∞' : String(p.buy_year));
 
     traces.push({
       x: xs, y: ys, type:'scatter', mode:'lines+markers',
       line: { color: col, width: 1.8 },
-      marker: { color: col, size: 5 },
+      marker: { color: col, size: 4 },
       name: `#${si+1} ${res.label.split('|')[0].trim()}`,
-      hovertemplate: `Buy: %{x}<br>Final NW: %{y:$.3s}<extra>#${si+1}</extra>`,
+      text: labels,
+      hovertemplate: `Buy: %{text}<br>Final NW: %{y:$.3s}<extra>#${si+1}</extra>`,
     });
 
-    // Mark best year
+    // ★ best offset
     let bestIdx = 0;
     ys.forEach((v, i) => { if (v > ys[bestIdx]) bestIdx = i; });
     annotations.push({
       x: xs[bestIdx], y: ys[bestIdx],
       text: `★ ${fmt(ys[bestIdx])}`,
-      showarrow: true, arrowhead: 0, ax: 0, ay: -28,
+      showarrow: true, arrowhead: 0, ax: 0, ay: -26,
       font: { color: col, size: 10 }, arrowcolor: col,
     });
 
-    // Mark the original plan
-    if (res.original_buy_year > 0) {
-      const origXs = xs.indexOf(res.original_buy_year);
-      if (origXs >= 0) {
-        annotations.push({
-          x: xs[origXs], y: ys[origXs],
-          text: '● plan',
-          showarrow: false,
-          font: { color: col, size: 9 },
-          yshift: -16,
-        });
-      }
+    // ● original plan
+    const origOffset = res.points.findIndex(p => p.buy_year === res.original_buy_year && p.buy_year > 0);
+    if (origOffset >= 0) {
+      annotations.push({
+        x: xs[origOffset], y: ys[origOffset],
+        text: '● plan', showarrow: false,
+        font: { color: col, size: 9 }, yshift: -16,
+      });
     }
   });
 
   Plotly.react('fcBuyTimingChart', traces, {
     ...baseLayout('Final net worth vs. house purchase year'),
     showlegend: true,
-    legend:{ x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
-             font:{color:TEXT_COL,size:9} },
-    xaxis: { ...baseLayout('').xaxis, title:{ text:'Purchase year', font:{color:TEXT_COL} },
-             type:'category' },
+    legend: { x:1.01, y:0.5, xanchor:'left', bgcolor:'#0e153899', bordercolor:GRID_COL,
+              font:{color:TEXT_COL,size:9} },
+    xaxis: { ...baseLayout('').xaxis,
+      title: { text:'Purchase year (offset from now)', font:{color:TEXT_COL} },
+      tickmode: 'array',
+      tickvals: tickVals.filter((_, i) => i % 5 === 0),
+      ticktext: tickTexts.filter((_, i) => i % 5 === 0),
+      range: [-0.5, tickVals[tickVals.length-1] + 0.5],
+    },
     annotations,
-    margin:{ l:70, r:200, t:40, b:80 },
+    margin: { l:70, r:200, t:40, b:60 },
   }, {responsive:true, displayModeBar:false});
 }
 </script>

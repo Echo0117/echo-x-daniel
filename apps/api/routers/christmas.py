@@ -4,7 +4,8 @@ from pathlib import Path
 import markdown
 
 router = APIRouter()
-templates = Jinja2Templates(directory="apps/api/templates")
+_TEMPLATES_DIR = Path(__file__).resolve().parents[1] / "templates"
+templates = Jinja2Templates(directory=str(_TEMPLATES_DIR))
 
 # Christmas treasure hunt riddles with locations
 # Each location gives a word clue that forms a final riddle

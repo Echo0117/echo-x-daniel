@@ -1,0 +1,973 @@
+Label,PreMoveLocation,PostMoveLocation,MoveYear,HousePurchaseYear,EffectivePurchaseYear,ChildcareMode,SchoolMode,FinalLiquidUSD,FinalNetWorthUSD,MinLiquidUSD,MinNetWorthUSD,EverNegativeLiquid
+"China, Jingzhou | no-move | rent-forever | daycare | public","China, Jingzhou","China, Jingzhou",,,,daycare,public,27063300.250104867,27063300.250104867,565646.64,565646.64,False
+"Vietnam -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Vietnam,"China, Jingzhou",2031.0,,,daycare,public,27017712.801828533,27017712.801828533,563434.68,563434.68,False
+"Japan -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Japan,"China, Jingzhou",2031.0,,,daycare,public,26961070.475199163,26961070.475199163,561204.96,561204.96,False
+"China, Jingzhou -> Vietnam | move-2031 | rent-forever | daycare | public","China, Jingzhou",Vietnam,2031.0,,,daycare,public,26885999.935754474,26885999.935754474,565646.64,565646.64,False
+"China, Jingzhou | no-move | buy-2034 | daycare | public","China, Jingzhou","China, Jingzhou",,2034.0,2034.0,daycare,public,26440811.60156288,26883891.35382785,565646.64,565646.64,False
+Vietnam | no-move | rent-forever | daycare | public,Vietnam,Vietnam,,,,daycare,public,26840412.487478137,26840412.487478137,563434.68,563434.68,False
+"Vietnam -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Vietnam,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,26395224.153286546,26838303.905551516,563434.68,563434.68,False
+"Spain -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Spain,"China, Jingzhou",2031.0,,,daycare,public,26831789.900620595,26831789.900620595,555067.32,555067.32,False
+"China, Jingzhou -> Vietnam | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Vietnam,2031.0,2034.0,2034.0,daycare,public,26325328.030188017,26812468.580339737,565646.64,565646.64,False
+"Southern France -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Southern France,"China, Jingzhou",2031.0,,,daycare,public,26807708.971582368,26807708.971582368,554511.36,554511.36,False
+Japan -> Vietnam | move-2031 | rent-forever | daycare | public,Japan,Vietnam,2031.0,,,daycare,public,26783770.16084877,26783770.16084877,561204.96,561204.96,False
+"Japan -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Japan,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,26338581.826657187,26781661.578922156,561204.96,561204.96,False
+Vietnam | no-move | buy-2034 | daycare | public,Vietnam,Vietnam,,2034.0,2034.0,daycare,public,26279740.58191168,26766881.1320634,563434.68,563434.68,False
+Japan -> Vietnam | move-2031 | buy-2034 | daycare | public,Japan,Vietnam,2031.0,2034.0,2034.0,daycare,public,26223098.25528232,26710238.80543404,561204.96,561204.96,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Midwest (Kansas City),"China, Jingzhou",2031.0,,,daycare,public,26697810.332066435,26697810.332066435,549984.0,549984.0,False
+Spain -> Vietnam | move-2031 | rent-forever | daycare | public,Spain,Vietnam,2031.0,,,daycare,public,26654489.586270202,26654489.586270202,555067.32,555067.32,False
+"Spain -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Spain,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,26209301.252078623,26652381.00434359,555067.32,555067.32,False
+Southern France -> Vietnam | move-2031 | rent-forever | daycare | public,Southern France,Vietnam,2031.0,,,daycare,public,26630408.657231975,26630408.657231975,554511.36,554511.36,False
+"Southern France -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Southern France,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,26185220.323040377,26628300.075305346,554511.36,554511.36,False
+"China, Jingzhou -> Japan | move-2031 | rent-forever | daycare | public","China, Jingzhou",Japan,2031.0,,,daycare,public,26589971.815108683,26589971.815108683,565646.64,565646.64,False
+Spain -> Vietnam | move-2031 | buy-2034 | daycare | public,Spain,Vietnam,2031.0,2034.0,2034.0,daycare,public,26093817.680703755,26580958.230855476,555067.32,555067.32,False
+"New Orleans area -> China, Jingzhou | move-2031 | rent-forever | daycare | public",New Orleans area,"China, Jingzhou",2031.0,,,daycare,public,26575986.75705416,26575986.75705416,545172.0,545172.0,False
+Southern France -> Vietnam | move-2031 | buy-2034 | daycare | public,Southern France,Vietnam,2031.0,2034.0,2034.0,daycare,public,26069736.751665514,26556877.301817235,554511.36,554511.36,False
+Vietnam -> Japan | move-2031 | rent-forever | daycare | public,Vietnam,Japan,2031.0,,,daycare,public,26544384.36683234,26544384.36683234,563434.68,563434.68,False
+Midwest (Kansas City) -> Vietnam | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),Vietnam,2031.0,,,daycare,public,26520510.01771605,26520510.01771605,549984.0,549984.0,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Midwest (Kansas City),"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,26075321.68352445,26518401.435789417,549984.0,549984.0,False
+Japan | no-move | rent-forever | daycare | public,Japan,Japan,,,,daycare,public,26487742.040202986,26487742.040202986,561204.96,561204.96,False
+Midwest (Kansas City) -> Vietnam | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),Vietnam,2031.0,2034.0,2034.0,daycare,public,25959838.112149592,26446978.662301313,549984.0,549984.0,False
+New Orleans area -> Vietnam | move-2031 | rent-forever | daycare | public,New Orleans area,Vietnam,2031.0,,,daycare,public,26398686.442703765,26398686.442703765,545172.0,545172.0,False
+"New Orleans area -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",New Orleans area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,25953498.108512178,26396577.860777147,545172.0,545172.0,False
+Spain -> Japan | move-2031 | rent-forever | daycare | public,Spain,Japan,2031.0,,,daycare,public,26358461.465624418,26358461.465624418,555067.32,555067.32,False
+"China, Jingzhou -> Spain | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Spain,2031.0,2034.0,2034.0,daycare,public,25636605.389317803,26353304.70836809,565646.64,565646.64,False
+"China, Jingzhou -> Japan | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Japan,2031.0,2034.0,2034.0,daycare,public,25557596.403593004,26344884.972225722,565646.64,565646.64,False
+Southern France -> Japan | move-2031 | rent-forever | daycare | public,Southern France,Japan,2031.0,,,daycare,public,26334380.536586184,26334380.536586184,554511.36,554511.36,False
+New Orleans area -> Vietnam | move-2031 | buy-2034 | daycare | public,New Orleans area,Vietnam,2031.0,2034.0,2034.0,daycare,public,25838014.537137315,26325155.087289035,545172.0,545172.0,False
+Vietnam -> Spain | move-2031 | buy-2034 | daycare | public,Vietnam,Spain,2031.0,2034.0,2034.0,daycare,public,25591017.94104147,26307717.260091756,563434.68,563434.68,False
+Vietnam -> Japan | move-2031 | buy-2034 | daycare | public,Vietnam,Japan,2031.0,2034.0,2034.0,daycare,public,25512008.955316663,26299297.52394938,563434.68,563434.68,False
+Japan -> Spain | move-2031 | buy-2034 | daycare | public,Japan,Spain,2031.0,2034.0,2034.0,daycare,public,25534375.614412095,26251074.93346238,561204.96,561204.96,False
+Japan | no-move | buy-2034 | daycare | public,Japan,Japan,,2034.0,2034.0,daycare,public,25455366.628687304,26242655.19732002,561204.96,561204.96,False
+Midwest (Kansas City) -> Japan | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),Japan,2031.0,,,daycare,public,26224481.89707024,26224481.89707024,549984.0,549984.0,False
+"Miami area -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Miami area,"China, Jingzhou",2031.0,,,daycare,public,26143717.854393374,26143717.854393374,525126.24,525126.24,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,25617922.30202269,26131476.337665558,565646.64,565646.64,False
+"China, Jingzhou -> New Orleans area | move-2031 | buy-2034 | daycare | public","China, Jingzhou",New Orleans area,2031.0,2034.0,2034.0,daycare,public,25759671.2901896,26127879.301753335,565646.64,565646.64,False
+Spain | no-move | buy-2034 | daycare | public,Spain,Spain,,2034.0,2034.0,daycare,public,25405095.039833523,26121794.35888381,555067.32,555067.32,False
+Spain -> Japan | move-2031 | buy-2034 | daycare | public,Spain,Japan,2031.0,2034.0,2034.0,daycare,public,25326086.054108735,26113374.622741453,555067.32,555067.32,False
+New Orleans area -> Japan | move-2031 | rent-forever | daycare | public,New Orleans area,Japan,2031.0,,,daycare,public,26102658.322057974,26102658.322057974,545172.0,545172.0,False
+Southern France -> Spain | move-2031 | buy-2034 | daycare | public,Southern France,Spain,2031.0,2034.0,2034.0,daycare,public,25381014.110795304,26097713.42984559,554511.36,554511.36,False
+"China, Jingzhou -> Spain | move-2031 | rent-forever | daycare | public","China, Jingzhou",Spain,2031.0,,,daycare,public,26094756.054640453,26094756.054640453,565646.64,565646.64,False
+"China, Jingzhou -> Southern France | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Southern France,2031.0,2034.0,2034.0,daycare,public,25131240.568634424,26094197.4977915,565646.64,565646.64,False
+Southern France -> Japan | move-2031 | buy-2034 | daycare | public,Southern France,Japan,2031.0,2034.0,2034.0,daycare,public,25302005.12507051,26089293.693703227,554511.36,554511.36,False
+Vietnam -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,Vietnam,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,25572334.853746366,26085888.88938923,563434.68,563434.68,False
+Vietnam -> New Orleans area | move-2031 | buy-2034 | daycare | public,Vietnam,New Orleans area,2031.0,2034.0,2034.0,daycare,public,25714083.841913268,26082291.853477,563434.68,563434.68,False
+"China, Jingzhou -> Southern France | move-2031 | rent-forever | daycare | public","China, Jingzhou",Southern France,2031.0,,,daycare,public,26064958.17713996,26064958.17713996,565646.64,565646.64,False
+Vietnam -> Spain | move-2031 | rent-forever | daycare | public,Vietnam,Spain,2031.0,,,daycare,public,26049168.606364116,26049168.606364116,563434.68,563434.68,False
+Vietnam -> Southern France | move-2031 | buy-2034 | daycare | public,Vietnam,Southern France,2031.0,2034.0,2034.0,daycare,public,25085653.12035809,26048610.049515165,563434.68,563434.68,False
+Japan -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,Japan,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,25515692.527117,26029246.562759865,561204.96,561204.96,False
+Japan -> New Orleans area | move-2031 | buy-2034 | daycare | public,Japan,New Orleans area,2031.0,2034.0,2034.0,daycare,public,25657441.515283905,26025649.52684764,561204.96,561204.96,False
+Vietnam -> Southern France | move-2031 | rent-forever | daycare | public,Vietnam,Southern France,2031.0,,,daycare,public,26019370.728863638,26019370.728863638,563434.68,563434.68,False
+Japan -> Spain | move-2031 | rent-forever | daycare | public,Japan,Spain,2031.0,,,daycare,public,25992526.279734753,25992526.279734753,561204.96,561204.96,False
+Japan -> Southern France | move-2031 | buy-2034 | daycare | public,Japan,Southern France,2031.0,2034.0,2034.0,daycare,public,25029010.793728728,25991967.722885802,561204.96,561204.96,False
+Midwest (Kansas City) -> Spain | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),Spain,2031.0,2034.0,2034.0,daycare,public,25271115.471279368,25987814.790329654,549984.0,549984.0,False
+Midwest (Kansas City) -> Japan | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),Japan,2031.0,2034.0,2034.0,daycare,public,25192106.48555458,25979395.054187298,549984.0,549984.0,False
+Miami area -> Vietnam | move-2031 | rent-forever | daycare | public,Miami area,Vietnam,2031.0,,,daycare,public,25966417.54004299,25966417.54004299,525126.24,525126.24,False
+"Miami area -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Miami area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,25521229.20585139,25964308.95811636,525126.24,525126.24,False
+Japan -> Southern France | move-2031 | rent-forever | daycare | public,Japan,Southern France,2031.0,,,daycare,public,25962728.402234267,25962728.402234267,561204.96,561204.96,False
+Spain -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,Spain,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,25386411.95253843,25899965.988181297,555067.32,555067.32,False
+Spain -> New Orleans area | move-2031 | buy-2034 | daycare | public,Spain,New Orleans area,2031.0,2034.0,2034.0,daycare,public,25528160.940705337,25896368.95226907,555067.32,555067.32,False
+Miami area -> Vietnam | move-2031 | buy-2034 | daycare | public,Miami area,Vietnam,2031.0,2034.0,2034.0,daycare,public,25405745.634476524,25892886.184628244,525126.24,525126.24,False
+Southern France -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,Southern France,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,25362331.023500193,25875885.05914306,554511.36,554511.36,False
+Southern France -> New Orleans area | move-2031 | buy-2034 | daycare | public,Southern France,New Orleans area,2031.0,2034.0,2034.0,daycare,public,25504080.011667106,25872288.02323084,554511.36,554511.36,False
+New Orleans area -> Spain | move-2031 | buy-2034 | daycare | public,New Orleans area,Spain,2031.0,2034.0,2034.0,daycare,public,25149291.896267094,25865991.21531738,545172.0,545172.0,False
+"Bay Area -> China, Jingzhou | move-2031 | rent-forever | daycare | public",Bay Area,"China, Jingzhou",2031.0,,,daycare,public,25864275.660545018,25864275.660545018,514448.04000000004,514448.04000000004,False
+Spain | no-move | rent-forever | daycare | public,Spain,Spain,,,,daycare,public,25863245.705156185,25863245.705156185,555067.32,555067.32,False
+Spain -> Southern France | move-2031 | buy-2034 | daycare | public,Spain,Southern France,2031.0,2034.0,2034.0,daycare,public,24899730.21915016,25862687.148307234,555067.32,555067.32,False
+New Orleans area -> Japan | move-2031 | buy-2034 | daycare | public,New Orleans area,Japan,2031.0,2034.0,2034.0,daycare,public,25070282.910542294,25857571.479175013,545172.0,545172.0,False
+Southern France -> Spain | move-2031 | rent-forever | daycare | public,Southern France,Spain,2031.0,,,daycare,public,25839164.776117954,25839164.776117954,554511.36,554511.36,False
+Southern France | no-move | buy-2034 | daycare | public,Southern France,Southern France,,2034.0,2034.0,daycare,public,24875649.290111933,25838606.219269007,554511.36,554511.36,False
+Spain -> Southern France | move-2031 | rent-forever | daycare | public,Spain,Southern France,2031.0,,,daycare,public,25833447.827655695,25833447.827655695,555067.32,555067.32,False
+Southern France | no-move | rent-forever | daycare | public,Southern France,Southern France,,,,daycare,public,25809366.898617465,25809366.898617465,554511.36,554511.36,False
+Midwest (Kansas City) | no-move | buy-2034 | daycare | public,Midwest (Kansas City),Midwest (Kansas City),,2034.0,2034.0,daycare,public,25252432.38398426,25765986.419627126,549984.0,549984.0,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),New Orleans area,2031.0,2034.0,2034.0,daycare,public,25394181.372151174,25762389.383714907,549984.0,549984.0,False
+Midwest (Kansas City) -> Spain | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),Spain,2031.0,,,daycare,public,25729266.136602014,25729266.136602014,549984.0,549984.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),Southern France,2031.0,2034.0,2034.0,daycare,public,24765750.650596,25728707.579753075,549984.0,549984.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),Southern France,2031.0,,,daycare,public,25699468.259101536,25699468.259101536,549984.0,549984.0,False
+Bay Area -> Vietnam | move-2031 | rent-forever | daycare | public,Bay Area,Vietnam,2031.0,,,daycare,public,25686975.346194636,25686975.346194636,514448.04000000004,514448.04000000004,False
+"Bay Area -> China, Jingzhou | move-2031 | buy-2034 | daycare | public",Bay Area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,public,25241787.01200303,25684866.764268,514448.04000000004,514448.04000000004,False
+Miami area -> Japan | move-2031 | rent-forever | daycare | public,Miami area,Japan,2031.0,,,daycare,public,25670389.419397186,25670389.419397186,525126.24,525126.24,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,New Orleans area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,25130608.80897198,25644162.844614845,545172.0,545172.0,False
+New Orleans area | no-move | buy-2034 | daycare | public,New Orleans area,New Orleans area,,2034.0,2034.0,daycare,public,25272357.7971389,25640565.808702633,545172.0,545172.0,False
+Bay Area -> Vietnam | move-2031 | buy-2034 | daycare | public,Bay Area,Vietnam,2031.0,2034.0,2034.0,daycare,public,25126303.44062817,25613443.99077989,514448.04000000004,514448.04000000004,False
+New Orleans area -> Spain | move-2031 | rent-forever | daycare | public,New Orleans area,Spain,2031.0,,,daycare,public,25607442.56158975,25607442.56158975,545172.0,545172.0,False
+New Orleans area -> Southern France | move-2031 | buy-2034 | daycare | public,New Orleans area,Southern France,2031.0,2034.0,2034.0,daycare,public,24643927.075583715,25606884.00474079,545172.0,545172.0,False
+New Orleans area -> Southern France | move-2031 | rent-forever | daycare | public,New Orleans area,Southern France,2031.0,,,daycare,public,25577644.68408925,25577644.68408925,545172.0,545172.0,False
+"China, Jingzhou | no-move | rent-forever | daycare | private","China, Jingzhou","China, Jingzhou",,,,daycare,private,25508153.160388965,25508153.160388965,565646.64,565646.64,False
+"Vietnam -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Vietnam,"China, Jingzhou",2031.0,,,daycare,private,25462565.712112628,25462565.712112628,563434.68,563434.68,False
+Miami area -> Spain | move-2031 | buy-2034 | daycare | public,Miami area,Spain,2031.0,2034.0,2034.0,daycare,public,24717022.993606307,25433722.312656593,525126.24,525126.24,False
+Miami area -> Japan | move-2031 | buy-2034 | daycare | public,Miami area,Japan,2031.0,2034.0,2034.0,daycare,public,24638014.007881507,25425302.576514225,525126.24,525126.24,False
+"Japan -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Japan,"China, Jingzhou",2031.0,,,daycare,private,25405923.385483265,25405923.385483265,561204.96,561204.96,False
+Bay Area -> Japan | move-2031 | rent-forever | daycare | public,Bay Area,Japan,2031.0,,,daycare,public,25390947.225548834,25390947.225548834,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Japan | move-2031 | rent-forever | daycare | private","China, Jingzhou",Japan,2031.0,,,daycare,private,25369909.723781202,25369909.723781202,565646.64,565646.64,False
+"China, Jingzhou -> Vietnam | move-2031 | rent-forever | daycare | private","China, Jingzhou",Vietnam,2031.0,,,daycare,private,25330325.5037097,25330325.5037097,565646.64,565646.64,False
+"China, Jingzhou | no-move | buy-2034 | daycare | private","China, Jingzhou","China, Jingzhou",,2034.0,2034.0,daycare,private,24885664.51184697,25328744.26411194,565646.64,565646.64,False
+Vietnam -> Japan | move-2031 | rent-forever | daycare | private,Vietnam,Japan,2031.0,,,daycare,private,25324322.27550487,25324322.27550487,563434.68,563434.68,False
+"China, Jingzhou | no-move | rent-forever | parent | public","China, Jingzhou","China, Jingzhou",,,,parent,public,25312255.503222823,25312255.503222823,565646.64,565646.64,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public","China, Jingzhou",Midwest (Kansas City),2031.0,,,daycare,public,25298367.03764974,25298367.03764974,565646.64,565646.64,False
+Vietnam | no-move | rent-forever | daycare | private,Vietnam,Vietnam,,,,daycare,private,25284738.05543337,25284738.05543337,563434.68,563434.68,False
+"Vietnam -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Vietnam,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,24840077.06357063,25283156.8158356,563434.68,563434.68,False
+"Spain -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Spain,"China, Jingzhou",2031.0,,,daycare,private,25276642.81090469,25276642.81090469,555067.32,555067.32,False
+"China, Jingzhou -> Miami area | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Miami area,2031.0,2034.0,2034.0,daycare,public,24248757.057299003,25267731.269614123,565646.64,565646.64,False
+Japan | no-move | rent-forever | daycare | private,Japan,Japan,,,,daycare,private,25267679.9488755,25267679.9488755,561204.96,561204.96,False
+"Vietnam -> China, Jingzhou | move-2031 | rent-forever | parent | public",Vietnam,"China, Jingzhou",2031.0,,,parent,public,25266242.274796896,25266242.274796896,563434.68,563434.68,False
+"China, Jingzhou -> Vietnam | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Vietnam,2031.0,2034.0,2034.0,daycare,private,24769653.598143246,25256794.148294967,565646.64,565646.64,False
+Vietnam -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,Vietnam,Midwest (Kansas City),2031.0,,,daycare,public,25252779.589373406,25252779.589373406,563434.68,563434.68,False
+"Southern France -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Southern France,"China, Jingzhou",2031.0,,,daycare,private,25252561.881866466,25252561.881866466,554511.36,554511.36,False
+"China, Jingzhou -> Spain | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Spain,2031.0,2034.0,2034.0,daycare,private,24516514.044784144,25233213.36383443,565646.64,565646.64,False
+Japan -> Vietnam | move-2031 | rent-forever | daycare | private,Japan,Vietnam,2031.0,,,daycare,private,25228095.728804007,25228095.728804007,561204.96,561204.96,False
+"Japan -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Japan,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,24783434.736941267,25226514.489206236,561204.96,561204.96,False
+Vietnam -> Miami area | move-2031 | buy-2034 | daycare | public,Vietnam,Miami area,2031.0,2034.0,2034.0,daycare,public,24203169.609022666,25222143.821337786,563434.68,563434.68,False
+"Japan -> China, Jingzhou | move-2031 | rent-forever | parent | public",Japan,"China, Jingzhou",2031.0,,,parent,public,25219859.602557857,25219859.602557857,561204.96,561204.96,False
+Miami area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,Miami area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,24698339.9063112,25211893.941954065,525126.24,525126.24,False
+Vietnam | no-move | buy-2034 | daycare | private,Vietnam,Vietnam,,2034.0,2034.0,daycare,private,24724066.149866916,25211206.700018637,563434.68,563434.68,False
+Miami area -> New Orleans area | move-2031 | buy-2034 | daycare | public,Miami area,New Orleans area,2031.0,2034.0,2034.0,daycare,public,24840088.894478105,25208296.90604184,525126.24,525126.24,False
+Japan -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,Japan,Midwest (Kansas City),2031.0,,,daycare,public,25196137.262744043,25196137.262744043,561204.96,561204.96,False
+Vietnam -> Spain | move-2031 | buy-2034 | daycare | private,Vietnam,Spain,2031.0,2034.0,2034.0,daycare,private,24470926.596507806,25187625.915558092,563434.68,563434.68,False
+Miami area -> Spain | move-2031 | rent-forever | daycare | public,Miami area,Spain,2031.0,,,daycare,public,25175173.65892896,25175173.65892896,525126.24,525126.24,False
+Miami area -> Southern France | move-2031 | buy-2034 | daycare | public,Miami area,Southern France,2031.0,2034.0,2034.0,daycare,public,24211658.172922928,25174615.102080002,525126.24,525126.24,False
+Japan -> Miami area | move-2031 | buy-2034 | daycare | public,Japan,Miami area,2031.0,2034.0,2034.0,daycare,public,24146527.2823933,25165501.49470842,561204.96,561204.96,False
+Japan -> Vietnam | move-2031 | buy-2034 | daycare | private,Japan,Vietnam,2031.0,2034.0,2034.0,daycare,private,24667423.823237553,25154564.373389274,561204.96,561204.96,False
+Bay Area -> Spain | move-2031 | buy-2034 | daycare | public,Bay Area,Spain,2031.0,2034.0,2034.0,daycare,public,24437580.79975796,25154280.118808247,514448.04000000004,514448.04000000004,False
+Bay Area -> Japan | move-2031 | buy-2034 | daycare | public,Bay Area,Japan,2031.0,2034.0,2034.0,daycare,public,24358571.814033166,25145860.382665884,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | rent-forever | daycare | public,Miami area,Southern France,2031.0,,,daycare,public,25145375.781428467,25145375.781428467,525126.24,525126.24,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Midwest (Kansas City),"China, Jingzhou",2031.0,,,daycare,private,25142663.24235053,25142663.24235053,549984.0,549984.0,False
+Spain -> Japan | move-2031 | rent-forever | daycare | private,Spain,Japan,2031.0,,,daycare,private,25138399.374296945,25138399.374296945,555067.32,555067.32,False
+"China, Jingzhou -> Vietnam | move-2031 | rent-forever | parent | public","China, Jingzhou",Vietnam,2031.0,,,parent,public,25132874.52573381,25132874.52573381,565646.64,565646.64,False
+"China, Jingzhou | no-move | buy-2034 | parent | public","China, Jingzhou","China, Jingzhou",,2034.0,2034.0,parent,public,24689766.85468085,25132846.60694582,565646.64,565646.64,False
+Japan -> Spain | move-2031 | buy-2034 | daycare | private,Japan,Spain,2031.0,2034.0,2034.0,daycare,private,24414284.26987846,25130983.588928744,561204.96,561204.96,False
+"China, Jingzhou -> Japan | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Japan,2031.0,2034.0,2034.0,daycare,private,24337534.31226553,25124822.88089825,565646.64,565646.64,False
+Southern France -> Japan | move-2031 | rent-forever | daycare | private,Southern France,Japan,2031.0,,,daycare,private,25114318.445258707,25114318.445258707,554511.36,554511.36,False
+Spain -> Vietnam | move-2031 | rent-forever | daycare | private,Spain,Vietnam,2031.0,,,daycare,private,25098815.154225435,25098815.154225435,555067.32,555067.32,False
+"Spain -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Spain,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,24654154.162362702,25097233.91462767,555067.32,555067.32,False
+"Spain -> China, Jingzhou | move-2031 | rent-forever | parent | public",Spain,"China, Jingzhou",2031.0,,,parent,public,25092184.31398295,25092184.31398295,555067.32,555067.32,False
+Vietnam | no-move | rent-forever | parent | public,Vietnam,Vietnam,,,,parent,public,25086861.297307886,25086861.297307886,563434.68,563434.68,False
+"Vietnam -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Vietnam,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,24643753.626254924,25086833.378519893,563434.68,563434.68,False
+"Southern France -> China, Jingzhou | move-2031 | rent-forever | parent | public",Southern France,"China, Jingzhou",2031.0,,,parent,public,25080619.22488744,25080619.22488744,554511.36,554511.36,False
+Vietnam -> Japan | move-2031 | buy-2034 | daycare | private,Vietnam,Japan,2031.0,2034.0,2034.0,daycare,private,24291946.863989197,25079235.432621915,563434.68,563434.68,False
+Southern France -> Vietnam | move-2031 | rent-forever | daycare | private,Southern France,Vietnam,2031.0,,,daycare,private,25074734.22518721,25074734.22518721,554511.36,554511.36,False
+"Southern France -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Southern France,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,24630073.23332448,25073152.98558945,554511.36,554511.36,False
+Spain -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,Spain,Midwest (Kansas City),2031.0,,,daycare,public,25066856.68816548,25066856.68816548,555067.32,555067.32,False
+"China, Jingzhou -> Vietnam | move-2031 | buy-2034 | parent | public","China, Jingzhou",Vietnam,2031.0,2034.0,2034.0,parent,public,24572202.620167356,25059343.170319077,565646.64,565646.64,False
+Southern France -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,Southern France,Midwest (Kansas City),2031.0,,,daycare,public,25042775.759127237,25042775.759127237,554511.36,554511.36,False
+Japan -> Vietnam | move-2031 | rent-forever | parent | public,Japan,Vietnam,2031.0,,,parent,public,25040478.625068832,25040478.625068832,561204.96,561204.96,False
+"Japan -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Japan,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,24597370.954015877,25040450.706280846,561204.96,561204.96,False
+Spain -> Miami area | move-2031 | buy-2034 | daycare | public,Spain,Miami area,2031.0,2034.0,2034.0,daycare,public,24017246.70781474,25036220.920129858,555067.32,555067.32,False
+Spain -> Vietnam | move-2031 | buy-2034 | daycare | private,Spain,Vietnam,2031.0,2034.0,2034.0,daycare,private,24538143.248658985,25025283.798810706,555067.32,555067.32,False
+Japan | no-move | buy-2034 | daycare | private,Japan,Japan,,2034.0,2034.0,daycare,private,24235304.537359826,25022593.105992544,561204.96,561204.96,False
+"New Orleans area -> China, Jingzhou | move-2031 | rent-forever | daycare | private",New Orleans area,"China, Jingzhou",2031.0,,,daycare,private,25020839.667338263,25020839.667338263,545172.0,545172.0,False
+Vietnam | no-move | buy-2034 | parent | public,Vietnam,Vietnam,,2034.0,2034.0,parent,public,24526189.391741425,25013329.941893145,563434.68,563434.68,False
+Southern France -> Miami area | move-2031 | buy-2034 | daycare | public,Southern France,Miami area,2031.0,2034.0,2034.0,daycare,public,23993165.77877651,25012139.99109163,554511.36,554511.36,False
+Midwest (Kansas City) -> Japan | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),Japan,2031.0,,,daycare,private,25004419.805742778,25004419.805742778,549984.0,549984.0,False
+Spain | no-move | buy-2034 | daycare | private,Spain,Spain,,2034.0,2034.0,daycare,private,24285003.695299875,25001703.01435016,555067.32,555067.32,False
+Southern France -> Vietnam | move-2031 | buy-2034 | daycare | private,Southern France,Vietnam,2031.0,2034.0,2034.0,daycare,private,24514062.31962076,25001202.86977248,554511.36,554511.36,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | rent-forever | parent | public",Midwest (Kansas City),"China, Jingzhou",2031.0,,,parent,public,24986441.00744841,24986441.00744841,549984.0,549984.0,False
+Southern France -> Spain | move-2031 | buy-2034 | daycare | private,Southern France,Spain,2031.0,2034.0,2034.0,daycare,private,24260922.76626165,24977622.085311934,554511.36,554511.36,False
+"China, Jingzhou -> Spain | move-2031 | rent-forever | daycare | private","China, Jingzhou",Spain,2031.0,,,daycare,private,24974664.710106794,24974664.710106794,565646.64,565646.64,False
+Japan -> Vietnam | move-2031 | buy-2034 | parent | public,Japan,Vietnam,2031.0,2034.0,2034.0,parent,public,24479806.719502375,24966947.269654095,561204.96,561204.96,False
+Midwest (Kansas City) -> Vietnam | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),Vietnam,2031.0,,,daycare,private,24964835.585671276,24964835.585671276,549984.0,549984.0,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Midwest (Kansas City),"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,24520174.59380854,24963254.34607351,549984.0,549984.0,False
+"China, Jingzhou -> Southern France | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Southern France,2031.0,2034.0,2034.0,daycare,private,23976974.413967308,24939931.343124382,565646.64,565646.64,False
+Midwest (Kansas City) | no-move | rent-forever | daycare | public,Midwest (Kansas City),Midwest (Kansas City),,,,daycare,public,24932877.119611304,24932877.119611304,549984.0,549984.0,False
+Bay Area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | public,Bay Area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,public,24418897.712462842,24932451.74810571,514448.04000000004,514448.04000000004,False
+Vietnam -> Spain | move-2031 | rent-forever | daycare | private,Vietnam,Spain,2031.0,,,daycare,private,24929077.261830464,24929077.261830464,563434.68,563434.68,False
+Bay Area -> New Orleans area | move-2031 | buy-2034 | daycare | public,Bay Area,New Orleans area,2031.0,2034.0,2034.0,daycare,public,24560646.70062976,24928854.712193493,514448.04000000004,514448.04000000004,False
+Spain -> Vietnam | move-2031 | rent-forever | parent | public,Spain,Vietnam,2031.0,,,parent,public,24912803.336493924,24912803.336493924,555067.32,555067.32,False
+"Spain -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Spain,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,24469695.66544096,24912775.41770593,555067.32,555067.32,False
+"China, Jingzhou -> Southern France | move-2031 | rent-forever | daycare | private","China, Jingzhou",Southern France,2031.0,,,daycare,private,24910692.022472855,24910692.022472855,565646.64,565646.64,False
+Midwest (Kansas City) -> Miami area | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),Miami area,2031.0,2034.0,2034.0,daycare,public,23883267.139260575,24902241.351575695,549984.0,549984.0,False
+Southern France -> Vietnam | move-2031 | rent-forever | parent | public,Southern France,Vietnam,2031.0,,,parent,public,24901238.24739842,24901238.24739842,554511.36,554511.36,False
+"Southern France -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Southern France,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,24458130.57634546,24901210.328610428,554511.36,554511.36,False
+Bay Area -> Spain | move-2031 | rent-forever | daycare | public,Bay Area,Spain,2031.0,,,daycare,public,24895731.465080608,24895731.465080608,514448.04000000004,514448.04000000004,False
+Bay Area -> Southern France | move-2031 | buy-2034 | daycare | public,Bay Area,Southern France,2031.0,2034.0,2034.0,daycare,public,23932215.979074582,24895172.908231657,514448.04000000004,514448.04000000004,False
+Vietnam -> Southern France | move-2031 | buy-2034 | daycare | private,Vietnam,Southern France,2031.0,2034.0,2034.0,daycare,private,23931386.965690985,24894343.89484806,563434.68,563434.68,False
+Spain -> Japan | move-2031 | buy-2034 | daycare | private,Spain,Japan,2031.0,2034.0,2034.0,daycare,private,24106023.962781258,24893312.531413976,555067.32,555067.32,False
+Midwest (Kansas City) -> Vietnam | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),Vietnam,2031.0,2034.0,2034.0,daycare,private,24404163.680104826,24891304.230256546,549984.0,549984.0,False
+"China, Jingzhou -> Japan | move-2031 | rent-forever | parent | public","China, Jingzhou",Japan,2031.0,,,parent,public,24886982.337270193,24886982.337270193,565646.64,565646.64,False
+"New Orleans area -> China, Jingzhou | move-2031 | rent-forever | parent | public",New Orleans area,"China, Jingzhou",2031.0,,,parent,public,24886341.704031713,24886341.704031713,545172.0,545172.0,False
+New Orleans area -> Japan | move-2031 | rent-forever | daycare | private,New Orleans area,Japan,2031.0,,,daycare,private,24882596.230730504,24882596.230730504,545172.0,545172.0,False
+Japan -> Spain | move-2031 | rent-forever | daycare | private,Japan,Spain,2031.0,,,daycare,private,24872434.935201094,24872434.935201094,561204.96,561204.96,False
+Southern France -> Japan | move-2031 | buy-2034 | daycare | private,Southern France,Japan,2031.0,2034.0,2034.0,daycare,private,24081943.033743035,24869231.602375753,554511.36,554511.36,False
+Midwest (Kansas City) -> Spain | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),Spain,2031.0,2034.0,2034.0,daycare,private,24151024.126745712,24867723.445795998,549984.0,549984.0,False
+Bay Area -> Southern France | move-2031 | rent-forever | daycare | public,Bay Area,Southern France,2031.0,,,daycare,public,24865933.58758011,24865933.58758011,514448.04000000004,514448.04000000004,False
+Vietnam -> Southern France | move-2031 | rent-forever | daycare | private,Vietnam,Southern France,2031.0,,,daycare,private,24865104.57419652,24865104.57419652,563434.68,563434.68,False
+New Orleans area -> Vietnam | move-2031 | rent-forever | daycare | private,New Orleans area,Vietnam,2031.0,,,daycare,private,24843012.010658998,24843012.010658998,545172.0,545172.0,False
+"New Orleans area -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",New Orleans area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,24398351.01879627,24841430.771061238,545172.0,545172.0,False
+Vietnam -> Japan | move-2031 | rent-forever | parent | public,Vietnam,Japan,2031.0,,,parent,public,24840969.108844247,24840969.108844247,563434.68,563434.68,False
+Spain -> Vietnam | move-2031 | buy-2034 | parent | public,Spain,Vietnam,2031.0,2034.0,2034.0,parent,public,24352131.43092747,24839271.98107919,555067.32,555067.32,False
+Japan -> Southern France | move-2031 | buy-2034 | daycare | private,Japan,Southern France,2031.0,2034.0,2034.0,daycare,private,23874744.63906163,24837701.568218704,561204.96,561204.96,False
+Southern France -> Vietnam | move-2031 | buy-2034 | parent | public,Southern France,Vietnam,2031.0,2034.0,2034.0,parent,public,24340566.341831964,24827706.891983684,554511.36,554511.36,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,New Orleans area,Midwest (Kansas City),2031.0,,,daycare,public,24811053.54459903,24811053.54459903,545172.0,545172.0,False
+Japan -> Southern France | move-2031 | rent-forever | daycare | private,Japan,Southern France,2031.0,,,daycare,private,24808462.24756715,24808462.24756715,561204.96,561204.96,False
+Midwest (Kansas City) -> Vietnam | move-2031 | rent-forever | parent | public,Midwest (Kansas City),Vietnam,2031.0,,,parent,public,24807060.0299594,24807060.0299594,549984.0,549984.0,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Midwest (Kansas City),"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,24363952.35890643,24807032.1111714,549984.0,549984.0,False
+"China, Jingzhou -> New Orleans area | move-2031 | rent-forever | daycare | public","China, Jingzhou",New Orleans area,2031.0,,,daycare,public,24801973.20447845,24801973.20447845,565646.64,565646.64,False
+Japan | no-move | rent-forever | parent | public,Japan,Japan,,,,parent,public,24794586.436605196,24794586.436605196,561204.96,561204.96,False
+New Orleans area -> Miami area | move-2031 | buy-2034 | daycare | public,New Orleans area,Miami area,2031.0,2034.0,2034.0,daycare,public,23761443.564248305,24780417.776563425,545172.0,545172.0,False
+"China, Jingzhou -> New Orleans area | move-2031 | buy-2034 | daycare | private","China, Jingzhou",New Orleans area,2031.0,2034.0,2034.0,daycare,private,24406474.67087907,24774682.682442803,565646.64,565646.64,False
+New Orleans area -> Vietnam | move-2031 | buy-2034 | daycare | private,New Orleans area,Vietnam,2031.0,2034.0,2034.0,daycare,private,24282340.105092544,24769480.655244265,545172.0,545172.0,False
+Midwest (Kansas City) -> Japan | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),Japan,2031.0,2034.0,2034.0,daycare,private,23972044.394227102,24759332.96285982,549984.0,549984.0,False
+Vietnam -> New Orleans area | move-2031 | rent-forever | daycare | public,Vietnam,New Orleans area,2031.0,,,daycare,public,24756385.756202117,24756385.756202117,563434.68,563434.68,False
+New Orleans area -> Spain | move-2031 | buy-2034 | daycare | private,New Orleans area,Spain,2031.0,2034.0,2034.0,daycare,private,24029200.55173344,24745899.870783728,545172.0,545172.0,False
+Spain | no-move | rent-forever | daycare | private,Spain,Spain,,,,daycare,private,24743154.360622536,24743154.360622536,555067.32,555067.32,False
+Midwest (Kansas City) -> Vietnam | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),Vietnam,2031.0,2034.0,2034.0,parent,public,24246388.124392938,24733528.67454466,549984.0,549984.0,False
+Vietnam -> New Orleans area | move-2031 | buy-2034 | daycare | private,Vietnam,New Orleans area,2031.0,2034.0,2034.0,daycare,private,24360887.222602725,24729095.23416646,563434.68,563434.68,False
+Southern France -> Spain | move-2031 | rent-forever | daycare | private,Southern France,Spain,2031.0,,,daycare,private,24719073.431584302,24719073.431584302,554511.36,554511.36,False
+Spain -> Southern France | move-2031 | buy-2034 | daycare | private,Spain,Southern France,2031.0,2034.0,2034.0,daycare,private,23745464.064483058,24708420.993640132,555067.32,555067.32,False
+New Orleans area -> Vietnam | move-2031 | rent-forever | parent | public,New Orleans area,Vietnam,2031.0,,,parent,public,24706960.726542696,24706960.726542696,545172.0,545172.0,False
+"New Orleans area -> China, Jingzhou | move-2031 | buy-2034 | parent | public",New Orleans area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,24263853.055489734,24706932.807754703,545172.0,545172.0,False
+Japan -> New Orleans area | move-2031 | rent-forever | daycare | public,Japan,New Orleans area,2031.0,,,daycare,public,24699743.42957275,24699743.42957275,561204.96,561204.96,False
+Southern France | no-move | buy-2034 | daycare | private,Southern France,Southern France,,2034.0,2034.0,daycare,private,23721383.13544482,24684340.064601894,554511.36,554511.36,False
+Spain -> Southern France | move-2031 | rent-forever | daycare | private,Spain,Southern France,2031.0,,,daycare,private,24679181.672988594,24679181.672988594,555067.32,555067.32,False
+"China, Jingzhou -> New Orleans area | move-2031 | buy-2034 | parent | public","China, Jingzhou",New Orleans area,2031.0,2034.0,2034.0,parent,public,24308668.900509685,24676876.91207342,565646.64,565646.64,False
+Japan -> New Orleans area | move-2031 | buy-2034 | daycare | private,Japan,New Orleans area,2031.0,2034.0,2034.0,daycare,private,24304244.895973373,24672452.907537106,561204.96,561204.96,False
+Spain -> Japan | move-2031 | rent-forever | parent | public,Spain,Japan,2031.0,,,parent,public,24666911.148030292,24666911.148030292,555067.32,555067.32,False
+"China, Jingzhou -> Spain | move-2031 | buy-2034 | parent | public","China, Jingzhou",Spain,2031.0,2034.0,2034.0,parent,public,23941460.474965632,24658159.794015918,565646.64,565646.64,False
+Southern France -> Japan | move-2031 | rent-forever | parent | public,Southern France,Japan,2031.0,,,parent,public,24655346.058934797,24655346.058934797,554511.36,554511.36,False
+Southern France | no-move | rent-forever | daycare | private,Southern France,Southern France,,,,daycare,private,24655100.743950356,24655100.743950356,554511.36,554511.36,False
+"China, Jingzhou -> Japan | move-2031 | buy-2034 | parent | public","China, Jingzhou",Japan,2031.0,2034.0,2034.0,parent,public,23854606.925754502,24641895.49438722,565646.64,565646.64,False
+New Orleans area -> Japan | move-2031 | buy-2034 | daycare | private,New Orleans area,Japan,2031.0,2034.0,2034.0,daycare,private,23850220.819214825,24637509.387847543,545172.0,545172.0,False
+New Orleans area -> Vietnam | move-2031 | buy-2034 | parent | public,New Orleans area,Vietnam,2031.0,2034.0,2034.0,parent,public,24146288.82097624,24633429.37112796,545172.0,545172.0,False
+Vietnam -> New Orleans area | move-2031 | buy-2034 | parent | public,Vietnam,New Orleans area,2031.0,2034.0,2034.0,parent,public,24262655.672083743,24630863.683647476,563434.68,563434.68,False
+Vietnam -> Spain | move-2031 | buy-2034 | parent | public,Vietnam,Spain,2031.0,2034.0,2034.0,parent,public,23895447.246539697,24612146.565589983,563434.68,563434.68,False
+Midwest (Kansas City) -> Spain | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),Spain,2031.0,,,daycare,private,24609174.792068373,24609174.792068373,549984.0,549984.0,False
+Vietnam -> Japan | move-2031 | buy-2034 | parent | public,Vietnam,Japan,2031.0,2034.0,2034.0,parent,public,23808593.697328568,24595882.265961286,563434.68,563434.68,False
+"Miami area -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Miami area,"China, Jingzhou",2031.0,,,daycare,private,24588570.76467746,24588570.76467746,525126.24,525126.24,False
+Japan -> New Orleans area | move-2031 | buy-2034 | parent | public,Japan,New Orleans area,2031.0,2034.0,2034.0,parent,public,24216272.9998447,24584481.011408433,561204.96,561204.96,False
+Midwest (Kansas City) -> Southern France | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),Southern France,2031.0,2034.0,2034.0,daycare,private,23611484.495928884,24574441.425085958,549984.0,549984.0,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public","China, Jingzhou",Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,24060759.746903807,24574313.782546673,565646.64,565646.64,False
+Spain -> New Orleans area | move-2031 | rent-forever | daycare | public,Spain,New Orleans area,2031.0,,,daycare,public,24570462.854994174,24570462.854994174,555067.32,555067.32,False
+Japan -> Spain | move-2031 | buy-2034 | parent | public,Japan,Spain,2031.0,2034.0,2034.0,parent,public,23849064.574300654,24565763.89335094,561204.96,561204.96,False
+Midwest (Kansas City) -> Japan | move-2031 | rent-forever | parent | public,Midwest (Kansas City),Japan,2031.0,,,parent,public,24561167.841495775,24561167.841495775,549984.0,549984.0,False
+Japan | no-move | buy-2034 | parent | public,Japan,Japan,,2034.0,2034.0,parent,public,23762211.025089525,24549499.593722243,561204.96,561204.96,False
+Southern France -> New Orleans area | move-2031 | rent-forever | daycare | public,Southern France,New Orleans area,2031.0,,,daycare,public,24546381.92595594,24546381.92595594,554511.36,554511.36,False
+Midwest (Kansas City) -> Southern France | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),Southern France,2031.0,,,daycare,private,24545202.104434423,24545202.104434423,549984.0,549984.0,False
+Spain -> New Orleans area | move-2031 | buy-2034 | daycare | private,Spain,New Orleans area,2031.0,2034.0,2034.0,daycare,private,24174964.32139481,24543172.33295854,555067.32,555067.32,False
+Vietnam -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,Vietnam,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,24014746.518477865,24528300.55412073,563434.68,563434.68,False
+Southern France -> New Orleans area | move-2031 | buy-2034 | daycare | private,Southern France,New Orleans area,2031.0,2034.0,2034.0,daycare,private,24150883.39235656,24519091.403920293,554511.36,554511.36,False
+New Orleans area -> Spain | move-2031 | rent-forever | daycare | private,New Orleans area,Spain,2031.0,,,daycare,private,24487351.217056092,24487351.217056092,545172.0,545172.0,False
+Japan -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,Japan,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,23968363.846238818,24481917.881881684,561204.96,561204.96,False
+"Miami area -> China, Jingzhou | move-2031 | rent-forever | parent | public",Miami area,"China, Jingzhou",2031.0,,,parent,public,24469349.473678797,24469349.473678797,525126.24,525126.24,False
+New Orleans area -> Japan | move-2031 | rent-forever | parent | public,New Orleans area,Japan,2031.0,,,parent,public,24461068.538079068,24461068.538079068,545172.0,545172.0,False
+"China, Jingzhou -> Southern France | move-2031 | buy-2034 | parent | public","China, Jingzhou",Southern France,2031.0,2034.0,2034.0,parent,public,23497256.90579222,24460213.834949296,565646.64,565646.64,False
+Spain -> New Orleans area | move-2031 | buy-2034 | parent | public,Spain,New Orleans area,2031.0,2034.0,2034.0,parent,public,24088597.711269796,24456805.72283353,555067.32,555067.32,False
+New Orleans area -> Southern France | move-2031 | buy-2034 | daycare | private,New Orleans area,Southern France,2031.0,2034.0,2034.0,daycare,private,23489660.920916606,24452617.85007368,545172.0,545172.0,False
+Miami area -> Japan | move-2031 | rent-forever | daycare | private,Miami area,Japan,2031.0,,,daycare,private,24450327.328069713,24450327.328069713,525126.24,525126.24,False
+Southern France -> New Orleans area | move-2031 | buy-2034 | parent | public,Southern France,New Orleans area,2031.0,2034.0,2034.0,parent,public,24077032.622174297,24445240.63373803,554511.36,554511.36,False
+Spain | no-move | buy-2034 | parent | public,Spain,Spain,,2034.0,2034.0,parent,public,23721389.285725746,24438088.604776032,555067.32,555067.32,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),New Orleans area,2031.0,,,daycare,public,24436483.286440007,24436483.286440007,549984.0,549984.0,False
+"China, Jingzhou -> Southern France | move-2031 | rent-forever | parent | public","China, Jingzhou",Southern France,2031.0,,,parent,public,24430974.514297754,24430974.514297754,565646.64,565646.64,False
+Southern France -> Spain | move-2031 | buy-2034 | parent | public,Southern France,Spain,2031.0,2034.0,2034.0,parent,public,23709824.19663025,24426523.515680537,554511.36,554511.36,False
+New Orleans area -> Southern France | move-2031 | rent-forever | daycare | private,New Orleans area,Southern France,2031.0,,,daycare,private,24423378.529422145,24423378.529422145,545172.0,545172.0,False
+Spain -> Japan | move-2031 | buy-2034 | parent | public,Spain,Japan,2031.0,2034.0,2034.0,parent,public,23634535.73651462,24421824.30514734,555067.32,555067.32,False
+Vietnam -> Southern France | move-2031 | buy-2034 | parent | public,Vietnam,Southern France,2031.0,2034.0,2034.0,parent,public,23451243.677366283,24414200.606523357,563434.68,563434.68,False
+Miami area -> Vietnam | move-2031 | rent-forever | daycare | private,Miami area,Vietnam,2031.0,,,daycare,private,24410743.107998207,24410743.107998207,525126.24,525126.24,False
+Southern France -> Japan | move-2031 | buy-2034 | parent | public,Southern France,Japan,2031.0,2034.0,2034.0,parent,public,23622970.647419125,24410259.216051843,554511.36,554511.36,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),New Orleans area,2031.0,2034.0,2034.0,daycare,private,24040984.752840646,24409192.76440438,549984.0,549984.0,False
+"Miami area -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Miami area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,23966082.11613547,24409161.86840044,525126.24,525126.24,False
+"China, Jingzhou -> Spain | move-2031 | rent-forever | parent | public","China, Jingzhou",Spain,2031.0,,,parent,public,24399611.14028828,24399611.14028828,565646.64,565646.64,False
+Vietnam -> Southern France | move-2031 | rent-forever | parent | public,Vietnam,Southern France,2031.0,,,parent,public,24384961.28587182,24384961.28587182,563434.68,563434.68,False
+Miami area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,Miami area,Midwest (Kansas City),2031.0,,,daycare,public,24378784.641938247,24378784.641938247,525126.24,525126.24,False
+Japan -> Southern France | move-2031 | buy-2034 | parent | public,Japan,Southern France,2031.0,2034.0,2034.0,parent,public,23404861.005127244,24367817.93428432,561204.96,561204.96,False
+Spain -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,Spain,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,23840688.55766391,24354242.593306776,555067.32,555067.32,False
+Vietnam -> Spain | move-2031 | rent-forever | parent | public,Vietnam,Spain,2031.0,,,parent,public,24353597.91186235,24353597.91186235,563434.68,563434.68,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),New Orleans area,2031.0,2034.0,2034.0,parent,public,23982854.40473526,24351062.416298993,549984.0,549984.0,False
+Miami area | no-move | buy-2034 | daycare | public,Miami area,Miami area,,2034.0,2034.0,daycare,public,23329174.66158751,24348148.87390263,525126.24,525126.24,False
+Southern France -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,Southern France,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,23829123.468568422,24342677.504211288,554511.36,554511.36,False
+Japan -> Southern France | move-2031 | rent-forever | parent | public,Japan,Southern France,2031.0,,,parent,public,24338578.61363277,24338578.61363277,561204.96,561204.96,False
+Miami area -> Vietnam | move-2031 | buy-2034 | daycare | private,Miami area,Vietnam,2031.0,2034.0,2034.0,daycare,private,23850071.202431757,24337211.752583478,525126.24,525126.24,False
+Midwest (Kansas City) -> Spain | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),Spain,2031.0,2034.0,2034.0,parent,public,23615645.979191214,24332345.2982415,549984.0,549984.0,False
+Midwest (Kansas City) -> Japan | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),Japan,2031.0,2034.0,2034.0,parent,public,23528792.42998009,24316080.99861281,549984.0,549984.0,False
+New Orleans area | no-move | rent-forever | daycare | public,New Orleans area,New Orleans area,,,,daycare,public,24314659.71142773,24314659.71142773,545172.0,545172.0,False
+Miami area -> Spain | move-2031 | buy-2034 | daycare | private,Miami area,Spain,2031.0,2034.0,2034.0,daycare,private,23596931.649072655,24313630.96812294,525126.24,525126.24,False
+"Bay Area -> China, Jingzhou | move-2031 | rent-forever | daycare | private",Bay Area,"China, Jingzhou",2031.0,,,daycare,private,24309128.57082912,24309128.57082912,514448.04000000004,514448.04000000004,False
+Japan -> Spain | move-2031 | rent-forever | parent | public,Japan,Spain,2031.0,,,parent,public,24307215.2396233,24307215.2396233,561204.96,561204.96,False
+Miami area -> Vietnam | move-2031 | rent-forever | parent | public,Miami area,Vietnam,2031.0,,,parent,public,24289968.496189762,24289968.496189762,525126.24,525126.24,False
+"Miami area -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Miami area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,23846860.825136807,24289940.577401776,525126.24,525126.24,False
+New Orleans area | no-move | buy-2034 | daycare | private,New Orleans area,New Orleans area,,2034.0,2034.0,daycare,private,23919161.17782836,24287369.189392094,545172.0,545172.0,False
+New Orleans area | no-move | buy-2034 | parent | public,New Orleans area,New Orleans area,,2034.0,2034.0,parent,public,23882755.101318568,24250963.1128823,545172.0,545172.0,False
+Midwest (Kansas City) | no-move | buy-2034 | parent | public,Midwest (Kansas City),Midwest (Kansas City),,2034.0,2034.0,parent,public,23734945.251129378,24248499.286772244,549984.0,549984.0,False
+"Bay Area -> China, Jingzhou | move-2031 | rent-forever | parent | public",Bay Area,"China, Jingzhou",2031.0,,,parent,public,24247221.381046996,24247221.381046996,514448.04000000004,514448.04000000004,False
+Spain -> Southern France | move-2031 | buy-2034 | parent | public,Spain,Southern France,2031.0,2034.0,2034.0,parent,public,23277185.716552332,24240142.645709407,555067.32,555067.32,False
+New Orleans area -> Spain | move-2031 | buy-2034 | parent | public,New Orleans area,Spain,2031.0,2034.0,2034.0,parent,public,23515546.675774515,24232245.9948248,545172.0,545172.0,False
+Southern France | no-move | buy-2034 | parent | public,Southern France,Southern France,,2034.0,2034.0,parent,public,23265620.627456833,24228577.556613907,554511.36,554511.36,False
+Miami area -> Vietnam | move-2031 | buy-2034 | parent | public,Miami area,Vietnam,2031.0,2034.0,2034.0,parent,public,23729296.590623308,24216437.14077503,525126.24,525126.24,False
+New Orleans area -> Japan | move-2031 | buy-2034 | parent | public,New Orleans area,Japan,2031.0,2034.0,2034.0,parent,public,23428693.126563393,24215981.69519611,545172.0,545172.0,False
+Spain -> Southern France | move-2031 | rent-forever | parent | public,Spain,Southern France,2031.0,,,parent,public,24210903.32505786,24210903.32505786,555067.32,555067.32,False
+Miami area -> Japan | move-2031 | buy-2034 | daycare | private,Miami area,Japan,2031.0,2034.0,2034.0,daycare,private,23417951.91655404,24205240.48518676,525126.24,525126.24,False
+Southern France | no-move | rent-forever | parent | public,Southern France,Southern France,,,,parent,public,24199338.23596236,24199338.23596236,554511.36,554511.36,False
+Spain | no-move | rent-forever | parent | public,Spain,Spain,,,,parent,public,24179539.951048397,24179539.951048397,555067.32,555067.32,False
+Bay Area -> Japan | move-2031 | rent-forever | daycare | private,Bay Area,Japan,2031.0,,,daycare,private,24170885.134221364,24170885.134221364,514448.04000000004,514448.04000000004,False
+Southern France -> Spain | move-2031 | rent-forever | parent | public,Southern France,Spain,2031.0,,,parent,public,24167974.861952893,24167974.861952893,554511.36,554511.36,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,New Orleans area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,23634845.947712686,24148399.983355552,545172.0,545172.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),Southern France,2031.0,2034.0,2034.0,parent,public,23171442.4100178,24134399.339174874,549984.0,549984.0,False
+Bay Area -> Vietnam | move-2031 | rent-forever | daycare | private,Bay Area,Vietnam,2031.0,,,daycare,private,24131300.914149847,24131300.914149847,514448.04000000004,514448.04000000004,False
+"Bay Area -> China, Jingzhou | move-2031 | buy-2034 | daycare | private",Bay Area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,private,23686639.922287125,24129719.674552094,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) -> Southern France | move-2031 | rent-forever | parent | public,Midwest (Kansas City),Southern France,2031.0,,,parent,public,24105160.018523324,24105160.018523324,549984.0,549984.0,False
+Bay Area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | public,Bay Area,Midwest (Kansas City),2031.0,,,daycare,public,24099342.448089886,24099342.448089886,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) -> Spain | move-2031 | rent-forever | parent | public,Midwest (Kansas City),Spain,2031.0,,,parent,public,24073796.644513864,24073796.644513864,549984.0,549984.0,False
+Bay Area -> Miami area | move-2031 | buy-2034 | daycare | public,Bay Area,Miami area,2031.0,2034.0,2034.0,daycare,public,23049732.467739157,24068706.680054277,514448.04000000004,514448.04000000004,False
+Bay Area -> Vietnam | move-2031 | rent-forever | parent | public,Bay Area,Vietnam,2031.0,,,parent,public,24067840.403557975,24067840.403557975,514448.04000000004,514448.04000000004,False
+"Bay Area -> China, Jingzhou | move-2031 | buy-2034 | parent | public",Bay Area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,public,23624732.732505016,24067812.484769985,514448.04000000004,514448.04000000004,False
+Bay Area -> Vietnam | move-2031 | buy-2034 | daycare | private,Bay Area,Vietnam,2031.0,2034.0,2034.0,daycare,private,23570629.00858341,24057769.558735132,514448.04000000004,514448.04000000004,False
+Miami area -> Spain | move-2031 | rent-forever | daycare | private,Miami area,Spain,2031.0,,,daycare,private,24055082.3143953,24055082.3143953,525126.24,525126.24,False
+Miami area -> Japan | move-2031 | rent-forever | parent | public,Miami area,Japan,2031.0,,,parent,public,24044076.30772615,24044076.30772615,525126.24,525126.24,False
+New Orleans area -> Southern France | move-2031 | buy-2034 | parent | public,New Orleans area,Southern France,2031.0,2034.0,2034.0,parent,public,23071343.106601097,24034300.03575817,545172.0,545172.0,False
+Bay Area -> Spain | move-2031 | buy-2034 | daycare | private,Bay Area,Spain,2031.0,2034.0,2034.0,daycare,private,23317489.4552243,24034188.774274588,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | buy-2034 | daycare | private,Miami area,Southern France,2031.0,2034.0,2034.0,daycare,private,23057392.018255815,24020348.94741289,525126.24,525126.24,False
+New Orleans area -> Southern France | move-2031 | rent-forever | parent | public,New Orleans area,Southern France,2031.0,,,parent,public,24005060.71510664,24005060.71510664,545172.0,545172.0,False
+Bay Area -> Vietnam | move-2031 | buy-2034 | parent | public,Bay Area,Vietnam,2031.0,2034.0,2034.0,parent,public,23507168.497991517,23994309.048143238,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | rent-forever | daycare | private,Miami area,Southern France,2031.0,,,daycare,private,23991109.626761355,23991109.626761355,525126.24,525126.24,False
+New Orleans area -> Spain | move-2031 | rent-forever | parent | public,New Orleans area,Spain,2031.0,,,parent,public,23973697.34109717,23973697.34109717,545172.0,545172.0,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,23428774.064236734,23942328.0998796,565646.64,565646.64,False
+Bay Area -> Japan | move-2031 | buy-2034 | daycare | private,Bay Area,Japan,2031.0,2034.0,2034.0,daycare,private,23138509.722705677,23925798.291338395,514448.04000000004,514448.04000000004,False
+Vietnam -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,Vietnam,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,23383186.615960393,23896740.65160326,563434.68,563434.68,False
+"China, Jingzhou -> Miami area | move-2031 | buy-2034 | parent | public","China, Jingzhou",Miami area,2031.0,2034.0,2034.0,parent,public,22872407.299925946,23891381.512241066,565646.64,565646.64,False
+Miami area -> New Orleans area | move-2031 | rent-forever | daycare | public,Miami area,New Orleans area,2031.0,,,daycare,public,23882390.808766954,23882390.808766954,525126.24,525126.24,False
+Miami area -> New Orleans area | move-2031 | buy-2034 | daycare | private,Miami area,New Orleans area,2031.0,2034.0,2034.0,daycare,private,23486892.27516758,23855100.286731314,525126.24,525126.24,False
+Vietnam -> Miami area | move-2031 | buy-2034 | parent | public,Vietnam,Miami area,2031.0,2034.0,2034.0,parent,public,22826394.071500015,23845368.283815134,563434.68,563434.68,False
+Japan -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,Japan,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,23326544.289331034,23840098.3249739,561204.96,561204.96,False
+Miami area -> New Orleans area | move-2031 | buy-2034 | parent | public,Miami area,New Orleans area,2031.0,2034.0,2034.0,parent,public,23465762.87096563,23833970.882529363,525126.24,525126.24,False
+Bay Area -> Japan | move-2031 | rent-forever | parent | public,Bay Area,Japan,2031.0,,,parent,public,23821948.215094354,23821948.215094354,514448.04000000004,514448.04000000004,False
+Miami area -> Spain | move-2031 | buy-2034 | parent | public,Miami area,Spain,2031.0,2034.0,2034.0,parent,public,23098554.44542158,23815253.764471866,525126.24,525126.24,False
+Miami area -> Japan | move-2031 | buy-2034 | parent | public,Miami area,Japan,2031.0,2034.0,2034.0,parent,public,23011700.89621046,23798989.46484318,525126.24,525126.24,False
+Japan -> Miami area | move-2031 | buy-2034 | parent | public,Japan,Miami area,2031.0,2034.0,2034.0,parent,public,22780011.399260964,23798985.611576084,561204.96,561204.96,False
+Bay Area -> Spain | move-2031 | rent-forever | daycare | private,Bay Area,Spain,2031.0,,,daycare,private,23775640.120546956,23775640.120546956,514448.04000000004,514448.04000000004,False
+"China, Jingzhou | no-move | rent-forever | parent | private","China, Jingzhou","China, Jingzhou",,,,parent,private,23757108.413506914,23757108.413506914,565646.64,565646.64,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public","China, Jingzhou",Midwest (Kansas City),2031.0,,,parent,public,23741204.48253086,23741204.48253086,565646.64,565646.64,False
+Bay Area -> Southern France | move-2031 | buy-2034 | daycare | private,Bay Area,Southern France,2031.0,2034.0,2034.0,daycare,private,22777949.82440747,23740906.753564544,514448.04000000004,514448.04000000004,False
+Miami area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,Miami area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,23217853.717359748,23731407.753002614,525126.24,525126.24,False
+Bay Area -> Southern France | move-2031 | rent-forever | daycare | private,Bay Area,Southern France,2031.0,,,daycare,private,23711667.432913013,23711667.432913013,514448.04000000004,514448.04000000004,False
+"Vietnam -> China, Jingzhou | move-2031 | rent-forever | parent | private",Vietnam,"China, Jingzhou",2031.0,,,parent,private,23711095.185080983,23711095.185080983,563434.68,563434.68,False
+Spain -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,Spain,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,23197263.71475246,23710817.750395328,555067.32,555067.32,False
+Vietnam -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,Vietnam,Midwest (Kansas City),2031.0,,,parent,public,23695191.254104927,23695191.254104927,563434.68,563434.68,False
+Southern France -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,Southern France,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,23173182.785714235,23686736.8213571,554511.36,554511.36,False
+Spain -> Miami area | move-2031 | buy-2034 | parent | public,Spain,Miami area,2031.0,2034.0,2034.0,parent,public,22652336.110686056,23671310.323001176,555067.32,555067.32,False
+"China, Jingzhou -> Japan | move-2031 | rent-forever | parent | private","China, Jingzhou",Japan,2031.0,,,parent,private,23666920.245942727,23666920.245942727,565646.64,565646.64,False
+"Japan -> China, Jingzhou | move-2031 | rent-forever | parent | private",Japan,"China, Jingzhou",2031.0,,,parent,private,23664712.512841944,23664712.512841944,561204.96,561204.96,False
+Southern France -> Miami area | move-2031 | buy-2034 | parent | public,Southern France,Miami area,2031.0,2034.0,2034.0,parent,public,22640771.021590568,23659745.233905688,554511.36,554511.36,False
+Japan -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,Japan,Midwest (Kansas City),2031.0,,,parent,public,23648808.58186588,23648808.58186588,561204.96,561204.96,False
+Vietnam -> Japan | move-2031 | rent-forever | parent | private,Vietnam,Japan,2031.0,,,parent,private,23620907.017516773,23620907.017516773,563434.68,563434.68,False
+Miami area -> Southern France | move-2031 | buy-2034 | parent | public,Miami area,Southern France,2031.0,2034.0,2034.0,parent,public,22654350.876248173,23617307.805405248,525126.24,525126.24,False
+Bay Area -> New Orleans area | move-2031 | buy-2034 | parent | public,Bay Area,New Orleans area,2031.0,2034.0,2034.0,parent,public,23243634.778333854,23611842.789897587,514448.04000000004,514448.04000000004,False
+Bay Area -> New Orleans area | move-2031 | rent-forever | daycare | public,Bay Area,New Orleans area,2031.0,,,daycare,public,23602948.614918593,23602948.614918593,514448.04000000004,514448.04000000004,False
+Bay Area -> Spain | move-2031 | buy-2034 | parent | public,Bay Area,Spain,2031.0,2034.0,2034.0,parent,public,22876426.352789804,23593125.67184009,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | rent-forever | parent | public,Miami area,Southern France,2031.0,,,parent,public,23588068.484753698,23588068.484753698,525126.24,525126.24,False
+"China, Jingzhou | no-move | buy-2034 | parent | private","China, Jingzhou","China, Jingzhou",,2034.0,2034.0,parent,private,23134619.76496493,23577699.5172299,565646.64,565646.64,False
+"China, Jingzhou -> Vietnam | move-2031 | rent-forever | parent | private","China, Jingzhou",Vietnam,2031.0,,,parent,private,23577200.09368904,23577200.09368904,565646.64,565646.64,False
+Bay Area -> Japan | move-2031 | buy-2034 | parent | public,Bay Area,Japan,2031.0,2034.0,2034.0,parent,public,22789572.803578675,23576861.372211393,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) | no-move | buy-2034 | daycare | private,Midwest (Kansas City),Midwest (Kansas City),,2034.0,2034.0,daycare,private,23063284.146198295,23576838.18184116,549984.0,549984.0,False
+Bay Area -> New Orleans area | move-2031 | buy-2034 | daycare | private,Bay Area,New Orleans area,2031.0,2034.0,2034.0,daycare,private,23207450.08131922,23575658.092882954,514448.04000000004,514448.04000000004,False
+Japan | no-move | rent-forever | parent | private,Japan,Japan,,,,parent,private,23574524.345277734,23574524.345277734,561204.96,561204.96,False
+Midwest (Kansas City) -> Miami area | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),Miami area,2031.0,2034.0,2034.0,parent,public,22546592.804151528,23565567.016466647,549984.0,549984.0,False
+Miami area -> Spain | move-2031 | rent-forever | parent | public,Miami area,Spain,2031.0,,,parent,public,23556705.11074423,23556705.11074423,525126.24,525126.24,False
+"China, Jingzhou -> Spain | move-2031 | buy-2034 | parent | private","China, Jingzhou",Spain,2031.0,2034.0,2034.0,parent,private,22821369.130431984,23538068.44948227,565646.64,565646.64,False
+"Spain -> China, Jingzhou | move-2031 | rent-forever | parent | private",Spain,"China, Jingzhou",2031.0,,,parent,private,23537037.224267036,23537037.224267036,555067.32,555067.32,False
+"Vietnam -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Vietnam,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,23088606.536539,23531686.28880397,563434.68,563434.68,False
+Vietnam | no-move | rent-forever | parent | private,Vietnam,Vietnam,,,,parent,private,23531186.865263104,23531186.865263104,563434.68,563434.68,False
+"Southern France -> China, Jingzhou | move-2031 | rent-forever | parent | private",Southern France,"China, Jingzhou",2031.0,,,parent,private,23525472.135171525,23525472.135171525,554511.36,554511.36,False
+Spain -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,Spain,Midwest (Kansas City),2031.0,,,parent,public,23521133.293290965,23521133.293290965,555067.32,555067.32,False
+Southern France -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,Southern France,Midwest (Kansas City),2031.0,,,parent,public,23509568.204195466,23509568.204195466,554511.36,554511.36,False
+Bay Area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | public,Bay Area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,public,22995725.624727968,23509279.660370834,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Vietnam | move-2031 | buy-2034 | parent | private","China, Jingzhou",Vietnam,2031.0,2034.0,2034.0,parent,private,23016528.188122585,23503668.738274306,565646.64,565646.64,False
+Vietnam -> Spain | move-2031 | buy-2034 | parent | private,Vietnam,Spain,2031.0,2034.0,2034.0,parent,private,22775355.902006045,23492055.22105633,563434.68,563434.68,False
+"Japan -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Japan,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,23042223.86429996,23485303.61656493,561204.96,561204.96,False
+Japan -> Vietnam | move-2031 | rent-forever | parent | private,Japan,Vietnam,2031.0,,,parent,private,23484804.19302406,23484804.19302406,561204.96,561204.96,False
+New Orleans area -> Miami area | move-2031 | buy-2034 | parent | public,New Orleans area,Miami area,2031.0,2034.0,2034.0,parent,public,22446493.50073483,23465467.71304995,545172.0,545172.0,False
+Vietnam | no-move | buy-2034 | parent | private,Vietnam,Vietnam,,2034.0,2034.0,parent,private,22970514.959696658,23457655.50984838,563434.68,563434.68,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,New Orleans area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,22941460.571186025,23455014.60682889,545172.0,545172.0,False
+"China, Jingzhou -> New Orleans area | move-2031 | rent-forever | daycare | private","China, Jingzhou",New Orleans area,2031.0,,,daycare,private,23448776.58516792,23448776.58516792,565646.64,565646.64,False
+Spain -> Japan | move-2031 | rent-forever | parent | private,Spain,Japan,2031.0,,,parent,private,23446849.056702826,23446849.056702826,555067.32,555067.32,False
+Japan -> Spain | move-2031 | buy-2034 | parent | private,Japan,Spain,2031.0,2034.0,2034.0,parent,private,22728973.229767,23445672.548817284,561204.96,561204.96,False
+Southern France -> Japan | move-2031 | rent-forever | parent | private,Southern France,Japan,2031.0,,,parent,private,23435283.967607323,23435283.967607323,554511.36,554511.36,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | rent-forever | parent | private",Midwest (Kansas City),"China, Jingzhou",2031.0,,,parent,private,23431293.917732503,23431293.917732503,549984.0,549984.0,False
+"China, Jingzhou -> Japan | move-2031 | buy-2034 | parent | private","China, Jingzhou",Japan,2031.0,2034.0,2034.0,parent,private,22634544.83442704,23421833.40305976,565646.64,565646.64,False
+Midwest (Kansas City) | no-move | rent-forever | parent | public,Midwest (Kansas City),Midwest (Kansas City),,,,parent,public,23415389.986756437,23415389.986756437,549984.0,549984.0,False
+Japan -> Vietnam | move-2031 | buy-2034 | parent | private,Japan,Vietnam,2031.0,2034.0,2034.0,parent,private,22924132.287457608,23411272.83760933,561204.96,561204.96,False
+Vietnam -> New Orleans area | move-2031 | rent-forever | daycare | private,Vietnam,New Orleans area,2031.0,,,daycare,private,23403189.136891585,23403189.136891585,563434.68,563434.68,False
+Bay Area -> Southern France | move-2031 | buy-2034 | parent | public,Bay Area,Southern France,2031.0,2034.0,2034.0,parent,public,22432222.78361638,23395179.712773453,514448.04000000004,514448.04000000004,False
+Vietnam -> Japan | move-2031 | buy-2034 | parent | private,Vietnam,Japan,2031.0,2034.0,2034.0,parent,private,22588531.6060011,23375820.17463382,563434.68,563434.68,False
+Bay Area -> Southern France | move-2031 | rent-forever | parent | public,Bay Area,Southern France,2031.0,,,parent,public,23365940.392121915,23365940.392121915,514448.04000000004,514448.04000000004,False
+"Spain -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Spain,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,22914548.57572505,23357628.327990018,555067.32,555067.32,False
+Spain -> Vietnam | move-2031 | rent-forever | parent | private,Spain,Vietnam,2031.0,,,parent,private,23357128.904449146,23357128.904449146,555067.32,555067.32,False
+"China, Jingzhou -> New Orleans area | move-2031 | rent-forever | parent | public","China, Jingzhou",New Orleans area,2031.0,,,parent,public,23350970.814798526,23350970.814798526,565646.64,565646.64,False
+Japan -> New Orleans area | move-2031 | rent-forever | daycare | private,Japan,New Orleans area,2031.0,,,daycare,private,23346546.81026222,23346546.81026222,561204.96,561204.96,False
+"Southern France -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Southern France,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,22902983.486629546,23346063.238894515,554511.36,554511.36,False
+Southern France -> Vietnam | move-2031 | rent-forever | parent | private,Southern France,Vietnam,2031.0,,,parent,private,23345563.815353643,23345563.815353643,554511.36,554511.36,False
+Midwest (Kansas City) -> Japan | move-2031 | rent-forever | parent | private,Midwest (Kansas City),Japan,2031.0,,,parent,private,23341105.750168297,23341105.750168297,549984.0,549984.0,False
+Bay Area -> Spain | move-2031 | rent-forever | parent | public,Bay Area,Spain,2031.0,,,parent,public,23334577.018112443,23334577.018112443,514448.04000000004,514448.04000000004,False
+"New Orleans area -> China, Jingzhou | move-2031 | rent-forever | parent | private",New Orleans area,"China, Jingzhou",2031.0,,,parent,private,23331194.614315808,23331194.614315808,545172.0,545172.0,False
+Japan | no-move | buy-2034 | parent | private,Japan,Japan,,2034.0,2034.0,parent,private,22542148.933762055,23329437.502394773,561204.96,561204.96,False
+"China, Jingzhou -> New Orleans area | move-2031 | buy-2034 | parent | private","China, Jingzhou",New Orleans area,2031.0,2034.0,2034.0,parent,private,22955472.281199154,23323680.292762887,565646.64,565646.64,False
+Spain | no-move | buy-2034 | parent | private,Spain,Spain,,2034.0,2034.0,parent,private,22601297.94119209,23317997.260242376,555067.32,555067.32,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,New Orleans area,Midwest (Kansas City),2031.0,,,parent,public,23315290.683339737,23315290.683339737,545172.0,545172.0,False
+Southern France -> Spain | move-2031 | buy-2034 | parent | private,Southern France,Spain,2031.0,2034.0,2034.0,parent,private,22589732.85209659,23306432.171146877,554511.36,554511.36,False
+"China, Jingzhou -> Southern France | move-2031 | buy-2034 | parent | private","China, Jingzhou",Southern France,2031.0,2034.0,2034.0,parent,private,22342990.75112511,23305947.680282183,565646.64,565646.64,False
+Vietnam -> New Orleans area | move-2031 | rent-forever | parent | public,Vietnam,New Orleans area,2031.0,,,parent,public,23304957.58637259,23304957.58637259,563434.68,563434.68,False
+Spain -> Vietnam | move-2031 | buy-2034 | parent | private,Spain,Vietnam,2031.0,2034.0,2034.0,parent,private,22796456.998882703,23283597.549034424,555067.32,555067.32,False
+"China, Jingzhou -> Spain | move-2031 | rent-forever | parent | private","China, Jingzhou",Spain,2031.0,,,parent,private,23279519.795754638,23279519.795754638,565646.64,565646.64,False
+Vietnam -> New Orleans area | move-2031 | buy-2034 | parent | private,Vietnam,New Orleans area,2031.0,2034.0,2034.0,parent,private,22909459.05277321,23277667.064336944,563434.68,563434.68,False
+"China, Jingzhou -> Southern France | move-2031 | rent-forever | parent | private","China, Jingzhou",Southern France,2031.0,,,parent,private,23276708.359630644,23276708.359630644,565646.64,565646.64,False
+Southern France -> Vietnam | move-2031 | buy-2034 | parent | private,Southern France,Vietnam,2031.0,2034.0,2034.0,parent,private,22784891.9097872,23272032.45993892,554511.36,554511.36,False
+Vietnam -> Southern France | move-2031 | buy-2034 | parent | private,Vietnam,Southern France,2031.0,2034.0,2034.0,parent,private,22296977.52269918,23259934.451856256,563434.68,563434.68,False
+Japan -> New Orleans area | move-2031 | rent-forever | parent | public,Japan,New Orleans area,2031.0,,,parent,public,23258574.914133552,23258574.914133552,561204.96,561204.96,False
+"China, Jingzhou -> Miami area | move-2031 | rent-forever | daycare | public","China, Jingzhou",Miami area,2031.0,,,daycare,public,23255957.36139188,23255957.36139188,565646.64,565646.64,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Midwest (Kansas City),"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,22808805.26919051,23251885.021455478,549984.0,549984.0,False
+Midwest (Kansas City) -> Vietnam | move-2031 | rent-forever | parent | private,Midwest (Kansas City),Vietnam,2031.0,,,parent,private,23251385.597914614,23251385.597914614,549984.0,549984.0,False
+New Orleans area -> Japan | move-2031 | rent-forever | parent | private,New Orleans area,Japan,2031.0,,,parent,private,23241006.446751595,23241006.446751595,545172.0,545172.0,False
+Vietnam -> Spain | move-2031 | rent-forever | parent | private,Vietnam,Spain,2031.0,,,parent,private,23233506.567328695,23233506.567328695,563434.68,563434.68,False
+Japan -> New Orleans area | move-2031 | buy-2034 | parent | private,Japan,New Orleans area,2031.0,2034.0,2034.0,parent,private,22863076.380534165,23231284.392097898,561204.96,561204.96,False
+Vietnam -> Southern France | move-2031 | rent-forever | parent | private,Vietnam,Southern France,2031.0,,,parent,private,23230695.13120471,23230695.13120471,563434.68,563434.68,False
+Spain -> New Orleans area | move-2031 | rent-forever | daycare | private,Spain,New Orleans area,2031.0,,,daycare,private,23217266.235683654,23217266.235683654,555067.32,555067.32,False
+Japan -> Southern France | move-2031 | buy-2034 | parent | private,Japan,Southern France,2031.0,2034.0,2034.0,parent,private,22250594.85046013,23213551.779617205,561204.96,561204.96,False
+Midwest (Kansas City) -> Spain | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),Spain,2031.0,2034.0,2034.0,parent,private,22495554.634657558,23212253.953707844,549984.0,549984.0,False
+Vietnam -> Miami area | move-2031 | rent-forever | daycare | public,Vietnam,Miami area,2031.0,,,daycare,public,23210369.913115535,23210369.913115535,563434.68,563434.68,False
+Spain -> Japan | move-2031 | buy-2034 | parent | private,Spain,Japan,2031.0,2034.0,2034.0,parent,private,22414473.64518715,23201762.21381987,555067.32,555067.32,False
+Southern France -> New Orleans area | move-2031 | rent-forever | daycare | private,Southern France,New Orleans area,2031.0,,,daycare,private,23193185.306645416,23193185.306645416,554511.36,554511.36,False
+Southern France -> Japan | move-2031 | buy-2034 | parent | private,Southern France,Japan,2031.0,2034.0,2034.0,parent,private,22402908.55609165,23190197.12472437,554511.36,554511.36,False
+Japan -> Spain | move-2031 | rent-forever | parent | private,Japan,Spain,2031.0,,,parent,private,23187123.895089656,23187123.895089656,561204.96,561204.96,False
+Japan -> Southern France | move-2031 | rent-forever | parent | private,Japan,Southern France,2031.0,,,parent,private,23184312.458965667,23184312.458965667,561204.96,561204.96,False
+Midwest (Kansas City) -> Vietnam | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),Vietnam,2031.0,2034.0,2034.0,parent,private,22690713.692348167,23177854.242499888,549984.0,549984.0,False
+Japan -> Miami area | move-2031 | rent-forever | daycare | public,Japan,Miami area,2031.0,,,daycare,public,23153727.586486176,23153727.586486176,561204.96,561204.96,False
+"New Orleans area -> China, Jingzhou | move-2031 | buy-2034 | parent | private",New Orleans area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,22708705.96577382,23151785.71803879,545172.0,545172.0,False
+New Orleans area -> Vietnam | move-2031 | rent-forever | parent | private,New Orleans area,Vietnam,2031.0,,,parent,private,23151286.294497922,23151286.294497922,545172.0,545172.0,False
+Spain -> New Orleans area | move-2031 | rent-forever | parent | public,Spain,New Orleans area,2031.0,,,parent,public,23130899.625558637,23130899.625558637,555067.32,555067.32,False
+Southern France -> New Orleans area | move-2031 | rent-forever | parent | public,Southern France,New Orleans area,2031.0,,,parent,public,23119334.536463138,23119334.536463138,554511.36,554511.36,False
+New Orleans area -> Spain | move-2031 | buy-2034 | parent | private,New Orleans area,Spain,2031.0,2034.0,2034.0,parent,private,22395455.33124087,23112154.650291156,545172.0,545172.0,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private","China, Jingzhou",Midwest (Kansas City),2031.0,,,daycare,private,23109218.799863786,23109218.799863786,565646.64,565646.64,False
+Spain -> New Orleans area | move-2031 | buy-2034 | parent | private,Spain,New Orleans area,2031.0,2034.0,2034.0,parent,private,22735401.09195926,23103609.103522994,555067.32,555067.32,False
+Midwest (Kansas City) -> Japan | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),Japan,2031.0,2034.0,2034.0,parent,private,22308730.33865263,23096018.907285348,549984.0,549984.0,False
+Southern France -> New Orleans area | move-2031 | buy-2034 | parent | private,Southern France,New Orleans area,2031.0,2034.0,2034.0,parent,private,22723836.002863757,23092044.01442749,554511.36,554511.36,False
+Spain -> Southern France | move-2031 | buy-2034 | parent | private,Spain,Southern France,2031.0,2034.0,2034.0,parent,private,22122919.561885223,23085876.491042297,555067.32,555067.32,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),New Orleans area,2031.0,,,daycare,private,23083286.667129483,23083286.667129483,549984.0,549984.0,False
+New Orleans area -> Vietnam | move-2031 | buy-2034 | parent | private,New Orleans area,Vietnam,2031.0,2034.0,2034.0,parent,private,22590614.38893147,23077754.939083192,545172.0,545172.0,False
+Southern France | no-move | buy-2034 | parent | private,Southern France,Southern France,,2034.0,2034.0,parent,private,22111354.472789716,23074311.40194679,554511.36,554511.36,False
+Vietnam -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,Vietnam,Midwest (Kansas City),2031.0,,,daycare,private,23063631.35158746,23063631.35158746,563434.68,563434.68,False
+Spain | no-move | rent-forever | parent | private,Spain,Spain,,,,parent,private,23059448.606514744,23059448.606514744,555067.32,555067.32,False
+Spain -> Southern France | move-2031 | rent-forever | parent | private,Spain,Southern France,2031.0,,,parent,private,23056637.170390747,23056637.170390747,555067.32,555067.32,False
+"China, Jingzhou -> Bay Area | move-2031 | buy-2034 | daycare | public","China, Jingzhou",Bay Area,2031.0,2034.0,2034.0,daycare,public,20506689.939271443,23050604.63004546,565646.64,565646.64,False
+Miami area | no-move | buy-2034 | parent | public,Miami area,Miami area,,2034.0,2034.0,parent,public,22029501.270381898,23048475.482697017,525126.24,525126.24,False
+Southern France -> Spain | move-2031 | rent-forever | parent | private,Southern France,Spain,2031.0,,,parent,private,23047883.51741924,23047883.51741924,554511.36,554511.36,False
+Southern France | no-move | rent-forever | parent | private,Southern France,Southern France,,,,parent,private,23045072.08129526,23045072.08129526,554511.36,554511.36,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | rent-forever | parent | public,Midwest (Kansas City),New Orleans area,2031.0,,,parent,public,23025156.31902411,23025156.31902411,549984.0,549984.0,False
+Spain -> Miami area | move-2031 | rent-forever | daycare | public,Spain,Miami area,2031.0,,,daycare,public,23024447.01190761,23024447.01190761,555067.32,555067.32,False
+Miami area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,Miami area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,22509191.668525234,23022745.7041681,525126.24,525126.24,False
+Japan -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,Japan,Midwest (Kansas City),2031.0,,,daycare,private,23006989.02495809,23006989.02495809,561204.96,561204.96,False
+Vietnam -> Bay Area | move-2031 | buy-2034 | daycare | public,Vietnam,Bay Area,2031.0,2034.0,2034.0,daycare,public,20461102.490995105,23005017.18176912,563434.68,563434.68,False
+Southern France -> Miami area | move-2031 | rent-forever | daycare | public,Southern France,Miami area,2031.0,,,daycare,public,23000366.082869373,23000366.082869373,554511.36,554511.36,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),New Orleans area,2031.0,2034.0,2034.0,parent,private,22629657.785424728,22997865.79698846,549984.0,549984.0,False
+New Orleans area -> Japan | move-2031 | buy-2034 | parent | private,New Orleans area,Japan,2031.0,2034.0,2034.0,parent,private,22208631.035235927,22995919.603868645,545172.0,545172.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),Southern France,2031.0,2034.0,2034.0,parent,private,22017176.25535069,22980133.184507765,549984.0,549984.0,False
+New Orleans area | no-move | rent-forever | daycare | private,New Orleans area,New Orleans area,,,,daycare,private,22961463.092117213,22961463.092117213,545172.0,545172.0,False
+Midwest (Kansas City) -> Spain | move-2031 | rent-forever | parent | private,Midwest (Kansas City),Spain,2031.0,,,parent,private,22953705.29998021,22953705.29998021,549984.0,549984.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | rent-forever | parent | private,Midwest (Kansas City),Southern France,2031.0,,,parent,private,22950893.863856222,22950893.863856222,549984.0,549984.0,False
+Japan -> Bay Area | move-2031 | buy-2034 | daycare | public,Japan,Bay Area,2031.0,2034.0,2034.0,daycare,public,20404460.164365742,22948374.85513976,561204.96,561204.96,False
+New Orleans area | no-move | rent-forever | parent | public,New Orleans area,New Orleans area,,,,parent,public,22925057.015607405,22925057.015607405,545172.0,545172.0,False
+"Miami area -> China, Jingzhou | move-2031 | rent-forever | parent | private",Miami area,"China, Jingzhou",2031.0,,,parent,private,22914202.383962885,22914202.383962885,525126.24,525126.24,False
+Miami area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,Miami area,Midwest (Kansas City),2031.0,,,parent,public,22898298.45298681,22898298.45298681,525126.24,525126.24,False
+New Orleans area | no-move | buy-2034 | parent | private,New Orleans area,New Orleans area,,2034.0,2034.0,parent,private,22529558.482008033,22897766.493571766,545172.0,545172.0,False
+Midwest (Kansas City) -> Miami area | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),Miami area,2031.0,,,daycare,public,22890467.443353444,22890467.443353444,549984.0,549984.0,False
+New Orleans area -> Southern France | move-2031 | buy-2034 | parent | private,New Orleans area,Southern France,2031.0,2034.0,2034.0,parent,private,21917076.951934,22880033.881091073,545172.0,545172.0,False
+Spain -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,Spain,Midwest (Kansas City),2031.0,,,daycare,private,22877708.450379528,22877708.450379528,555067.32,555067.32,False
+Southern France -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,Southern France,Midwest (Kansas City),2031.0,,,daycare,private,22853627.52134129,22853627.52134129,554511.36,554511.36,False
+New Orleans area -> Spain | move-2031 | rent-forever | parent | private,New Orleans area,Spain,2031.0,,,parent,private,22853605.99656351,22853605.99656351,545172.0,545172.0,False
+New Orleans area -> Southern France | move-2031 | rent-forever | parent | private,New Orleans area,Southern France,2031.0,,,parent,private,22850794.560439523,22850794.560439523,545172.0,545172.0,False
+Bay Area -> Miami area | move-2031 | buy-2034 | parent | public,Bay Area,Miami area,2031.0,2034.0,2034.0,parent,public,21807373.177750107,22826347.390065227,514448.04000000004,514448.04000000004,False
+Miami area -> Japan | move-2031 | rent-forever | parent | private,Miami area,Japan,2031.0,,,parent,private,22824014.216398664,22824014.216398664,525126.24,525126.24,False
+Spain -> Bay Area | move-2031 | buy-2034 | daycare | public,Spain,Bay Area,2031.0,2034.0,2034.0,daycare,public,20275179.589787174,22819094.28056119,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | buy-2034 | daycare | public,Southern France,Bay Area,2031.0,2034.0,2034.0,daycare,public,20251098.660748947,22795013.351522963,554511.36,554511.36,False
+New Orleans area -> Miami area | move-2031 | rent-forever | daycare | public,New Orleans area,Miami area,2031.0,,,daycare,public,22768643.868341174,22768643.868341174,545172.0,545172.0,False
+Midwest (Kansas City) | no-move | rent-forever | daycare | private,Midwest (Kansas City),Midwest (Kansas City),,,,daycare,private,22743728.88182535,22743728.88182535,549984.0,549984.0,False
+Bay Area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | private,Bay Area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,private,22229749.47467688,22743303.510319747,514448.04000000004,514448.04000000004,False
+"Miami area -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Miami area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,22291713.735420886,22734793.487685855,525126.24,525126.24,False
+Miami area -> Vietnam | move-2031 | rent-forever | parent | private,Miami area,Vietnam,2031.0,,,parent,private,22734294.064144988,22734294.064144988,525126.24,525126.24,False
+Miami area -> Spain | move-2031 | buy-2034 | parent | private,Miami area,Spain,2031.0,2034.0,2034.0,parent,private,21978463.100887936,22695162.41993822,525126.24,525126.24,False
+"Bay Area -> China, Jingzhou | move-2031 | rent-forever | parent | private",Bay Area,"China, Jingzhou",2031.0,,,parent,private,22692074.291331094,22692074.291331094,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) -> Bay Area | move-2031 | buy-2034 | daycare | public,Midwest (Kansas City),Bay Area,2031.0,2034.0,2034.0,daycare,public,20141200.02123301,22685114.712007027,549984.0,549984.0,False
+Bay Area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | public,Bay Area,Midwest (Kansas City),2031.0,,,parent,public,22676170.360355023,22676170.360355023,514448.04000000004,514448.04000000004,False
+Miami area -> Vietnam | move-2031 | buy-2034 | parent | private,Miami area,Vietnam,2031.0,2034.0,2034.0,parent,private,22173622.158578545,22660762.708730265,525126.24,525126.24,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,New Orleans area,Midwest (Kansas City),2031.0,,,daycare,private,22621905.30681309,22621905.30681309,545172.0,545172.0,False
+Bay Area -> Japan | move-2031 | rent-forever | parent | private,Bay Area,Japan,2031.0,,,parent,private,22601886.12376688,22601886.12376688,514448.04000000004,514448.04000000004,False
+Miami area -> Japan | move-2031 | buy-2034 | parent | private,Miami area,Japan,2031.0,2034.0,2034.0,parent,private,21791638.804882992,22578927.37351571,525126.24,525126.24,False
+New Orleans area -> Bay Area | move-2031 | buy-2034 | daycare | public,New Orleans area,Bay Area,2031.0,2034.0,2034.0,daycare,public,20019376.446220744,22563291.13699476,545172.0,545172.0,False
+Miami area -> New Orleans area | move-2031 | rent-forever | daycare | private,Miami area,New Orleans area,2031.0,,,daycare,private,22529194.18945642,22529194.18945642,525126.24,525126.24,False
+"Bay Area -> China, Jingzhou | move-2031 | buy-2034 | parent | private",Bay Area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,private,22069585.642789092,22512665.39505406,514448.04000000004,514448.04000000004,False
+Bay Area -> Vietnam | move-2031 | rent-forever | parent | private,Bay Area,Vietnam,2031.0,,,parent,private,22512165.9715132,22512165.9715132,514448.04000000004,514448.04000000004,False
+Miami area -> New Orleans area | move-2031 | rent-forever | parent | public,Miami area,New Orleans area,2031.0,,,parent,public,22508064.78525448,22508064.78525448,525126.24,525126.24,False
+Miami area -> New Orleans area | move-2031 | buy-2034 | parent | private,Miami area,New Orleans area,2031.0,2034.0,2034.0,parent,private,22112566.251655098,22480774.26321883,525126.24,525126.24,False
+Bay Area -> Spain | move-2031 | buy-2034 | parent | private,Bay Area,Spain,2031.0,2034.0,2034.0,parent,private,21756335.00825614,22473034.327306427,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | buy-2034 | parent | private,Miami area,Southern France,2031.0,2034.0,2034.0,parent,private,21500084.721581057,22463041.65073813,525126.24,525126.24,False
+Bay Area -> Vietnam | move-2031 | buy-2034 | parent | private,Bay Area,Vietnam,2031.0,2034.0,2034.0,parent,private,21951494.06594675,22438634.61609847,514448.04000000004,514448.04000000004,False
+Miami area -> Spain | move-2031 | rent-forever | parent | private,Miami area,Spain,2031.0,,,parent,private,22436613.76621059,22436613.76621059,525126.24,525126.24,False
+Miami area -> Southern France | move-2031 | rent-forever | parent | private,Miami area,Southern France,2031.0,,,parent,private,22433802.330086593,22433802.330086593,525126.24,525126.24,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private","China, Jingzhou",Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21871611.509117845,22385165.54476071,565646.64,565646.64,False
+Bay Area -> Japan | move-2031 | buy-2034 | parent | private,Bay Area,Japan,2031.0,2034.0,2034.0,parent,private,21569510.712251205,22356799.280883923,514448.04000000004,514448.04000000004,False
+Vietnam -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,Vietnam,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21825598.280691907,22339152.316334773,563434.68,563434.68,False
+Miami area | no-move | rent-forever | daycare | public,Miami area,Miami area,,,,daycare,public,22336374.965680383,22336374.965680383,525126.24,525126.24,False
+Japan -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,Japan,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21779215.608452864,22292769.64409573,561204.96,561204.96,False
+Bay Area -> New Orleans area | move-2031 | rent-forever | parent | public,Bay Area,New Orleans area,2031.0,,,parent,public,22285936.69262269,22285936.69262269,514448.04000000004,514448.04000000004,False
+Bay Area -> New Orleans area | move-2031 | buy-2034 | parent | private,Bay Area,New Orleans area,2031.0,2034.0,2034.0,parent,private,21890438.159023315,22258646.170587048,514448.04000000004,514448.04000000004,False
+Bay Area -> New Orleans area | move-2031 | rent-forever | daycare | private,Bay Area,New Orleans area,2031.0,,,daycare,private,22249751.995608076,22249751.995608076,514448.04000000004,514448.04000000004,False
+Bay Area -> Southern France | move-2031 | buy-2034 | parent | private,Bay Area,Southern France,2031.0,2034.0,2034.0,parent,private,21277956.628949262,22240913.558106337,514448.04000000004,514448.04000000004,False
+Bay Area -> Spain | move-2031 | rent-forever | parent | private,Bay Area,Spain,2031.0,,,parent,private,22214485.6735788,22214485.6735788,514448.04000000004,514448.04000000004,False
+Bay Area -> Southern France | move-2031 | rent-forever | parent | private,Bay Area,Southern France,2031.0,,,parent,private,22211674.2374548,22211674.2374548,514448.04000000004,514448.04000000004,False
+Miami area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,Miami area,Midwest (Kansas City),2031.0,,,daycare,private,22189636.404152293,22189636.404152293,525126.24,525126.24,False
+Spain -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,Spain,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21651540.319877952,22165094.35552082,555067.32,555067.32,False
+Southern France -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,Southern France,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21639975.230782457,22153529.266425323,554511.36,554511.36,False
+Miami area -> Bay Area | move-2031 | buy-2034 | daycare | public,Miami area,Bay Area,2031.0,2034.0,2034.0,daycare,public,19587107.543559954,22131022.23433397,525126.24,525126.24,False
+Midwest (Kansas City) | no-move | buy-2034 | parent | private,Midwest (Kansas City),Midwest (Kansas City),,2034.0,2034.0,parent,private,21545797.013343435,22059351.0489863,549984.0,549984.0,False
+Bay Area -> Miami area | move-2031 | rent-forever | daycare | public,Bay Area,Miami area,2031.0,,,daycare,public,22056932.771832034,22056932.771832034,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> New Orleans area | move-2031 | rent-forever | parent | private","China, Jingzhou",New Orleans area,2031.0,,,parent,private,21997774.195487995,21997774.195487995,565646.64,565646.64,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,New Orleans area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21445697.709926732,21959251.745569598,545172.0,545172.0,False
+"China, Jingzhou -> Bay Area | move-2031 | rent-forever | daycare | public","China, Jingzhou",Bay Area,2031.0,,,daycare,public,21955654.866876587,21955654.866876587,565646.64,565646.64,False
+"China, Jingzhou -> Bay Area | move-2031 | buy-2034 | parent | public","China, Jingzhou",Bay Area,2031.0,2034.0,2034.0,parent,public,19410417.442043427,21954332.132817443,565646.64,565646.64,False
+Vietnam -> New Orleans area | move-2031 | rent-forever | parent | private,Vietnam,New Orleans area,2031.0,,,parent,private,21951760.967062064,21951760.967062064,563434.68,563434.68,False
+"China, Jingzhou | no-move | rent-forever | daycare | homeschool","China, Jingzhou","China, Jingzhou",,,,daycare,homeschool,21917123.948145766,21917123.948145766,565646.64,565646.64,False
+Bay Area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | private,Bay Area,Midwest (Kansas City),2031.0,,,daycare,private,21910194.21030395,21910194.21030395,514448.04000000004,514448.04000000004,False
+Vietnam -> Bay Area | move-2031 | rent-forever | daycare | public,Vietnam,Bay Area,2031.0,,,daycare,public,21910067.418600254,21910067.418600254,563434.68,563434.68,False
+Vietnam -> Bay Area | move-2031 | buy-2034 | parent | public,Vietnam,Bay Area,2031.0,2034.0,2034.0,parent,public,19364404.213617492,21908318.90439151,563434.68,563434.68,False
+Japan -> New Orleans area | move-2031 | rent-forever | parent | private,Japan,New Orleans area,2031.0,,,parent,private,21905378.294823017,21905378.294823017,561204.96,561204.96,False
+"China, Jingzhou -> Miami area | move-2031 | rent-forever | parent | public","China, Jingzhou",Miami area,2031.0,,,parent,public,21879607.60401882,21879607.60401882,565646.64,565646.64,False
+"Vietnam -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Vietnam,"China, Jingzhou",2031.0,,,daycare,homeschool,21871536.49986943,21871536.49986943,563434.68,563434.68,False
+Japan -> Bay Area | move-2031 | buy-2034 | parent | public,Japan,Bay Area,2031.0,2034.0,2034.0,parent,public,19318021.541378446,21861936.232152462,561204.96,561204.96,False
+Japan -> Bay Area | move-2031 | rent-forever | daycare | public,Japan,Bay Area,2031.0,,,daycare,public,21853425.09197089,21853425.09197089,561204.96,561204.96,False
+Bay Area | no-move | buy-2034 | daycare | public,Bay Area,Bay Area,,2034.0,2034.0,daycare,public,19307665.349711597,21851580.040485613,514448.04000000004,514448.04000000004,False
+Vietnam -> Miami area | move-2031 | rent-forever | parent | public,Vietnam,Miami area,2031.0,,,parent,public,21833594.37559289,21833594.37559289,563434.68,563434.68,False
+"Japan -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Japan,"China, Jingzhou",2031.0,,,daycare,homeschool,21814894.173240066,21814894.173240066,561204.96,561204.96,False
+Japan -> Miami area | move-2031 | rent-forever | parent | public,Japan,Miami area,2031.0,,,parent,public,21787211.703353845,21787211.703353845,561204.96,561204.96,False
+Spain -> New Orleans area | move-2031 | rent-forever | parent | private,Spain,New Orleans area,2031.0,,,parent,private,21777703.00624811,21777703.00624811,555067.32,555067.32,False
+Southern France -> New Orleans area | move-2031 | rent-forever | parent | private,Southern France,New Orleans area,2031.0,,,parent,private,21766137.917152602,21766137.917152602,554511.36,554511.36,False
+"China, Jingzhou -> Vietnam | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Vietnam,2031.0,,,daycare,homeschool,21739823.63379536,21739823.63379536,565646.64,565646.64,False
+"China, Jingzhou | no-move | buy-2034 | daycare | homeschool","China, Jingzhou","China, Jingzhou",,2034.0,2034.0,daycare,homeschool,21294635.299603775,21737715.051868744,565646.64,565646.64,False
+Spain -> Bay Area | move-2031 | buy-2034 | parent | public,Spain,Bay Area,2031.0,2034.0,2034.0,parent,public,19190346.25280354,21734260.943577558,555067.32,555067.32,False
+Spain -> Bay Area | move-2031 | rent-forever | daycare | public,Spain,Bay Area,2031.0,,,daycare,public,21724144.51739232,21724144.51739232,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | buy-2034 | parent | public,Southern France,Bay Area,2031.0,2034.0,2034.0,parent,public,19178781.163708042,21722695.85448206,554511.36,554511.36,False
+Southern France -> Bay Area | move-2031 | rent-forever | daycare | public,Southern France,Bay Area,2031.0,,,daycare,public,21700063.588354092,21700063.588354092,554511.36,554511.36,False
+Vietnam | no-move | rent-forever | daycare | homeschool,Vietnam,Vietnam,,,,daycare,homeschool,21694236.18551903,21694236.18551903,563434.68,563434.68,False
+"Vietnam -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Vietnam,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,21249047.851327434,21692127.603592403,563434.68,563434.68,False
+"Spain -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Spain,"China, Jingzhou",2031.0,,,daycare,homeschool,21685613.598661497,21685613.598661497,555067.32,555067.32,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | rent-forever | parent | private,Midwest (Kansas City),New Orleans area,2031.0,,,parent,private,21671959.699713577,21671959.699713577,549984.0,549984.0,False
+"China, Jingzhou -> Vietnam | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,21179151.728228908,21666292.27838063,565646.64,565646.64,False
+"Southern France -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Southern France,"China, Jingzhou",2031.0,,,daycare,homeschool,21661532.669623267,21661532.669623267,554511.36,554511.36,False
+Spain -> Miami area | move-2031 | rent-forever | parent | public,Spain,Miami area,2031.0,,,parent,public,21659536.414778933,21659536.414778933,555067.32,555067.32,False
+Southern France -> Miami area | move-2031 | rent-forever | parent | public,Southern France,Miami area,2031.0,,,parent,public,21647971.325683426,21647971.325683426,554511.36,554511.36,False
+Japan -> Vietnam | move-2031 | rent-forever | daycare | homeschool,Japan,Vietnam,2031.0,,,daycare,homeschool,21637593.858889665,21637593.858889665,561204.96,561204.96,False
+"Japan -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Japan,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,21192405.52469808,21635485.276963048,561204.96,561204.96,False
+Midwest (Kansas City) -> Bay Area | move-2031 | buy-2034 | parent | public,Midwest (Kansas City),Bay Area,2031.0,2034.0,2034.0,parent,public,19084602.946269013,21628517.63704303,549984.0,549984.0,False
+Vietnam | no-move | buy-2034 | daycare | homeschool,Vietnam,Vietnam,,2034.0,2034.0,daycare,homeschool,21133564.279952563,21620704.830104284,563434.68,563434.68,False
+Midwest (Kansas City) -> Bay Area | move-2031 | rent-forever | daycare | public,Midwest (Kansas City),Bay Area,2031.0,,,daycare,public,21590164.948838156,21590164.948838156,549984.0,549984.0,False
+New Orleans area | no-move | rent-forever | parent | private,New Orleans area,New Orleans area,,,,parent,private,21571860.396296885,21571860.396296885,545172.0,545172.0,False
+Japan -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,Japan,Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,21076921.953323208,21564062.50347493,561204.96,561204.96,False
+Midwest (Kansas City) -> Miami area | move-2031 | rent-forever | parent | public,Midwest (Kansas City),Miami area,2031.0,,,parent,public,21553793.1082444,21553793.1082444,549984.0,549984.0,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private","China, Jingzhou",Midwest (Kansas City),2031.0,,,parent,private,21552056.2447449,21552056.2447449,565646.64,565646.64,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Midwest (Kansas City),"China, Jingzhou",2031.0,,,daycare,homeschool,21551634.03010733,21551634.03010733,549984.0,549984.0,False
+Miami area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,Miami area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,21028705.479573797,21542259.515216663,525126.24,525126.24,False
+New Orleans area -> Bay Area | move-2031 | buy-2034 | parent | public,New Orleans area,Bay Area,2031.0,2034.0,2034.0,parent,public,18984503.642852314,21528418.33362633,545172.0,545172.0,False
+Spain -> Vietnam | move-2031 | rent-forever | daycare | homeschool,Spain,Vietnam,2031.0,,,daycare,homeschool,21508313.284311097,21508313.284311097,555067.32,555067.32,False
+"Spain -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Spain,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,21063124.950119507,21506204.702384476,555067.32,555067.32,False
+Vietnam -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,Vietnam,Midwest (Kansas City),2031.0,,,parent,private,21506043.016318966,21506043.016318966,563434.68,563434.68,False
+Southern France -> Vietnam | move-2031 | rent-forever | daycare | homeschool,Southern France,Vietnam,2031.0,,,daycare,homeschool,21484232.35527286,21484232.35527286,554511.36,554511.36,False
+"Southern France -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Southern France,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,21039044.021081284,21482123.773346253,554511.36,554511.36,False
+New Orleans area -> Bay Area | move-2031 | rent-forever | daycare | public,New Orleans area,Bay Area,2031.0,,,daycare,public,21468341.373825885,21468341.373825885,545172.0,545172.0,False
+Japan -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,Japan,Midwest (Kansas City),2031.0,,,parent,private,21459660.344079927,21459660.344079927,561204.96,561204.96,False
+New Orleans area -> Miami area | move-2031 | rent-forever | parent | public,New Orleans area,Miami area,2031.0,,,parent,public,21453693.80482771,21453693.80482771,545172.0,545172.0,False
+"China, Jingzhou -> Japan | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Japan,2031.0,,,daycare,homeschool,21443795.513149567,21443795.513149567,565646.64,565646.64,False
+Spain -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,Spain,Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,20947641.378744643,21434781.928896364,555067.32,555067.32,False
+"New Orleans area -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",New Orleans area,"China, Jingzhou",2031.0,,,daycare,homeschool,21429810.45509506,21429810.45509506,545172.0,545172.0,False
+Southern France -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,Southern France,Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,20923560.449706405,21410700.999858126,554511.36,554511.36,False
+Vietnam -> Japan | move-2031 | rent-forever | daycare | homeschool,Vietnam,Japan,2031.0,,,daycare,homeschool,21398208.064873237,21398208.064873237,563434.68,563434.68,False
+Midwest (Kansas City) -> Vietnam | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),Vietnam,2031.0,,,daycare,homeschool,21374333.71575693,21374333.71575693,549984.0,549984.0,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Midwest (Kansas City),"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,20929145.381565347,21372225.133830316,549984.0,549984.0,False
+Japan | no-move | rent-forever | daycare | homeschool,Japan,Japan,,,,daycare,homeschool,21341565.738243874,21341565.738243874,561204.96,561204.96,False
+Spain -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,Spain,Midwest (Kansas City),2031.0,,,parent,private,21331985.055505015,21331985.055505015,555067.32,555067.32,False
+Southern France -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,Southern France,Midwest (Kansas City),2031.0,,,parent,private,21320419.966409516,21320419.966409516,554511.36,554511.36,False
+Bay Area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | private,Bay Area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,private,20806577.38694201,21320131.422584876,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Miami area | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Miami area,2031.0,2034.0,2034.0,daycare,private,20292543.05874724,21311517.27106236,565646.64,565646.64,False
+Midwest (Kansas City) -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,20813661.810190484,21300802.360342205,549984.0,549984.0,False
+Vietnam -> Miami area | move-2031 | buy-2034 | daycare | private,Vietnam,Miami area,2031.0,2034.0,2034.0,daycare,private,20246955.61047091,21265929.82278603,563434.68,563434.68,False
+New Orleans area -> Vietnam | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Vietnam,2031.0,,,daycare,homeschool,21252510.140744656,21252510.140744656,545172.0,545172.0,False
+"New Orleans area -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",New Orleans area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,20807321.80655307,21250401.55881804,545172.0,545172.0,False
+Midwest (Kansas City) | no-move | rent-forever | parent | private,Midwest (Kansas City),Midwest (Kansas City),,,,parent,private,21226241.748970482,21226241.748970482,549984.0,549984.0,False
+Spain -> Japan | move-2031 | rent-forever | daycare | homeschool,Spain,Japan,2031.0,,,daycare,homeschool,21212285.163665313,21212285.163665313,555067.32,555067.32,False
+Japan -> Miami area | move-2031 | buy-2034 | daycare | private,Japan,Miami area,2031.0,2034.0,2034.0,daycare,private,20190313.283841547,21209287.496156666,561204.96,561204.96,False
+"China, Jingzhou -> Spain | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Spain,2031.0,2034.0,2034.0,daycare,homeschool,20490429.087358683,21207128.40640897,565646.64,565646.64,False
+"China, Jingzhou -> Japan | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Japan,2031.0,2034.0,2034.0,daycare,homeschool,20411420.101633895,21198708.670266613,565646.64,565646.64,False
+Southern France -> Japan | move-2031 | rent-forever | daycare | homeschool,Southern France,Japan,2031.0,,,daycare,homeschool,21188204.234627075,21188204.234627075,554511.36,554511.36,False
+New Orleans area -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,20691838.235178202,21178978.785329923,545172.0,545172.0,False
+Vietnam -> Spain | move-2031 | buy-2034 | daycare | homeschool,Vietnam,Spain,2031.0,2034.0,2034.0,daycare,homeschool,20444841.639082357,21161540.958132643,563434.68,563434.68,False
+Miami area -> New Orleans area | move-2031 | rent-forever | parent | private,Miami area,New Orleans area,2031.0,,,parent,private,21154868.165943947,21154868.165943947,525126.24,525126.24,False
+Vietnam -> Japan | move-2031 | buy-2034 | daycare | homeschool,Vietnam,Japan,2031.0,2034.0,2034.0,daycare,homeschool,20365832.653357554,21153121.221990272,563434.68,563434.68,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,New Orleans area,Midwest (Kansas City),2031.0,,,parent,private,21126142.445553787,21126142.445553787,545172.0,545172.0,False
+Miami area -> Bay Area | move-2031 | buy-2034 | parent | public,Miami area,Bay Area,2031.0,2034.0,2034.0,parent,public,18567511.412499376,21111426.10327339,525126.24,525126.24,False
+Japan -> Spain | move-2031 | buy-2034 | daycare | homeschool,Japan,Spain,2031.0,2034.0,2034.0,daycare,homeschool,20388199.312452987,21104898.631503273,561204.96,561204.96,False
+Japan | no-move | buy-2034 | daycare | homeschool,Japan,Japan,,2034.0,2034.0,daycare,homeschool,20309190.32672819,21096478.89536091,561204.96,561204.96,False
+Spain -> Miami area | move-2031 | buy-2034 | daycare | private,Spain,Miami area,2031.0,2034.0,2034.0,daycare,private,20061032.709262982,21080006.9215781,555067.32,555067.32,False
+Midwest (Kansas City) -> Japan | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),Japan,2031.0,,,daycare,homeschool,21078305.59511114,21078305.59511114,549984.0,549984.0,False
+Southern France -> Miami area | move-2031 | buy-2034 | daycare | private,Southern France,Miami area,2031.0,2034.0,2034.0,daycare,private,20036951.780224744,21055925.992539864,554511.36,554511.36,False
+Miami area | no-move | rent-forever | parent | public,Miami area,Miami area,,,,parent,public,21036701.574474774,21036701.574474774,525126.24,525126.24,False
+Miami area -> Bay Area | move-2031 | rent-forever | daycare | public,Miami area,Bay Area,2031.0,,,daycare,public,21036072.47116509,21036072.47116509,525126.24,525126.24,False
+"Miami area -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Miami area,"China, Jingzhou",2031.0,,,daycare,homeschool,20997541.552434273,20997541.552434273,525126.24,525126.24,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,20471746.000063572,20985300.035706438,565646.64,565646.64,False
+"China, Jingzhou -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,20613494.988230497,20981702.99979423,565646.64,565646.64,False
+Spain | no-move | buy-2034 | daycare | homeschool,Spain,Spain,,2034.0,2034.0,daycare,homeschool,20258918.73787442,20975618.056924704,555067.32,555067.32,False
+Spain -> Japan | move-2031 | buy-2034 | daycare | homeschool,Spain,Japan,2031.0,2034.0,2034.0,daycare,homeschool,20179909.752149623,20967198.32078234,555067.32,555067.32,False
+New Orleans area -> Japan | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Japan,2031.0,,,daycare,homeschool,20956482.020098865,20956482.020098865,545172.0,545172.0,False
+Southern France -> Spain | move-2031 | buy-2034 | daycare | homeschool,Southern France,Spain,2031.0,2034.0,2034.0,daycare,homeschool,20234837.808836192,20951537.127886478,554511.36,554511.36,False
+"China, Jingzhou -> Spain | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Spain,2031.0,,,daycare,homeschool,20948579.752681345,20948579.752681345,565646.64,565646.64,False
+"China, Jingzhou -> Southern France | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19985064.266675305,20948021.19583238,565646.64,565646.64,False
+Midwest (Kansas City) -> Miami area | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),Miami area,2031.0,2034.0,2034.0,daycare,private,19927053.14070881,20946027.35302393,549984.0,549984.0,False
+Southern France -> Japan | move-2031 | buy-2034 | daycare | homeschool,Southern France,Japan,2031.0,2034.0,2034.0,daycare,homeschool,20155828.823111396,20943117.391744114,554511.36,554511.36,False
+Vietnam -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,Vietnam,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,20426158.55178724,20939712.587430105,563434.68,563434.68,False
+Vietnam -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Vietnam,New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,20567907.539954163,20936115.551517896,563434.68,563434.68,False
+Bay Area -> New Orleans area | move-2031 | rent-forever | parent | private,Bay Area,New Orleans area,2031.0,,,parent,private,20932740.073312156,20932740.073312156,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Southern France | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Southern France,2031.0,,,daycare,homeschool,20918781.87518084,20918781.87518084,565646.64,565646.64,False
+Vietnam -> Spain | move-2031 | rent-forever | daycare | homeschool,Vietnam,Spain,2031.0,,,daycare,homeschool,20902992.304405008,20902992.304405008,563434.68,563434.68,False
+Vietnam -> Southern France | move-2031 | buy-2034 | daycare | homeschool,Vietnam,Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19939476.818398975,20902433.74755605,563434.68,563434.68,False
+Bay Area | no-move | buy-2034 | parent | public,Bay Area,Bay Area,,2034.0,2034.0,parent,public,18345383.319867592,20889298.01064161,514448.04000000004,514448.04000000004,False
+Japan -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,Japan,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,20369516.225157868,20883070.260800734,561204.96,561204.96,False
+Japan -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Japan,New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,20511265.213324804,20879473.224888537,561204.96,561204.96,False
+Vietnam -> Southern France | move-2031 | rent-forever | daycare | homeschool,Vietnam,Southern France,2031.0,,,daycare,homeschool,20873194.426904507,20873194.426904507,563434.68,563434.68,False
+"China, Jingzhou -> Bay Area | move-2031 | rent-forever | parent | public","China, Jingzhou",Bay Area,2031.0,,,parent,public,20859382.36964857,20859382.36964857,565646.64,565646.64,False
+Japan -> Spain | move-2031 | rent-forever | daycare | homeschool,Japan,Spain,2031.0,,,daycare,homeschool,20846349.977775645,20846349.977775645,561204.96,561204.96,False
+Japan -> Southern France | move-2031 | buy-2034 | daycare | homeschool,Japan,Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19882834.491769608,20845791.420926683,561204.96,561204.96,False
+Midwest (Kansas City) -> Spain | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),Spain,2031.0,2034.0,2034.0,daycare,homeschool,20124939.169320256,20841638.48837054,549984.0,549984.0,False
+"China, Jingzhou | no-move | rent-forever | parent | homeschool","China, Jingzhou","China, Jingzhou",,,,parent,homeschool,20839568.961185846,20839568.961185846,565646.64,565646.64,False
+Midwest (Kansas City) -> Japan | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),Japan,2031.0,2034.0,2034.0,daycare,homeschool,20045930.18359546,20833218.752228178,549984.0,549984.0,False
+New Orleans area -> Miami area | move-2031 | buy-2034 | daycare | private,New Orleans area,Miami area,2031.0,2034.0,2034.0,daycare,private,19805229.565696537,20824203.778011657,545172.0,545172.0,False
+Miami area -> Vietnam | move-2031 | rent-forever | daycare | homeschool,Miami area,Vietnam,2031.0,,,daycare,homeschool,20820241.238083873,20820241.238083873,525126.24,525126.24,False
+"Miami area -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Miami area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,20375052.903892282,20818132.65615725,525126.24,525126.24,False
+Japan -> Southern France | move-2031 | rent-forever | daycare | homeschool,Japan,Southern France,2031.0,,,daycare,homeschool,20816552.100275144,20816552.100275144,561204.96,561204.96,False
+Bay Area -> Miami area | move-2031 | rent-forever | parent | public,Bay Area,Miami area,2031.0,,,parent,public,20814573.481842984,20814573.481842984,514448.04000000004,514448.04000000004,False
+Vietnam -> Bay Area | move-2031 | rent-forever | parent | public,Vietnam,Bay Area,2031.0,,,parent,public,20813369.14122264,20813369.14122264,563434.68,563434.68,False
+"Vietnam -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Vietnam,"China, Jingzhou",2031.0,,,parent,homeschool,20793555.732759915,20793555.732759915,563434.68,563434.68,False
+Japan -> Bay Area | move-2031 | rent-forever | parent | public,Japan,Bay Area,2031.0,,,parent,public,20766986.46898359,20766986.46898359,561204.96,561204.96,False
+Bay Area | no-move | rent-forever | daycare | public,Bay Area,Bay Area,,,,daycare,public,20756630.277316745,20756630.277316745,514448.04000000004,514448.04000000004,False
+Spain -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,Spain,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,20240235.650579304,20753789.68622217,555067.32,555067.32,False
+Spain -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Spain,New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,20381984.638746228,20750192.65030996,555067.32,555067.32,False
+"Japan -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Japan,"China, Jingzhou",2031.0,,,parent,homeschool,20747173.060520872,20747173.060520872,561204.96,561204.96,False
+Miami area -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,Miami area,Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,20259569.332517408,20746709.88266913,525126.24,525126.24,False
+Southern France -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,Southern France,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,20216154.721541077,20729708.757183943,554511.36,554511.36,False
+Southern France -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Southern France,New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,20357903.709707998,20726111.72127173,554511.36,554511.36,False
+New Orleans area -> Spain | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Spain,2031.0,2034.0,2034.0,daycare,homeschool,20003115.59430798,20719814.913358267,545172.0,545172.0,False
+"Bay Area -> China, Jingzhou | move-2031 | rent-forever | daycare | homeschool",Bay Area,"China, Jingzhou",2031.0,,,daycare,homeschool,20718099.35858592,20718099.35858592,514448.04000000004,514448.04000000004,False
+Spain | no-move | rent-forever | daycare | homeschool,Spain,Spain,,,,daycare,homeschool,20717069.40319707,20717069.40319707,555067.32,555067.32,False
+Spain -> Southern France | move-2031 | buy-2034 | daycare | homeschool,Spain,Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19753553.917191036,20716510.84634811,555067.32,555067.32,False
+New Orleans area -> Japan | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Japan,2031.0,2034.0,2034.0,daycare,homeschool,19924106.60858319,20711395.177215908,545172.0,545172.0,False
+Miami area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,Miami area,Midwest (Kansas City),2031.0,,,parent,private,20709150.215200856,20709150.215200856,525126.24,525126.24,False
+Southern France -> Spain | move-2031 | rent-forever | daycare | homeschool,Southern France,Spain,2031.0,,,daycare,homeschool,20692988.47415885,20692988.47415885,554511.36,554511.36,False
+Southern France | no-move | buy-2034 | daycare | homeschool,Southern France,Southern France,,2034.0,2034.0,daycare,homeschool,19729472.988152813,20692429.917309888,554511.36,554511.36,False
+Spain -> Southern France | move-2031 | rent-forever | daycare | homeschool,Spain,Southern France,2031.0,,,daycare,homeschool,20687271.525696576,20687271.525696576,555067.32,555067.32,False
+Southern France | no-move | rent-forever | daycare | homeschool,Southern France,Southern France,,,,daycare,homeschool,20663190.596658356,20663190.596658356,554511.36,554511.36,False
+"China, Jingzhou -> Vietnam | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Vietnam,2031.0,,,parent,homeschool,20660187.98369682,20660187.98369682,565646.64,565646.64,False
+"China, Jingzhou | no-move | buy-2034 | parent | homeschool","China, Jingzhou","China, Jingzhou",,2034.0,2034.0,parent,homeschool,20217080.31264386,20660160.06490883,565646.64,565646.64,False
+Spain -> Bay Area | move-2031 | rent-forever | parent | public,Spain,Bay Area,2031.0,,,parent,public,20639311.18040868,20639311.18040868,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | rent-forever | parent | public,Southern France,Bay Area,2031.0,,,parent,public,20627746.091313187,20627746.091313187,554511.36,554511.36,False
+Midwest (Kansas City) | no-move | buy-2034 | daycare | homeschool,Midwest (Kansas City),Midwest (Kansas City),,2034.0,2034.0,daycare,homeschool,20106256.082025133,20619810.117668,549984.0,549984.0,False
+"Spain -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Spain,"China, Jingzhou",2031.0,,,parent,homeschool,20619497.77194597,20619497.77194597,555067.32,555067.32,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,20248005.07019207,20616213.081755802,549984.0,549984.0,False
+Vietnam | no-move | rent-forever | parent | homeschool,Vietnam,Vietnam,,,,parent,homeschool,20614174.75527089,20614174.75527089,563434.68,563434.68,False
+"Vietnam -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Vietnam,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,20171067.08421793,20614146.836482897,563434.68,563434.68,False
+"Southern France -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Southern France,"China, Jingzhou",2031.0,,,parent,homeschool,20607932.682850458,20607932.682850458,554511.36,554511.36,False
+"China, Jingzhou -> Vietnam | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Vietnam,2031.0,2034.0,2034.0,parent,homeschool,20099516.078130364,20586656.628282085,565646.64,565646.64,False
+Midwest (Kansas City) -> Spain | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),Spain,2031.0,,,daycare,homeschool,20583089.834642913,20583089.834642913,549984.0,549984.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19619574.34863688,20582531.277793955,549984.0,549984.0,False
+Japan -> Vietnam | move-2031 | rent-forever | parent | homeschool,Japan,Vietnam,2031.0,,,parent,homeschool,20567792.08303184,20567792.08303184,561204.96,561204.96,False
+"Japan -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Japan,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,20124684.41197888,20567764.16424385,561204.96,561204.96,False
+Midwest (Kansas City) -> Southern France | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),Southern France,2031.0,,,daycare,homeschool,20553291.957142416,20553291.957142416,549984.0,549984.0,False
+Bay Area -> Vietnam | move-2031 | rent-forever | daycare | homeschool,Bay Area,Vietnam,2031.0,,,daycare,homeschool,20540799.044235516,20540799.044235516,514448.04000000004,514448.04000000004,False
+Vietnam | no-move | buy-2034 | parent | homeschool,Vietnam,Vietnam,,2034.0,2034.0,parent,homeschool,20053502.84970443,20540643.39985615,563434.68,563434.68,False
+"Bay Area -> China, Jingzhou | move-2031 | buy-2034 | daycare | homeschool",Bay Area,"China, Jingzhou",2031.0,2034.0,2034.0,daycare,homeschool,20095610.71004393,20538690.4623089,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) -> Bay Area | move-2031 | rent-forever | parent | public,Midwest (Kansas City),Bay Area,2031.0,,,parent,public,20533567.873874154,20533567.873874154,549984.0,549984.0,False
+Miami area -> Japan | move-2031 | rent-forever | daycare | homeschool,Miami area,Japan,2031.0,,,daycare,homeschool,20524213.117438074,20524213.117438074,525126.24,525126.24,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Midwest (Kansas City),"China, Jingzhou",2031.0,,,parent,homeschool,20513754.465411425,20513754.465411425,549984.0,549984.0,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,19984432.50701286,20497986.542655725,545172.0,545172.0,False
+New Orleans area | no-move | buy-2034 | daycare | homeschool,New Orleans area,New Orleans area,,2034.0,2034.0,daycare,homeschool,20126181.49517979,20494389.506743524,545172.0,545172.0,False
+Japan -> Vietnam | move-2031 | buy-2034 | parent | homeschool,Japan,Vietnam,2031.0,2034.0,2034.0,parent,homeschool,20007120.177465383,20494260.727617104,561204.96,561204.96,False
+Bay Area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | private,Bay Area,Midwest (Kansas City),2031.0,,,parent,private,20487022.122569073,20487022.122569073,514448.04000000004,514448.04000000004,False
+Bay Area -> Vietnam | move-2031 | buy-2034 | daycare | homeschool,Bay Area,Vietnam,2031.0,2034.0,2034.0,daycare,homeschool,19980127.138669066,20467267.688820787,514448.04000000004,514448.04000000004,False
+New Orleans area -> Spain | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Spain,2031.0,,,daycare,homeschool,20461266.25963064,20461266.25963064,545172.0,545172.0,False
+New Orleans area -> Southern France | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19497750.7736246,20460707.702781674,545172.0,545172.0,False
+Spain -> Vietnam | move-2031 | rent-forever | parent | homeschool,Spain,Vietnam,2031.0,,,parent,homeschool,20440116.79445694,20440116.79445694,555067.32,555067.32,False
+"Spain -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Spain,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,19997009.123403963,20440088.87566893,555067.32,555067.32,False
+New Orleans area -> Bay Area | move-2031 | rent-forever | parent | public,New Orleans area,Bay Area,2031.0,,,parent,public,20433468.57045746,20433468.57045746,545172.0,545172.0,False
+New Orleans area -> Southern France | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Southern France,2031.0,,,daycare,homeschool,20431468.38213013,20431468.38213013,545172.0,545172.0,False
+Southern France -> Vietnam | move-2031 | rent-forever | parent | homeschool,Southern France,Vietnam,2031.0,,,parent,homeschool,20428551.705361437,20428551.705361437,554511.36,554511.36,False
+"Southern France -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Southern France,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,19985444.034308475,20428523.786573444,554511.36,554511.36,False
+"China, Jingzhou -> Japan | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Japan,2031.0,,,parent,homeschool,20414295.795233205,20414295.795233205,565646.64,565646.64,False
+"New Orleans area -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",New Orleans area,"China, Jingzhou",2031.0,,,parent,homeschool,20413655.161994733,20413655.161994733,545172.0,545172.0,False
+Miami area | no-move | buy-2034 | daycare | private,Miami area,Miami area,,2034.0,2034.0,daycare,private,19372960.663035743,20391934.875350863,525126.24,525126.24,False
+Vietnam -> Japan | move-2031 | rent-forever | parent | homeschool,Vietnam,Japan,2031.0,,,parent,homeschool,20368282.566807266,20368282.566807266,563434.68,563434.68,False
+Spain -> Vietnam | move-2031 | buy-2034 | parent | homeschool,Spain,Vietnam,2031.0,2034.0,2034.0,parent,homeschool,19879444.888890475,20366585.439042196,555067.32,555067.32,False
+Southern France -> Vietnam | move-2031 | buy-2034 | parent | homeschool,Southern France,Vietnam,2031.0,2034.0,2034.0,parent,homeschool,19867879.79979498,20355020.3499467,554511.36,554511.36,False
+Midwest (Kansas City) -> Vietnam | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),Vietnam,2031.0,,,parent,homeschool,20334373.4879224,20334373.4879224,549984.0,549984.0,False
+"Midwest (Kansas City) -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Midwest (Kansas City),"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,19891265.816869438,20334345.569134407,549984.0,549984.0,False
+Japan | no-move | rent-forever | parent | homeschool,Japan,Japan,,,,parent,homeschool,20321899.894568224,20321899.894568224,561204.96,561204.96,False
+Miami area -> Spain | move-2031 | buy-2034 | daycare | homeschool,Miami area,Spain,2031.0,2034.0,2034.0,daycare,homeschool,19570846.691647187,20287546.010697473,525126.24,525126.24,False
+Miami area -> Japan | move-2031 | buy-2034 | daycare | homeschool,Miami area,Japan,2031.0,2034.0,2034.0,daycare,homeschool,19491837.7059224,20279126.274555117,525126.24,525126.24,False
+Midwest (Kansas City) -> Vietnam | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),Vietnam,2031.0,2034.0,2034.0,parent,homeschool,19773701.582355943,20260842.132507663,549984.0,549984.0,False
+Bay Area -> Japan | move-2031 | rent-forever | daycare | homeschool,Bay Area,Japan,2031.0,,,daycare,homeschool,20244770.923589725,20244770.923589725,514448.04000000004,514448.04000000004,False
+New Orleans area -> Vietnam | move-2031 | rent-forever | parent | homeschool,New Orleans area,Vietnam,2031.0,,,parent,homeschool,20234274.18450571,20234274.18450571,545172.0,545172.0,False
+"New Orleans area -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",New Orleans area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,19791166.513452742,20234246.26571771,545172.0,545172.0,False
+"China, Jingzhou -> New Orleans area | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,19835982.358472705,20204190.370036438,565646.64,565646.64,False
+Spain -> Japan | move-2031 | rent-forever | parent | homeschool,Spain,Japan,2031.0,,,parent,homeschool,20194224.60599331,20194224.60599331,555067.32,555067.32,False
+"China, Jingzhou -> Spain | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Spain,2031.0,2034.0,2034.0,parent,homeschool,19468773.932928633,20185473.25197892,565646.64,565646.64,False
+Southern France -> Japan | move-2031 | rent-forever | parent | homeschool,Southern France,Japan,2031.0,,,parent,homeschool,20182659.51689781,20182659.51689781,554511.36,554511.36,False
+"China, Jingzhou -> Japan | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Japan,2031.0,2034.0,2034.0,parent,homeschool,19381920.38371752,20169208.952350236,565646.64,565646.64,False
+New Orleans area -> Vietnam | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Vietnam,2031.0,2034.0,2034.0,parent,homeschool,19673602.278939247,20160742.829090968,545172.0,545172.0,False
+Vietnam -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Vietnam,New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,19789969.13004676,20158177.141610492,563434.68,563434.68,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Midwest (Kansas City),2031.0,,,daycare,homeschool,20152190.735690627,20152190.735690627,565646.64,565646.64,False
+Vietnam -> Spain | move-2031 | buy-2034 | parent | homeschool,Vietnam,Spain,2031.0,2034.0,2034.0,parent,homeschool,19422760.704502698,20139460.023552984,563434.68,563434.68,False
+Vietnam -> Japan | move-2031 | buy-2034 | parent | homeschool,Vietnam,Japan,2031.0,2034.0,2034.0,parent,homeschool,19335907.155291587,20123195.723924305,563434.68,563434.68,False
+"China, Jingzhou -> Miami area | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Miami area,2031.0,2034.0,2034.0,daycare,homeschool,19102580.75533989,20121554.96765501,565646.64,565646.64,False
+Bay Area -> Miami area | move-2031 | buy-2034 | daycare | private,Bay Area,Miami area,2031.0,2034.0,2034.0,daycare,private,19093518.469187398,20112492.681502517,514448.04000000004,514448.04000000004,False
+Japan -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Japan,New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,19743586.457807716,20111794.46937145,561204.96,561204.96,False
+Vietnam -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,Vietnam,Midwest (Kansas City),2031.0,,,daycare,homeschool,20106603.287414297,20106603.287414297,563434.68,563434.68,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,19588073.204866808,20101627.240509674,565646.64,565646.64,False
+Japan -> Spain | move-2031 | buy-2034 | parent | homeschool,Japan,Spain,2031.0,2034.0,2034.0,parent,homeschool,19376378.03226365,20093077.351313937,561204.96,561204.96,False
+Midwest (Kansas City) -> Japan | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),Japan,2031.0,,,parent,homeschool,20088481.29945878,20088481.29945878,549984.0,549984.0,False
+Japan | no-move | buy-2034 | parent | homeschool,Japan,Japan,,2034.0,2034.0,parent,homeschool,19289524.48305254,20076813.05168526,561204.96,561204.96,False
+Vietnam -> Miami area | move-2031 | buy-2034 | daycare | homeschool,Vietnam,Miami area,2031.0,2034.0,2034.0,daycare,homeschool,19056993.307063553,20075967.519378673,563434.68,563434.68,False
+Miami area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,Miami area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,19552163.604352076,20065717.63999494,525126.24,525126.24,False
+Miami area -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Miami area,New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,19693912.592518996,20062120.60408273,525126.24,525126.24,False
+Vietnam -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,Vietnam,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,19542059.97644087,20055614.012083735,563434.68,563434.68,False
+Japan -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,Japan,Midwest (Kansas City),2031.0,,,daycare,homeschool,20049960.96078493,20049960.96078493,561204.96,561204.96,False
+Miami area -> Spain | move-2031 | rent-forever | daycare | homeschool,Miami area,Spain,2031.0,,,daycare,homeschool,20028997.35696985,20028997.35696985,525126.24,525126.24,False
+Miami area -> Southern France | move-2031 | buy-2034 | daycare | homeschool,Miami area,Southern France,2031.0,2034.0,2034.0,daycare,homeschool,19065481.870963804,20028438.80012088,525126.24,525126.24,False
+Japan -> Miami area | move-2031 | buy-2034 | daycare | homeschool,Japan,Miami area,2031.0,2034.0,2034.0,daycare,homeschool,19000350.98043419,20019325.19274931,561204.96,561204.96,False
+Miami area -> Bay Area | move-2031 | rent-forever | parent | public,Miami area,Bay Area,2031.0,,,parent,public,20016476.340104524,20016476.340104524,525126.24,525126.24,False
+Japan -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,Japan,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,19495677.304201826,20009231.339844692,561204.96,561204.96,False
+Bay Area -> Spain | move-2031 | buy-2034 | daycare | homeschool,Bay Area,Spain,2031.0,2034.0,2034.0,daycare,homeschool,19291404.497798838,20008103.816849124,514448.04000000004,514448.04000000004,False
+Bay Area -> Japan | move-2031 | buy-2034 | daycare | homeschool,Bay Area,Japan,2031.0,2034.0,2034.0,daycare,homeschool,19212395.51207405,19999684.080706768,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | rent-forever | daycare | homeschool,Miami area,Southern France,2031.0,,,daycare,homeschool,19999199.47946934,19999199.47946934,525126.24,525126.24,False
+"Miami area -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Miami area,"China, Jingzhou",2031.0,,,parent,homeschool,19996662.9316418,19996662.9316418,525126.24,525126.24,False
+New Orleans area -> Japan | move-2031 | rent-forever | parent | homeschool,New Orleans area,Japan,2031.0,,,parent,homeschool,19988381.996042084,19988381.996042084,545172.0,545172.0,False
+"China, Jingzhou -> Southern France | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Southern France,2031.0,2034.0,2034.0,parent,homeschool,19024570.36375521,19987527.292912286,565646.64,565646.64,False
+Spain -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Spain,New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,19615911.169232808,19984119.18079654,555067.32,555067.32,False
+Southern France -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Southern France,New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,19604346.080137312,19972554.091701046,554511.36,554511.36,False
+Spain | no-move | buy-2034 | parent | homeschool,Spain,Spain,,2034.0,2034.0,parent,homeschool,19248702.743688744,19965402.06273903,555067.32,555067.32,False
+"China, Jingzhou -> Southern France | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Southern France,2031.0,,,parent,homeschool,19958287.972260755,19958287.972260755,565646.64,565646.64,False
+Southern France -> Spain | move-2031 | buy-2034 | parent | homeschool,Southern France,Spain,2031.0,2034.0,2034.0,parent,homeschool,19237137.65459324,19953836.973643526,554511.36,554511.36,False
+Spain -> Japan | move-2031 | buy-2034 | parent | homeschool,Spain,Japan,2031.0,2034.0,2034.0,parent,homeschool,19161849.194477633,19949137.76311035,555067.32,555067.32,False
+Vietnam -> Southern France | move-2031 | buy-2034 | parent | homeschool,Vietnam,Southern France,2031.0,2034.0,2034.0,parent,homeschool,18978557.13532928,19941514.064486355,563434.68,563434.68,False
+Southern France -> Japan | move-2031 | buy-2034 | parent | homeschool,Southern France,Japan,2031.0,2034.0,2034.0,parent,homeschool,19150284.105382133,19937572.67401485,554511.36,554511.36,False
+"China, Jingzhou -> Miami area | move-2031 | buy-2034 | parent | private","China, Jingzhou",Miami area,2031.0,2034.0,2034.0,parent,private,18916193.301374186,19935167.513689306,565646.64,565646.64,False
+"China, Jingzhou -> Spain | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Spain,2031.0,,,parent,homeschool,19926924.59825129,19926924.59825129,565646.64,565646.64,False
+Spain -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,Spain,Midwest (Kansas City),2031.0,,,daycare,homeschool,19920680.386206366,19920680.386206366,555067.32,555067.32,False
+Vietnam -> Southern France | move-2031 | rent-forever | parent | homeschool,Vietnam,Southern France,2031.0,,,parent,homeschool,19912274.743834823,19912274.743834823,563434.68,563434.68,False
+Southern France -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,Southern France,Midwest (Kansas City),2031.0,,,daycare,homeschool,19896599.457168136,19896599.457168136,554511.36,554511.36,False
+Japan -> Southern France | move-2031 | buy-2034 | parent | homeschool,Japan,Southern France,2031.0,2034.0,2034.0,parent,homeschool,18932174.463090234,19895131.392247308,561204.96,561204.96,False
+Spain -> Miami area | move-2031 | buy-2034 | daycare | homeschool,Spain,Miami area,2031.0,2034.0,2034.0,daycare,homeschool,18871070.405855622,19890044.618170742,555067.32,555067.32,False
+Vietnam -> Miami area | move-2031 | buy-2034 | parent | private,Vietnam,Miami area,2031.0,2034.0,2034.0,parent,private,18870180.07294825,19889154.28526337,563434.68,563434.68,False
+Spain -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,Spain,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,19368002.015626915,19881556.05126978,555067.32,555067.32,False
+Vietnam -> Spain | move-2031 | rent-forever | parent | homeschool,Vietnam,Spain,2031.0,,,parent,homeschool,19880911.369825352,19880911.369825352,563434.68,563434.68,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,19510167.86269828,19878375.874262013,549984.0,549984.0,False
+Southern France -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,Southern France,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,19356436.926531415,19869990.96217428,554511.36,554511.36,False
+Southern France -> Miami area | move-2031 | buy-2034 | daycare | homeschool,Southern France,Miami area,2031.0,2034.0,2034.0,daycare,homeschool,18846989.476817396,19865963.689132515,554511.36,554511.36,False
+Japan -> Southern France | move-2031 | rent-forever | parent | homeschool,Japan,Southern France,2031.0,,,parent,homeschool,19865892.071595773,19865892.071595773,561204.96,561204.96,False
+Midwest (Kansas City) -> Spain | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),Spain,2031.0,2034.0,2034.0,parent,homeschool,19142959.43715421,19859658.756204497,549984.0,549984.0,False
+Midwest (Kansas City) -> Japan | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),Japan,2031.0,2034.0,2034.0,parent,homeschool,19056105.887943104,19843394.456575822,549984.0,549984.0,False
+Japan -> Miami area | move-2031 | buy-2034 | parent | private,Japan,Miami area,2031.0,2034.0,2034.0,parent,private,18823797.400709208,19842771.613024328,561204.96,561204.96,False
+Japan -> Spain | move-2031 | rent-forever | parent | homeschool,Japan,Spain,2031.0,,,parent,homeschool,19834528.697586313,19834528.697586313,561204.96,561204.96,False
+Miami area -> Vietnam | move-2031 | rent-forever | parent | homeschool,Miami area,Vietnam,2031.0,,,parent,homeschool,19817281.95415277,19817281.95415277,525126.24,525126.24,False
+"Miami area -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Miami area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,19374174.283099815,19817254.035364784,525126.24,525126.24,False
+Bay Area | no-move | rent-forever | parent | public,Bay Area,Bay Area,,,,parent,public,19794348.247472737,19794348.247472737,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) | no-move | rent-forever | daycare | homeschool,Midwest (Kansas City),Midwest (Kansas City),,,,daycare,homeschool,19786700.8176522,19786700.8176522,549984.0,549984.0,False
+Bay Area -> Midwest (Kansas City) | move-2031 | buy-2034 | daycare | homeschool,Bay Area,Midwest (Kansas City),2031.0,2034.0,2034.0,daycare,homeschool,19272721.410503726,19786275.446146592,514448.04000000004,514448.04000000004,False
+Bay Area -> New Orleans area | move-2031 | buy-2034 | daycare | homeschool,Bay Area,New Orleans area,2031.0,2034.0,2034.0,daycare,homeschool,19414470.398670647,19782678.41023438,514448.04000000004,514448.04000000004,False
+New Orleans area | no-move | buy-2034 | parent | homeschool,New Orleans area,New Orleans area,,2034.0,2034.0,parent,homeschool,19410068.559281576,19778276.57084531,545172.0,545172.0,False
+Midwest (Kansas City) | no-move | buy-2034 | parent | homeschool,Midwest (Kansas City),Midwest (Kansas City),,2034.0,2034.0,parent,homeschool,19262258.70909238,19775812.744735245,549984.0,549984.0,False
+"Bay Area -> China, Jingzhou | move-2031 | rent-forever | parent | homeschool",Bay Area,"China, Jingzhou",2031.0,,,parent,homeschool,19774534.839010008,19774534.839010008,514448.04000000004,514448.04000000004,False
+Spain -> Southern France | move-2031 | buy-2034 | parent | homeschool,Spain,Southern France,2031.0,2034.0,2034.0,parent,homeschool,18804499.174515326,19767456.1036724,555067.32,555067.32,False
+New Orleans area -> Spain | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Spain,2031.0,2034.0,2034.0,parent,homeschool,19042860.133737512,19759559.452787798,545172.0,545172.0,False
+Midwest (Kansas City) -> Miami area | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),Miami area,2031.0,2034.0,2034.0,daycare,homeschool,18737090.83730146,19756065.04961658,549984.0,549984.0,False
+Southern France | no-move | buy-2034 | parent | homeschool,Southern France,Southern France,,2034.0,2034.0,parent,homeschool,18792934.085419826,19755891.0145769,554511.36,554511.36,False
+Bay Area -> Spain | move-2031 | rent-forever | daycare | homeschool,Bay Area,Spain,2031.0,,,daycare,homeschool,19749555.163121495,19749555.163121495,514448.04000000004,514448.04000000004,False
+Bay Area -> Southern France | move-2031 | buy-2034 | daycare | homeschool,Bay Area,Southern France,2031.0,2034.0,2034.0,daycare,homeschool,18786039.67711546,19748996.606272534,514448.04000000004,514448.04000000004,False
+Miami area -> Vietnam | move-2031 | buy-2034 | parent | homeschool,Miami area,Vietnam,2031.0,2034.0,2034.0,parent,homeschool,19256610.04858632,19743750.59873804,525126.24,525126.24,False
+New Orleans area -> Japan | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Japan,2031.0,2034.0,2034.0,parent,homeschool,18956006.58452641,19743295.153159127,545172.0,545172.0,False
+Spain -> Southern France | move-2031 | rent-forever | parent | homeschool,Spain,Southern France,2031.0,,,parent,homeschool,19738216.78302086,19738216.78302086,555067.32,555067.32,False
+Southern France | no-move | rent-forever | parent | homeschool,Southern France,Southern France,,,,parent,homeschool,19726651.693925366,19726651.693925366,554511.36,554511.36,False
+Bay Area -> Southern France | move-2031 | rent-forever | daycare | homeschool,Bay Area,Southern France,2031.0,,,daycare,homeschool,19719757.285620995,19719757.285620995,514448.04000000004,514448.04000000004,False
+Spain -> Miami area | move-2031 | buy-2034 | parent | private,Spain,Miami area,2031.0,2034.0,2034.0,parent,private,18696122.112134296,19715096.324449416,555067.32,555067.32,False
+Spain | no-move | rent-forever | parent | homeschool,Spain,Spain,,,,parent,homeschool,19706853.409011394,19706853.409011394,555067.32,555067.32,False
+Southern France -> Miami area | move-2031 | buy-2034 | parent | private,Southern France,Miami area,2031.0,2034.0,2034.0,parent,private,18684557.023038805,19703531.235353924,554511.36,554511.36,False
+Southern France -> Spain | move-2031 | rent-forever | parent | homeschool,Southern France,Spain,2031.0,,,parent,homeschool,19695288.3199159,19695288.3199159,554511.36,554511.36,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,19162159.40567569,19675713.441318557,545172.0,545172.0,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Midwest (Kansas City),2031.0,,,daycare,homeschool,19664877.242639925,19664877.242639925,545172.0,545172.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),Southern France,2031.0,2034.0,2034.0,parent,homeschool,18698755.86798079,19661712.797137864,549984.0,549984.0,False
+"China, Jingzhou -> New Orleans area | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",New Orleans area,2031.0,,,daycare,homeschool,19655796.90251933,19655796.90251933,565646.64,565646.64,False
+New Orleans area -> Miami area | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Miami area,2031.0,2034.0,2034.0,daycare,homeschool,18615267.26228919,19634241.47460431,545172.0,545172.0,False
+Midwest (Kansas City) -> Southern France | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),Southern France,2031.0,,,parent,homeschool,19632473.476486333,19632473.476486333,549984.0,549984.0,False
+Vietnam -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Vietnam,New Orleans area,2031.0,,,daycare,homeschool,19610209.454242997,19610209.454242997,563434.68,563434.68,False
+Midwest (Kansas City) -> Miami area | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),Miami area,2031.0,2034.0,2034.0,parent,private,18590378.80559977,19609353.01791489,549984.0,549984.0,False
+Midwest (Kansas City) -> Spain | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),Spain,2031.0,,,parent,homeschool,19601110.102476876,19601110.102476876,549984.0,549984.0,False
+Bay Area -> Vietnam | move-2031 | rent-forever | parent | homeschool,Bay Area,Vietnam,2031.0,,,parent,homeschool,19595153.86152098,19595153.86152098,514448.04000000004,514448.04000000004,False
+"Bay Area -> China, Jingzhou | move-2031 | buy-2034 | parent | homeschool",Bay Area,"China, Jingzhou",2031.0,2034.0,2034.0,parent,homeschool,19152046.19046803,19595125.942732997,514448.04000000004,514448.04000000004,False
+Miami area -> Japan | move-2031 | rent-forever | parent | homeschool,Miami area,Japan,2031.0,,,parent,homeschool,19571389.765689153,19571389.765689153,525126.24,525126.24,False
+New Orleans area -> Southern France | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Southern France,2031.0,2034.0,2034.0,parent,homeschool,18598656.564564094,19561613.49372117,545172.0,545172.0,False
+Japan -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Japan,New Orleans area,2031.0,,,daycare,homeschool,19553567.127613638,19553567.127613638,561204.96,561204.96,False
+New Orleans area -> Southern France | move-2031 | rent-forever | parent | homeschool,New Orleans area,Southern France,2031.0,,,parent,homeschool,19532374.17306963,19532374.17306963,545172.0,545172.0,False
+Bay Area -> Vietnam | move-2031 | buy-2034 | parent | homeschool,Bay Area,Vietnam,2031.0,2034.0,2034.0,parent,homeschool,19034481.95595453,19521622.50610625,514448.04000000004,514448.04000000004,False
+New Orleans area -> Miami area | move-2031 | buy-2034 | parent | private,New Orleans area,Miami area,2031.0,2034.0,2034.0,parent,private,18490279.50218307,19509253.71449819,545172.0,545172.0,False
+New Orleans area -> Spain | move-2031 | rent-forever | parent | homeschool,New Orleans area,Spain,2031.0,,,parent,homeschool,19501010.799060173,19501010.799060173,545172.0,545172.0,False
+Spain -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Spain,New Orleans area,2031.0,,,daycare,homeschool,19424286.553035058,19424286.553035058,555067.32,555067.32,False
+"China, Jingzhou -> Miami area | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Miami area,2031.0,2034.0,2034.0,parent,homeschool,18399720.75788895,19418694.97020407,565646.64,565646.64,False
+Southern France -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Southern France,New Orleans area,2031.0,,,daycare,homeschool,19400205.623996824,19400205.623996824,554511.36,554511.36,False
+Vietnam -> Miami area | move-2031 | buy-2034 | parent | homeschool,Vietnam,Miami area,2031.0,2034.0,2034.0,parent,homeschool,18353707.529463015,19372681.741778135,563434.68,563434.68,False
+Miami area -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Miami area,New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,18993076.328928646,19361284.34049238,525126.24,525126.24,False
+Bay Area -> Japan | move-2031 | rent-forever | parent | homeschool,Bay Area,Japan,2031.0,,,parent,homeschool,19349261.673057366,19349261.673057366,514448.04000000004,514448.04000000004,False
+Miami area -> Spain | move-2031 | buy-2034 | parent | homeschool,Miami area,Spain,2031.0,2034.0,2034.0,parent,homeschool,18625867.90338458,19342567.222434867,525126.24,525126.24,False
+Miami area -> Japan | move-2031 | buy-2034 | parent | homeschool,Miami area,Japan,2031.0,2034.0,2034.0,parent,homeschool,18539014.354173474,19326302.922806192,525126.24,525126.24,False
+Japan -> Miami area | move-2031 | buy-2034 | parent | homeschool,Japan,Miami area,2031.0,2034.0,2034.0,parent,homeschool,18307324.857223965,19326299.069539085,561204.96,561204.96,False
+"China, Jingzhou -> Miami area | move-2031 | rent-forever | daycare | private","China, Jingzhou",Miami area,2031.0,,,daycare,private,19299743.362840116,19299743.362840116,565646.64,565646.64,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),New Orleans area,2031.0,,,daycare,homeschool,19290306.984480895,19290306.984480895,549984.0,549984.0,False
+"China, Jingzhou -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Midwest (Kansas City),2031.0,,,parent,homeschool,19268517.940493867,19268517.940493867,565646.64,565646.64,False
+Miami area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,Miami area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,18745167.175322752,19258721.21096562,525126.24,525126.24,False
+Vietnam -> Miami area | move-2031 | rent-forever | daycare | private,Vietnam,Miami area,2031.0,,,daycare,private,19254155.91456378,19254155.91456378,563434.68,563434.68,False
+Miami area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,Miami area,Midwest (Kansas City),2031.0,,,daycare,homeschool,19232608.33997914,19232608.33997914,525126.24,525126.24,False
+Vietnam -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,Vietnam,Midwest (Kansas City),2031.0,,,parent,homeschool,19222504.712067932,19222504.712067932,563434.68,563434.68,False
+Miami area | no-move | buy-2034 | daycare | homeschool,Miami area,Miami area,,2034.0,2034.0,daycare,homeschool,18182998.359628394,19201972.571943514,525126.24,525126.24,False
+Spain -> Miami area | move-2031 | buy-2034 | parent | homeschool,Spain,Miami area,2031.0,2034.0,2034.0,parent,homeschool,18179649.56864906,19198623.78096418,555067.32,555067.32,False
+Japan -> Miami area | move-2031 | rent-forever | daycare | private,Japan,Miami area,2031.0,,,daycare,private,19197513.58793442,19197513.58793442,561204.96,561204.96,False
+Southern France -> Miami area | move-2031 | buy-2034 | parent | homeschool,Southern France,Miami area,2031.0,2034.0,2034.0,parent,homeschool,18168084.47955356,19187058.69186868,554511.36,554511.36,False
+Japan -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,Japan,Midwest (Kansas City),2031.0,,,parent,homeschool,19176122.039828885,19176122.039828885,561204.96,561204.96,False
+New Orleans area | no-move | rent-forever | daycare | homeschool,New Orleans area,New Orleans area,,,,daycare,homeschool,19168483.40946862,19168483.40946862,545172.0,545172.0,False
+Miami area -> Southern France | move-2031 | buy-2034 | parent | homeschool,Miami area,Southern France,2031.0,2034.0,2034.0,parent,homeschool,18181664.334211167,19144621.26336824,525126.24,525126.24,False
+Bay Area -> New Orleans area | move-2031 | buy-2034 | parent | homeschool,Bay Area,New Orleans area,2031.0,2034.0,2034.0,parent,homeschool,18770948.23629686,19139156.24786059,514448.04000000004,514448.04000000004,False
+Bay Area -> Spain | move-2031 | buy-2034 | parent | homeschool,Bay Area,Spain,2031.0,2034.0,2034.0,parent,homeschool,18403739.810752798,19120439.129803084,514448.04000000004,514448.04000000004,False
+Miami area -> Southern France | move-2031 | rent-forever | parent | homeschool,Miami area,Southern France,2031.0,,,parent,homeschool,19115381.942716707,19115381.942716707,525126.24,525126.24,False
+Bay Area -> Japan | move-2031 | buy-2034 | parent | homeschool,Bay Area,Japan,2031.0,2034.0,2034.0,parent,homeschool,18316886.26154168,19104174.830174398,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) -> Miami area | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),Miami area,2031.0,2034.0,2034.0,parent,homeschool,18073906.26211453,19092880.47442965,549984.0,549984.0,False
+Miami area | no-move | buy-2034 | parent | private,Miami area,Miami area,,2034.0,2034.0,parent,private,18073287.27183014,19092261.48414526,525126.24,525126.24,False
+Miami area -> Spain | move-2031 | rent-forever | parent | homeschool,Miami area,Spain,2031.0,,,parent,homeschool,19084018.568707243,19084018.568707243,525126.24,525126.24,False
+Spain -> Miami area | move-2031 | rent-forever | daycare | private,Spain,Miami area,2031.0,,,daycare,private,19068233.013355847,19068233.013355847,555067.32,555067.32,False
+Spain -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,Spain,Midwest (Kansas City),2031.0,,,parent,homeschool,19048446.751253977,19048446.751253977,555067.32,555067.32,False
+Southern France -> Miami area | move-2031 | rent-forever | daycare | private,Southern France,Miami area,2031.0,,,daycare,private,19044152.08431762,19044152.08431762,554511.36,554511.36,False
+Southern France -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,Southern France,Midwest (Kansas City),2031.0,,,parent,homeschool,19036881.662158478,19036881.662158478,554511.36,554511.36,False
+Bay Area -> Midwest (Kansas City) | move-2031 | buy-2034 | parent | homeschool,Bay Area,Midwest (Kansas City),2031.0,2034.0,2034.0,parent,homeschool,18523039.08269097,19036593.118333835,514448.04000000004,514448.04000000004,False
+New Orleans area -> Miami area | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Miami area,2031.0,2034.0,2034.0,parent,homeschool,17973806.958697833,18992781.171012953,545172.0,545172.0,False
+Bay Area -> Midwest (Kansas City) | move-2031 | rent-forever | daycare | homeschool,Bay Area,Midwest (Kansas City),2031.0,,,daycare,homeschool,18953166.14613078,18953166.14613078,514448.04000000004,514448.04000000004,False
+Midwest (Kansas City) | no-move | rent-forever | parent | homeschool,Midwest (Kansas City),Midwest (Kansas City),,,,parent,homeschool,18942703.44471945,18942703.44471945,549984.0,549984.0,False
+Midwest (Kansas City) -> Miami area | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),Miami area,2031.0,,,daycare,private,18934253.44480169,18934253.44480169,549984.0,549984.0,False
+Bay Area -> Miami area | move-2031 | buy-2034 | daycare | homeschool,Bay Area,Miami area,2031.0,2034.0,2034.0,daycare,homeschool,17903556.16578004,18922530.37809516,514448.04000000004,514448.04000000004,False
+Bay Area -> Southern France | move-2031 | buy-2034 | parent | homeschool,Bay Area,Southern France,2031.0,2034.0,2034.0,parent,homeschool,17959536.24157938,18922493.170736454,514448.04000000004,514448.04000000004,False
+Bay Area -> Southern France | move-2031 | rent-forever | parent | homeschool,Bay Area,Southern France,2031.0,,,parent,homeschool,18893253.85008492,18893253.85008492,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> New Orleans area | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",New Orleans area,2031.0,,,parent,homeschool,18878284.272761524,18878284.272761524,565646.64,565646.64,False
+Bay Area -> Miami area | move-2031 | buy-2034 | parent | private,Bay Area,Miami area,2031.0,2034.0,2034.0,parent,private,17851159.17919835,18870133.39151347,514448.04000000004,514448.04000000004,False
+Bay Area -> Spain | move-2031 | rent-forever | parent | homeschool,Bay Area,Spain,2031.0,,,parent,homeschool,18861890.47607545,18861890.47607545,514448.04000000004,514448.04000000004,False
+New Orleans area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,New Orleans area,Midwest (Kansas City),2031.0,,,parent,homeschool,18842604.141302753,18842604.141302753,545172.0,545172.0,False
+Vietnam -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Vietnam,New Orleans area,2031.0,,,parent,homeschool,18832271.044335593,18832271.044335593,563434.68,563434.68,False
+New Orleans area -> Miami area | move-2031 | rent-forever | daycare | private,New Orleans area,Miami area,2031.0,,,daycare,private,18812429.86978941,18812429.86978941,545172.0,545172.0,False
+Japan -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Japan,New Orleans area,2031.0,,,parent,homeschool,18785888.372096546,18785888.372096546,561204.96,561204.96,False
+Miami area -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Miami area,New Orleans area,2031.0,,,daycare,homeschool,18736214.50680783,18736214.50680783,525126.24,525126.24,False
+Spain -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Spain,New Orleans area,2031.0,,,parent,homeschool,18658213.083521634,18658213.083521634,555067.32,555067.32,False
+Southern France -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Southern France,New Orleans area,2031.0,,,parent,homeschool,18646647.99442614,18646647.99442614,554511.36,554511.36,False
+Miami area | no-move | buy-2034 | parent | homeschool,Miami area,Miami area,,2034.0,2034.0,parent,homeschool,17556814.7283449,18575788.94066002,525126.24,525126.24,False
+Midwest (Kansas City) -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),New Orleans area,2031.0,,,parent,homeschool,18552469.776987106,18552469.776987106,549984.0,549984.0,False
+"China, Jingzhou -> Bay Area | move-2031 | buy-2034 | daycare | private","China, Jingzhou",Bay Area,2031.0,2034.0,2034.0,daycare,private,15922536.507478941,18466451.198252957,565646.64,565646.64,False
+Bay Area -> New Orleans area | move-2031 | rent-forever | daycare | homeschool,Bay Area,New Orleans area,2031.0,,,daycare,homeschool,18456772.31295948,18456772.31295948,514448.04000000004,514448.04000000004,False
+New Orleans area | no-move | rent-forever | parent | homeschool,New Orleans area,New Orleans area,,,,parent,homeschool,18452370.473570406,18452370.473570406,545172.0,545172.0,False
+Miami area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,Miami area,Midwest (Kansas City),2031.0,,,parent,homeschool,18425611.910949815,18425611.910949815,525126.24,525126.24,False
+Vietnam -> Bay Area | move-2031 | buy-2034 | daycare | private,Vietnam,Bay Area,2031.0,2034.0,2034.0,daycare,private,15876949.05920261,18420863.749976628,563434.68,563434.68,False
+Miami area | no-move | rent-forever | daycare | private,Miami area,Miami area,,,,daycare,private,18380160.96712862,18380160.96712862,525126.24,525126.24,False
+Japan -> Bay Area | move-2031 | buy-2034 | daycare | private,Japan,Bay Area,2031.0,2034.0,2034.0,daycare,private,15820306.732573243,18364221.42334726,561204.96,561204.96,False
+Bay Area -> Miami area | move-2031 | buy-2034 | parent | homeschool,Bay Area,Miami area,2031.0,2034.0,2034.0,parent,homeschool,17334686.63571312,18353660.84802824,514448.04000000004,514448.04000000004,False
+Spain -> Bay Area | move-2031 | buy-2034 | daycare | private,Spain,Bay Area,2031.0,2034.0,2034.0,daycare,private,15691026.157994678,18234940.848768696,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | buy-2034 | daycare | private,Southern France,Bay Area,2031.0,2034.0,2034.0,daycare,private,15666945.22895645,18210859.919730466,554511.36,554511.36,False
+Bay Area -> Midwest (Kansas City) | move-2031 | rent-forever | parent | homeschool,Bay Area,Midwest (Kansas City),2031.0,,,parent,homeschool,18203483.818318024,18203483.818318024,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Miami area | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Miami area,2031.0,,,daycare,homeschool,18109781.05943276,18109781.05943276,565646.64,565646.64,False
+Midwest (Kansas City) -> Bay Area | move-2031 | buy-2034 | daycare | private,Midwest (Kansas City),Bay Area,2031.0,2034.0,2034.0,daycare,private,15557046.589440517,18100961.280214533,549984.0,549984.0,False
+Bay Area -> Miami area | move-2031 | rent-forever | daycare | private,Bay Area,Miami area,2031.0,,,daycare,private,18100718.773280274,18100718.773280274,514448.04000000004,514448.04000000004,False
+Vietnam -> Miami area | move-2031 | rent-forever | daycare | homeschool,Vietnam,Miami area,2031.0,,,daycare,homeschool,18064193.611156426,18064193.611156426,563434.68,563434.68,False
+Miami area -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Miami area,New Orleans area,2031.0,,,parent,homeschool,18035378.243217476,18035378.243217476,525126.24,525126.24,False
+Japan -> Miami area | move-2031 | rent-forever | daycare | homeschool,Japan,Miami area,2031.0,,,daycare,homeschool,18007551.28452706,18007551.28452706,561204.96,561204.96,False
+New Orleans area -> Bay Area | move-2031 | buy-2034 | daycare | private,New Orleans area,Bay Area,2031.0,2034.0,2034.0,daycare,private,15435223.014428243,17979137.70520226,545172.0,545172.0,False
+"China, Jingzhou -> Miami area | move-2031 | rent-forever | parent | private","China, Jingzhou",Miami area,2031.0,,,parent,private,17923393.605467066,17923393.605467066,565646.64,565646.64,False
+"China, Jingzhou -> Bay Area | move-2031 | buy-2034 | daycare | homeschool","China, Jingzhou",Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,15360513.637312341,17904428.328086358,565646.64,565646.64,False
+Spain -> Miami area | move-2031 | rent-forever | daycare | homeschool,Spain,Miami area,2031.0,,,daycare,homeschool,17878270.7099485,17878270.7099485,555067.32,555067.32,False
+Vietnam -> Miami area | move-2031 | rent-forever | parent | private,Vietnam,Miami area,2031.0,,,parent,private,17877380.377041128,17877380.377041128,563434.68,563434.68,False
+Vietnam -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,Vietnam,Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,15314926.189036002,17858840.87981002,563434.68,563434.68,False
+Southern France -> Miami area | move-2031 | rent-forever | daycare | homeschool,Southern France,Miami area,2031.0,,,daycare,homeschool,17854189.780910265,17854189.780910265,554511.36,554511.36,False
+Japan -> Miami area | move-2031 | rent-forever | parent | private,Japan,Miami area,2031.0,,,parent,private,17830997.70480208,17830997.70480208,561204.96,561204.96,False
+Bay Area -> New Orleans area | move-2031 | rent-forever | parent | homeschool,Bay Area,New Orleans area,2031.0,,,parent,homeschool,17813250.15058569,17813250.15058569,514448.04000000004,514448.04000000004,False
+Japan -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,Japan,Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,15258283.86240664,17802198.553180657,561204.96,561204.96,False
+Midwest (Kansas City) -> Miami area | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),Miami area,2031.0,,,daycare,homeschool,17744291.141394332,17744291.141394332,549984.0,549984.0,False
+Spain -> Miami area | move-2031 | rent-forever | parent | private,Spain,Miami area,2031.0,,,parent,private,17703322.416227173,17703322.416227173,555067.32,555067.32,False
+Southern France -> Miami area | move-2031 | rent-forever | parent | private,Southern France,Miami area,2031.0,,,parent,private,17691757.327131677,17691757.327131677,554511.36,554511.36,False
+Spain -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,Spain,Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,15129003.287828073,17672917.97860209,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,Southern France,Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,15104922.35878984,17648837.04956386,554511.36,554511.36,False
+New Orleans area -> Miami area | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Miami area,2031.0,,,daycare,homeschool,17622467.566382058,17622467.566382058,545172.0,545172.0,False
+Midwest (Kansas City) -> Miami area | move-2031 | rent-forever | parent | private,Midwest (Kansas City),Miami area,2031.0,,,parent,private,17597579.10969265,17597579.10969265,549984.0,549984.0,False
+Miami area -> Bay Area | move-2031 | buy-2034 | daycare | private,Miami area,Bay Area,2031.0,2034.0,2034.0,daycare,private,15002954.111767454,17546868.802541472,525126.24,525126.24,False
+Midwest (Kansas City) -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,Midwest (Kansas City),Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,14995023.719273902,17538938.41004792,549984.0,549984.0,False
+New Orleans area -> Miami area | move-2031 | rent-forever | parent | private,New Orleans area,Miami area,2031.0,,,parent,private,17497479.80627594,17497479.80627594,545172.0,545172.0,False
+"China, Jingzhou -> Bay Area | move-2031 | buy-2034 | parent | homeschool","China, Jingzhou",Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14937730.900006438,17481645.590780456,565646.64,565646.64,False
+Vietnam -> Bay Area | move-2031 | buy-2034 | parent | homeschool,Vietnam,Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14891717.671580505,17435632.36235452,563434.68,563434.68,False
+New Orleans area -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,New Orleans area,Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,14873200.144261636,17417114.835035652,545172.0,545172.0,False
+"China, Jingzhou -> Miami area | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Miami area,2031.0,,,parent,homeschool,17406921.061981823,17406921.061981823,565646.64,565646.64,False
+Japan -> Bay Area | move-2031 | buy-2034 | parent | homeschool,Japan,Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14845334.999341458,17389249.690115474,561204.96,561204.96,False
+"China, Jingzhou -> Bay Area | move-2031 | rent-forever | daycare | private","China, Jingzhou",Bay Area,2031.0,,,daycare,private,17371501.43508409,17371501.43508409,565646.64,565646.64,False
+"China, Jingzhou -> Bay Area | move-2031 | buy-2034 | parent | private","China, Jingzhou",Bay Area,2031.0,2034.0,2034.0,parent,private,14826264.010250926,17370178.701024942,565646.64,565646.64,False
+Vietnam -> Miami area | move-2031 | rent-forever | parent | homeschool,Vietnam,Miami area,2031.0,,,parent,homeschool,17360907.83355589,17360907.83355589,563434.68,563434.68,False
+Vietnam -> Bay Area | move-2031 | rent-forever | daycare | private,Vietnam,Bay Area,2031.0,,,daycare,private,17325913.986807756,17325913.986807756,563434.68,563434.68,False
+Vietnam -> Bay Area | move-2031 | buy-2034 | parent | private,Vietnam,Bay Area,2031.0,2034.0,2034.0,parent,private,14780250.781824995,17324165.47259901,563434.68,563434.68,False
+Japan -> Miami area | move-2031 | rent-forever | parent | homeschool,Japan,Miami area,2031.0,,,parent,homeschool,17314525.16131684,17314525.16131684,561204.96,561204.96,False
+Japan -> Bay Area | move-2031 | buy-2034 | parent | private,Japan,Bay Area,2031.0,2034.0,2034.0,parent,private,14733868.109585946,17277782.800359964,561204.96,561204.96,False
+Japan -> Bay Area | move-2031 | rent-forever | daycare | private,Japan,Bay Area,2031.0,,,daycare,private,17269271.66017839,17269271.66017839,561204.96,561204.96,False
+Bay Area | no-move | buy-2034 | daycare | private,Bay Area,Bay Area,,2034.0,2034.0,daycare,private,14723511.917919105,17267426.608693123,514448.04000000004,514448.04000000004,False
+Spain -> Bay Area | move-2031 | buy-2034 | parent | homeschool,Spain,Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14717659.710766546,17261574.401540563,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | buy-2034 | parent | homeschool,Southern France,Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14706094.621671047,17250009.312445063,554511.36,554511.36,False
+Miami area | no-move | rent-forever | daycare | homeschool,Miami area,Miami area,,,,daycare,homeschool,17190198.66372127,17190198.66372127,525126.24,525126.24,False
+Spain -> Miami area | move-2031 | rent-forever | parent | homeschool,Spain,Miami area,2031.0,,,parent,homeschool,17186849.87274193,17186849.87274193,555067.32,555067.32,False
+Southern France -> Miami area | move-2031 | rent-forever | parent | homeschool,Southern France,Miami area,2031.0,,,parent,homeschool,17175284.78364644,17175284.78364644,554511.36,554511.36,False
+Midwest (Kansas City) -> Bay Area | move-2031 | buy-2034 | parent | homeschool,Midwest (Kansas City),Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14611916.404232018,17155831.095006034,549984.0,549984.0,False
+Spain -> Bay Area | move-2031 | buy-2034 | parent | private,Spain,Bay Area,2031.0,2034.0,2034.0,parent,private,14606192.82101104,17150107.511785056,555067.32,555067.32,False
+Spain -> Bay Area | move-2031 | rent-forever | daycare | private,Spain,Bay Area,2031.0,,,daycare,private,17139991.085599825,17139991.085599825,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | buy-2034 | parent | private,Southern France,Bay Area,2031.0,2034.0,2034.0,parent,private,14594627.73191554,17138542.422689557,554511.36,554511.36,False
+Southern France -> Bay Area | move-2031 | rent-forever | daycare | private,Southern France,Bay Area,2031.0,,,daycare,private,17115910.156561594,17115910.156561594,554511.36,554511.36,False
+Midwest (Kansas City) -> Miami area | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),Miami area,2031.0,,,parent,homeschool,17081106.566207405,17081106.566207405,549984.0,549984.0,False
+Miami area | no-move | rent-forever | parent | private,Miami area,Miami area,,,,parent,private,17080487.575923014,17080487.575923014,525126.24,525126.24,False
+New Orleans area -> Bay Area | move-2031 | buy-2034 | parent | homeschool,New Orleans area,Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14511817.10081532,17055731.79158934,545172.0,545172.0,False
+Midwest (Kansas City) -> Bay Area | move-2031 | buy-2034 | parent | private,Midwest (Kansas City),Bay Area,2031.0,2034.0,2034.0,parent,private,14500449.514476513,17044364.20525053,549984.0,549984.0,False
+Midwest (Kansas City) -> Bay Area | move-2031 | rent-forever | daycare | private,Midwest (Kansas City),Bay Area,2031.0,,,daycare,private,17006011.517045658,17006011.517045658,549984.0,549984.0,False
+Miami area -> Bay Area | move-2031 | buy-2034 | daycare | homeschool,Miami area,Bay Area,2031.0,2034.0,2034.0,daycare,homeschool,14440931.241600841,16984845.932374857,525126.24,525126.24,False
+New Orleans area -> Miami area | move-2031 | rent-forever | parent | homeschool,New Orleans area,Miami area,2031.0,,,parent,homeschool,16981007.26279071,16981007.26279071,545172.0,545172.0,False
+New Orleans area -> Bay Area | move-2031 | buy-2034 | parent | private,New Orleans area,Bay Area,2031.0,2034.0,2034.0,parent,private,14400350.211059814,16944264.901833832,545172.0,545172.0,False
+Bay Area -> Miami area | move-2031 | rent-forever | daycare | homeschool,Bay Area,Miami area,2031.0,,,daycare,homeschool,16910756.469872918,16910756.469872918,514448.04000000004,514448.04000000004,False
+New Orleans area -> Bay Area | move-2031 | rent-forever | daycare | private,New Orleans area,Bay Area,2031.0,,,daycare,private,16884187.94203339,16884187.94203339,545172.0,545172.0,False
+Bay Area -> Miami area | move-2031 | rent-forever | parent | private,Bay Area,Miami area,2031.0,,,parent,private,16858359.48329123,16858359.48329123,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Bay Area | move-2031 | rent-forever | daycare | homeschool","China, Jingzhou",Bay Area,2031.0,,,daycare,homeschool,16809478.564917475,16809478.564917475,565646.64,565646.64,False
+Vietnam -> Bay Area | move-2031 | rent-forever | daycare | homeschool,Vietnam,Bay Area,2031.0,,,daycare,homeschool,16763891.116641136,16763891.116641136,563434.68,563434.68,False
+Japan -> Bay Area | move-2031 | rent-forever | daycare | homeschool,Japan,Bay Area,2031.0,,,daycare,homeschool,16707248.790011777,16707248.790011777,561204.96,561204.96,False
+Bay Area | no-move | buy-2034 | daycare | homeschool,Bay Area,Bay Area,,2034.0,2034.0,daycare,homeschool,14161489.047752494,16705403.738526512,514448.04000000004,514448.04000000004,False
+Miami area -> Bay Area | move-2031 | buy-2034 | parent | homeschool,Miami area,Bay Area,2031.0,2034.0,2034.0,parent,homeschool,14094824.870462397,16638739.561236415,525126.24,525126.24,False
+Spain -> Bay Area | move-2031 | rent-forever | daycare | homeschool,Spain,Bay Area,2031.0,,,daycare,homeschool,16577968.215433208,16577968.215433208,555067.32,555067.32,False
+Miami area | no-move | rent-forever | parent | homeschool,Miami area,Miami area,,,,parent,homeschool,16564015.032437777,16564015.032437777,525126.24,525126.24,False
+Southern France -> Bay Area | move-2031 | rent-forever | daycare | homeschool,Southern France,Bay Area,2031.0,,,daycare,homeschool,16553887.286394974,16553887.286394974,554511.36,554511.36,False
+Miami area -> Bay Area | move-2031 | buy-2034 | parent | private,Miami area,Bay Area,2031.0,2034.0,2034.0,parent,private,13983357.980706878,16527272.671480894,525126.24,525126.24,False
+Miami area -> Bay Area | move-2031 | rent-forever | daycare | private,Miami area,Bay Area,2031.0,,,daycare,private,16451919.039372599,16451919.039372599,525126.24,525126.24,False
+Midwest (Kansas City) -> Bay Area | move-2031 | rent-forever | daycare | homeschool,Midwest (Kansas City),Bay Area,2031.0,,,daycare,homeschool,16443988.646879042,16443988.646879042,549984.0,549984.0,False
+Bay Area | no-move | buy-2034 | parent | homeschool,Bay Area,Bay Area,,2034.0,2034.0,parent,homeschool,13872696.777830604,16416611.46860462,514448.04000000004,514448.04000000004,False
+"China, Jingzhou -> Bay Area | move-2031 | rent-forever | parent | homeschool","China, Jingzhou",Bay Area,2031.0,,,parent,homeschool,16386695.827611579,16386695.827611579,565646.64,565646.64,False
+Bay Area -> Miami area | move-2031 | rent-forever | parent | homeschool,Bay Area,Miami area,2031.0,,,parent,homeschool,16341886.939805988,16341886.939805988,514448.04000000004,514448.04000000004,False
+Vietnam -> Bay Area | move-2031 | rent-forever | parent | homeschool,Vietnam,Bay Area,2031.0,,,parent,homeschool,16340682.599185647,16340682.599185647,563434.68,563434.68,False
+New Orleans area -> Bay Area | move-2031 | rent-forever | daycare | homeschool,New Orleans area,Bay Area,2031.0,,,daycare,homeschool,16322165.071866771,16322165.071866771,545172.0,545172.0,False
+Bay Area | no-move | buy-2034 | parent | private,Bay Area,Bay Area,,2034.0,2034.0,parent,private,13761229.888075093,16305144.57884911,514448.04000000004,514448.04000000004,False
+Japan -> Bay Area | move-2031 | rent-forever | parent | homeschool,Japan,Bay Area,2031.0,,,parent,homeschool,16294299.926946597,16294299.926946597,561204.96,561204.96,False
+"China, Jingzhou -> Bay Area | move-2031 | rent-forever | parent | private","China, Jingzhou",Bay Area,2031.0,,,parent,private,16275228.937856074,16275228.937856074,565646.64,565646.64,False
+Vietnam -> Bay Area | move-2031 | rent-forever | parent | private,Vietnam,Bay Area,2031.0,,,parent,private,16229215.709430141,16229215.709430141,563434.68,563434.68,False
+Japan -> Bay Area | move-2031 | rent-forever | parent | private,Japan,Bay Area,2031.0,,,parent,private,16182833.037191093,16182833.037191093,561204.96,561204.96,False
+Bay Area | no-move | rent-forever | daycare | private,Bay Area,Bay Area,,,,daycare,private,16172476.845524248,16172476.845524248,514448.04000000004,514448.04000000004,False
+Spain -> Bay Area | move-2031 | rent-forever | parent | homeschool,Spain,Bay Area,2031.0,,,parent,homeschool,16166624.638371684,16166624.638371684,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | rent-forever | parent | homeschool,Southern France,Bay Area,2031.0,,,parent,homeschool,16155059.549276182,16155059.549276182,554511.36,554511.36,False
+Midwest (Kansas City) -> Bay Area | move-2031 | rent-forever | parent | homeschool,Midwest (Kansas City),Bay Area,2031.0,,,parent,homeschool,16060881.331837157,16060881.331837157,549984.0,549984.0,False
+Spain -> Bay Area | move-2031 | rent-forever | parent | private,Spain,Bay Area,2031.0,,,parent,private,16055157.748616189,16055157.748616189,555067.32,555067.32,False
+Southern France -> Bay Area | move-2031 | rent-forever | parent | private,Southern France,Bay Area,2031.0,,,parent,private,16043592.659520684,16043592.659520684,554511.36,554511.36,False
+New Orleans area -> Bay Area | move-2031 | rent-forever | parent | homeschool,New Orleans area,Bay Area,2031.0,,,parent,homeschool,15960782.02842046,15960782.02842046,545172.0,545172.0,False
+Midwest (Kansas City) -> Bay Area | move-2031 | rent-forever | parent | private,Midwest (Kansas City),Bay Area,2031.0,,,parent,private,15949414.442081654,15949414.442081654,549984.0,549984.0,False
+Miami area -> Bay Area | move-2031 | rent-forever | daycare | homeschool,Miami area,Bay Area,2031.0,,,daycare,homeschool,15889896.169205979,15889896.169205979,525126.24,525126.24,False
+New Orleans area -> Bay Area | move-2031 | rent-forever | parent | private,New Orleans area,Bay Area,2031.0,,,parent,private,15849315.13866496,15849315.13866496,545172.0,545172.0,False
+Bay Area | no-move | rent-forever | daycare | homeschool,Bay Area,Bay Area,,,,daycare,homeschool,15610453.975357631,15610453.975357631,514448.04000000004,514448.04000000004,False
+Miami area -> Bay Area | move-2031 | rent-forever | parent | homeschool,Miami area,Bay Area,2031.0,,,parent,homeschool,15543789.798067529,15543789.798067529,525126.24,525126.24,False
+Miami area -> Bay Area | move-2031 | rent-forever | parent | private,Miami area,Bay Area,2031.0,,,parent,private,15432322.908312025,15432322.908312025,525126.24,525126.24,False
+Bay Area | no-move | rent-forever | parent | homeschool,Bay Area,Bay Area,,,,parent,homeschool,15321661.70543574,15321661.70543574,514448.04000000004,514448.04000000004,False
+Bay Area | no-move | rent-forever | parent | private,Bay Area,Bay Area,,,,parent,private,15210194.815680236,15210194.815680236,514448.04000000004,514448.04000000004,False

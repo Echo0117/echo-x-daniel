@@ -6,6 +6,7 @@ from typing import Optional, List
 from fastapi import HTTPException, Request
 from pydantic import BaseModel, Field
 from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, write_csv_rows
+import services.pg_store as pg
 
 # ---------------- 配置 ----------------
 AWS_REGION = os.getenv("AWS_REGION") or "eu-north-1"
@@ -50,11 +51,18 @@ def check_login(username: str, password: str) -> bool:
     )
 
 # ---------------- 存储 ----------------
-# DynamoDB disabled - using local CSV storage
 USE_DDB = False
 
 def _ddb_table():
     return None
+
+_pg_ready = False
+
+def _ensure_pg():
+    global _pg_ready
+    if not _pg_ready:
+        pg.init_tables()
+        _pg_ready = True
 
 def save_message(msg: MessageIn, request: Request) -> MessageOut:
     now = datetime.now(timezone.utc).isoformat()
@@ -65,24 +73,23 @@ def save_message(msg: MessageIn, request: Request) -> MessageOut:
         "title": (msg.title or "").strip() or None,
         "content": msg.content.strip(),
     }
-    table = _ddb_table()
-    if table:
-        table.put_item(Item=item)
+    if pg.DATABASE_URL:
+        _ensure_pg()
+        pg.insert_message(item)
     else:
         _bootstrap_csv_from_legacy()
         append_csv_row(LOCAL_STORE, MESSAGE_FIELDS, item)
     return MessageOut(**item)
 
 def list_messages(limit: int = 20) -> List[MessageOut]:
-    table = _ddb_table()
-    items = []
-    if table:
-        scan = table.scan(Limit=1000)
-        items = scan.get("Items", [])
+    if pg.DATABASE_URL:
+        _ensure_pg()
+        items = pg.list_messages(limit)
     else:
         items = _load_local_messages()
-    items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-    return [MessageOut(**_normalize_message(it)) for it in items[:limit]]
+        items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
+        items = items[:limit]
+    return [MessageOut(**_normalize_message(it)) for it in items]
 
 
 def _load_local_messages() -> List[dict]:

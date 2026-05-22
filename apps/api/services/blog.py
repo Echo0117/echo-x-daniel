@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import List, Optional
 from pydantic import BaseModel, Field
 from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, write_csv_rows
+import services.pg_store as pg
 
 AWS_REGION = os.getenv("AWS_REGION") or "eu-north-1"
 DDB_TABLE_POSTS = os.getenv("DDB_TABLE_POSTS", "echo_x_daniel_posts")
@@ -14,14 +15,15 @@ LOCAL_POSTS = Path(os.getenv("BLOG_CSV") or default_data_path("blog.csv"))
 LEGACY_LOCAL_POSTS = Path(os.getenv("LOCAL_POSTS") or default_data_path("blog_posts.jsonl"))
 POST_FIELDS = ["id", "author", "body", "cover_url", "created_at", "slug", "tags", "title", "updated_at"]
 
-# DynamoDB disabled - using local CSV storage
 USE_DDB = False
 
-def _ddb():
-    return None
+_pg_ready = False
 
-def _posts_table():
-    return None
+def _ensure_pg():
+    global _pg_ready
+    if not _pg_ready:
+        pg.init_tables()
+        _pg_ready = True
 
 # ------------ Models ------------
 class PostIn(BaseModel):
@@ -59,23 +61,23 @@ def save_post(p: PostIn, author: str) -> PostOut:
         "tags": (p.tags or "").strip() or None,
         "cover_url": (p.cover_url or "").strip() or None,
     }
-    tab = _posts_table()
-    if tab is not None:
-        tab.put_item(Item=item)
+    if pg.DATABASE_URL:
+        _ensure_pg()
+        pg.insert_post(item)
     else:
         _bootstrap_csv_from_legacy()
         append_csv_row(LOCAL_POSTS, POST_FIELDS, item)
     return PostOut(**item)
 
 def list_posts(limit: int = 50) -> List[PostOut]:
-    tab = _posts_table()
-    items = []
-    if tab is not None:
-        items = (tab.scan(Limit=1000) or {}).get("Items", [])
+    if pg.DATABASE_URL:
+        _ensure_pg()
+        items = pg.list_posts(limit)
     else:
         items = _load_local_posts()
-    items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-    return [PostOut(**_normalize_post(it)) for it in items[:limit]]
+        items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
+        items = items[:limit]
+    return [PostOut(**_normalize_post(it)) for it in items]
 
 def get_post_by_slug(slug: str) -> Optional[PostOut]:
     # Simple scan; fine for tiny private blog. (Add a GSI for slug later if you like.)

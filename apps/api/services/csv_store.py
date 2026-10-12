@@ -1,4 +1,5 @@
 import os
+import io
 import csv
 import json
 from pathlib import Path
@@ -49,6 +50,15 @@ def write_csv_rows(path: Path, fieldnames: Sequence[str], rows: Sequence[Mapping
         writer.writeheader()
         for row in rows:
             writer.writerow({field: _csv_value(row.get(field)) for field in fieldnames})
+
+
+def rows_to_csv_text(fieldnames: Sequence[str], rows: Sequence[Mapping[str, Any]]) -> str:
+    buf = io.StringIO()
+    writer = csv.DictWriter(buf, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+    writer.writeheader()
+    for row in rows:
+        writer.writerow({field: _csv_value(row.get(field)) for field in fieldnames})
+    return buf.getvalue()
 
 
 def read_jsonl_rows(path: Path) -> list[dict[str, Any]]:

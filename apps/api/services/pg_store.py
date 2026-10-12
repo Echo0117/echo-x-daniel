@@ -48,16 +48,30 @@ def init_tables() -> None:
             """)
 
 
-def insert_message(item: dict[str, Any]) -> None:
+def count_rows(table: str) -> int:
+    if table not in ("messages", "posts"):
+        raise ValueError(f"unknown table: {table}")
     with _conn() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                "INSERT INTO messages (id, author, content, title, created_at) VALUES (%s, %s, %s, %s, %s)",
-                (item["id"], item["author"], item["content"], item.get("title"), item["created_at"]),
+            cur.execute(f"SELECT COUNT(*) FROM {table}")
+            return cur.fetchone()[0]
+
+
+def insert_message(item: dict[str, Any]) -> None:
+    insert_messages([item])
+
+
+def insert_messages(items: list[dict[str, Any]]) -> None:
+    with _conn() as conn:
+        with conn.cursor() as cur:
+            cur.executemany(
+                """INSERT INTO messages (id, author, content, title, created_at)
+                   VALUES (%s, %s, %s, %s, %s) ON CONFLICT (id) DO NOTHING""",
+                [(it["id"], it["author"], it["content"], it.get("title"), it["created_at"]) for it in items],
             )
 
 
-def list_messages(limit: int = 20) -> list[dict[str, Any]]:
+def list_messages(limit: int | None = 20) -> list[dict[str, Any]]:
     with _conn() as conn:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute("SELECT * FROM messages ORDER BY created_at DESC LIMIT %s", (limit,))
@@ -65,20 +79,27 @@ def list_messages(limit: int = 20) -> list[dict[str, Any]]:
 
 
 def insert_post(item: dict[str, Any]) -> None:
+    insert_posts([item])
+
+
+def insert_posts(items: list[dict[str, Any]]) -> None:
     with _conn() as conn:
         with conn.cursor() as cur:
-            cur.execute(
+            cur.executemany(
                 """INSERT INTO posts
                    (id, slug, author, title, body, tags, cover_url, created_at, updated_at)
-                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-                (
-                    item["id"], item["slug"], item["author"], item["title"], item["body"],
-                    item.get("tags"), item.get("cover_url"), item["created_at"], item["updated_at"],
-                ),
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (id) DO NOTHING""",
+                [
+                    (
+                        it["id"], it["slug"], it["author"], it["title"], it["body"],
+                        it.get("tags"), it.get("cover_url"), it["created_at"], it["updated_at"],
+                    )
+                    for it in items
+                ],
             )
 
 
-def list_posts(limit: int = 50) -> list[dict[str, Any]]:
+def list_posts(limit: int | None = 50) -> list[dict[str, Any]]:
     with _conn() as conn:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute("SELECT * FROM posts ORDER BY created_at DESC LIMIT %s", (limit,))

@@ -7,7 +7,8 @@ from fastapi.templating import Jinja2Templates
 from typing import List
 
 from services.messageboard import require_auth, SESSION_USER_KEY  # reuse auth/session
-from services.blog import PostIn, PostOut, save_post, list_posts, get_post_by_slug
+from services.blog import PostIn, PostOut, save_post, list_posts, get_post_by_slug, export_csv
+from routers.messageboard import _csv_download
 
 router = APIRouter()
 
@@ -45,3 +46,8 @@ async def blog_create(request: Request, data: PostIn):
     author = request.session.get(SESSION_USER_KEY, "Unknown")
     post = save_post(data, author=author)
     return post
+
+
+@router.get("/export/blog.csv", dependencies=[Depends(require_auth)])
+async def export_posts():
+    return _csv_download(export_csv(), "blog")

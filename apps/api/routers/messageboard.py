@@ -1,14 +1,15 @@
 # routers/messageboard.py
 from fastapi import APIRouter, Request, Depends, Form, HTTPException
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.templating import Jinja2Templates
 from typing import List
+from datetime import date
 from pathlib import Path
 
 from services.messageboard import (
     require_auth, check_login,
     save_message, list_messages,
-    MessageIn, MessageOut, SESSION_USER_KEY
+    MessageIn, MessageOut, SESSION_USER_KEY, export_csv
 )
 
 router = APIRouter()
@@ -49,3 +50,17 @@ async def create_message(msg: MessageIn, request: Request):
 @router.get("/api/messages", response_model=List[MessageOut], dependencies=[Depends(require_auth)])
 async def get_messages(limit: int = 20):
     return list_messages(limit=limit)
+
+def _csv_download(text: str, name: str) -> Response:
+    # BOM so Excel opens UTF-8 (emoji, Chinese) correctly
+    filename = f"{name}-{date.today().isoformat()}.csv"
+    return Response(
+        content="\ufeff" + text,
+        media_type="text/csv; charset=utf-8",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
+@router.get("/export/messageboard.csv", dependencies=[Depends(require_auth)])
+async def export_messages():
+    return _csv_download(export_csv(), "messageboard")

@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional, List
 from fastapi import HTTPException, Request
 from pydantic import BaseModel, Field
-from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, write_csv_rows
+from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, rows_to_csv_text, write_csv_rows
 import services.pg_store as pg
 
 # ---------------- 配置 ----------------
@@ -62,6 +62,11 @@ def _ensure_pg():
     global _pg_ready
     if not _pg_ready:
         pg.init_tables()
+        # First run against an empty database: import the existing file-based data.
+        if pg.count_rows("messages") == 0:
+            local_items = read_csv_rows(LOCAL_STORE) or read_jsonl_rows(LEGACY_LOCAL_STORE)
+            if local_items:
+                pg.insert_messages(local_items)
         _pg_ready = True
 
 def save_message(msg: MessageIn, request: Request) -> MessageOut:
@@ -81,14 +86,14 @@ def save_message(msg: MessageIn, request: Request) -> MessageOut:
         append_csv_row(LOCAL_STORE, MESSAGE_FIELDS, item)
     return MessageOut(**item)
 
-def list_messages(limit: int = 20) -> List[MessageOut]:
+def list_messages(limit: Optional[int] = 20) -> List[MessageOut]:
     if pg.DATABASE_URL:
         _ensure_pg()
         items = pg.list_messages(limit)
     else:
         items = _load_local_messages()
         items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-        items = items[:limit]
+        items = items[:limit] if limit is not None else items
     return [MessageOut(**_normalize_message(it)) for it in items]
 
 
@@ -128,3 +133,9 @@ def _optional_text(value: object) -> Optional[str]:
 
     text = str(value).strip()
     return text or None
+
+
+def export_csv() -> str:
+    """All messages, newest first, as CSV text."""
+    items = [it.model_dump() for it in list_messages(limit=None)]
+    return rows_to_csv_text(MESSAGE_FIELDS, items)

@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 from pydantic import BaseModel, Field
-from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, write_csv_rows
+from services.csv_store import append_csv_row, default_data_path, read_csv_rows, read_jsonl_rows, rows_to_csv_text, write_csv_rows
 import services.pg_store as pg
 
 AWS_REGION = os.getenv("AWS_REGION") or "eu-north-1"
@@ -23,6 +23,11 @@ def _ensure_pg():
     global _pg_ready
     if not _pg_ready:
         pg.init_tables()
+        # First run against an empty database: import the existing file-based data.
+        if pg.count_rows("posts") == 0:
+            local_items = read_csv_rows(LOCAL_POSTS) or read_jsonl_rows(LEGACY_LOCAL_POSTS)
+            if local_items:
+                pg.insert_posts(local_items)
         _pg_ready = True
 
 # ------------ Models ------------
@@ -69,14 +74,14 @@ def save_post(p: PostIn, author: str) -> PostOut:
         append_csv_row(LOCAL_POSTS, POST_FIELDS, item)
     return PostOut(**item)
 
-def list_posts(limit: int = 50) -> List[PostOut]:
+def list_posts(limit: Optional[int] = 50) -> List[PostOut]:
     if pg.DATABASE_URL:
         _ensure_pg()
         items = pg.list_posts(limit)
     else:
         items = _load_local_posts()
         items.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-        items = items[:limit]
+        items = items[:limit] if limit is not None else items
     return [PostOut(**_normalize_post(it)) for it in items]
 
 def get_post_by_slug(slug: str) -> Optional[PostOut]:
@@ -127,3 +132,9 @@ def _optional_text(value: object) -> Optional[str]:
 
     text = str(value).strip()
     return text or None
+
+
+def export_csv() -> str:
+    """All posts, newest first, as CSV text."""
+    items = [it.model_dump() for it in list_posts(limit=None)]
+    return rows_to_csv_text(POST_FIELDS, items)
